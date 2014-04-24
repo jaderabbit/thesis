@@ -1,0 +1,81 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Swarm Robotics}
+\label{chap:first}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Explain what the chapter focusses on. Be brief, and only focus on the main theme of the chapter. Also reference any previous chapters that link to the theme of this chapter.
+
+%Then, outline the remaining sections and what each covers in a broad sense. Use labeled references like these: Section~\ref{sec:first:first_sec}, Section~\ref{sec:first:second_sec} and Section~\ref{sec:first:summary}. Note that all labels in this document follow a convention, but you are free to choose whatever labels you want to.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{What is Swarm Robotics?}
+\label{sec:first:definitionswarmrobotics}
+
+%Get from presentation
+Swarm robotics is the study of the co-coordination of large numbers of  relatively simple robots in order to perform a single function \cite{csahin2005swarm}, where no central control exists. Swarm robotics focuses on how to create robotic algorithms that result in the emergence of a desired complex behaviour.
+
+Swarm robotics draws inspiration from the observation of social insects: Ants \cite{hoff2010two,alcoholfromants2012}, termites \cite{}, bees \cite{lee2012foraging}. Social insects exhibit collective behaviour in the growth and maintenance of their societies\cite{wilson1971insect, bailishive}. The most interesting aspects of insect societies such as foraging, collective transport . Swarm robotics also uses concepts from other societies such as amoeba's aggregation into slime and communication and sensing in bacteria
+
+Swarm robotics algorithms can be distinguished characterized from other robotics algorithms due to the following factors
+
+\begin{itemize}
+\item Autonomy - The robots have total self-control of their actuation and sensors. 
+\item Large Quantity of Robots - To be classified as a swarm of robots, multiple robots should be used. Robotics systems with too few robots should be considered outside the scope of swarm robotics. Erol Sahin proposes a reasonable lower bound for number of robots to be considered as swarm is 10 \cite{csahin2005swarm}.
+\item Few homogenous groups of robots. The idea is that a group of robots, where all robots are completely different, is not a robotic swarm. The evaluation of homogeneity of a swarm of robots has been discussed and a potential measure to evaluating homogeneity is proposed in \cite{balch2000hierarchic}
+\item Relatively simple or inefficient robots - A single robot used should be under-equipped to handle the task on by itself, but the collaboration of a group of the same robots should assist the completion of the task.  
+\item Local sensory abilities and local communication - This is to ensure decentralization such that the robots do not depend on an external factor for communication or sensing. 
+\end{itemize}
+
+ The field of swarm robotics has been applied to a large variety of problems such as search and rescue \cite{mondada2002search}, item or garbage collection \cite{balch1995io}, autonomous inspection of machinery \cite{correll2007challenging}, military formations for military application \cite{balch1998behavior}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Advantages of Swarm Robotics}
+\label{sec:first:advantages}
+
+\subsection{Robustness}
+\label{robustness}
+
+In swarm robotics, robustness is defined as the ability to continue to function despite failures or abnormalities of the respective individuals and environments. Four aspects of insect swarm algorithms have been identified  in insect swarms as enabling robustness: (i) redundancy and (ii) decentralized coordination, (iii) Multiplicity of sensing.
+
+Swarm robotics algorithms achieve redundancy by giving all or a portion of the robots the same capabilities. In this way, if a percentage  of the swarm malfunctions, the other robots have the capability to take the malfunctioning robots place. Decentralized coordination can be attained by creating algorithms that do not depend on the life span of a single individual of few finite individuals. Sensory Multiplicity - By using a large number of individuals, the total signal-to-noise ratio is increased. 
+
+%%Rewrite, add to and cite. 
+
+\subsection{Flexibility}
+A swarm robotics algorithm should exhibit the ability to adapt and adjust to new or changing requirements. Ants and bees do this by having effective division of labour strategies, where all ants can take on a variety of different roles required by the nest such as brooding, foraging or nest maintenance. \cite{}
+
+\subsection{Scalability}
+ Scalability refers to the ability of the robotic swarm to expand the self-organizational mechanism for larger problems easily by simply adding more robots to the swarm.   The performance of the algorithm should not be negatively effected by an increase in swarm size. 
+
+\subsection{Cost-effectiveness}
+This runs off the premise that multiple inexpensive robots are likely to be cheaper to buy and maintain than a single large more complex robot. Although this is debatable, depending on the eventual complexity of robotics required. 
+
+
+%Analysis:
+	%I think we need more categories
+	%I also think that flexibility and cost-effectiveness should be addressed or removed. 
+	
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Summary}
+\label{sec:first:summary}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

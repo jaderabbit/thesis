@@ -1,0 +1,57 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Experimental Setup}
+\label{chap:third}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%The same structure as before, including section, subsections and sub-subsections. Make sure that you follow the same conventions throughout, to avoid confusing the reader. Always remember to include a summary.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Simulator}
+A spatially discrete 2-dimensional grid world simulator has been developed and is used for the experimentation in order to accelerate computation \cite{sugawara2002swarming} and also because algorithm performance is sensitive to the amount of time taken to pickup item as well as the manoeuvring capabilities of the robots used \cite{ostergaard2001emergent}. The 2-D grid world simulator allows for movement and pickup time to be standardized across all algorithms for effective comparison. A further reason to use 2 Future studies could include these factors as part of algorithm performance. Collisions and congestion is considered by the simulator. Only a single robot can occupy a block. 
+
+%Parameter
+\section{Parameters}
+\label{parameters}
+
+\section{Performance Measures}
+\label{thri:third:performancemeasures}
+
+	\begin{itemize}
+		\item	Amount gold items foraged over time
+		\item	Amount waste items foraged over time
+		\item	Average distance each robot moves
+		\item	Average Time to forage an item for all robots
+		\item	Average time to locate an item for all robots
+		\item	Average time to return an item for all robots
+		\item	Entropy of robot movement
+	\end{itemize}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Environment Types}
+\label{thri:third:environmenttypes}
+%Small discussion describing how environments were generated. 15 minutes for each on basic, then 30 min for each environment for more detailed.
+	\begin{itemize}
+		\item Uniform distribution. 
+			The distribution of gold and waste is uniform across the grid. 
+		\item Vein
+			In the gold reefs of South Africa (reference a few), gold occurs naturally in vein form. The gold reefs of South Africa are distributed in a path. This it to test how the algorithms would fair in a simple uniform environment.
+		\item Clustered
+			Clusters of a variety of sizes and concentration are generated across the grid. A centroid position is chosen and a size and concentration chosen randomly from a range of (0, $\alpha$) where $\alpha$ was chosen as 8. $\alpha$ could be chosen as any other value. This process is completed until enough objects have been generated. (Include more specifics) Analysis of how an algorithm performs on this environment 
+		\item Gaussian
+			To generate the gaussian environments, a gold cluster is generated at the centre of the grid. Waste is then generated uniformly around the gold. These environments were created to specifically test how an algorithm can deal with moving past the waste to reach the gold. 
+	\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Summary}
+\label{fourth:summary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

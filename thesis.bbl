@@ -1,0 +1,243 @@
+\newcommand{\noopsort}[1]{} \newcommand{\singleletter}[1]{#1}
+\begin{thebibliography}{10}
+
+\bibitem{antoniou2012congestion}
+Pavlos Antoniou, Andreas Pitsillides, Tim Blackwell, Andries Engelbrecht, and
+  Loizos Michael.
+\newblock Congestion control in wireless sensor networks based on bird flocking
+  behavior.
+\newblock {\em Computer Networks}, 2012.
+
+\bibitem{bailishive}
+Peter Bailis and Peter Lifland.
+\newblock The hive is hungry: Exploring bee colony search and foraging behavior
+  through agent-based simulation.
+
+\bibitem{balch1999impact}
+Tucker Balch.
+\newblock The impact of diversity on performance in multi-robot foraging.
+\newblock In {\em Proceedings of the third annual conference on Autonomous
+  Agents}, pages 92--99. ACM, 1999.
+
+\bibitem{Balch99rewardand}
+Tucker Balch.
+\newblock Reward and diversity in multirobot foraging.
+\newblock In {\em In IJCAI-99 Workshop on Agents Learning About, From and With
+  other Agents}, 1999.
+
+\bibitem{balch2000hierarchic}
+Tucker Balch.
+\newblock Hierarchic social entropy: An information theoretic measure of robot
+  group diversity.
+\newblock {\em Autonomous robots}, 8(3):209--238, 2000.
+
+\bibitem{balch1998behavior}
+Tucker Balch and Ronald~C Arkin.
+\newblock Behavior-based formation control for multirobot teams.
+\newblock {\em Robotics and Automation, IEEE Transactions on}, 14(6):926--939,
+  1998.
+
+\bibitem{balch1995io}
+Tucker Balch, Gary Boone, Thomas Collins, Harold Forbes, Doug MacKenzie, and
+  Juan~Carlos Santamar.
+\newblock Io, ganymede, and callisto a multiagent robot trash-collecting team.
+\newblock {\em AI magazine}, 16(2):39, 1995.
+
+\bibitem{bernstein1974seasonal}
+Ruth~A Bernstein.
+\newblock Seasonal food abundance and foraging activity in some desert ants.
+\newblock {\em American Naturalist}, pages 490--498, 1974.
+
+\bibitem{campo2007efficient}
+Alexandre Campo and Marco Dorigo.
+\newblock Efficient multi-foraging in swarm robotics.
+\newblock In {\em Advances in Artificial Life}, pages 696--705. Springer, 2007.
+
+\bibitem{collett1998local}
+Matthew Collett, Thomas~S Collett, Sonja Bisch, and R{\"u}diger Wehner.
+\newblock Local and global vectors in desert ant navigation.
+\newblock {\em Nature}, 394(6690):269--272, 1998.
+
+\bibitem{correll2007challenging}
+Nikolaus Correll and Alcherio Martinoli.
+\newblock A challenging application in swarm robotics: The autonomous
+  inspection of complex engineered structures.
+\newblock In {\em Bulletin of the Swiss Society for Automatic Control}.
+  Citeseer, 2007.
+
+\bibitem{dorigo2006ant}
+Marco Dorigo.
+\newblock {\em Ant Colony Optimization and Swarm Intelligence: 5th
+  International Workshop, ANTS 2006, Brussels, Belgium, September 4-7, 2006,
+  Proceedings}, volume 4150.
+\newblock Springer-Verlag New York Incorporated, 2006.
+
+\bibitem{dorigo2010ant}
+Marco Dorigo and Mauro Birattari.
+\newblock Ant colony optimization.
+\newblock In {\em Encyclopedia of Machine Learning}, pages 36--39. Springer,
+  2010.
+
+\bibitem{dorigo2004swarm}
+Marco Dorigo and Erol Sahin.
+\newblock Swarm robotics.
+\newblock {\em Auton. Robots}, 17(2-3):111--113, 2004.
+
+\bibitem{Goldberg01designand}
+Dani Goldberg and Maja~J Mataric.
+\newblock Design and evaluation of robust behavior-based controllers for
+  distributed multi-robot collection tasks.
+\newblock In {\em Robot Teams: From Diversity to Polymorphism}, pages 315--344.
+  A K Peters Ltd, 2001.
+
+\bibitem{hecker2012formica}
+Joshua~P Hecker, Kenneth Letendre, Karl Stolleis, Daniel Washington, and
+  Melanie~E Moses.
+\newblock Formica ex machina: ant swarm foraging from physical to virtual and
+  back again.
+\newblock In {\em Swarm Intelligence}, pages 252--259. Springer, 2012.
+
+\bibitem{hoff2010two}
+Nicholas~R Hoff, Amelia Sagoff, Robert~J Wood, and Radhika Nagpal.
+\newblock Two foraging algorithms for robot swarms using only local
+  communication.
+\newblock In {\em Robotics and Biomimetics (ROBIO), 2010 IEEE International
+  Conference on}, pages 123--130. IEEE, 2010.
+
+\bibitem{holldobler1990ants}
+Bert H{\"o}lldobler.
+\newblock {\em The ants}.
+\newblock Harvard University Press, 1990.
+
+\bibitem{janson2007searching}
+Stefan Janson, Martin Middendorf, and Madeleine Beekman.
+\newblock Searching for a new home—scouting behavior of honeybee swarms.
+\newblock {\em Behavioral Ecology}, 18(2):384--392, 2007.
+
+\bibitem{jennings1997cooperative}
+James~S Jennings, Greg Whelan, and William~F Evans.
+\newblock Cooperative search and rescue with a team of mobile robots.
+\newblock In {\em Advanced Robotics, 1997. ICAR'97. Proceedings., 8th
+  International Conference on}, pages 193--200. IEEE, 1997.
+
+\bibitem{jones2003adaptive}
+Chris Jones and Maja~J Mataric.
+\newblock Adaptive division of labor in large-scale minimalist multi-robot
+  systems.
+\newblock In {\em Intelligent Robots and Systems, 2003.(IROS 2003).
+  Proceedings. 2003 IEEE/RSJ International Conference on}, volume~2, pages
+  1969--1974. IEEE, 2003.
+
+\bibitem{kernbach2009re}
+Serge Kernbach, Ronald Thenius, Olga Kernbach, and Thomas Schmickl.
+\newblock Re-embodiment of honeybee aggregation behavior in an artificial
+  micro-robotic system.
+\newblock {\em Adaptive Behavior}, 17(3):237--259, 2009.
+
+\bibitem{labella2006division}
+Thomas~H Labella, Marco Dorigo, and Jean-Louis Deneubourg.
+\newblock Division of labor in a group of robots inspired by ants' foraging
+  behavior.
+\newblock {\em ACM Transactions on Autonomous and Adaptive Systems (TAAS)},
+  1(1):4--25, 2006.
+
+\bibitem{lee2012foraging}
+Jong-Hyun Lee, Hyun-Tae Kim, and Chang~Wook Ahn.
+\newblock Foraging swarm robots system adopting honey bee swarm for improving
+  energy efficiency.
+\newblock In {\em Proceedings of the 6th International Conference on Ubiquitous
+  Information Management and Communication}, page 100. ACM, 2012.
+
+\bibitem{lin2009chaotic}
+Jiann-Horng Lin, Li-Ren Huang, et~al.
+\newblock Chaotic bee swarm optimization algorithm for path planning of mobile
+  robots.
+\newblock In {\em Proceedings of the 10th WSEAS international conference on
+  evolutionary computing}, pages 84--89. World Scientific and Engineering
+  Academy and Society (WSEAS), 2009.
+
+\bibitem{mondada2002search}
+Francesco Mondada, Dario Floreano, Andr{\'e} Guignard, Jean-Louis Deneubourg,
+  Luca Gambardella, Stefano Nolfi, and Marco Dorigo.
+\newblock Search for rescue: an application for the swarm-bot self-assembling
+  robot concept.
+\newblock Technical report, Citeseer, 2002.
+
+\bibitem{murphy2000biomimetic}
+Robin~R Murphy.
+\newblock Biomimetic search for urban search and rescue.
+\newblock In {\em Intelligent Robots and Systems, 2000.(IROS 2000).
+  Proceedings. 2000 IEEE/RSJ International Conference on}, volume~3, pages
+  2073--2078. IEEE, 2000.
+
+\bibitem{oster1978caste}
+George~F Oster and Edward~Osborne Wilson.
+\newblock {\em Caste and ecology in the social insects.(MPB-12)}.
+\newblock Princeton University Press, 1978.
+
+\bibitem{ostergaard2001emergent}
+Esben~H {\O}stergaard, Gaurav~S Sukhatme, and Maja~J Mataric.
+\newblock Emergent bucket brigading-a simple mechanism for improving
+  performance in multi-robot constrained-space foraging tasks.
+\newblock In {\em In Autonomous Agents}. Citeseer, 2001.
+
+\bibitem{resnick1994turtles}
+Mitchel Resnick.
+\newblock {\em Turtles, termites, and traffic jams: Explorations in massively
+  parallel microworlds}.
+\newblock Mit Press, 1994.
+
+\bibitem{csahin2005swarm}
+Erol {\c{S}}ahin.
+\newblock Swarm robotics: From sources of inspiration to domains of
+  application.
+\newblock In {\em Swarm robotics}, pages 10--20. Springer, 2005.
+
+\bibitem{schmickl2007collective}
+Thomas Schmickl, Christoph M{\"o}slinger, and Karl Crailsheim.
+\newblock Collective perception in a robot swarm.
+\newblock In {\em Swarm robotics}, pages 144--157. Springer, 2007.
+
+\bibitem{schneider1998territorial}
+Miguel Schneider-Fontan and Maja~J Mataric.
+\newblock Territorial multi-robot task division.
+\newblock {\em Robotics and Automation, IEEE Transactions on}, 14(5):815--822,
+  1998.
+
+\bibitem{seeley2009wisdom}
+Thomas~D Seeley.
+\newblock {\em The wisdom of the hive: the social physiology of honey bee
+  colonies}.
+\newblock Harvard University Press, 2009.
+
+\bibitem{sugawara2002swarming}
+Ken Sugawara and Toshinori Watanabe.
+\newblock Swarming robots-foraging behavior of simple multirobot system.
+\newblock In {\em Intelligent Robots and Systems, 2002. IEEE/RSJ International
+  Conference on}, volume~3, pages 2702--2707. IEEE, 2002.
+
+\bibitem{vaughan2000blazing}
+Richard~T Vaughan, Kasper St{\o}y, Gaurav~S Sukhatme, and Maja~J Matari{\'c}.
+\newblock Blazing a trail: insect-inspired resource transportation by a robot
+  team.
+\newblock In {\em Distributed Autonomous Robotic Systems 4}, pages 111--120.
+  Springer, 2000.
+
+\bibitem{werger1996robotic}
+Barry~Brian Werger and Maja~J Mataric.
+\newblock Robotic" food" chains: Externalization of state and program for
+  minimal-agent foraging.
+\newblock In {\em In (Maes et al}. Citeseer, 1996.
+
+\bibitem{wilson1971insect}
+Edward~O Wilson et~al.
+\newblock The insect societies.
+\newblock {\em The insect societies.}, 1971.
+
+\bibitem{winfield2009foraging}
+Alan F.~T. Winfield.
+\newblock Foraging robots.
+\newblock In {\em Encyclopedia of Complexity and Systems Science}, pages
+  3682--3700. 2009.
+
+\end{thebibliography}
