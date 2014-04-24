@@ -44,8 +44,6 @@ As with many swarm robotics problems, the inspiration comes from nature - in par
 The study of ants has revealed that impressive emergent activities can be achieved with  simple agents with few simple rules. Ants use a form of communication known as stigmergy \cite{} where ants deposit a substance known as pheromone on the paths between the nest and the food source. Other ants can detect this pheromone and will tend to follow paths which have greater amount of pheromone deposits. The pheromone usage of ants has been modelled in swarm intelligence techniques \cite{dorigo2006ant, dorigo2010ant}. 
 %TODO: Expand to include more references to SI techniques.
 
-%TODO: Biology -> Discuss pheromones more. 
-
 %Hard to separate into Biology & Application. 
 Although algorithms based on ant foraging behaviour are used to solve optimization problems, the algorithms are often difficult to replicate in a real-life robotic environment since most of the techniques need to model pheromone. A robotics algorithm that uses pheromone requires robots to be equipped with a substance-distributor, beacon-deployer or complex communication that simulates pheromone \cite{hoff2010two}.
 
@@ -54,8 +52,16 @@ The desert ant (\textit{Cataglyphis bicolor}) does not make use of pheromone-bas
 
 The desert ant is thus simpler to model for real-robot interaction. Desert ant foraging has been modelled and experiments have been performed on real robots in \cite{hecker2012formica}. Experiments were performed using a small set of robots in a small arena on different environment types. Two algorithms were evaluated: one based on the desert ant foraging and one including pheromone-like communication. It was shown that communication improved performance; however, the desert-ant algorithm still performed reasonably well. 
 
-\subsection{Honey bee}
+%TODO: Biology 	-> Discuss pheromones more. 
+%				-> Explain dead reckoning.
+%				-> Landmark location - using the sun. 
 
+\subsection{Honey bee}
+%TODO: Add references for honey bee stuff
+%Intro
+Bees have an impressive set of abilities considering the simplicity a single individual. They have the ability to remember colour and shape of flowers. In terms of navigation, they are able to learn local features and routes due to well-developed learning and memorizing capacities (Giurfa and Menzel) and honey-bees are even time aware. Similarly to ants, honey bees have efficient division of labour between different functions in the hive, but also have division of labour specific to foraging roles.
+
+%Description
 Honey bee foraging is made up of three different roles \cite{seeley2009wisdom}: Employed foraging, unemployed foraging and scouting. Scouts explore the environment to locate new food sources. Once a source has been found, scouts return to the hive to communicate information about the located food source. To communicate the foraging information, scout bees perform a waggle-dance on the hive, containing information about the distance and bearing of the resource. The communication of good foraging sites is known as recruitment. 
 
 Unemployed foragers wait on the dance floor, evaluating the dances of the scout bees. An  unemployed bee chooses a location described by the scout bees, and becomes an employed forager. Employed forager bees use the information about the resource, attempt to locate the source, load themselves with food and return to the hive where unemployed foragers are ready to offload the food. Jansen \cite{janson2007searching} suggests that unemployed bees become exploring scouts when they do not detect any dancing scout bees. 

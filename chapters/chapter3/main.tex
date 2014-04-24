@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Solution}
+\chapter{Nature-based Algorithms for Prioritized Foraging}
 \label{chap:third}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -12,13 +12,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Models}
-
+\section{Na\"ive Foraging Algorithm}
 
 %Need to expand over here lots. Add formulas for each one and pictures.
 %Describe specific implementation. 1hr to regather research for specific technique. 0.5 - 1.5 to document what happened in the code. Per technique
- 
-\subsection{Model 1: Naive Foraging}
 
 Naive foraging is used as a lower bound for comparison as is done in \cite{62} \cite{63}. Na\"\i ve foraging includes only the most minimal set of foraging actions. Na\"\i ve foraging is included as a baseline for comparison to evaluate how a memory-based technique such as desert-ant foraging compares to a standard model \cite{ostergaard2001emergent,hoff2010two}.
 
@@ -38,26 +35,32 @@ Naive foraging is used as a lower bound for comparison as is done in \cite{62} \
 The following random walk is used: A robot chooses a random direction, $\sigma$, and a random distance $m\in(0,M)$ where $M$ is a chosen maximum path length. The robot walks in direction $\sigma$ for distance $m$. The robot then chooses new values for $\sigma$ and $m$. 
 
 
-\subsection{Model 2: Honey Bee Foraging}
+\subsection{Desert Ant Foraging}
 
-Bees have an impressive set of abilities considering the simplicity a single individual. Bees have been extensively modelled for optimization problems such as ABC and Bee which have proven... something
+Due to the lack of pheromone, desert ant foraging behaviour is a very suitable model for robot foraging. Desert ants use path integration to memorize the location of an existing food source and later to return to the memorized source to find more food. The notion of returning to a previously explored site is known as site fidelity \cite{switzer1993site}. The desert ant algorithm does not require communication between robots or the dispersal of beacons, and is thus simpler than other many swarm robotics foraging algorithms. 
 
-\subsubsection{Biological Inspiration}
+Path integration (PI) is the integration of an ant's odometry such that the ant can maintain a position and heading estimate of where the ant is going, by continuously updating a heading direction vector that points to the starting position \cite{ronacher2008path}. The heading-direction vector is known as the PI vector. This type of behaviour theoretically appears suitable for environments where multiple items occur in similar areas. The disadvantage of PI is the accumulation of localisation errors. The robot control algorithm consists of five states ( illustrated in Fig \ref{fig:desertantstate}):
 
-Honey bees have the ability to remember colour and shape of flowers. In terms of navigation, they are able to learn local features and routes due to well-developed learning and memorizing capacities (Giurfa and Menzel). Honey-bees are even time aware. Bees have efficient division of labour between different functions in the hive as well as division of labour of foraging roles. 
+\begin{enumerate}
+	\item\textbf{Exploration} -- the robot performs a random walk while performing PI.
+	\item\textbf{Loading} -- on finding an item, the robot loads the item and memorizes the PI vector.
+	\item\textbf{Homing } -- the robot uses the path integration vector to move to the sink.
+	\item\textbf{Off-loading} -- when the robot is at the sink, the object is offloaded.
+	\item\textbf{Locating} -- the robot follows the memorized PI vector to the location of the previous item. If another item is found, the item is loaded; otherwise the robot returns to the exploration state. 
+\end{enumerate}
+All robots begin at random positions adjacent to the sink in the exploration state.
 
-Honey bee foraging requires three different behaviours: Employed foragers, unemployed foragers and scouts. Scouts explore the environment to locate new sources of food. Once a source has been found, the scouts return to the hive to communicate information about the located food source. In order to communicate foraging information, scout bees perform a waggle-dance on the ``dance-floor'' of the hive, which has been extensively studied and has been shown to contain information about the distance and bearing of the resource. 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{diagrams/DesertAntState.pdf}
+	\caption{Desert Ant Foraging State Diagram}
+	\label{fig:desertantstate}
+\end{figure}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Unemployed foragers wait on the dance floor, evaluating the dances of the scout bees. The unemployed bee chooses a source described by a scout bee, and becomes a employed forager bee. Employed forager bees, utilizing the information about the food source, locate the source, load themselves up with the food source and return to the hive where unemployed foragers are ready to offload them. The division of labour is in when the bees decide to change roles.
-
-\subsubsection{ Mathematical Model of Honey-bees}
-The model described is a mathematical model of bee foraging and how division of labour occurs. The bee-based swarm robotic foraging developed in this thesis is based heavily on the model described by Seeley.
-- Details of my implementation. 
-- Account for all the things in the table - each topic.
-
-
-\subsubsection{Model}
-
+\subsection{Honey Bee Foraging}
 
 The presented honey bee algorithm is based on the mathematical model of honey bee foraging in \cite{seeley2009wisdom}. A portion of the robots are initialized as scouts and the rest  as unemployed foragers in a waiting state. All robots are initialized adjacent to the item sinks.
 
@@ -113,46 +116,6 @@ In nature, in times of drought, bees prioritize water over nectar or pollen. Bee
 
 For the purpose of this study, honey bee robots are initialized to start foraging a particular item type to show the effectiveness of the division of labour. The presented algorithms differ in three main properties as given in Table \ref{properties}.
 
-
-\subsection{Model 3: Desert Ant Foraging}
-
-\begin{itemize}
-	\item Each ant locates an item and remembers location
-	\item Returns to location to search for more. No recruitment.
-\end{itemize}
-
-\subsubsection{Biological Inspiration}
-
-	- Explain dead reckoning.
-	- Explain odometry using legs. 
-	- Explain why they cant use pheromone.
-	- No communication.
-	- Landmark location - using the sun. 
-
-\subsubsection{Model}
-	
-Due to the lack of pheromone, desert ant foraging behaviour is a very suitable model for robot foraging. Desert ants use path integration to memorize the location of an existing food source and later to return to the memorized source to find more food. The notion of returning to a previously explored site is known as site fidelity \cite{switzer1993site}. The desert ant algorithm does not require communication between robots or the dispersal of beacons, and is thus simpler than other many swarm robotics foraging algorithms. 
-
-Path integration (PI) is the integration of an ant's odometry such that the ant can maintain a position and heading estimate of where the ant is going, by continuously updating a heading direction vector that points to the starting position \cite{ronacher2008path}. The heading-direction vector is known as the PI vector. This type of behaviour theoretically appears suitable for environments where multiple items occur in similar areas. The disadvantage of PI is the accumulation of localisation errors. The robot control algorithm consists of five states ( illustrated in Fig \ref{fig:desertantstate}):
-
-\begin{enumerate}
-	\item\textbf{Exploration} -- the robot performs a random walk while performing PI.
-	\item\textbf{Loading} -- on finding an item, the robot loads the item and memorizes the PI vector.
-	\item\textbf{Homing } -- the robot uses the path integration vector to move to the sink.
-	\item\textbf{Off-loading} -- when the robot is at the sink, the object is offloaded.
-	\item\textbf{Locating} -- the robot follows the memorized PI vector to the location of the previous item. If another item is found, the item is loaded; otherwise the robot returns to the exploration state. 
-\end{enumerate}
-All robots begin at random positions adjacent to the sink in the exploration state.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.75\textwidth]{diagrams/DesertAntState.pdf}
-	\caption{Desert Ant Foraging State Diagram}
-	\label{fig:desertantstate}
-\end{figure}
-	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Navigation and Obstacle Avoidance}
 \label{thri:third:obstacleavoidance}
