@@ -15,13 +15,14 @@
 \section{Definition}
 \label{sec:second:definition}
 
-In swarm robotics, robot foraging has become a benchmark problem due to its complex nature involving coordination of numerous sub-tasks. The problem was initially addressed by biologists, particularly in the foraging behaviour of ants \cite{holldobler1990ants,bernstein1974seasonal}, bees \cite{seeley2009wisdom} and bacteria \cite{resnick1994turtles}. Foraging has a variety of real-life applications such as search and rescue \cite{jennings1997cooperative,murphy2000biomimetic}, and waste clean-up \cite{balch1995io}. Numerous swarm robotics algorithms have been developed to improve robustness, time and energy efficiency of the foraging process for multiple variations of the foraging problem as outlined in \cite{winfield2009foraging}. 
+In swarm robotics, robot foraging has become a benchmark problem due to its complex nature involving the coordination of numerous sub-tasks. The problem was initially addressed by biologists, particularly in the foraging behaviour of ants \cite{holldobler1990ants,bernstein1974seasonal}, bees \cite{seeley2009wisdom} and bacteria \cite{resnick1994turtles}. Foraging has a variety of real-life applications such as search and rescue \cite{jennings1997cooperative,murphy2000biomimetic}, and waste clean-up \cite{balch1995io}. Numerous swarm robotics algorithms have been developed to improve robustness, time and energy efficiency of the foraging process for multiple variations of the foraging problem as outlined in \cite{winfield2009foraging}. 
 
-Foraging is the act of searching for and collection (or capturing) food for storage and consumption \cite{winfield2009foraging}. It is an important problem that was first addressed by biologists in the examination of nature, particularly with the foraging behaviour of ants and bacteria. Robot foraging is defined as the search and collection of scattered objects in an environment and returning those objects to a collection point. In swarm robotics, robot foraging has become a benchmark problem due to its complex nature, involving coordination of numerous sub-tasks. 
+Foraging is the act of searching for and collection (or capturing) food for storage and consumption \cite{winfield2009foraging}. Foraging is an important problem that was first addressed by biologists in the examination of nature, particularly with the foraging behaviour of ants and bacteria. In a robot context, foraging is defined as the search and collection of scattered objects in an environment and returning those objects to a collection point.
 
-The sub-tasks involve the efficient search and collection of food, homing whilst carrying food to the nest site and then deposition of the food item in the nest before returning to foraging. Effective foraging requires co-operation using signals or direct cooperation of individuals in order to transport food items too large for individual transport.  
+The foraging sub-tasks involve the efficient search and collection of food, homing whilst carrying food to the nest site and then deposition of the food item in the nest before returning to foraging. Effective foraging requires co-operation using signals or direct cooperation of individuals in order to transport food items too large for individual transport.  
 
-In a basic finite state machine model, there are four states: Searching, grabbing, homing and depositing. The robot is always in one of these four states. In this model, it is assumed that there is simply a single collection point or nest and that there are more than one target objects. The process is continued indefinitely. The states are defined as follows:
+%Naive foraging?? Probably save for later. 
+A basic finite state machine foraging model, has four states: Searching, grabbing, homing and depositing. A foraging robot is always in one of these four states. There is a single collection point or nest and that there are more than one target objects. The process is continued indefinitely until all objects are foraged. The states are defined as follows:
 
 \begin{itemize}
 \item Searching: requires physical movement. It is assumed that a robot cannot locate and retrieve items by remaining in a single position due to sensors, physical limitations and environmental occlusions.
@@ -30,7 +31,7 @@ In a basic finite state machine model, there are four states: Searching, grabbin
 \item Depositing is the deliverance of the object to the nest and the state transitions back to searching 
 \end{itemize}
 
-This basic process has been adapted for numerous foraging problems and for different types of robots and is often replaced completely with more complex models, including communication components and... %add more.
+The basic foraging process has been adapted for numerous foraging problems and for different types of robots and is often replaced completely with more complex models, including communication components and division of labour.
 
 \section{Biological Inspiration}
 
