@@ -22,16 +22,16 @@ Foraging is the act of searching for and collection (or capturing) food for stor
 The foraging sub-tasks involve the efficient search and collection of food, homing whilst carrying food to the nest site and then deposition of the food item in the nest before returning to foraging. Effective foraging requires co-operation using signals or direct cooperation of individuals in order to transport food items too large for individual transport.  
 
 %Naive foraging?? Probably save for later. 
-A basic finite state machine foraging model, has four states: Searching, grabbing, homing and depositing. A foraging robot is always in one of these four states. There is a single collection point or nest and that there are more than one target objects. The process is continued indefinitely until all objects are foraged. The states are defined as follows:
+%A basic finite state machine foraging model, has four states: Searching, grabbing, homing and depositing. A foraging robot is always in one of these four states. There is a single collection point or nest and that there are more than one target objects. The process is continued indefinitely until all objects are foraged. The states are defined as follows:
 
-\begin{itemize}
-\item Searching: requires physical movement. It is assumed that a robot cannot locate and retrieve items by remaining in a single position due to sensors, physical limitations and environmental occlusions.
-\item Grabbing: is the physical seizure of an item in order to transport it back to the nest. The model assumes the object can be grabbed by a single robot.
-\item Homing: is the movement to the nest with the collected object. This step has three stages. Initially, the position of the nest relative to the current position must be determined, followed by determining the orientation of the robot towards the position of the nest. Lastly, actual navigation towards the nest via odometry to retrace robots steps or using long range homing beacons. 
-\item Depositing is the deliverance of the object to the nest and the state transitions back to searching 
-\end{itemize}
+%\begin{itemize}
+%\item Searching: requires physical movement. It is assumed that a robot cannot locate and retrieve items by remaining in a single position due to sensors, physical limitations and environmental occlusions.
+%\item Grabbing: is the physical seizure of an item in order to transport it back to the nest. The model assumes the object can be grabbed by a single robot.
+%\item Homing: is the movement to the nest with the collected object. This step has three stages. Initially, the position of the nest relative to the current position must be determined, followed by determining the orientation of the robot towards the position of the nest. Lastly, actual navigation towards the nest via odometry to retrace robots steps or using long range homing beacons. 
+%\item Depositing is the deliverance of the object to the nest and the state transitions back to searching 
+%\end{itemize}
 
-The basic foraging process has been adapted for numerous foraging problems and for different types of robots and is often replaced completely with more complex models, including communication components and division of labour.
+%The basic foraging process has been adapted for numerous foraging problems and for different types of robots and is often replaced completely with more complex models, including communication components and division of labour.
 
 \section{Biological Inspiration}
 
