@@ -27,7 +27,7 @@ Naive foraging is used as a lower bound for comparison as is done in \cite{62} \
 \end{enumerate}
 \begin{figure}
 	\centering
-	\includegraphics[width=0.55\textwidth]{diagrams/NaiveForaging.pdf}
+	\includegraphics[width=\textwidth]{chapters/chapter3/figures/NaiveForaging.pdf}
 	\caption{Na\"ive Foraging State Diagram}
 	\label{naiveforagestate}
 \end{figure}
@@ -35,7 +35,7 @@ Naive foraging is used as a lower bound for comparison as is done in \cite{62} \
 The following random walk is used: A robot chooses a random direction, $\sigma$, and a random distance $m\in(0,M)$ where $M$ is a chosen maximum path length. The robot walks in direction $\sigma$ for distance $m$. The robot then chooses new values for $\sigma$ and $m$. 
 
 
-\subsection{Desert Ant Foraging}
+\section{Desert Ant Foraging}
 
 Due to the lack of pheromone, desert ant foraging behaviour is a very suitable model for robot foraging. Desert ants use path integration to memorize the location of an existing food source and later to return to the memorized source to find more food. The notion of returning to a previously explored site is known as site fidelity \cite{switzer1993site}. The desert ant algorithm does not require communication between robots or the dispersal of beacons, and is thus simpler than other many swarm robotics foraging algorithms. 
 
@@ -52,7 +52,7 @@ All robots begin at random positions adjacent to the sink in the exploration sta
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.75\textwidth]{diagrams/DesertAntState.pdf}
+	\includegraphics[width=\textwidth]{chapters/chapter3/figures/DesertAntState.pdf}
 	\caption{Desert Ant Foraging State Diagram}
 	\label{fig:desertantstate}
 \end{figure}
@@ -60,7 +60,7 @@ All robots begin at random positions adjacent to the sink in the exploration sta
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Honey Bee Foraging}
+\section{Honey Bee Foraging}
 
 The presented honey bee algorithm is based on the mathematical model of honey bee foraging in \cite{seeley2009wisdom}. A portion of the robots are initialized as scouts and the rest  as unemployed foragers in a waiting state. All robots are initialized adjacent to the item sinks.
 
@@ -86,7 +86,7 @@ Fig \ref{honeybeestate} is a simplified state diagram for the honey bee algorith
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.75\textwidth]{diagrams/HoneyBee.pdf}
+	\includegraphics[width=\textwidth]{chapters/chapter3/figures/HoneyBee.pdf}
 	\caption{Honey Bee Foraging State Diagram }
 	\label{honeybeestate}
 \end{figure}
@@ -116,7 +116,11 @@ In nature, in times of drought, bees prioritize water over nectar or pollen. Bee
 
 For the purpose of this study, honey bee robots are initialized to start foraging a particular item type to show the effectiveness of the division of labour. The presented algorithms differ in three main properties as given in Table \ref{properties}.
 
-\subsection{Summary}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Summary}
+\label{algorithms:summary}
+
 \begin{table} [h]
     \caption{Properties of the foraging algorithms used in this study}
     \label{properties}
@@ -130,11 +134,6 @@ For the purpose of this study, honey bee robots are initialized to start foragin
 
 \end{table}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Summary}
-\label{algorithms:summary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
