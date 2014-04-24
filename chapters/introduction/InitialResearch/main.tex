@@ -1,0 +1,97 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Swarm Robotics }
+\label{chap:initial}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Explain what the chapter focusses on. Be brief, and only focus on the main theme of the chapter. Also reference any previous chapters that link to the theme of this chapter.
+
+Then, outline the remaining sections and what each covers in a broad sense. Use labeled references like these: Section~\ref{sec:first:first_sec}, Section~\ref{sec:first:second_sec} and Section~\ref{sec:first:summary}. Note that all labels in this document follow a convention, but you are free to choose whatever labels you want to.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Definition of Swarm Robotics}
+
+Swarm robotics is an approach to the co-ordination of large numbers of relatively simple robots. 
+Robustness – ability to continue to function regardless of partial failures in or abnormal conditions. Flexibility – adapt and adjust to new , different or changing requirements. |
+Scalability – ability to expand the self-organizational mechanism to include larger numbers
+Taxonomy
+
+Taxonomy of swarm robotics literature -hierarchical structure. Main-level – modelling, behaviour design, communication, analytical studies and problem. Modeling: microscopic, macroscopic, cellular automata and sensor-based modelling. Behaviour design is nonadaptive, learning and evolutionary design. (learning leads to reinforcement learning, which is further divided into local and global reinforcement learning). Communication is: iteraction via environment (sensors) and interaction via communication. Problems: pattern formation, aggregation, chain formation, self-assembly, coordinated movement, hole avoidance, foraging, self-deployment. 
+Modelling
+ Modeling is used to simplify a problem in order to improve understanding of the functionality. Required for scalability tests, when the human is not there etc. 
+Sensor based Modeling
+Main part of the modelled system are the sensors and actuators of the robot. Using these components, the environmental and inter-robotic interactions are modelled. Widely used. Realistic but simple as possible – contradictory demands. 
+Approaches: nonphysical, and physical. Non-physical – environmental obstacles and objects as well as the dynamic of the robots are considered with objects without physical properties save for logic to eliminate detections. Studies using approach are:  [2], [3], [4], [5], [6]. Physical modelling adds the physical dynamics of the robots and the environment such as mass, and motor speed. Although increasing complexity, it yields more realistic results as in [7] and [8] where the authors used an open source physics engine to physically model the environment. 
+Microscopic Modelling
+Uses mathematics in order to model each robot and the interactions between robots. In this method each robot behaviour forms a state, and the transition between the states are the internal events inside the robot and the external events from the environment. Probabilistic microscopic modelling [10], [11], [12] is a special form of microscopic modelling. Probabilities are assigned to robot actions thus resulting in easy integration of system behaviour and noise into the model. A time unit is defined based on a primitive event where a primitive event is the average detection time of the smallest object in the environment when the robot is moving at an average speed [9]. This time unit is used to advance the model at each model step. Systematic experiments using actual robots are then performed in order to compute the probability of each state transition per time unit. In order to compute the mathematical model, a set of random number in the range [0,1], for each event transition of the selected robot is generated. These numbers are compared to the state transition probabilities and if the random numbers are lower than the transition probabilities then it has assumed the associated events have occurred and robot stated is changed. (Read more for examples). 
+Macroscopic Models
+With macroscopic models, in contrast to microscopic which deal with individuals robot behaviours, the entire system behaviour is modelled. The system behaviour is specified with difference equations. Each of the system states (the variables of the difference equations) represents the average amount of robots in a specific state at a particular time step. The macroscopic models need to be solved only once to obtain the stable state of the model. A macroscopic model only obtains a fast general global behaviour of the system, while in contract microscopic obtains a more realistic global behaviour but does so more slowly. The probabilistic macroscopic models [12], are similar to the microscopic version and are used to handle noise effectively. Read more for examples). 
+Cellular Automata Modeling 
+A CA contain discrete lattice of cells in one or more dimensions where each cell in the lattice has finite number of possible states. Read more for examples). 
+
+Behaviour Design Axis
+Behavioural adaptions are special ways an organism behaves in order to survive in its natural habitat [1]. Behavioural adaptation is used in swarm robotics in order to control a large robotic swarm so that the robotic swarm can accomplish a task collectively. The field of behaviour design approaches is categorized based on behavioural adaptation capabilities of the robot controllers known as manual, learning and evolution. 
+Non-adaptive
+•	Subsumption - 
+•	Probabilistic Finite State Automata – applied to prey retrieval task [13][14][15], define self-organised model for cockroaches [10]
+•	Distributed Potential Field Methods
+•	Neural Networks
+•	Pheromone Robotics 
+•	
+Robot Foraging
+
+Definition and Issues
+Foraging is a benchmark problem for robotics, in particular swarm robotics. It is appropriate as a benchmark as the foraging task is complex which involves the coordination of different sub-tasks such as efficient search for food, collection of food, homing whilst  carrying food to nest site and deposition of food item in nest before returning to foraging. Effective foraging requires cooperation using communication signals or direct cooperation of transport of food items too large for individual transport. 
+Very few types of foraging robots are successfully employed in real-world applications for the following reasons:
+•	
+•	Many subsystem technologies required for foraging robots remain challenging such as sensing and situational awareness; power and energy autonomy; actuation, locomotion and safe navigation in unknown physical environments, dependability and proof of safety.
+•	
+Foraging is the act of searching for and collecting (or capturing) food for storage and consumption [16]. Robot foraging is defined as searching for and collecting scattered objects in an environment and returning the objects to a collection point. [17]
+Abstract Model of Foraging [16]
+
+4 states: searching, grabbing, homing, depositing. (FSM model).
+•	Searching: requires physically moving. Assume robot can’t find items by staying in a single position and scanning the environment using sensors, due to occlusions and long range sensors.
+•	Grabbing: physical capture of item to be ready to transport back to home region. Assumed it can be grabbed by one robot.
+•	Homing: Move with collected object to nest. Stages are:
+o	Determination of position of nest relative to current position
+o	Orientation towards position of nest
+o	Navigation to nest. 2 strategies for getting home: use odometry to retrace robots steps or home in using long range beacon sensor. 
+•	Deposition: deliver to nest. State changes back to searching.
+Taxonomy of Robot Foraging
+
+A classification of foraging strategies of social insects is determined in [17] into 5 types summarized as follows:
+•	I – Solitary insects find and retrieve prey singly
+•	II – Same as I but solitary forager signal location of food to other insects
+•	III – Foragers depart to the nest and follow ‘trunk trails’ before branching off to search unmarked terrain. 
+•	IV – As II but groups of insects assault or retrieve prey all at once. 
+•	V – multiple insects forage as a group
+In [18], a simple taxonomy is of foraging is developed. Eight characteristics are defined with two possible values :
+1.	Number robots: single vs multiple
+2.	Number of sinks (collection points for foraged items) single of multiple
+3.	Number of source areas (objects to be collected): single or multiple
+4.	Search space: unbounded vs constrainted
+5.	Number of types of objects to be collected: single/multiple
+6.	Object placement: fixed/ randomly scattered
+7.	Robots: heterogenous or homogenous
+8.	Communication: none or without. 
+Does not capture insect foraging taxonomy or task performance criteria. 
+Formulation of successful object collection and retrieval as in [19] is as follows:
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Summary}
+\label{sec:first:summary}
+
+This section should follow all the previous ones forming the main body of the chapter. Provide an outline of the previous sections of this chapter, explaining what each dealt with. Provide section references using labels, as you did for the outline at the start of the chapter.
+
+Give a brief synopsis of what the following chapter will cover, in a general sense. This will improve the logical flow of your work from one chapter to the next.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

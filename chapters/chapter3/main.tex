@@ -131,40 +131,10 @@ For the purpose of this study, honey bee robots are initialized to start foragin
 \end{table}
 
 
-\section{Navigation and Obstacle Avoidance}
-\label{thri:third:obstacleavoidance}
-
-\subsection{Navigation and Obstacle Avoidance}
-Due to the complexity of the environments, an advanced navigation and obstacle avoidance technique is required.  The technique is based on the flocking behaviour of birds used in \cite{antoniou2012congestion}.
-
-The force that pulls the birds to the destination is known as the global attractor, while a local attractor is a force that directs birds away from local obstacles. As a result birds avoid local obstacles while maintaining course to the destination. 
-
-Figure \ref{fig:obstacleavoidance} illustrates the obstacle avoidance method used by the agents. The obstacle avoidance algorithm achieves the effect of the global attractor by setting the robots field of view towards the direction to the desired destination. The destination is determined by a homing beacon or by the robot's path integration. The direction at the centre of the field of view is the direction to the destination. 
-
-The effect of the local attractor is modelled by evaluating a function for each direction in the field of view, and the most desirable direction is chosen. Desirability, $d$, is defined as a path that achieves an adequate balance between clarity and directness. Clarity id direction $i$, $c_i$, is a normalized proximity sensor or camera reading in the range (0,1) indicating the distance of next nearest obstacle where 0 occurs if no obstacles exist in the destination for the depth of view $v$. The directness of a direction $i$, $\tau_i$, occurs in the range (0,1) and is calculated as the angular deviation from the direction of the destination, where 0 is achieved when the direction $i$ is the same as direction to the destination and 1 occurs when the direction is at the edge of the field of view, $f$. Desirability $d_i$ of direction $i$ is defined mathematically in Equation \ref{eq:1}.
-
-\begin{equation}
-	d_i= \lambda c_i + (1 - \lambda)\tau_i \\
-	\label{eq:1}
-\end{equation} where $\lambda$ determines whether clarity, $c_i$ or directness, $\tau_i$ of direction $i$, has more effect.
- 
-The described navigation and obstacle avoidance technique is used with all algorithms in the experiment and for algorithms $\lambda$ is set to 0.5.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.5\textwidth]{chapters/chapter3/figures/ObstacleAvoidance.pdf}
-	\caption{Obstacle Avoidance. $v$ is depth of view, $f$ is field of view, $R$ is the robot, $dir$ is the direction of the destination, $L$ is a possible value of local attractor}
-	\label{fig:obstacleavoidance}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Don't think this goes here
-%Provide equations for each one. Should take about 15 - 20 minutes per equation. 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
-\label{sec:second:summary}
+\label{algorithms:summary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

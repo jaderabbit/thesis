@@ -90,6 +90,15 @@
 
 \fi
 
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{csvsimple}
+\usepackage{booktabs} 
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                  Lengths                  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -219,11 +228,14 @@
 	\renewcommand{\headrulewidth}{0.4pt}
 }
 
+
 \include{chapters/introduction/main}
 \include{chapters/chapter1/main} % rename as required (but remember to update directories appropriately)
 \include{chapters/chapter2/main} % rename as required (but remember to update directories appropriately)
 \include{chapters/chapter3/main} % rename as required (but remember to update directories appropriately)
 \include{chapters/chapter4/main} % rename as required (but remember to update directories appropriately)
+\include{chapters/chapter5/main} % rename as required (but remember to update directories appropriately)
+\include{chapters/chapter6/main} % rename as required (but remember to update directories appropriately)
 % add all other chapters you decide to write (also create an appropriate directory structure)
 \include{chapters/conclusions/main}
 
