@@ -157,29 +157,6 @@ The described navigation and obstacle avoidance technique is used with all algor
 	\label{fig:obstacleavoidance}
 \end{figure}
 
-
-\section{Model Description}
-
-\subsection{Na\"\i ve Foraging}
-
- Na\"\i ve foraging includes only the most minimal set of foraging actions. Na\"\i ve foraging is included as a baseline for comparison \cite{hoff2010two} \cite{ostergaard2001emergent} in order to evaluate how a memory-based technique such as desert-ant foraging compares to a standard model.
-
- Na\"\i ve foraging consists of searching for an item, grabbing an item, returning home with the item and storing the item at the store house. The robots repeat these steps. 
-
-Define a random walk. \cite{54}
-\begin{itemize}
-	\item Robots perform a random walk until they find item.
-	\item On locating an item, the robot grips or picks-up the item. In the case where the item has been moved before the robot is able to pick it up, the robot will continue to explore otherwise the robot returns the item to the correct sink.
-\end{itemize}
-\begin{figure}
-	\centering
-	\includegraphics[width=0.5\textwidth]{chapters/chapter3/figures/NaiveForaging.pdf}
-	\caption{Na\"ive Foraging State Diagram}
-\end{figure}
-
-
-
-Due to the variety of environments that the algorithms are being experimented on, sophisticated navigation and obstacle avoidance is required. All algorithms use the same navigation and obstacle avoidance techniques when 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Don't think this goes here
 %Provide equations for each one. Should take about 15 - 20 minutes per equation. 
