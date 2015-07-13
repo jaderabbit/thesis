@@ -116,6 +116,214 @@ In nature, in times of drought, bees prioritize water over nectar or pollen. Bee
 
 For the purpose of this study, honey bee robots are initialized to start foraging a particular item type to show the effectiveness of the division of labour. The presented algorithms differ in three main properties as given in Table \ref{properties}.
 
+\begin{algorithm}
+\caption{Explore State (Scout)}
+\label{algorithm:explore}
+\begin{algorithmic}[1]
+\Function{explore}{state}
+\State \Call{move}{random\_direction}
+\State \Call{update}{\={v}}
+\If {\Call{find}{item,division}}
+ 	\State \Call{estimate\_site\_density}{ }
+	\State $destination \gets v$
+	\State \Call{load}{item}
+\ElsIf {$i > f_{max}$ and $i < t_{max}$}
+	\State $division \gets WASTE$
+\ElsIf {$i > t_{max}$}
+	\State $state \gets HOMING$
+\EndIf
+\State $i =i + 1$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Homing State (Employed Forager)}
+\label{algorithm:employedforager:homing}
+\begin{algorithmic}[1]
+\Function{forage-homing}{state}
+\State $direction = \Call{calc\_dir\_to}{home,v}$
+\State \Call{move}{direction}
+\If {\Call{at}{home}}
+	\State{$state \gets OFFLOAD$}
+\EndIf
+\State $i =i + 1$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Recruit State (Scout)}
+\label{algorithm:recruit}
+\begin{algorithmic}[1]
+\Function{recruit}{state}
+\If {$i < t_{max}$}
+	\State \Call{broadcast}{ destination } 
+\Else 
+	\If {$random < \rho$} 
+		\Comment{recruit self}
+		\State{$state \gets FORAGING$}
+	\Else
+		\State{$state \gets EXPLORING$}
+	\EndIf
+\EndIf
+\State $i =i + 1$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Homing State (Scout)}
+\label{algorithm:scout:homing}
+\begin{algorithmic}[1]
+\Function{explore homing}{state}
+\If{$i == 0$}
+	\State{$destination \gets v$}
+	
+\EndIf
+\State{$direction \gets \Call{calc\_dir\_to}{destination, v}$}
+\If{\Call{is\_valid\_move}{direction}}
+	\State \Call{move}{direction}
+	\If {\Call{at}{home}}
+		\State $state \gets UNLOADING$
+	\Else
+		\State $state \gets BEACON-HOMING$	
+	\EndIf
+\EndIf
+\State $i =i + 1$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Unloading State (Employed Forager)}
+\label{algorithm:employedforager:unloading}
+\begin{algorithmic}[1]
+\Function{unloading}{state}
+	\If {\Call{is}{loaded}}
+		\State \Call{offload}{ }
+		\If{$\mu > \phi$}
+			\State $state \gets RECRUIT$
+		\Else
+			\State $state \gets LOCATING$
+		\EndIf
+	\Else
+		\State $state \gets SINK-AVOIDANCE$ \Comment{ie waiting}
+	\EndIf
+	\State $i =i + 1$
+\EndFunction
+
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Locating State (Employed Forager)}
+\label{algorithm:employedforager:locating}
+\begin{algorithmic}[1]
+\Function{locating}{state}
+	\If {$i==0$}
+		\State $destination \gets broadcast - location$
+	\EndIf
+	\State \Call{calc\_dir\_to}{destination, v}
+	\State \Call{move}{direction}
+	\If {\Call{at}{destination,v}}
+		\State $state \gets LOADING$
+	\ElsIf {\Call{see}{item}}
+		\State $state \gets LOADING$
+	\ElsIf {\Call{wall\_collision}{ }}
+		\Comment{not sure if this is right}
+		\State{$state \gets LOADING$}
+	\EndIf
+	\State $i =i + 1$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Sink Avoidance State (Employed Forager)}
+\label{algorithm:sinkavoidance}
+\begin{algorithmic}[1]
+\Function{sink avoidance}{state}
+\If { $\Call{count}{robots, camera} > 1$}
+	\State $direction \gets \Call{get\_clearest\_direction}{ }$ \Comment{using desirability - expand on}
+	\State \Call{move}{direction}
+\Else
+	\State $state \gets WAITING$
+\EndIf
+\State $i =i + 1$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}
+\caption{Waiting State (Unemployed Forager)}
+\label{algorithm:unemployedforager:locating}
+\begin{algorithmic}[1]
+\Function{waiting}{state}
+\If {$i == 0$}
+	\State \Call{reset}{v} 
+\ElsIf {$i > \phi$} \Comment{max waiting reps?}
+	\State{$state \gets EXPLORING$}
+\Else
+	\State \Call{listen}{ }
+\EndIf
+\State $i =i + 1$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Beacon homing state}
+\label{algorithm:beaconhoming}
+\begin{algorithmic}[1]
+\Function{beacon homing}{}
+\If {\Call{at}{destination}}
+	\State $state \gets RECRUITING$
+\EndIf
+\State $direction \gets \Call{calc\_dir\_to}{homing\_beacon}$
+\State \Call{move}{direction}
+\State $i =i + 1$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Loading State (Employed Forager)}
+\label{algorithm:loading}
+\begin{algorithmic}[1]
+\Function{loading}{state}
+\If {\Call{identify}{item}}
+	\State \Call{load}{item}
+	\State{$state \gets HOMING$}
+\Else
+	\State{$state \gets LOCAL\_CLUSTER\_SEARCH$}
+\EndIf
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Local Cluster Search State (Employed Forager)}
+\label{algorithm:employedforager:localclustersearch}
+\begin{algorithmic}[1]
+\Function{local\_cluster\_search}{state}
+\If {$c < max\_search\_range$}
+	\If {\Call{identify}{item} and \Call{loadable}{ }}
+		\State \Call{load\_item}{ }
+		\State $density \gets \Call{estimate\_area\_density}{ }$
+		\State{$state \gets HOMING$}	
+	\ElsIf {\Call{identify}{item} and \textbf{not} \Call{loadable}{ }}
+		\State $direction \gets \Call{calc\_dir\_to}{item}$
+		\State \Call{move}{direction}
+	\Else
+		\State \Call{move}{random\_direction}	
+	\EndIf
+\Else
+	\State{$state \gets HOMING$}
+\EndIf
+\State $i =i + 1$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}

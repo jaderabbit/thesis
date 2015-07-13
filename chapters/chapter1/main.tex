@@ -18,19 +18,20 @@
 \label{sec:first:definitionswarmrobotics}
 
 %Get from presentation
-Swarm robotics is the study of the co-coordination of large numbers of  relatively simple robots in order to perform a single function \cite{csahin2005swarm}, where no central control exists. Swarm robotics focuses on how to create robotic algorithms that result in the emergence of a desired complex behaviour.
+Swarm robotics is the study of the co-coordination of large numbers of relatively simple robots in order to perform a single function \cite{csahin2005swarm}, where no central control exists. Swarm robotics focuses on how to create robotic algorithms that result in the emergence of a desired complex behaviour.
 
-Swarm robotics draws inspiration from the observation of social insects: Ants \cite{hoff2010two,alcoholfromants2012}, termites \cite{}, bees \cite{lee2012foraging}. Social insects exhibit collective behaviour in the growth and maintenance of their societies\cite{wilson1971insect, bailishive}. The most interesting aspects of insect societies such as foraging, collective transport . Swarm robotics also uses concepts from other societies such as amoeba's aggregation into slime and communication and sensing in bacteria
+Swarm robotics typically draws inspiration from the observation of social insects: Ants \cite{hoff2010two}, cockroaches \cite{garnier2005aggregation} and bees \cite{lee2012foraging}. Social insects exhibit collective behaviour in the growth and maintenance of their societies\cite{wilson1971insect, bailishive}. The most interesting aspects of insect societies such as foraging, collective transport . Swarm robotics also uses concepts from other societies such as amoeba's aggregation into slime \cite{} and communication, propulsion and sensing in bacteria \cite{dhariwal2004bacterium,martel2010using}.
 
 Swarm robotics algorithms can be distinguished characterized from other robotics algorithms due to the following factors
 
-\begin{itemize}
-\item Autonomy - The robots have total self-control of their actuation and sensors. 
-\item Large Quantity of Robots - To be classified as a swarm of robots, multiple robots should be used. Robotics systems with too few robots should be considered outside the scope of swarm robotics. Erol Sahin proposes a reasonable lower bound for number of robots to be considered as swarm is 10 \cite{csahin2005swarm}.
-\item Few homogenous groups of robots. The idea is that a group of robots, where all robots are completely different, is not a robotic swarm. The evaluation of homogeneity of a swarm of robots has been discussed and a potential measure to evaluating homogeneity is proposed in \cite{balch2000hierarchic}
-\item Relatively simple or inefficient robots - A single robot used should be under-equipped to handle the task on by itself, but the collaboration of a group of the same robots should assist the completion of the task.  
-\item Local sensory abilities and local communication - This is to ensure decentralization such that the robots do not depend on an external factor for communication or sensing. 
-\end{itemize}
+\begin{enumerate}
+\item \textbf{Autonomy}: The robots have total self-control of their actuation and sensors, without central control
+\item \textbf{Quantity}: Studies are always focused with scalability as a potential characteristic even if real-robot experimentation is limited to only a few individuals. Erol Sahin proposes a reasonable lower bound for number of robots to be considered as swarm is 10 \cite{csahin2005swarm}.
+\item \textbf{Homogeneity}: A group of that has too many robots with individual characteristics is no longer considered a swarm, as it would likely violate the robustness requirements. Loosing a robot which is the only individual of its kind to perform a specific function would mean the swarm no longer exhibits robustness. It is of the author's opinion that heterogeneity can still be considered swarm robotics if the redundancy of each type of robot in the swarm is high enough, or if the failure of that specific robot, can be compensated by robots of different types. The evaluation of homogeneity of a swarm of robots has been discussed and a potential measure to evaluating homogeneity is proposed in \cite{balch2000hierarchic}
+\item \textbf{Decentralization}: There should be no single point of failure in the group of robots. Even with processes requiring a leader, there should be a process to elect a leader and re-elect, if the leader malfunction.
+\item \textbf{Localization}: Local sensory and communication abilities are required in order to uphold decentralization requirement. Failure of global sensors and communication capabilities will effect the entire swarm dependant on it, thus violating decentralization. 
+\item \textbf{Simplicity}: A single robot used should be under-equipped to handle the task on by itself, but the collaboration of a group of the same robots should assist the completion of the task
+\end{enumerate}
 
  The field of swarm robotics has been applied to a large variety of problems such as search and rescue \cite{mondada2002search}, item or garbage collection \cite{balch1995io}, autonomous inspection of machinery \cite{correll2007challenging}, military formations for military application \cite{balch1998behavior}.
 
@@ -38,33 +39,145 @@ Swarm robotics algorithms can be distinguished characterized from other robotics
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Advantages of Swarm Robotics}
+\section{History}
+\label{history}
+
+Swarm robotics has gone by many names in the past for where swarm robotics is simply the latest buzz-word for a concept that has been of interest since the 1980.
+
+
+Originally, swarm robotics was incepted as distributed mobile robotics. 
+Swarm robotics seems to be the final term from what used to be referred to as collective robotics, multi-agent systems or distributed artificial intelligence. 
+
+\subsection{Behaviour-based Robotics}
+\label{behaviourbasedrobotics}
+
+Ronald Arkin - Imposes biologically inspired bottom up approach. 
+
+"There was a requirement that intelligence be reactive to the dynamic aspects of the environment that a mobile robot operate on time scales similar to those of animals and humans and that intelligence be able to generate robust behaviour in that face of uncertain sensors an unpredicted environment and a changing world. "
+
+\subsection{Multi-robot Systems}
+\label{multi-robot systems}
+
+
+
+%TODO: History - multi-robot systems. eg. Collective autonomous agents
+\subsubsection{Early Research}
+\label{early-research}
+
+%Distributed mobile robotics
+Swarm robotics began as distributed mobile robotics in the late 1980s. Fukuda et al [32] and Beni[18] performed work in cellular/configurable robotic systems. Yuta addressed traffic control problems and movement in formations was addressed by Arai and Wang beginning the field of multi-robot motion planning. Architectures for multi-robot cooperation 
+was searched by Asama.
+
+%Multi-robot systems
+
+%Collective robotics
+
+%Robot colonies
+
+%cooperative autonomous mobile robotics
+
+
+%Swarm Robotics
+
+
+\begin{itemize}
+\item Multirobot systems
+\item Collective robotics
+\end{itemize}
+
+\section{Motivations}
 \label{sec:first:advantages}
+
+
+Swarm robots draws inspiration from insect swarms due to the following characteristics: Robustness, flexibility, scalability. The following sections describe those characteristics of insect swarms, from a swarm robotics context, that all swarm robotics algorithms strive to achieve. 
 
 \subsection{Robustness}
 \label{robustness}
 
-In swarm robotics, robustness is defined as the ability to continue to function despite failures or abnormalities of the respective individuals and environments. Four aspects of insect swarm algorithms have been identified  in insect swarms as enabling robustness: (i) redundancy and (ii) decentralized coordination, (iii) Multiplicity of sensing.
+In swarm robotics, robustness is defined as the ability to continue to function despite failures or abnormalities of the respective individuals and environments. Three aspects of insect swarm algorithms have been identified  in insect swarms as enabling robustness: redundancy, decentralized coordination, and multiplicity of sensing \cite{csahin2005swarm}.
 
-Swarm robotics algorithms achieve redundancy by giving all or a portion of the robots the same capabilities. In this way, if a percentage  of the swarm malfunctions, the other robots have the capability to take the malfunctioning robots place. Decentralized coordination can be attained by creating algorithms that do not depend on the life span of a single individual of few finite individuals. Sensory Multiplicity - By using a large number of individuals, the total signal-to-noise ratio is increased. 
+Swarm robotics algorithms achieve redundancy by giving all or a portion of the robots the same capabilities. In this way, if a percentage  of the swarm malfunctions, the other robots have the capability to take the malfunctioning robots place. The loss of a single individual is compensated by another.
 
-%%Rewrite, add to and cite. 
+Decentralized coordination can be attained by creating algorithms that do not depend on the life span of any single individual or few finite individuals of the swarm.
+
+The use of a large number of individuals increases the total number of sensors.  As a result of sensory multiplicity, the total signal-to-noise ratio is increased. If the sensor data the robot swarm is adequately aggregated by the swarm, the overall effect of noise can be decreased or eliminated. 
+
+Simplicity of individuals is also mentioned as a way to achieve robustness. In the author's opinion, simplicity is a relative concept and thus is difficult to compare to a complex robot system. 
 
 \subsection{Flexibility}
-A swarm robotics algorithm should exhibit the ability to adapt and adjust to new or changing requirements. Ants and bees do this by having effective division of labour strategies, where all ants can take on a variety of different roles required by the nest such as brooding, foraging or nest maintenance. \cite{}
+
+A swarm robotics algorithm should exhibit the ability to adapt and adjust to new or changing requirements. Ants and bees do this by having effective division of labour strategies. Individuals in many insect societies, such as ants and bees, can take on a variety of different roles required by the nest such as brooding, foraging or nest maintenance when requirements of the nest change \cite{morley1946division}. The ability to take on different roles when requirements change is known as division of labour \cite{beshers2001models}. Many swarm robotics algorithms make use of social insect-like division of labour in order to adapt to changing requirements such as \cite{labella2006division, liu2007towards, gerkey2004formal}. The use of division of labour assists the swarm in maintaining flexibility.
 
 \subsection{Scalability}
- Scalability refers to the ability of the robotic swarm to expand the self-organizational mechanism for larger problems easily by simply adding more robots to the swarm.   The performance of the algorithm should not be negatively effected by an increase in swarm size. 
+Scalability refers to the ability of the robotic swarm to expand the self-organizational mechanism for larger problems easily by simply adding more robots to the swarm. The performance of the algorithm should not be negatively effected by an increase in swarm size, and an increase in swarm size should adequately improve the performance of the swarm. 
 
 \subsection{Cost-effectiveness}
-This runs off the premise that multiple inexpensive robots are likely to be cheaper to buy and maintain than a single large more complex robot. Although this is debatable, depending on the eventual complexity of robotics required. 
-
+This runs off the premise that multiple inexpensive robots are likely to be cheaper to buy and maintain than a single large more complex robot. Cost-effectiveness is a debatable attribute, which depends on the eventual complexity of robotics required. 
 
 %Analysis:
 	%I think we need more categories
 	%I also think that flexibility and cost-effectiveness should be addressed or removed. 
-	
+\section{Swarm Robot Problems}
+\label{swarmrobotapplications}
+Research in swarm robotics seems to be divided into two level: More primitive functionalities addressing the core concepts of swarm robotics, such as aggregation, etc, etc and complex functionalities which are more concerned with the real-life application and require a combination of primitive behaviours.
 
+\subsection{Primitive Problems}
+
+\subsubsection{Division of Labour}
+Division of labour occurs naturally in insect colonies \cite{gautrais2002emergent}, most notably in bees and ants.
+
+Division of labour is a key primitive problem  in swarm robotics. Most tasks require different behaviours in order to reach completion. The goal of division of labour is how resources can most effectively be assigned behaviours to optimally achieve the final goal. Division of labour is usually addressed as part of a more complex problem such as foraging \cite{jones2003adaptive}.
+ 
+A common division of labour problem addresses achieving the optimal quantity of robots performing an activity as opposed to resting. Too many robots performing a task may increase the number of collisions and thus decrease the overall efficiency or too many performing the tasks might just be wasting energy thus motivating the need to achieve effective division of labour between active and passive robots.
+
+Labella et al show  that the addition of an adaptive parameter brings forth division of labour between the groups members \cite{labella2006division}. The parameter is an indication of the ants success rate at retrieving items in the environment and the tasks to be divided would be to achieve an effective number of robots foraging and those resting.
+
+\subsubsection{Task Allocation}
+
+\subsubsection{Decision Making}
+
+\subsubsection{Communication and Information Propogation}
+Communication within a robot swarm is a difficult problem due to the restriction of local sensing capabilities and the problem is how to effectively pass on information such that all members (or all required members) of the swarm receive the appropriate information in an accurate and timely manner.
+
+\subsubsection{Localization}
+
+\subsection{Complex Problems}
+The more complex problems involve a combination of primitive behaviours and are generally substantially more difficult to achieve
+
+
+\subsubsection{Foraging}
+\subsubsection{Environment Mapping and Tracking}
+
+%TODO: Distributed Localization and Mapping with a Robotic Swarm
+
+
+\subsubsection{Foraging}
+\subsection{Group Transport}
+
+Group transport has become benchmark for swarm robotics due to the fact is requires numerous collaborative aspects such as coherence, task allocation, coherence, conflict resolution and communication. Mataric et al use a simple communication protocol on real robots to compensate for noise-ridden sensing to use a group of robots to move a box \cite{mataric1995cooperative}. Hiroshi et al do not utilize explicit communication but rather allow robots to infer the intention of other robots via their behaviour, in order to enable the robots to correctly place desks in an environment and the study indicates the benefit of collaboration \cite{sugie1995placing}
+Gerkey et al implement a dynamic task allocation for a robot group along with an auction-based mechanism using publish/subscribe communication to once again perform a box pushing exercise. \cite{gerkey2002sold}
+The SWARM-BOTS project involved substantial work with the s-bots. S-bot robots have the ability to link to each other. Experimentation showed that the chained s-bots were able to transport items more effectively \cite{gross2004group, dorigo2005swarm}. Many of the experiments were conducted on real robots. 
+
+\subsection{Aggregation}
+Aggregation is the movement of individuals towards one another to form a cluster and it has become one of the fundamental swarm behaviours. In nature, aggregation aids protection from predators, the ability to defend against an unfavourable environment and locate partners \cite{bonabeau2001self}. A variety of approaches to swarm robot aggregation have been investigated \cite{yan2011algorithm, soysal2007aggregation, trianni2003evolving, dimarogonas2008connectedness }. A more recent approach finds inspiration in honey bees \cite{schmickl2011beeclust, schmickl2009two}
+
+\subsubsection{Path Formation}
+
+\section{Challenges}
+%Need to bulk up
+Sahin et all suggest a number of challenges faced by swarm robotics\cite{csahin2008special}. These challenges are discussed and expanded upon below: 
+\begin{enumerate}
+\item \textbf{Emergent Algorithm Design} - As the field stands, there are no real way to actually design individual behaviour in order to guarantee a specific collective emergence. There exist few approaches to solving the issue of how to design the simplistic behaviour of an individual robot in order to achieve the desired emergent collective behaviour. Hamman et al attempts to devise a mathematical model to assist in modelling swarm behaviour and communication\cite{hamann2008framework} to help bridge the local behaviour to global behaviour and another modelling technique, as does <insert here>, but the techniques are limited to specific sensory or actuation abilities. %Rephrase.
+\item \textbf{Experimentation} - In order to properly study swarm robotics, one would require infrastructure for real robotic research - from robot hardware, to monitoring software or simply even security. The need for real robots can be alleviated by use of simulation environments. A number of simulators have been developed in order to enable easier experimentation at different levels of accuracy. Some are only 2D grid-world models while others attempt to mimick real life as accurately as possible. Despite the existence of simulators, there could be a whole field of study relating to whether these simulators are accurate enough to model upon.
+\item \textbf{Analysis and Modelling}: Stochastic non-linear systems making parameter optimisation and verification difficult. Both micro- and macro-models for swarm robotics have been developed. Swarm robotic probabilistic macro-models are reviewed in\cite{lerman2005review} and existing micro-models are discussed in \cite{}. %References
+\item \textbf{Robotic systems are challenging in themselves}. Swarm robotics has it's own problems but will also still be weighed down by the challenges faced by traditional robotics. Challenges such as the vast array of fields required to truly program a robot: physics, programming, artificial intelligence, mechanics. Robot systems consist of so many factors from so many fields that require expertise on. Even in simplifying the robots themselves through use of swarm robotics, still poses problems. %Add to
+%add citation or remove. 
+%Add discussion about implication of this to the field - difficult to use in real like situtations
+%Think up some other challenges
+\end{enumerate}
+
+
+The study of the process of how to achieve reliable real-world swarm systems and how to address the above challenges, is known as swarm engineering \cite{brambilla2013swarm}. %TODO: Cite some real world systems. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

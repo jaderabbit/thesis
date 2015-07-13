@@ -1,6 +1,13 @@
 \newcommand{\noopsort}[1]{} \newcommand{\singleletter}[1]{#1}
 \begin{thebibliography}{10}
 
+\bibitem{alers2014biologically}
+Sjriek Alers, Daniel Claes, Karl Tuyls, and Gerhard Weiss.
+\newblock Biologically inspired multi-robot foraging.
+\newblock In {\em Proceedings of the 2014 international conference on
+  Autonomous agents and multi-agent systems}, pages 1683--1684. International
+  Foundation for Autonomous Agents and Multiagent Systems, 2014.
+
 \bibitem{antoniou2012congestion}
 Pavlos Antoniou, Andreas Pitsillides, Tim Blackwell, Andries Engelbrecht, and
   Loizos Michael.
@@ -48,6 +55,16 @@ Ruth~A Bernstein.
 \newblock Seasonal food abundance and foraging activity in some desert ants.
 \newblock {\em American Naturalist}, pages 490--498, 1974.
 
+\bibitem{beshers2001models}
+Samuel~N Beshers and Jennifer~H Fewell.
+\newblock Models of division of labor in social insects.
+\newblock {\em Annual review of entomology}, 46(1):413--440, 2001.
+
+\bibitem{brambilla2013swarm}
+Manuele Brambilla, Eliseo Ferrante, Mauro Birattari, and Marco Dorigo.
+\newblock Swarm robotics: a review from the swarm engineering perspective.
+\newblock {\em Swarm Intelligence}, 7(1):1--41, 2013.
+
 \bibitem{campo2007efficient}
 Alexandre Campo and Marco Dorigo.
 \newblock Efficient multi-foraging in swarm robotics.
@@ -65,6 +82,12 @@ Nikolaus Correll and Alcherio Martinoli.
 \newblock In {\em Bulletin of the Swiss Society for Automatic Control}.
   Citeseer, 2007.
 
+\bibitem{dhariwal2004bacterium}
+Amit Dhariwal, Gaurav Sukhatme, and Aristides~AG Requicha.
+\newblock Bacterium-inspired robots for environmental monitoring.
+\newblock In {\em Robotics and Automation, 2004. Proceedings. ICRA'04. 2004
+  IEEE International Conference on}, volume~2, pages 1436--1443. IEEE, 2004.
+
 \bibitem{dorigo2006ant}
 Marco Dorigo.
 \newblock {\em Ant Colony Optimization and Swarm Intelligence: 5th
@@ -78,10 +101,36 @@ Marco Dorigo and Mauro Birattari.
 \newblock In {\em Encyclopedia of Machine Learning}, pages 36--39. Springer,
   2010.
 
+\bibitem{dorigo2000ant}
+Marco Dorigo, Eric Bonabeau, and Guy Theraulaz.
+\newblock Ant algorithms and stigmergy.
+\newblock {\em Future Generation Computer Systems}, 16(8):851--871, 2000.
+
 \bibitem{dorigo2004swarm}
 Marco Dorigo and Erol Sahin.
 \newblock Swarm robotics.
 \newblock {\em Auton. Robots}, 17(2-3):111--113, 2004.
+
+\bibitem{frimmel2002recent}
+HE~Frimmel and WEL Minter.
+\newblock Recent developments concerning the geological history and genesis of
+  the witwatersrand gold deposits, south africa.
+\newblock {\em Special Publication-Society of Economic Geologists}, 9:17--46,
+  2002.
+
+\bibitem{garnier2005aggregation}
+Simon Garnier, Christian Jost, Rapha{\"e}l Jeanson, Jacques Gautrais, Masoud
+  Asadpour, Gilles Caprari, and Guy Theraulaz.
+\newblock Aggregation behaviour as a source of collective decision in a group
+  of cockroach-like-robots.
+\newblock In {\em Advances in artificial life}, pages 169--178. Springer, 2005.
+
+\bibitem{gerkey2004formal}
+Brian~P Gerkey and Maja~J Matari{\'c}.
+\newblock A formal analysis and taxonomy of task allocation in multi-robot
+  systems.
+\newblock {\em The International Journal of Robotics Research}, 23(9):939--954,
+  2004.
 
 \bibitem{Goldberg01designand}
 Dani Goldberg and Maja~J Mataric.
@@ -89,6 +138,12 @@ Dani Goldberg and Maja~J Mataric.
   distributed multi-robot collection tasks.
 \newblock In {\em Robot Teams: From Diversity to Polymorphism}, pages 315--344.
   A K Peters Ltd, 2001.
+
+\bibitem{hamann2008framework}
+Heiko Hamann and Heinz W{\"o}rn.
+\newblock A framework of space--time continuous models for algorithm design in
+  swarm robotics.
+\newblock {\em Swarm Intelligence}, 2(2-4):209--239, 2008.
 
 \bibitem{hecker2012formica}
 Joshua~P Hecker, Kenneth Letendre, Karl Stolleis, Daniel Washington, and
@@ -128,6 +183,12 @@ Chris Jones and Maja~J Mataric.
   Proceedings. 2003 IEEE/RSJ International Conference on}, volume~2, pages
   1969--1974. IEEE, 2003.
 
+\bibitem{kennedy1995particle}
+James Kennedy, Russell Eberhart, et~al.
+\newblock Particle swarm optimization.
+\newblock In {\em Proceedings of IEEE international conference on neural
+  networks}, volume~4, pages 1942--1948. Perth, Australia, 1995.
+
 \bibitem{kernbach2009re}
 Serge Kernbach, Ronald Thenius, Olga Kernbach, and Thomas Schmickl.
 \newblock Re-embodiment of honeybee aggregation behavior in an artificial
@@ -148,6 +209,12 @@ Jong-Hyun Lee, Hyun-Tae Kim, and Chang~Wook Ahn.
 \newblock In {\em Proceedings of the 6th International Conference on Ubiquitous
   Information Management and Communication}, page 100. ACM, 2012.
 
+\bibitem{lerman2005review}
+Kristina Lerman, Alcherio Martinoli, and Aram Galstyan.
+\newblock A review of probabilistic macroscopic models for swarm robotic
+  systems.
+\newblock In {\em Swarm robotics}, pages 143--152. Springer, 2005.
+
 \bibitem{lin2009chaotic}
 Jiann-Horng Lin, Li-Ren Huang, et~al.
 \newblock Chaotic bee swarm optimization algorithm for path planning of mobile
@@ -156,6 +223,45 @@ Jiann-Horng Lin, Li-Ren Huang, et~al.
   evolutionary computing}, pages 84--89. World Scientific and Engineering
   Academy and Society (WSEAS), 2009.
 
+\bibitem{liu2007towards}
+Wenguo Liu, Alan~FT Winfield, Jin Sa, Jie Chen, and Lihua Dou.
+\newblock Towards energy optimization: Emergent task allocation in a swarm of
+  foraging robots.
+\newblock {\em Adaptive Behavior}, 15(3):289--305, 2007.
+
+\bibitem{lumer1994diversity}
+Erik~D Lumer and Baldo Faieta.
+\newblock Diversity and adaptation in populations of clustering ants.
+\newblock In {\em Proceedings of the third international conference on
+  Simulation of adaptive behavior: from animals to animats 3: from animals to
+  animats 3}, pages 501--508. MIT Press, 1994.
+
+\bibitem{martel2010using}
+Sylvain Martel and Mahmood Mohammadi.
+\newblock Using a swarm of self-propelled natural microrobots in the form of
+  flagellated bacteria to perform complex micro-assembly tasks.
+\newblock In {\em Robotics and Automation (ICRA), 2010 IEEE International
+  Conference on}, pages 500--505. IEEE, 2010.
+
+\bibitem{menzel2001cognitive}
+Randolf Menzel and Martin Giurfa.
+\newblock Cognitive architecture of a mini-brain: the honeybee.
+\newblock {\em Trends in cognitive sciences}, 5(2):62--71, 2001.
+
+\bibitem{moller1998modeling}
+Ralf M{\"o}ller, Dimitrios Lambrinos, Rolf Pfeifer, Thomas Labhart, and
+  R{\"u}diger Wehner.
+\newblock Modeling ant navigation with an autonomous agent.
+\newblock {\em From animals to animats}, 5:185--194, 1998.
+
+\bibitem{mondada2009puck}
+Francesco Mondada, Michael Bonani, Xavier Raemy, James Pugh, Christopher
+  Cianci, Adam Klaptocz, St{\'e}phane Magnenat, Jean-Christophe Zufferey, Dario
+  Floreano, and Alcherio Martinoli.
+\newblock The e-puck, a robot designed for education in engineering.
+\newblock In {\em Proceedings of the 9th conference on autonomous robot systems
+  and competitions}, volume~1, pages 59--65, 2009.
+
 \bibitem{mondada2002search}
 Francesco Mondada, Dario Floreano, Andr{\'e} Guignard, Jean-Louis Deneubourg,
   Luca Gambardella, Stefano Nolfi, and Marco Dorigo.
@@ -163,12 +269,35 @@ Francesco Mondada, Dario Floreano, Andr{\'e} Guignard, Jean-Louis Deneubourg,
   robot concept.
 \newblock Technical report, Citeseer, 2002.
 
+\bibitem{moore1989influence}
+Darrell Moore, Dana Siegfried, Richard Wilson, and Mary~Ann Rankin.
+\newblock The influence of time of day on the foraging behavior of the
+  honeybee, apis mellifera.
+\newblock {\em Journal of biological rhythms}, 4(3):305--325, 1989.
+
+\bibitem{morley1946division}
+Derek~Wragge Morley.
+\newblock Division of labour in ants.
+\newblock {\em Nature}, 158:913--914, 1946.
+
+\bibitem{muller1988path}
+Martin M{\"u}ller and R{\"u}diger Wehner.
+\newblock Path integration in desert ants, cataglyphis fortis.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  85(14):5287--5290, 1988.
+
 \bibitem{murphy2000biomimetic}
 Robin~R Murphy.
 \newblock Biomimetic search for urban search and rescue.
 \newblock In {\em Intelligent Robots and Systems, 2000.(IROS 2000).
   Proceedings. 2000 IEEE/RSJ International Conference on}, volume~3, pages
   2073--2078. IEEE, 2000.
+
+\bibitem{nolfi1998coevolving}
+Stefano Nolfi and Dario Floreano.
+\newblock Coevolving predator and prey robots: Do “arms races” arise in
+  artificial evolution?
+\newblock {\em Artificial Life}, 4(4):311--335, 1998.
 
 \bibitem{oster1978caste}
 George~F Oster and Edward~Osborne Wilson.
@@ -181,17 +310,34 @@ Esben~H {\O}stergaard, Gaurav~S Sukhatme, and Maja~J Mataric.
   performance in multi-robot constrained-space foraging tasks.
 \newblock In {\em In Autonomous Agents}. Citeseer, 2001.
 
+\bibitem{passino2010bacterial}
+Kevin~M Passino.
+\newblock Bacterial foraging optimization.
+\newblock {\em International Journal of Swarm Intelligence Research (IJSIR)},
+  1(1):1--16, 2010.
+
 \bibitem{resnick1994turtles}
 Mitchel Resnick.
 \newblock {\em Turtles, termites, and traffic jams: Explorations in massively
   parallel microworlds}.
 \newblock Mit Press, 1994.
 
+\bibitem{ronacher2008path}
+Bernhard Ronacher.
+\newblock Path integration as the basic navigation mechanism of the desert ant
+  cataglyphis fortis (forel, 1902)(hymenoptera: Formicidae).
+\newblock {\em Myrmecological News}, 11:53--62, 2008.
+
 \bibitem{csahin2005swarm}
 Erol {\c{S}}ahin.
 \newblock Swarm robotics: From sources of inspiration to domains of
   application.
 \newblock In {\em Swarm robotics}, pages 10--20. Springer, 2005.
+
+\bibitem{csahin2008special}
+Erol {\c{S}}ahin and Alan Winfield.
+\newblock Special issue on swarm robotics.
+\newblock {\em Swarm Intelligence}, 2(2):69--72, 2008.
 
 \bibitem{schmickl2007collective}
 Thomas Schmickl, Christoph M{\"o}slinger, and Karl Crailsheim.
@@ -216,12 +362,22 @@ Ken Sugawara and Toshinori Watanabe.
 \newblock In {\em Intelligent Robots and Systems, 2002. IEEE/RSJ International
   Conference on}, volume~3, pages 2702--2707. IEEE, 2002.
 
+\bibitem{switzer1993site}
+Paul~V Switzer.
+\newblock Site fidelity in predictable and unpredictable habitats.
+\newblock {\em Evolutionary Ecology}, 7(6):533--555, 1993.
+
 \bibitem{vaughan2000blazing}
 Richard~T Vaughan, Kasper St{\o}y, Gaurav~S Sukhatme, and Maja~J Matari{\'c}.
 \newblock Blazing a trail: insect-inspired resource transportation by a robot
   team.
 \newblock In {\em Distributed Autonomous Robotic Systems 4}, pages 111--120.
   Springer, 2000.
+
+\bibitem{wehner2003desert}
+Rudiger Wehner.
+\newblock Desert ant navigation: how miniature brains solve complex tasks.
+\newblock {\em Journal of Comparative Physiology A}, 189(8):579--588, 2003.
 
 \bibitem{werger1996robotic}
 Barry~Brian Werger and Maja~J Mataric.
@@ -239,5 +395,10 @@ Alan F.~T. Winfield.
 \newblock Foraging robots.
 \newblock In {\em Encyclopedia of Complexity and Systems Science}, pages
   3682--3700. 2009.
+
+\bibitem{zhang2006honeybee}
+Shaowu Zhang, Sebastian Schwarz, Mario Pahl, Hong Zhu, and Juergen Tautz.
+\newblock Honeybee memory: a honeybee knows what to do and when.
+\newblock {\em Journal of experimental biology}, 209(22):4420--4428, 2006.
 
 \end{thebibliography}
