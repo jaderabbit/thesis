@@ -95,8 +95,11 @@ One of the first pieces of research to suggest the ideas and benefits of swarm r
 \subsection{Evolution of the term and early research}
 \label{early-research}
 
-Early research involving collaboration of multiple agents was originally a way of verifying entomology research on social insects \cite{dorigo2014swarm, beni1993swarm, seeley2009wisdom}. Multiple researchers modeled and simulated aspects of the insect colonies that were being studied in order to learn more about their self organizational mechanisms. Seeley et al \cite{seeley1991collective} formulate a mathematical model of collective decision-making in bee colonies. Computer based simulations written in SMALLTALK simulation program were performed to determine validity of a model of collective foraging in bees based on individual behaviour rules \cite{de1998modelling}. Foraging behaviour of ants has also been simulated in early research \cite{lopez1987optimal}. 
-Such studies discovered many of the features about social insects that are exploited in swarm robotics today
+Early research involving collaboration of multiple agents was originally a way of verifying entomology research on social insects \cite{dorigo2014swarm, beni1993swarm, seeley2009wisdom}. Multiple researchers modeled and simulated aspects of the insect colonies that were being studied in order to learn more about their self organizational mechanisms. 
+
+Extremely early work included modeling the excavation behaviour and tunnel creation of ants in order to simulate the rate of excavation \cite{sudd1975model}. Agent simulation was used to validate a model about the spatial arrangement and diet overlap between colonies of desert ants \cite{ryti1984spatial} 
+
+Seeley et al \cite{seeley1991collective} formulate a mathematical model of collective decision-making in bee colonies. Computer based simulations written in SMALLTALK simulation program were performed to determine validity of a model of collective foraging in bees based on individual behaviour rules \cite{de1998modelling}. Foraging behaviour of ants has also been simulated in early research \cite{lopez1987optimal}. Such studies discovered many of the features about social insects that are exploited in swarm robotics today
 
 % Need to come back here and reread and organise
 
@@ -146,13 +149,90 @@ This runs off the premise that multiple inexpensive robots are likely to be chea
 	%I also think that flexibility and cost-effectiveness should be addressed or removed. 
 
 
-\section{Current Focus on Swarm Robotics}
+\section{Current State of Swarm Robotics}
 %In this section I want to discuss what the current focus on swarm robotics is. 
-%
+%Taxonomy/research axes
+There are a number of axes of focus on swarm robotics research. The core dimensions of the field are modeling, behaviour design, communication, analytical studies and problems.
 
-\section{Swarm Robot Problems}
+\subsection{Analysis}
+
+Use models to determine if a property of the swarm behaviour is true or not. When modelling both the macroscopic and microscopic is very difficult due to the nature of self-organising systems so one technique is focused on at a time \cite{abbott2006emergence}
+
+
+\begin{itemize}
+	\item microscopic models
+	\item macroscopin models
+	\item cellular automata
+	\item real-robot analysis
+\end{itemize}
+
+\subsubsection{Microscopic Models}
+Microscopic models are concerned with individual agents and analyze interactions between each robot and between each robot and the environment. Microscopic models are implemented to varying levels of detail - some are simplified to a 2D grid world environment where as others choose to opt for full 3D environment with dynamic physics. The level of detail is dependant on the problem and what is being researched.
+
+Predominantly microscopic models take the for of simulators and are used to validate swarm robotics systems. Swarm-robotic specific simulators include Stage \cite{vaughan2008massively} and ARGoS \cite{pinciroli2011argos} which focus on simulating a large number of agents. A concern of obtaining and maintaining a large number of agents is one of the reasons why simulators are used in swarm robotics instead of real world experimentation.
+
+\subsubsection{Macroscopic Models}
+
+- Rate and differential equations
+- Classic Control and stability theory to prove swarm properties
+- Other methods
+\subsubsection{Cellular Automata}
+\subsubsection{Real-robot analysis}
+
+\subsection{Behaviour Design}
+
+\begin{itemize}
+	\item non-adaptive
+	\item learning - with reinforcement learning - both local and global
+	\item evolution
+\end{itemize}
+
+\subsection{Communication}
+
+\begin{itemize}
+	\item Interaction via sensing
+	\item Interaction via environment
+	\item Interaction via communication
+\end{itemize}
+
+\subsection{Problems}
 \label{swarmrobotapplications}
-Research in swarm robotics seems to be divided into two level: More primitive functionalities addressing the core concepts of swarm robotics, such as aggregation, etc, etc and complex functionalities which are more concerned with the real-life application and require a combination of primitive behaviours.
+
+The problems can be divided into simply behaviours and more complex behaviours
+
+\begin{itemize}
+	\item Spatially organizing behaviours
+		\begin{itemize}
+			\item Aggregation
+			\item Pattern formation
+			\item Chain formation
+			\item Self-assembly and morphogenesis
+			\item object clustering and assembling
+		\end{itemize}
+	\item Navigation behaviours
+		\begin{itemize}
+			\item Collective exploration
+			\item Coordinated motion
+			\item Collective transport
+		\end{itemize}
+	\item Collective decision-making
+		\begin{itemize}
+			\item Consensus achievement
+			\item Task allocation
+		\end{itemize}
+	\item Others
+\end{itemize}
+
+The more complex behaviours, which consist of interaction of one or more of the simpler behaviours. 
+
+\begin{itemize}
+	\item self-assembly
+	\item hole avoidance
+	\item foraging
+	\item self-deployment
+\end{itemize}
+
+Research in swarm robotics seems to be divided into two level: More primitive functionality addressing the core concepts of swarm robotics, such as aggregation, etc, etc and complex functionality which are more concerned with the real-life application and require a combination of primitive behaviours.
 
 \subsection{Primitive Problems}
 
