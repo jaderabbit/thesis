@@ -20,17 +20,29 @@
 %Get from presentation
 Swarm robotics is the study of the co-coordination of large numbers of relatively simple robots in order to perform a single function \cite{csahin2005swarm}, where no central control exists. Swarm robotics focuses on how to create robotic algorithms that result in the emergence of a desired complex behaviour.
 
-Swarm robotics typically draws inspiration from the observation of social insects: Ants \cite{hoff2010two}, cockroaches \cite{garnier2005aggregation} and bees \cite{lee2012foraging}. Social insects exhibit collective behaviour in the growth and maintenance of their societies\cite{wilson1971insect, bailishive}. The most interesting aspects of insect societies such as foraging, collective transport . Swarm robotics also uses concepts from other societies such as amoeba's aggregation into slime \cite{} and communication, propulsion and sensing in bacteria \cite{dhariwal2004bacterium,martel2010using}.
+Swarm robotics typically draws inspiration from the observation of social insects: Ants \cite{hoff2010two}, cockroaches \cite{garnier2005aggregation} and bees \cite{lee2012foraging} as social insects exhibit collective behaviour in the growth and maintenance of their societies\cite{wilson1971insect, bailishive}. The most interesting aspects of insect societies such as foraging, collective transport can be studied and modeled in order to achieve the same sorts of behaviour in a group of robot. Swarm robotics also draws on concepts from other societies such as amoeba's aggregation into slime \cite{schmickl2007navigation} and communication, propulsion and sensing in bacteria \cite{dhariwal2004bacterium,martel2010using}. Social insect societies exhibit qualities such as robustness, scalability and flexibility that are desired by a group of robots.
 
-Swarm robotics algorithms can be distinguished characterized from other robotics algorithms due to the following factors
+Swarm robotics algorithms, drawing from this inspiration from social insects, have a number of characteristics that distinguish swarm robotics algorithms from other robotics algorithms. The factors are as follows:
 
+%maybe separate into sections
+%maybe include some citations of social insect inspiration
 \begin{enumerate}
-\item \textbf{Autonomy}: The robots have total self-control of their actuation and sensors, without central control
-\item \textbf{Quantity}: Studies are always focused with scalability as a potential characteristic even if real-robot experimentation is limited to only a few individuals. Erol Sahin proposes a reasonable lower bound for number of robots to be considered as swarm is 10 \cite{csahin2005swarm}.
+
+\item \textbf{Quantity}: Studies are regularly focused with scalability as a potential characteristic of swarm robotics algorithms even if real-robot experimentation is limited to only a few individuals. In order to test the scalability of an algorithm, models or simulations are often built for experimentation purposes. Erol Sahin proposes a reasonable lower bound for number of robots to be considered as swarm is 10 \cite{csahin2005swarm}. A group of robots with less than 10 robots, is considered just that - a group of robots. 
+
 \item \textbf{Homogeneity}: A group of that has too many robots with individual characteristics is no longer considered a swarm, as it would likely violate the robustness requirements. Loosing a robot which is the only individual of its kind to perform a specific function would mean the swarm no longer exhibits robustness. It is of the author's opinion that heterogeneity can still be considered swarm robotics if the redundancy of each type of robot in the swarm is high enough, or if the failure of that specific robot, can be compensated by robots of different types. The evaluation of homogeneity of a swarm of robots has been discussed and a potential measure to evaluating homogeneity is proposed in \cite{balch2000hierarchic}
-\item \textbf{Decentralization}: There should be no single point of failure in the group of robots. Even with processes requiring a leader, there should be a process to elect a leader and re-elect, if the leader malfunction.
+
+\item \textbf{Decentralization and Autonomy}: There should be no single point of failure in the group of robots and the robots must have complete self-control of their actuation and sensors, without central control. The decentralization and autonomy of the robots is key in the robustness of the system.
+
+If a particular process requires a leader to make decision, such a process should include the ability to detect that there is no longer a leader if a leader malfunctions and re-elect a new leader.
+
+%some citation would be fab babe
+
 \item \textbf{Localization}: Local sensory and communication abilities are required in order to uphold decentralization requirement. Failure of global sensors and communication capabilities will effect the entire swarm dependant on it, thus violating decentralization. 
-\item \textbf{Simplicity}: A single robot used should be under-equipped to handle the task on by itself, but the collaboration of a group of the same robots should assist the completion of the task
+
+\item \textbf{Simplicity}: A single robot used should be under-equipped to handle the task by itself, but the collaboration of a group of the same robots should assist the completion of the task. In the author's opinion, the level of simplicity of robots is a topic worth debating in terms of what is considered to be "simple". There are various levels of robot simplicity that have been explored. The kilobot project \cite{rubenstein2012kilobot} focuses on building very low cost simple robots to enable one to test collective behaviours on very large swarms. The kilobots do not even have wheels for motion but simply have a set of 3 rigid legs with vibration motors for actuation. Sensors are limited in the form of a simple ambient light sensor and an infrared transmitter and receiver, and colored LED lights for communication. 
+
+On the other side of the spectrum, Melliner et al \cite{mellinger2013cooperative,kushleyev2013towards} explore robotics algorithms for swarms of relatively advanced, expensive quadcoptors with a variety of top-class sensors such as magnetometers, accelerometers, gyros, barometer for altitude sensing and two Zigbee transceivers for communication.
 \end{enumerate}
 
  The field of swarm robotics has been applied to a large variety of problems such as search and rescue \cite{mondada2002search}, item or garbage collection \cite{balch1995io}, autonomous inspection of machinery \cite{correll2007challenging}, military formations for military application \cite{balch1998behavior}.
@@ -44,9 +56,8 @@ Swarm robotics algorithms can be distinguished characterized from other robotics
 
 Swarm robotics has gone by many names in the past for where swarm robotics is simply the latest buzz-word for a concept that has been of interest since the 1980.
 
-
 Originally, swarm robotics was incepted as distributed mobile robotics. 
-Swarm robotics seems to be the final term from what used to be referred to as collective robotics, multi-agent systems or distributed artificial intelligence. 
+Swarm robotics appears to be the final term from what has been to be referred to as collective robotics \cite{kube1993collective}, multi-agent systems \cite{jennings1993commitments} or distributed robotics \cite{gauthier1987interprocess} in the past. 
 
 \subsection{Behaviour-based Robotics}
 \label{behaviourbasedrobotics}
@@ -132,6 +143,7 @@ A common division of labour problem addresses achieving the optimal quantity of 
 
 Labella et al show  that the addition of an adaptive parameter brings forth division of labour between the groups members \cite{labella2006division}. The parameter is an indication of the ants success rate at retrieving items in the environment and the tasks to be divided would be to achieve an effective number of robots foraging and those resting.
 
+
 \subsubsection{Task Allocation}
 
 \subsubsection{Decision Making}
@@ -162,6 +174,219 @@ The SWARM-BOTS project involved substantial work with the s-bots. S-bot robots h
 Aggregation is the movement of individuals towards one another to form a cluster and it has become one of the fundamental swarm behaviours. In nature, aggregation aids protection from predators, the ability to defend against an unfavourable environment and locate partners \cite{bonabeau2001self}. A variety of approaches to swarm robot aggregation have been investigated \cite{yan2011algorithm, soysal2007aggregation, trianni2003evolving, dimarogonas2008connectedness }. A more recent approach finds inspiration in honey bees \cite{schmickl2011beeclust, schmickl2009two}
 
 \subsubsection{Path Formation}
+Path formation is the creation of chains of robots in order to connect two or more points. The robot chains can serve as pheromone paths in order to navigate other robots through environments since in general, robots are not equipped with pheromone sensors and deployers. Research in path formation forms part of environmental exploration and navigation \cite{nouyan2006chain}.
+
+Path formation is useful as a navigational strategy is the swarm robotics context as traditional complex forms of navigation do not scale well with the number of robots involved. Path formation techniques also have the advantage of being more failure tolerant since they do not rely in the individual.
+
+Research in path formation initially had the robots emit a signal that omitted their position. Unfortunately this sort of approach would have to tackle the problem of a robot localizing itself globally \cite{goss1992harvesting}. Later, experimentation was performed with path formation with real robots in a prey retrieval experiment where the robots used physical contact to sense each other \cite{werger1996robotic}. More recent approaches attempt to give directionality to the chains by giving the chains a cyclic directional pattern - the approach was tested with real robots to transport heavy objects \cite{nouyan2006group}. Path formation has been used to connect two objects that are too distance from each other to be perceived at the same time by a robot. The control system used uses only local information and is completely homogeneous \cite{nouyan2006chain}.
+
+
+\section{Division of Labour}
+\label{chap:divisionoflabour}
+Due to the importance of division of labor in this research, a variety division of labour strategies should be highlighted, explored and contrasted. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%The same structure as before, including section, subsections and sub-subsections. Make sure that you follow the same conventions throughout, to avoid confusing the reader. Always remember to include a summary.
+%TODO: Add introduction - do last
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Definition}
+\label{sec:second:definition}
+
+Oster et al \cite{oster1978caste} define division of labour can be defined as a "stable" pattern of variation among workers within a colony in terms of the repertoire of tasks that workers perform where each worker specializes on a subset of the complete repertoire of tasks performed by the colony and the subset of tasks varies across individual workers in the colony %rephrase - this is a direct quote%
+
+There are two types of division of labour in social insects: 
+\begin{enumerate}
+	\item Temporal polyethism refers to how patterns of tasks are correlated to worker age
+	\item Morphological polyethism where task performance correlates to the workers size and shape
+\end{enumerate}
+
+\subsubsection{Temporal Polyethism}
+The pattern of tasks being performed by workers correlates to the age of the worker. In nature, the younger workers may perform tasks within the nest while the older workers perform tasks outside of the nest.
+\subsubsection{Morphological Polyethism}
+A worker with some extreme features in terms of size or shape, will specialize more in particular tasks and the more extreme that feature is, the narrower the repertoire of the of the worker. In nature, for example, larger workers would be more likely to form part of defense of the nest. \cite{beshers2001models}
+
+\subsubsection{Discussion}
+Early work in morphological polyethism has been insufficient for a number of reasons \cite{huang1996regulation}: 
+
+%reword the below a bit more
+\begin{enumerate}
+	\item There appeared to be no correlation between worker task performance and morphism
+	\item workers respond to environmental changes and vary task performance independant of specific size and shapes
+	\item As a colony requires change, the workers show behavioral flexibility and perform tasks that were not suitably seen in repertoires or switch between tasks
+
+\end{enumerate}
+
+Due to the stated reasons, the hypothesis is that most social insects are able to perform all tasks save for reproduction.
+
+\subsubsection{Task Selection}
+Much of the study of division of labour is how workers select tasks. The factors contributing to the decision are divided into internal and external factors. Internal factors are the internal state of the individual such as neurological, hormonal, experience or genetic factors where as the external factors are environmental stimuli or worker to worker interaction and communication of the increasing need of workers assigned to a particular task. \cite{beshers2001models}
+
+Research around task selection is focused around the following topics: 
+\begin{enumerate}
+	\item The rules guiding the decision process in workers
+	\item The process of how information about the environment and social stimuli is gathered
+	\item The internal choice mechanism for making the decisions
+\end{enumerate}
+
+\subsection{Models of Division of Labour}
+\subsubsection{Response Threshold Models}
+
+Workers have internal thresholds for responding to task-specific stimuli. The variation in task thresholds among workers in a colony generates the division of labour \cite{robinson1992regulation}. %rephrase, carbon copy%
+
+Each task in the repertoire has a response threshold. The default state of all workers is no task. The specialists are workers that have the lowest thresholds for a particular task. All workers have some threshold for a task and higher stimulus levels result in recruitment of additional workers into a task group. A negative feedback loop is formed because as the performance of a task by a worker increases, the stimulus level of that task decreases.If a workers with a lower threshold reaches a task then the worker with the higher threshold may never reach that threshold. \cite{beshers2001models} %needs some tying together%
+
+\subsubsection{Analysis and Criticism}
+A small intrinsic variation in the performance or responsiveness of a task may be amplified into large differences in task repertoire or frequency of task performances. 
+
+RTM identifies variation in the worker environment interaction as the primary reason for division of labour.
+
+- Makes the assumption that all workers are equally likely to encounter each task.  
+- Response Threshold could vary over workers lifetime
+
+\subsubsection{Formal Model}
+Suppose there are N individuals, K tasks, with universal connection between individuals. 
+A stable equilibrium is reached when the number of workers performing a task $N_i$ matches the stimulus level and when individual workers maintained constant task performance probabilities. \cite{page1990self}
+
+%Get citation%
+%Rephrase to remove the enumeration and make more cohesive
+Bonabeau models the variation in thresholds when performing a task as follows:
+\begin{enumerate}
+	\item Individual $i$ has a probability of $\tau_(\theta ij)$ of performing task $j$.
+	\item Given stimulus level $S$ and a response threshold $\theta$ such that:
+	\item $\tau_(\theta ij)(S_j) = S_j^2/(S_j^2 + \theta_(ij)^2)$
+	\item Colony levels constantly incremented by a factor $\delta$ but decremented by task performance
+\end{enumerate}
+
+If one assumes global perception, where an individual perceives all stimuli regardless of the local environment and workers:
+The result of this model is that stimulus levels are constantly incremented thus equilibrium is never reached. A change in task performance in relation to changes in the proportion of individuals with low versus high thresholds. %I have no idea what I was ttrying to say here
+
+If one assumes local perception, where there is only weak temporal polyethism
+
+%MISSING SHIT HERE GO READ
+
+
+
+%MAY NEED TO DESCRIBE MY DIVISIOn OF LABOUR StrATEGY
+
+\subsubsection{Integrated Threshold Information Transfer Model}
+Integrated Threshold - Information Transfer model \cite{fewell1999division} focuses on how workers gather information about tasks as well as how the change in stimulus observation affects worker performance %needs to be totally rephrased%
+
+The model can be discerned from it's name:
+"Integrated Threshold" - Workers perform a task when the stimulus they encountered equals an internal threshold - the internal threshold will vary according to genetics. 
+
+"Information Transfer" - The process of discerning a task stimulus can also vary.
+Tasks can be perceived in a variety of ways such as:
+
+\begin{enumerate}
+	\item Randomly in space
+	\item Tasks can be perceived directly
+	\item Tasks can be perceived via social information transfer
+\end{enumerate}
+
+Fewell et al \cite{fewell1999division} use information transfer models to predict colony level response patterns to graded changes in stimulus levels for the tasks. The model predicted that normally distributed patterns of task thresholds would generate a graded response - independently of how the individuals received information about the task
+
+%Going to have to read this section again because I don't know what it meant - not even the first time I wrote it%
+The number of workers forming the task stays low until a 'set point' was reached where the stimulus matched thresholds of workers with high thresholds then the colony responded by increasing task performance.
+
+\subsubsection{Self Reinforcement Models}
+Task success is directly proportional of the probability of doing the task again?
+
+Self reinforcement models answer the question of whether division of labour be generated as a result of experience \cite{lerman2005review}. If a task was not performed successfully or their was the lack of opportunity then the probability of ever performing that task reduces which leads to the creation of task specialists. 
+
+Foraging specialization can develop equal food location and quantities \cite{deneubourg1987self} %not sure what this means. Will have to read again%
+The study suggests that both self-reinforcement and worker age variation are to account for temporal polyethism. 
+%also all needs to be reorganized and rephrased%
+
+Plowright and Plowright \cite{plowright1988elitism} use self-reinforcement to generate elitism. Given an initial random population of encountering tasks, the threshold was incremented when tasks were performed. The result was a bimodally distributed frequency of performing tasks - either the workers became specialists or were inactive. 
+
+Theraulaz \cite{theraulaz1998response} has the concept of learning and forgetting. Learning is when there is a reduction in response threshold when a worker performs a task. And forgetting is an increase in response threshold when a worker performs a task. All individuals begin with equal thresholds. Evidence from the model indicated that workers adequately adjusted activity levels according to the task they ended up specializing in. %rephrase & rework%
+%this is what happens in my own things!!!!!! NBNBNBNBNBNB TO DO - ANALYSIS
+%find citation
+
+\subsubsection{Foraging for Work}
+Foraging for Work (FFW) has two main parts:
+\begin{enumerate}
+	\item Workers repeat the same task when possible
+	\item Workers actively seek work when they have no task
+\end{enumerate}
+
+In terms of foraging, this forms the basic model of foraging but also is used in MY honey bee algorith,. 
+
+Assumptions are that:
+\begin{enumerate}
+	\item Workers are intrinsically identical and thus task performance of workers is dependent on opportunity rather than intrinsic task preferences.  However, it has been shown that in true insect colonies, there is intrinsic variation in each worker's response to the environment as not all workers will respond equally. 
+	\item Tasks are radially spatially localized within the nest. That means the tasks further away are performed by older workers and the younger workers will perform the tasks that are nearer.
+\end{enumerate}
+
+FFW shows that temporal polyethism doesn't require age-related difference in the mechanism of task choice and can simply stem from the older workers proximity to the nest
+
+FFW is controversial in that it assumes that no intrinsic effects on the task performance is violated by clear physiological 
+
+Sets the base expectation of what level of task organization might occur within a social group in absence of selection efforts or intrinsic mechanism of worker task performance.
+
+\subsubsection{Foraging for Work versus Threshold Models} %not sure if this is even necessary
+Similarities between the two are that:
+- Patterns of division of labor generated from generated rules and 
+- Random variation exists in task encounter/performance threshold
+
+In foraging for work, spatial organization generates temporal polytheism. 
+With threshold models, lazy workers are generated by the threshold variation. 
+
+Foraging for work can be seen as a special case of the threshold model where all workers have the same threshold. %confirm - sure this is rubbish I'm sputing
+
+\subsubsection{Social Inhibition Models}
+
+The sheer presence of older foraging bees affects behavioral development in that a proportion of bees becoming foragers indirectly related to the number of older bees present in the colony \citation{huang1992honeybee} which motivates the activator-inhibitor model.
+
+Activator-Inhibitor model is driven by 2 hormones:
+\begin{enumerate}
+	\item Activator - the juvenile hormone. This motivates the workers in the hive to become foragers.
+	\item Inhibitor - transferred from the foragers to the younger workers which suppresses development when there are too many foragers. If foragers are lost in an accident then more hive workers will mature to foragers.
+\end{enumerate}
+
+The mathematical version of the social inhibition model represents the workers physiological state by a single variable $x$ that changes daily in response to the social environment \cite{beshers2001social}. The model defines the trajectories for behavioral development that are (a) intrinsically determined and (b) responsive to social environment. Task performance is correlation with age. 
+
+The Eusocial wasp shows similar temporal polytheism:
+\begin{enumerate}
+	\item Each worker has two pools of chemical inhibitor. One pool affects own behavioral state the other is transferred to the workers in encounters. 
+	\item Effect of  on a workers state is the ratio of own activator to the other workers inhibitor
+\end{enumerate}
+
+%dear god this doesn't make sense
+Both reach a dynamically stable allocation of workers to different tasks. Social inhibition provides mechanism of changing worker thresholds as they age. May allow colony to flexibly response to changing conditions while maintaining integrity of its arguments
+
+%most important point
+Social inhibition models provide mechanisms for changing the threshold of a worker as the worker ages. 
+
+\subsubsection{Network Models of Task Allocation}
+In this particular network allocation models a worker performs one of four tasks, where for each task they are either active or inactive. This results in each worker having 8 states. Workers having the same states belong to the same task group.
+
+All worker interactions are bias towards transferring information with workers that belong to the same task group \cite{gordon1992parallel}
+
+Worker behavior in each iteration is determined by a linear combination of interactions with a threshold value. The system moves to a balance of active and inactive workers. 
+
+Pascala \cite{pacala1996effects} developed a differential equation to investigate the effects of social group size on task allocation. Information was received
+\begin{enumerate}
+	\item Directly from the environment
+	\item Through success or failure
+	\item random encounters with other group members
+\end{enumerate}
+Pascala's research showed that large networks track environmental changes more efficiently as their is a higher rate of information flow but interaction increases a lot causing interference. Thus as colony size increases, the overhead from interactions becomes faster than the information collection rate from the environment. The two components can be kept in balance by regulating the frequency of interactions among workers \cite{pacala1996effects} %look at this citation
+
+The key similarity between network models and foraging for work models is that despite the fact that goals differ, they both share the view that division of labor can be generated by changes in local information encountered by an individual worker. Local information is affected by availability of performance of other tasks, resulting in workers switching between task spaces. Network models are more accurate than the linear model of foraging for work, but network model lacks self organizational properties of foraging for work models.
+
+\subsubsection{Summary} 
+Existing models of division of labor are more exploratory but reveal important general principles, however few models have been tested and proven
+%need more methinks
+
+
 
 \section{Challenges}
 %Need to bulk up
