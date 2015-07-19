@@ -53,10 +53,8 @@ On the other side of the spectrum, Melliner et al \cite{mellinger2013cooperative
 
 \section{History}
 \label{history}
-
-%TO DO: ELEPHANTS DON'T PLAY CHESS
-%Talk briefly about the movement from traditional AI to nouvelle AI - the swarm robotics ideas. 
-
+ 
+%This needs to be turned into an introduction and the points pulled into the relevant sections
 Swarm robotics has gone by many names in the past for where swarm robotics is simply the latest buzz-word for a concept that has been of interest since the 1980.
 
 Early swarm robotics research was actually used as a tool with which to model and validate  entomology research on social insects \cite{dorigo2014swarm, beni1993swarm, seeley2009wisdom}.
@@ -66,43 +64,53 @@ Swarm robotics appears to be the final term from what has been to be referred to
 
 This section aims to briefly highlight the history of swarm robotics and it's progress by addressing behaviour based robotics, the origins of multi-robot systems and other early research.
 
-%Is this section even relevant
-\subsection{Behaviour-based Robotics}
-\label{behaviourbasedrobotics}
+\subsection{Journey from Classic Robotics}
+\label{journeyfromtraditionalAI}
 
-Ronald Arkin - Imposes biologically inspired bottom up approach. 
+It can be determined that the first step in the movement from symbol based classical robotics to swarm robotics is the movement from complex symbolic systems towards more simpler architectures. This movement began in the mid-to-late 1980s. 
+%need citation
 
-"There was a requirement that intelligence be reactive to the dynamic aspects of the environment that a mobile robot operate on time scales similar to those of animals and humans and that intelligence be able to generate robust behaviour in that face of uncertain sensors an unpredictable environment and a changing world. "
+In Rodney A Brooks iconic paper "Elephants don't play chess" \cite{brooks1990elephants}, the movement from traditional artificial intelligence towards what they brand "nouvelle" artificial intelligence is discussed. The idea that traditional symbol based classical artificiant intelligence made assumption about intelligence worked and those assumptions have impeded artificial intelligence. 
 
-\subsection{Multi-robot Systems}
-\label{multi-robot systems}
+Brooks presents the physical grounding hypothesis which is the idea that intelligence is composed of individual modules that generate behaviour and the co-existence and co-operation of these modules allow for the emergence of complex behaviour. The physical grounding hypothesis states that the world is it's own best model and thus in order to accurately make decisions about the real world, one should add sensoring and actuating capabilities to artificial intelligence agents.
 
+On the other hand, classical AI side makes use of the symbol system hypothesis which states that all intelligence operates using symbols with the implication that symbols represent all world entities, but it is shown that symbols can not adequately model the world because they assume a knowledgeable objective truth - which is not attainable in the real world. 
+
+The physical grounding hypothesis lead to the development of behaviour based robotics and more concretely the subsumption architecture \cite{brooks1986robust} by tightly connecting perception to action. A subsumption program organises finite state machines into a layered incremental networks. 
+
+Multiple robotic systems were developed using the subsumption architecture with great success. Allen, a robot that has 3 layers of behaviours: a obstacle avoidance layer, a random wandering layer as well as search for the furthest point layer. These 3 separate behaviours cause the robot to adequately explore an environment \cite{brooks1986robust}.
+
+Herbert, the soda can collector robot, was a notable development since Herbert was required to complete the significantly more complex task of search for and picking up empty soda cans from people desks \cite{connell1989colony}. To solve the problem, 15 individual behaviours were developed, with no communication between the behaviour generating modules. Other subsumption implementations include Toto \cite{mataric1990distributed}, Squirt \cite{flynn1989world} and Genghis \cite{brooks1989robot}
+
+The key feature that can be determined by the success of physically grounded systems is that interactions of simpler non-goal directed behaviour results in emergence of goal-directed behavior. 
+
+Ronald Arkin discusses the idea that behaviour based robotics imposes a biologically bottom up approach with the need that intelligence needs to be reactive to the dynamic environment and that intelligence needs to be able create robust results in light of noisy complex real world environment \cite{arkin1990integrating}. %contextualize a bit?
+
+The movement towards simplicity of controllers in the form of subsumption architecture and this key feature of emergence are the origin of key principles that inspired the next step from single subsumption architecture robots to multi-robot systems. Most work in swarm robotics began after the introduction of behaviour-based robotics paradigm \cite{arai2002editorial}
+
+One of the first pieces of research to suggest the ideas and benefits of swarm robotics was the Gnat robot project \cite{flynn1987gnat} which aimed to build cheaper smaller robots which can be used together to solve complex problems.
 
 
 %TODO: History - multi-robot systems. eg. Collective autonomous agents
-\subsubsection{Early Research}
+\subsection{Evolution of the term and early research}
 \label{early-research}
 
-%Distributed mobile robotics
-Swarm robotics began as distributed mobile robotics in the late 1980s. Fukuda et al [32] and Beni[18] performed work in cellular/configurable robotic systems. Yuta addressed traffic control problems and movement in formations was addressed by Arai and Wang beginning the field of multi-robot motion planning. Architectures for multi-robot cooperation 
-was searched by Asama.
+Early research involving collaboration of multiple agents was originally a way of verifying entomology research on social insects \cite{dorigo2014swarm, beni1993swarm, seeley2009wisdom}. Multiple researchers modeled and simulated aspects of the insect colonies that were being studied in order to learn more about their self organizational mechanisms. Seeley et al \cite{seeley1991collective} formulate a mathematical model of collective decision-making in bee colonies. Computer based simulations written in SMALLTALK simulation program were performed to determine validity of a model of collective foraging in bees based on individual behaviour rules \cite{de1998modelling}. Foraging behaviour of ants has also been simulated in early research \cite{lopez1987optimal}. 
+Such studies discovered many of the features about social insects that are exploited in swarm robotics today
 
-%Multi-robot systems
+% Need to come back here and reread and organise
 
-%Collective robotics
+From the late 1980s till the mid 1990s, swarm robotics research emerged under many different guises: Collective robotics \cite{kube1993collective}, cellular robotics \cite{freund1984design}, co-operative mobile robotics \cite{cao1997cooperative}, distributed robotics \cite{asama2013distributed}, multi-robot systems \cite{mataric1995cooperative}. It's difficult to determine which terms were used first as they seem to have been in use concurrently. Essentially all of these terms have converged to what we now know as swarm robotics.
 
-%Robot colonies
+In one of the earliest, notable papers, Freund explores the design of the structure of multi-robot systems based on the nonlinear control approaches, which is demonstrated on the collision avoidance of two robots working on the same space \cite{freund1984design,freund1986pathfinding}.
+%TO DO: Actually read the above paper so as to make conclusions
+Around a similar time, multi-robot design paradigm ACTRESS was developed to also address the design of autonomous distributed robot systems \cite{asama1989desig}. 
 
-%cooperative autonomous mobile robotics
+Fukuda et al \cite{fukuda1989communication,fukuda1990analysis} performed work in the field of cellular or configurable robotics. Cellular robotics is a robotic system which can reconfigure itself based on dynamic environmental requirements. The idea is that cells of smaller, simpler robots can dock with each other to form a single compound structure that can more effectively handle the pressures of the new environment. The research predominantly explored how the distributed communication between the cells would work. They evaluate and describe their CEBOT structure with an optimal knowledge allocation method to communicate between cells. 
 
+Beni et al \cite{beni1991theoretical} explores which problems would have needed to be solved for cellular robotics to become feasible in real-world application.
 
-%Swarm Robotics
-
-
-\begin{itemize}
-\item Multirobot systems
-\item Collective robotics
-\end{itemize}
+Other problems that were explored were motion planning with a swarm of robots \cite{premvuti1990consideration,arai1989collision},  communication, task allocation, localization, mapping, object transportation, object manipulation, motion coordination.%get citations? Move this somewhere
 
 \section{Motivations}
 \label{sec:first:advantages}
