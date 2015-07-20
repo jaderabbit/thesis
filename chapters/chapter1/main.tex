@@ -197,16 +197,11 @@ Similarly differential equations have been used to model swarms and have the adv
 	A whole variety of other mathematical modeling approaches have also been used in a swarm robotics context such as linear time temporal logic to define safety and liveness of swarm individuals \cite{winfield2005formal}, probabilistic model checking to verify swarm properties {konur2012analysing}, or using branching processes to model communication of a swarm of aerial robots \cite{mathews2010establishing}. 
 \end{itemize}
 
-\subsubsection{Cellular Automata}
-%DO I EVEN CARE?!!!
-%Probably remove because fuck it?
-%%NOOOOOO
 \subsubsection{Real-robot analysis}
 
 %rephrase
 Since it is implausible to attempt to simulate reality completely, real robot experimentation is integral to validating the behaviour of the swarm. These simulations usually occur in controlled environments with the ability to control the level of noise and environmental disruption. 
 The disadvantage of performing real robot analysis is that experimentation is generally more costly, complex and time consuming than simulation or modeling methods. The purpose of real robot analysis is to show that the prospective swarm behaviour is actually obtainable \cite{brambilla2013swarm}.
-
 
 \subsection{Behaviour Design}
 
@@ -227,32 +222,62 @@ The disadvantage of performing real robot analysis is that experimentation is ge
 \subsection{Problems}
 \label{swarmrobotapplications}
 
-The problems can be divided into simply behaviours and more complex behaviours
+Brambilla et al \cite{brambilla2013swarm} present a taxonomy of swarm behaviors. The behaviors are divided as follows:
 
 \begin{itemize}
-	\item Spatially organizing behaviours
-		\begin{itemize}
-			\item Aggregation
-			\item Pattern formation
-			\item Chain formation
-			\item Self-assembly and morphogenesis
-			\item object clustering and assembling
-		\end{itemize}
+	\item Spatially organizing behaviours		
 	\item Navigation behaviours
-		\begin{itemize}
-			\item Collective exploration
-			\item Coordinated motion
-			\item Collective transport
-		\end{itemize}
 	\item Collective decision-making
-		\begin{itemize}
-			\item Consensus achievement
-			\item Task allocation
-		\end{itemize}
 	\item Others
 \end{itemize}
 
-The more complex behaviours, which consist of interaction of one or more of the simpler behaviours. 
+\subsubsection{Spatially Organizing Behaviors}
+
+\begin{itemize}
+	\item \textbf{Aggregation} Aggregation is the movement of individuals towards one another to form a cluster and it has become one of the fundamental swarm behaviours. In nature, aggregation aids protection from predators, the ability to defend against an unfavourable environment and locate partners \cite{bonabeau2001self}. A variety of approaches to swarm robot aggregation have been investigated \cite{yan2011algorithm, soysal2007aggregation, trianni2003evolving, dimarogonas2008connectedness }. A more recent approach finds inspiration in honey bees \cite{schmickl2011beeclust, schmickl2009two}
+	
+	\item \textbf{Pattern formation}
+	%TODO:
+	
+	\item \textbf{Path formation} Path formation is the creation of chains of robots in order to connect two or more points. The robot chains can serve as pheromone paths in order to navigate other robots through environments since in general, robots are not equipped with pheromone sensors and deployers. Research in path formation forms part of environmental exploration and navigation \cite{nouyan2006chain}.
+
+Path formation is useful as a navigational strategy is the swarm robotics context as traditional complex forms of navigation do not scale well with the number of robots involved. Path formation techniques also have the advantage of being more failure tolerant since they do not rely in the individual.
+
+Research in path formation initially had the robots emit a signal that omitted their position. Unfortunately this sort of approach would have to tackle the problem of a robot localizing itself globally \cite{goss1992harvesting}. Later, experimentation was performed with path formation with real robots in a prey retrieval experiment where the robots used physical contact to sense each other \cite{werger1996robotic}. More recent approaches attempt to give directionality to the chains by giving the chains a cyclic directional pattern - the approach was tested with real robots to transport heavy objects \cite{nouyan2006group}. Path formation has been used to connect two objects that are too distance from each other to be perceived at the same time by a robot. The control system used uses only local information and is completely homogeneous \cite{nouyan2006chain}.
+
+	\item \textbf{Self-assembly and morphogenesis}
+	%TODO:
+	\item \textbf{object clustering and assembling}
+	%TODO:
+\end{itemize}
+
+\subsubsection{Navigation behaviours}
+
+\begin{itemize}
+\item Collective exploration
+%TODO: 	
+	
+\item Coordinated motion
+%TODO:
+
+\item \textbf{Collective transport} Collective transport has become benchmark for swarm robotics due to the fact is requires numerous collaborative aspects such as coherence, task allocation, coherence, conflict resolution and communication. Mataric et al use a simple communication protocol on real robots to compensate for noise-ridden sensing to use a group of robots to move a box \cite{mataric1995cooperative}. Hiroshi et al do not utilize explicit communication but rather allow robots to infer the intention of other robots via their behaviour, in order to enable the robots to correctly place desks in an environment and the study indicates the benefit of collaboration \cite{sugie1995placing}
+	
+Gerkey et al implement a dynamic task allocation for a robot group along with an auction-based mechanism using publish/subscribe communication to once again perform a box pushing exercise. \cite{gerkey2002sold}
+
+The SWARM-BOTS project involved substantial work with the s-bots. S-bot robots have the ability to link to each other. Experimentation showed that the chained s-bots were able to transport items more effectively \cite{gross2004group, dorigo2005swarm}. Many of the experiments were conducted on real robots. 
+
+\end{itemize}
+		
+\subsubsection{Collective decision-making}
+\begin{itemize}
+	\item Consensus achievement
+	\item Task allocation
+	\item Division of Labour
+\end{itemize}
+
+\subsubsection{Complex behaviours}
+%Research in swarm robotics seems to be divided into two level: More primitive functionality addressing the core concepts of swarm robotics, such as aggregation, etc, etc and complex functionality which are more concerned with the real-life application and require a combination of primitive behaviours.
+The behaviors are generally single behaviors which can be seen as granular swarm robotics problems. Some problems are a combination of these simpler behaviour types. Some of the behaviors that may fall into that category are as follows
 
 \begin{itemize}
 	\item self-assembly
@@ -260,10 +285,6 @@ The more complex behaviours, which consist of interaction of one or more of the 
 	\item foraging
 	\item self-deployment
 \end{itemize}
-
-Research in swarm robotics seems to be divided into two level: More primitive functionality addressing the core concepts of swarm robotics, such as aggregation, etc, etc and complex functionality which are more concerned with the real-life application and require a combination of primitive behaviours.
-
-\subsection{Primitive Problems}
 
 \subsubsection{Division of Labour}
 Division of labour occurs naturally in insect colonies \cite{gautrais2002emergent}, most notably in bees and ants.
@@ -273,44 +294,6 @@ Division of labour is a key primitive problem  in swarm robotics. Most tasks req
 A common division of labour problem addresses achieving the optimal quantity of robots performing an activity as opposed to resting. Too many robots performing a task may increase the number of collisions and thus decrease the overall efficiency or too many performing the tasks might just be wasting energy thus motivating the need to achieve effective division of labour between active and passive robots.
 
 Labella et al show  that the addition of an adaptive parameter brings forth division of labour between the groups members \cite{labella2006division}. The parameter is an indication of the ants success rate at retrieving items in the environment and the tasks to be divided would be to achieve an effective number of robots foraging and those resting.
-
-
-\subsubsection{Task Allocation}
-
-\subsubsection{Decision Making}
-
-\subsubsection{Communication and Information Propogation}
-Communication within a robot swarm is a difficult problem due to the restriction of local sensing capabilities and the problem is how to effectively pass on information such that all members (or all required members) of the swarm receive the appropriate information in an accurate and timely manner.
-
-\subsubsection{Localization}
-
-\subsection{Complex Problems}
-The more complex problems involve a combination of primitive behaviours and are generally substantially more difficult to achieve
-
-
-\subsubsection{Foraging}
-\subsubsection{Environment Mapping and Tracking}
-
-%TODO: Distributed Localization and Mapping with a Robotic Swarm
-
-
-\subsubsection{Foraging}
-\subsection{Group Transport}
-
-Group transport has become benchmark for swarm robotics due to the fact is requires numerous collaborative aspects such as coherence, task allocation, coherence, conflict resolution and communication. Mataric et al use a simple communication protocol on real robots to compensate for noise-ridden sensing to use a group of robots to move a box \cite{mataric1995cooperative}. Hiroshi et al do not utilize explicit communication but rather allow robots to infer the intention of other robots via their behaviour, in order to enable the robots to correctly place desks in an environment and the study indicates the benefit of collaboration \cite{sugie1995placing}
-Gerkey et al implement a dynamic task allocation for a robot group along with an auction-based mechanism using publish/subscribe communication to once again perform a box pushing exercise. \cite{gerkey2002sold}
-The SWARM-BOTS project involved substantial work with the s-bots. S-bot robots have the ability to link to each other. Experimentation showed that the chained s-bots were able to transport items more effectively \cite{gross2004group, dorigo2005swarm}. Many of the experiments were conducted on real robots. 
-
-\subsection{Aggregation}
-Aggregation is the movement of individuals towards one another to form a cluster and it has become one of the fundamental swarm behaviours. In nature, aggregation aids protection from predators, the ability to defend against an unfavourable environment and locate partners \cite{bonabeau2001self}. A variety of approaches to swarm robot aggregation have been investigated \cite{yan2011algorithm, soysal2007aggregation, trianni2003evolving, dimarogonas2008connectedness }. A more recent approach finds inspiration in honey bees \cite{schmickl2011beeclust, schmickl2009two}
-
-\subsubsection{Path Formation}
-Path formation is the creation of chains of robots in order to connect two or more points. The robot chains can serve as pheromone paths in order to navigate other robots through environments since in general, robots are not equipped with pheromone sensors and deployers. Research in path formation forms part of environmental exploration and navigation \cite{nouyan2006chain}.
-
-Path formation is useful as a navigational strategy is the swarm robotics context as traditional complex forms of navigation do not scale well with the number of robots involved. Path formation techniques also have the advantage of being more failure tolerant since they do not rely in the individual.
-
-Research in path formation initially had the robots emit a signal that omitted their position. Unfortunately this sort of approach would have to tackle the problem of a robot localizing itself globally \cite{goss1992harvesting}. Later, experimentation was performed with path formation with real robots in a prey retrieval experiment where the robots used physical contact to sense each other \cite{werger1996robotic}. More recent approaches attempt to give directionality to the chains by giving the chains a cyclic directional pattern - the approach was tested with real robots to transport heavy objects \cite{nouyan2006group}. Path formation has been used to connect two objects that are too distance from each other to be perceived at the same time by a robot. The control system used uses only local information and is completely homogeneous \cite{nouyan2006chain}.
-
 
 \section{Division of Labour}
 \label{chap:divisionoflabour}
