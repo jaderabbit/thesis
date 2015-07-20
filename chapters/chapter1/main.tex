@@ -238,6 +238,7 @@ Brambilla et al \cite{brambilla2013swarm} present a taxonomy of swarm behaviors.
 	
 	\item \textbf{Pattern formation}
 	%TODO:
+	The goal of pattern formation is for deployed robots to maintain specific distances between each other in order to create a particular shape. Implementation usually utilizes virtual forces in order to co-ordinate positioning of the agents. A review can be found in \cite{bahceci2003review, hettiarachchi2009review}
 	
 	\item \textbf{Path formation} Path formation is the creation of chains of robots in order to connect two or more points. The robot chains can serve as pheromone paths in order to navigate other robots through environments since in general, robots are not equipped with pheromone sensors and deployers. Research in path formation forms part of environmental exploration and navigation \cite{nouyan2006chain}.
 
@@ -247,17 +248,23 @@ Research in path formation initially had the robots emit a signal that omitted t
 
 	\item \textbf{Self-assembly and morphogenesis}
 	%TODO:
-	\item \textbf{object clustering and assembling}
+	Ants can create connect to each other to pull large prey and build bridges or walls. Self-assembly is where individual robots connect in order to create a compound structure of robots. Self-assembly was a very early behavior of research in the swarm robotics field - originally known as cellular robotics. The idea is that each robot forms a single cell or what metaphorically equates to a multi-cellular organism. In application, self-assembly can be used to stabilize robots on difficult terrain, combine forces to transport another object \cite{brambilla2013swarm}. Self-assembly has remained one of the more complex behaviours due to the challenge of morphogenesis and once the required shape has been achieved, how is the structure controlled in a consistent manner.  
+Reviews on self assembly are presented by Groß and Dorigo \cite{gross2008self}	
+	
+	\item \textbf{Object clustering and Assembling}
 	%TODO:
+	The goal of clustering is to group similar objects close to each others. The goal of assembling to link objects in a required way.  Approaches usually involve probabilistic finite state machines involving random walks across the environment and reaction towards available objects. Challenges in this field are to do with interference from robots and obstacles near the cluster site. A variety of implementations of clustering \cite{beckers1994local}, wall creation \cite{wawerla2002collective} and 2D and 3D structure creation \cite{werfel2006extended, werfel2011distributed}
+
+%FORAGING?!	
 \end{itemize}
 
 \subsubsection{Navigation behaviours}
 
 \begin{itemize}
-\item Collective exploration
+\item \textbf{Collective exploration}
 %TODO: 	
 	
-\item Coordinated motion
+\item \textbf{Coordinated motion}
 %TODO:
 
 \item \textbf{Collective transport} Collective transport has become benchmark for swarm robotics due to the fact is requires numerous collaborative aspects such as coherence, task allocation, coherence, conflict resolution and communication. Mataric et al use a simple communication protocol on real robots to compensate for noise-ridden sensing to use a group of robots to move a box \cite{mataric1995cooperative}. Hiroshi et al do not utilize explicit communication but rather allow robots to infer the intention of other robots via their behaviour, in order to enable the robots to correctly place desks in an environment and the study indicates the benefit of collaboration \cite{sugie1995placing}
