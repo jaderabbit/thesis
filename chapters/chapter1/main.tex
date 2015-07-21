@@ -211,6 +211,32 @@ The disadvantage of performing real robot analysis is that experimentation is ge
 	\item evolution
 \end{itemize}
 
+\subsubsection{Non-adaptive}
+%TODO: 
+\begin{itemize}
+	\item \textbf{Subsumption} - the invention of subsumption architecture almost promoted the development of swarm robotics by simplifying the process of building robots. Each behaviour forms a separate module that can inhibit other behaviours. Discussed in more detail in section %TODO - cite label
+	\item \textbf{Probabilistic Finite State Automata} Probabilistic finite state automata are a way to represent dynamical systems with finite state spaces. Each beahviour is a state and transistions are defined between these states with some probabilities and external input \cite{soysal2005probabilistic,labella2004efficiency} 
+	
+	\item \textbf{Distributed Potential Field Methods}
+	All vector interactions are represented as vectors where vectors can be positive or negative. This approach is useful in building swarm behaviors that require spatial distribution between robots such as pattern formation or motion coordination. %cite?
+\end{itemize}
+
+\subsubsection{Learning}
+
+%Keep short
+\begin{itemize}
+	\item \textbf{Reinforcement Learning}
+	
+	\item \textbf{Neural Networks}
+	In swarm robotics techniques, neural networks are used 
+\end{itemize}	
+
+\subsubsection{Evolution}
+%Keep super short
+
+%Can probably just make an itemized list
+
+
 \subsection{Communication}
 
 \begin{itemize}
@@ -230,6 +256,8 @@ Brambilla et al \cite{brambilla2013swarm} present a taxonomy of swarm behaviors.
 	\item Collective decision-making
 	\item Others
 \end{itemize}
+
+These behaviors can be used as  ingredients to solve more complex applications - most prominently in this study, foraging. 
 
 \subsubsection{Spatially Organizing Behaviors}
 
@@ -262,52 +290,43 @@ Reviews on self assembly are presented by Groß and Dorigo \cite{gross2008self}
 
 \begin{itemize}
 \item \textbf{Collective exploration}
-%TODO: 	REWRITE THE FCUK OUT OF THIS BECAUSE IM BASICALLY REWRITING BECAUSE FUCK IT
-	\begin{itemize}
-		\item area coverage - deploy robots to create a grid of communicating robots. Usually using virtual physical forces. \cite{howard2002mobile,stirling2010energy}
-		\item swarm-guided navigation - guide the motion of other robots. Usually using probabilistic finite state machines. \cite{payton2001pheromone,ducatelle2011self} 
-	\end{itemize}
+Brambilla et al \cite{} break collective exploration into two behaviors, namely area coverage and swarm-guided navigation. The goal of area coverage is to deploy robots with the aim of creating a grid of communicating robots over a space. Area coverage is usually approached by using virtual physical forces\cite{howard2002mobile,stirling2010energy}.
+Swarm-guided navigation is simply to navigate an environment using swarms. This is usually achieved using probabilistic finite state machines \cite{payton2001pheromone,ducatelle2011self} . 
 %There are loads more where that one came from	
 	Ants use pheromone trains and area coverage studied in wireless sensor networks. \cite{brambilla2013swarm} %fuck references babes. 
 	
 \item \textbf{Coordinated motion}
-Enables robots to move together like a swarm of locusts, a school of fish or a flock of birds. %rewrite all this shit TOOOOO
-%TODO:
+Enables robots to move together like a swarm of locusts, a school of fish or a flock of birds. Coordinated motion is similar to pattern formation and often uses similar mechanism as pattern formation such as virtual forces. Navigating effectively as a swarm reduces interference between agents, increases the safety of individuals and reduces energy consumption \cite{parrish2002self}. Research performed in this domain is focused around maintaining a constanct distance between each other and how to calculate the overall heading direction of the swarm \cite{turgut2008self,ferrante2010flocking,baldassarre2003evolving} 
+	
+Another problem that falls under collective motion would be hole avoidance \cite{trianni2006cooperative,trianni2005emergent} 
 
 \item \textbf{Collective transport} Collective transport has become benchmark for swarm robotics due to the fact is requires numerous collaborative aspects such as coherence, task allocation, coherence, conflict resolution and communication. Mataric et al use a simple communication protocol on real robots to compensate for noise-ridden sensing to use a group of robots to move a box \cite{mataric1995cooperative}. Hiroshi et al do not utilize explicit communication but rather allow robots to infer the intention of other robots via their behaviour, in order to enable the robots to correctly place desks in an environment and the study indicates the benefit of collaboration \cite{sugie1995placing}
 	
 Gerkey et al implement a dynamic task allocation for a robot group along with an auction-based mechanism using publish/subscribe communication to once again perform a box pushing exercise. \cite{gerkey2002sold}
 
-The SWARM-BOTS project involved substantial work with the s-bots. S-bot robots have the ability to link to each other. Experimentation showed that the chained s-bots were able to transport items more effectively \cite{gross2004group, dorigo2005swarm}. Many of the experiments were conducted on real robots. 
+The SWARM-BOTS project involved substantial work with the s-bots. S-bot robots have the ability to link to each other. Experimentation showed that the chained s-bots were able to transport items more effectively \cite{gross2004group, dorigo2005swarm, ferrante2013socially}. Many of the experiments were conducted on real robots. 
 
 \end{itemize}
 		
 \subsubsection{Collective decision-making}
 \begin{itemize}
-	\item Consensus achievement
-	\item Task allocation
-	\item Division of Labour
+	\item \textbf{Consensus achievement} is the process of how a group of robots come to a decision among a variety of alternative choices in order to maximise system performance. This is observed in ant colonies in order to determine the shortest path \cite{bonabeau2001self} and bees decide on the next best site for a nest \cite{seeley2001nest}
+	
+	\item \textbf{Task allocation or Division of Labour} - Division of labour occurs naturally in insect colonies \cite{gautrais2002emergent}, most notably in bees and ants.
+
+Division of labour is a key primitive problem  in swarm robotics. Most tasks require different behaviours in order to reach completion. The goal of division of labour is how resources can most effectively be assigned behaviours to optimally achieve the final goal. Division of labour is usually addressed as part of a more complex problem such as foraging \cite{jones2003adaptive, krieger2000call}.
+ 
+A common division of labour problem addresses achieving the optimal quantity of robots performing an activity as opposed to resting. Too many robots performing a task may increase the number of collisions and thus decrease the overall efficiency or too many performing the tasks might just be wasting energy thus motivating the need to achieve effective division of labour between active and passive robots. 
+
+%NEED TO FIGURE OUT HOW TO TREAT IN BIGGER SCHEME
 \end{itemize}
 
 \subsubsection{Complex behaviours}
 %Research in swarm robotics seems to be divided into two level: More primitive functionality addressing the core concepts of swarm robotics, such as aggregation, etc, etc and complex functionality which are more concerned with the real-life application and require a combination of primitive behaviours.
-The behaviors are generally single behaviors which can be seen as granular swarm robotics problems. Some problems are a combination of these simpler behaviour types. Some of the behaviors that may fall into that category are as follows
+The behaviors are generally single behaviors which can be seen as granular swarm robotics problems. Some problems are a combination of these simpler behaviour types. Some of the behaviors that may fall into that category are as follows:
 
-\begin{itemize}
-	\item self-assembly
-	\item hole avoidance
-	\item foraging
-	\item self-deployment
-\end{itemize}
-
+%change this
 \subsubsection{Division of Labour}
-Division of labour occurs naturally in insect colonies \cite{gautrais2002emergent}, most notably in bees and ants.
-
-Division of labour is a key primitive problem  in swarm robotics. Most tasks require different behaviours in order to reach completion. The goal of division of labour is how resources can most effectively be assigned behaviours to optimally achieve the final goal. Division of labour is usually addressed as part of a more complex problem such as foraging \cite{jones2003adaptive}.
- 
-A common division of labour problem addresses achieving the optimal quantity of robots performing an activity as opposed to resting. Too many robots performing a task may increase the number of collisions and thus decrease the overall efficiency or too many performing the tasks might just be wasting energy thus motivating the need to achieve effective division of labour between active and passive robots.
-
-Labella et al show  that the addition of an adaptive parameter brings forth division of labour between the groups members \cite{labella2006division}. The parameter is an indication of the ants success rate at retrieving items in the environment and the tasks to be divided would be to achieve an effective number of robots foraging and those resting.
 
 \section{Division of Labour}
 \label{chap:divisionoflabour}
@@ -513,8 +532,6 @@ The key similarity between network models and foraging for work models is that d
 \subsubsection{Summary} 
 Existing models of division of labor are more exploratory but reveal important general principles, however few models have been tested and proven
 %need more methinks
-
-
 
 \section{Challenges}
 %Need to bulk up
