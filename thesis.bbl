@@ -60,6 +60,17 @@ Samuel~N Beshers and Jennifer~H Fewell.
 \newblock Models of division of labor in social insects.
 \newblock {\em Annual review of entomology}, 46(1):413--440, 2001.
 
+\bibitem{beshers2001social}
+SN~Beshers, ZY~Huang, Y~Oono, and GE~Robinson.
+\newblock Social inhibition and the regulation of temporal polyethism in honey
+  bees.
+\newblock {\em Journal of Theoretical Biology}, 213(3):461--479, 2001.
+
+\bibitem{bonabeau2001self}
+Eric Bonabeau, S~Camazine, JL~Deneubourg, NR~Franks, J~Sneyd, and G~Theraulaz.
+\newblock Self-organization in biological systems.
+\newblock {\em Princeton Univer}, 2001.
+
 \bibitem{brambilla2013swarm}
 Manuele Brambilla, Eliseo Ferrante, Mauro Birattari, and Marco Dorigo.
 \newblock Swarm robotics: a review from the swarm engineering perspective.
@@ -81,6 +92,13 @@ Nikolaus Correll and Alcherio Martinoli.
   inspection of complex engineered structures.
 \newblock In {\em Bulletin of the Swiss Society for Automatic Control}.
   Citeseer, 2007.
+
+\bibitem{deneubourg1987self}
+J-L Deneubourg, Simon Goss, Jean-Michel Pasteels, Dominique Fresneau, and J-P
+  Lachaud.
+\newblock Self-organization mechanisms in ant societies. ii: Learning in
+  foraging and division of labor.
+\newblock {\em Experientia. Supplementum}, (54):177--196, 1987.
 
 \bibitem{dhariwal2004bacterium}
 Amit Dhariwal, Gaurav Sukhatme, and Aristides~AG Requicha.
@@ -111,6 +129,19 @@ Marco Dorigo and Erol Sahin.
 \newblock Swarm robotics.
 \newblock {\em Auton. Robots}, 17(2-3):111--113, 2004.
 
+\bibitem{dorigo2005swarm}
+Marco Dorigo, Elio Tuci, Roderich Gro{\ss}, Vito Trianni, Thomas~Halva Labella,
+  Shervin Nouyan, Christos Ampatzis, Jean-Louis Deneubourg, Gianluca
+  Baldassarre, Stefano Nolfi, et~al.
+\newblock The swarm-bots project.
+\newblock In {\em Swarm Robotics}, pages 31--44. Springer, 2005.
+
+\bibitem{fewell1999division}
+Jennifer~H Fewell and Susan~M Bertram.
+\newblock Division of labor in a dynamic environment: response by honeybees
+  (apis mellifera) to graded changes in colony pollen stores.
+\newblock {\em Behavioral ecology and sociobiology}, 46(3):171--179, 1999.
+
 \bibitem{frimmel2002recent}
 HE~Frimmel and WEL Minter.
 \newblock Recent developments concerning the geological history and genesis of
@@ -125,6 +156,18 @@ Simon Garnier, Christian Jost, Rapha{\"e}l Jeanson, Jacques Gautrais, Masoud
   of cockroach-like-robots.
 \newblock In {\em Advances in artificial life}, pages 169--178. Springer, 2005.
 
+\bibitem{gautrais2002emergent}
+Jacques Gautrais, Guy Theraulaz, Jean-Louis Deneubourg, and Carl Anderson.
+\newblock Emergent polyethism as a consequence of increased colony size in
+  insect societies.
+\newblock {\em Journal of Theoretical Biology}, 215(3):363--373, 2002.
+
+\bibitem{gerkey2002sold}
+Brian~P Gerkey and Maja~J Mataric.
+\newblock Sold!: Auction methods for multirobot coordination.
+\newblock {\em Robotics and Automation, IEEE Transactions on}, 18(5):758--768,
+  2002.
+
 \bibitem{gerkey2004formal}
 Brian~P Gerkey and Maja~J Matari{\'c}.
 \newblock A formal analysis and taxonomy of task allocation in multi-robot
@@ -138,6 +181,24 @@ Dani Goldberg and Maja~J Mataric.
   distributed multi-robot collection tasks.
 \newblock In {\em Robot Teams: From Diversity to Polymorphism}, pages 315--344.
   A K Peters Ltd, 2001.
+
+\bibitem{gordon1992parallel}
+Deborah~M Gordon, Brian~C Goodwin, and Lynn~EH Trainor.
+\newblock A parallel distributed model of the behaviour of ant colonies.
+\newblock {\em Journal of theoretical Biology}, 156(3):293--307, 1992.
+
+\bibitem{goss1992harvesting}
+Simon Goss and Jean-Louis Deneubourg.
+\newblock Harvesting by a group of robots.
+\newblock In {\em Proceedings of the First European Conference on Artificial
+  Life}, pages 195--204, 1992.
+
+\bibitem{gross2004group}
+Roderich Gro{\ss} and Marco Dorigo.
+\newblock Group transport of an object to a target that only some group members
+  may sense.
+\newblock In {\em Parallel Problem Solving from Nature-PPSN VIII}, pages
+  852--861. Springer, 2004.
 
 \bibitem{hamann2008framework}
 Heiko Hamann and Heinz W{\"o}rn.
@@ -163,6 +224,11 @@ Nicholas~R Hoff, Amelia Sagoff, Robert~J Wood, and Radhika Nagpal.
 Bert H{\"o}lldobler.
 \newblock {\em The ants}.
 \newblock Harvard University Press, 1990.
+
+\bibitem{huang1996regulation}
+Zhi-Yong Huang and Gene~E Robinson.
+\newblock Regulation of honey bee division of labor by colony age demography.
+\newblock {\em Behavioral Ecology and Sociobiology}, 39(3):147--158, 1996.
 
 \bibitem{janson2007searching}
 Stefan Janson, Martin Middendorf, and Madeleine Beekman.
@@ -194,6 +260,11 @@ Serge Kernbach, Ronald Thenius, Olga Kernbach, and Thomas Schmickl.
 \newblock Re-embodiment of honeybee aggregation behavior in an artificial
   micro-robotic system.
 \newblock {\em Adaptive Behavior}, 17(3):237--259, 2009.
+
+\bibitem{kushleyev2013towards}
+Alex Kushleyev, Daniel Mellinger, Caitlin Powers, and Vijay Kumar.
+\newblock Towards a swarm of agile micro quadrotors.
+\newblock {\em Autonomous Robots}, 35(4):287--300, 2013.
 
 \bibitem{labella2006division}
 Thomas~H Labella, Marco Dorigo, and Jean-Louis Deneubourg.
@@ -242,6 +313,19 @@ Sylvain Martel and Mahmood Mohammadi.
   flagellated bacteria to perform complex micro-assembly tasks.
 \newblock In {\em Robotics and Automation (ICRA), 2010 IEEE International
   Conference on}, pages 500--505. IEEE, 2010.
+
+\bibitem{mataric1995cooperative}
+Maja~J Mataric, Martin Nilsson, and Kristian~T Simsarin.
+\newblock Cooperative multi-robot box-pushing.
+\newblock In {\em Intelligent Robots and Systems 95.'Human Robot Interaction
+  and Cooperative Robots', Proceedings. 1995 IEEE/RSJ International Conference
+  on}, volume~3, pages 556--561. IEEE, 1995.
+
+\bibitem{mellinger2013cooperative}
+Daniel Mellinger, Michael Shomin, Nathan Michael, and Vijay Kumar.
+\newblock Cooperative grasping and transport using multiple quadrotors.
+\newblock In {\em Distributed autonomous robotic systems}, pages 545--558.
+  Springer, 2013.
 
 \bibitem{menzel2001cognitive}
 Randolf Menzel and Martin Giurfa.
@@ -299,9 +383,21 @@ Stefano Nolfi and Dario Floreano.
   artificial evolution?
 \newblock {\em Artificial Life}, 4(4):311--335, 1998.
 
+\bibitem{nouyan2006chain}
+Shervin Nouyan and Marco Dorigo.
+\newblock Chain based path formation in swarms of robots.
+\newblock In {\em Ant Colony Optimization and Swarm Intelligence}, pages
+  120--131. Springer, 2006.
+
+\bibitem{nouyan2006group}
+Shervin Nouyan, Roderich Gro{\ss}, Marco Dorigo, Michael Bonani, and Francesco
+  Mondada.
+\newblock Group transport along a robot chain in a self-organised robot colony.
+\newblock In {\em IAS}, pages 433--442, 2006.
+
 \bibitem{oster1978caste}
-George~F Oster and Edward~Osborne Wilson.
-\newblock {\em Caste and ecology in the social insects.(MPB-12)}.
+George~F Oster and Edward~O Wilson.
+\newblock {\em Caste and ecology in the social insects}.
 \newblock Princeton University Press, 1978.
 
 \bibitem{ostergaard2001emergent}
@@ -310,11 +406,28 @@ Esben~H {\O}stergaard, Gaurav~S Sukhatme, and Maja~J Mataric.
   performance in multi-robot constrained-space foraging tasks.
 \newblock In {\em In Autonomous Agents}. Citeseer, 2001.
 
+\bibitem{pacala1996effects}
+Stephen~W Pacala, Deborah~M Gordon, and HCJ Godfray.
+\newblock Effects of social group size on information transfer and task
+  allocation.
+\newblock {\em Evolutionary Ecology}, 10(2):127--165, 1996.
+
+\bibitem{page1990self}
+Robert~E Page~Jr and Sandra~D Mitchell.
+\newblock Self organization and adaptation in insect societies.
+\newblock In {\em PSA: Proceedings of the biennial meeting of the philosophy of
+  science association}, pages 289--298. JSTOR, 1990.
+
 \bibitem{passino2010bacterial}
 Kevin~M Passino.
 \newblock Bacterial foraging optimization.
 \newblock {\em International Journal of Swarm Intelligence Research (IJSIR)},
   1(1):1--16, 2010.
+
+\bibitem{plowright1988elitism}
+R~Christopher Plowright and Catherine~MS Plowright.
+\newblock Elitism in social insects: a positive feedback model.
+\newblock 1988.
 
 \bibitem{resnick1994turtles}
 Mitchel Resnick.
@@ -322,11 +435,22 @@ Mitchel Resnick.
   parallel microworlds}.
 \newblock Mit Press, 1994.
 
+\bibitem{robinson1992regulation}
+Gene~E Robinson.
+\newblock Regulation of division of labor in insect societies.
+\newblock {\em Annual review of entomology}, 37(1):637--665, 1992.
+
 \bibitem{ronacher2008path}
 Bernhard Ronacher.
 \newblock Path integration as the basic navigation mechanism of the desert ant
   cataglyphis fortis (forel, 1902)(hymenoptera: Formicidae).
 \newblock {\em Myrmecological News}, 11:53--62, 2008.
+
+\bibitem{rubenstein2012kilobot}
+Michael Rubenstein, Christian Ahler, and Radhika Nagpal.
+\newblock Kilobot: A low cost scalable robot system for collective behaviors.
+\newblock In {\em Robotics and Automation (ICRA), 2012 IEEE International
+  Conference on}, pages 3293--3298. IEEE, 2012.
 
 \bibitem{csahin2005swarm}
 Erol {\c{S}}ahin.
@@ -338,6 +462,24 @@ Erol {\c{S}}ahin.
 Erol {\c{S}}ahin and Alan Winfield.
 \newblock Special issue on swarm robotics.
 \newblock {\em Swarm Intelligence}, 2(2):69--72, 2008.
+
+\bibitem{schmickl2007navigation}
+Thomas Schmickl and Karl Crailsheim.
+\newblock A navigation algorithm for swarm robotics inspired by slime mold
+  aggregation.
+\newblock In {\em Swarm robotics}, pages 1--13. Springer, 2007.
+
+\bibitem{schmickl2011beeclust}
+Thomas Schmickl and Heiko Hamann.
+\newblock Beeclust: A swarm algorithm derived from honeybees.
+\newblock {\em Bio-inspired Computing and Communication Networks. CRC Press
+  (March 2011)}, 2011.
+
+\bibitem{schmickl2009two}
+Thomas Schmickl, Heiko Hamann, Heinz W{\"o}rn, and Karl Crailsheim.
+\newblock Two different approaches to a macroscopic model of a bio-inspired
+  robotic swarm.
+\newblock {\em Robotics and Autonomous Systems}, 57(9):913--921, 2009.
 
 \bibitem{schmickl2007collective}
 Thomas Schmickl, Christoph M{\"o}slinger, and Karl Crailsheim.
@@ -356,16 +498,42 @@ Thomas~D Seeley.
   colonies}.
 \newblock Harvard University Press, 2009.
 
+\bibitem{soysal2007aggregation}
+Onur Soysal, Erkin Bah{\c{c}}eci, and Erol Sahin.
+\newblock Aggregation in swarm robotic systems: Evolution and probabilistic
+  control.
+\newblock {\em Turkish Journal Electrical Engineering}, 15(2):199--225, 2007.
+
 \bibitem{sugawara2002swarming}
 Ken Sugawara and Toshinori Watanabe.
 \newblock Swarming robots-foraging behavior of simple multirobot system.
 \newblock In {\em Intelligent Robots and Systems, 2002. IEEE/RSJ International
   Conference on}, volume~3, pages 2702--2707. IEEE, 2002.
 
+\bibitem{sugie1995placing}
+Hiroshi Sugie, Yasuhiro Inagaki, Shuchir Ono, Hidyuki Aisu, and Tatsuo Unemi.
+\newblock Placing objects with multiple mobile robots-mutual help using
+  intention inference.
+\newblock In {\em Robotics and Automation, 1995. Proceedings., 1995 IEEE
+  International Conference on}, volume~2, pages 2181--2186. IEEE, 1995.
+
 \bibitem{switzer1993site}
 Paul~V Switzer.
 \newblock Site fidelity in predictable and unpredictable habitats.
 \newblock {\em Evolutionary Ecology}, 7(6):533--555, 1993.
+
+\bibitem{theraulaz1998response}
+Guy Theraulaz, Eric Bonabeau, and JN~Denuebourg.
+\newblock Response threshold reinforcements and division of labour in insect
+  societies.
+\newblock {\em Proceedings of the Royal Society of London B: Biological
+  Sciences}, 265(1393):327--332, 1998.
+
+\bibitem{trianni2003evolving}
+Vito Trianni, Roderich Gro{\ss}, Thomas~H Labella, Erol {\c{S}}ahin, and Marco
+  Dorigo.
+\newblock Evolving aggregation behaviors in a swarm of robots.
+\newblock In {\em Advances in artificial life}, pages 865--874. Springer, 2003.
 
 \bibitem{vaughan2000blazing}
 Richard~T Vaughan, Kasper St{\o}y, Gaurav~S Sukhatme, and Maja~J Matari{\'c}.
@@ -395,6 +563,13 @@ Alan F.~T. Winfield.
 \newblock Foraging robots.
 \newblock In {\em Encyclopedia of Complexity and Systems Science}, pages
   3682--3700. 2009.
+
+\bibitem{yan2011algorithm}
+Xinan Yan, Alei Liang, and Haibing Guan.
+\newblock An algorithm for self-organized aggregation of swarm robotics using
+  timer.
+\newblock In {\em Swarm Intelligence (SIS), 2011 IEEE Symposium on}, pages
+  1--7. IEEE, 2011.
 
 \bibitem{zhang2006honeybee}
 Shaowu Zhang, Sebastian Schwarz, Mario Pahl, Hong Zhu, and Juergen Tautz.
