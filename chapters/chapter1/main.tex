@@ -96,7 +96,7 @@ Beni et al \cite{beni1991theoretical} explores which problems would have needed 
 \label{sec:first:advantages}
 
 
-Swarm robots draws inspiration from insect swarms due to the following characteristics: Robustness, flexibility, scalability. The following sections describe those characteristics of insect swarms, from a swarm robotics context, that all swarm robotics algorithms strive to achieve. 
+Swarm robots draws inspiration from insect swarms due to the characteristics of robustness, flexibility, scalability and in a lesser way cost-effectiveness. The following sections describe those characteristics of insect swarms, from a swarm robotics context, that all swarm robotics algorithms strive to achieve. 
 
 \subsection{Robustness}
 \label{robustness}
@@ -145,7 +145,6 @@ Macroscopic models are focused on a higher level view of the entire system and t
 
 Similarly differential equations have been used to model swarms and have the advantage of includng noise, stochasticity and spatiality however, these differential equations are often computationally expensive and complex to solve \cite{hamann2008framework, prorok2011multi}
 
-
 	\item \textbf{Classical Control and stability theory} Classical control and stability theory has been used to prove swarm properties \cite{gazi2005stability,liu2004stable, schwager2011time}. Classical control methods have the advantage of being based on sound mathematics, however they often rely on assumptions in order to simplify the modelling process yet in swarm robotics those assumptions are usually continuously violated.
 	\item \textbf{Other methods}
 	A whole variety of other mathematical modeling approaches have also been used in a swarm robotics context such as linear time temporal logic to define safety and liveness of swarm individuals \cite{winfield2005formal}, probabilistic model checking to verify swarm properties {konur2012analysing}, or using branching processes to model communication of a swarm of aerial robots \cite{mathews2010establishing}. 
@@ -168,7 +167,7 @@ The disadvantage of performing real robot analysis is that experimentation is ge
 \subsubsection{Non-adaptive}
 %TODO: 
 \begin{itemize}
-	\item \textbf{Subsumption} - the invention of subsumption architecture almost promoted the development of swarm robotics by simplifying the process of building robots. Each behaviour forms a separate module that can inhibit other behaviours. Discussed in more detail in section %TODO - cite label
+	\item \textbf{Subsumption} - the invention of subsumption architecture promoted the development of swarm robotics by simplifying the process of building robots. Each behaviour forms a separate module that can inhibit other behaviours. Discussed in more detail in section. %TODO - cite label
 	\item \textbf{Probabilistic Finite State Automata} Probabilistic finite state automata are a way to represent dynamical systems with finite state spaces. Each beahviour is a state and transistions are defined between these states with some probabilities and external input \cite{soysal2005probabilistic,labella2004efficiency} 
 	
 	\item \textbf{Distributed Potential Field Methods}
@@ -177,15 +176,12 @@ The disadvantage of performing real robot analysis is that experimentation is ge
 
 \subsubsection{Learning}
 
-%Keep short
-\begin{itemize}
-	\item \textbf{Reinforcement Learning}
-	
-	\item \textbf{Neural Networks}
-	In swarm robotics techniques, neural networks are used 
-\end{itemize}	
+One can provide agents the tools in order to learn behaviours suited to solve certain problems. A number of techniques are used in order to learn behaviours, most notably reinforcement learning and classically trained neural networks. %Need citations for swarm robotics
+
+%Keep short	
 
 \subsubsection{Evolution}
+Neural network or tree-based controllers for swarms of robots can be evolved or optimized using a variety of algorithms from swarm to genetic techniques \cite{baldassarre2003evolving}. 
 %Keep super short
 
 %Can probably just make an itemized list

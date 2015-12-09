@@ -1,5 +1,11 @@
 \newcommand{\noopsort}[1]{} \newcommand{\singleletter}[1]{#1}
-\begin{thebibliography}{10}
+\begin{thebibliography}{100}
+
+\bibitem{abbott2006emergence}
+Russ Abbott.
+\newblock Emergence explained: Abstractions: Getting epiphenomena to do real
+  work.
+\newblock {\em Complexity}, 12(1):13--26, 2006.
 
 \bibitem{alers2014biologically}
 Sjriek Alers, Daniel Claes, Karl Tuyls, and Gerhard Weiss.
@@ -14,6 +20,36 @@ Pavlos Antoniou, Andreas Pitsillides, Tim Blackwell, Andries Engelbrecht, and
 \newblock Congestion control in wireless sensor networks based on bird flocking
   behavior.
 \newblock {\em Computer Networks}, 2012.
+
+\bibitem{arai1989collision}
+Tamio Arai, Hiroyuki Ogata, and Takayasu Suzuki.
+\newblock Collision avoidance among multiple robots using virtual impedance.
+\newblock In {\em Intelligent Robots and Systems' 89. The Autonomous Mobile
+  Robots and Its Applications. IROS'89. Proceedings., IEEE/RSJ International
+  Workshop on}, pages 479--485. IEEE, 1989.
+
+\bibitem{arai2002editorial}
+Tamio Arai, Enrico Pagello, and Lynne~E Parker.
+\newblock Editorial: Advances in multi-robot systems.
+\newblock {\em IEEE Transactions on robotics and automation}, 18(5):655--661,
+  2002.
+
+\bibitem{arkin1990integrating}
+Ronald~C Arkin.
+\newblock Integrating behavioral, perceptual, and world knowledge in reactive
+  navigation.
+\newblock {\em Robotics and autonomous systems}, 6(1):105--122, 1990.
+
+\bibitem{asama2013distributed}
+Hajime Asama, Toshio Fukuda, Tamio Arai, and Isao Endo.
+\newblock {\em Distributed autonomous robotic systems 2}.
+\newblock Springer Science \& Business Media, 2013.
+
+\bibitem{bahceci2003review}
+Erkin Bahceci, Onur Soysal, and Erol Sahin.
+\newblock A review: Pattern formation and adaptation in multi-robot systems.
+\newblock {\em Robotics Institute, Carnegie Mellon University, Pittsburgh, PA,
+  Tech. Rep. CMU-RI-TR-03-43}, 2003.
 
 \bibitem{bailishive}
 Peter Bailis and Peter Lifland.
@@ -50,6 +86,30 @@ Tucker Balch, Gary Boone, Thomas Collins, Harold Forbes, Doug MacKenzie, and
 \newblock Io, ganymede, and callisto a multiagent robot trash-collecting team.
 \newblock {\em AI magazine}, 16(2):39, 1995.
 
+\bibitem{baldassarre2003evolving}
+Gianluca Baldassarre, Stefano Nolfi, and Domenico Parisi.
+\newblock Evolving mobile robots able to display collective behaviors.
+\newblock {\em Artificial life}, 9(3):255--267, 2003.
+
+\bibitem{beckers1994local}
+Ralph Beckers, OE~Holland, and Jean-Louis Deneubourg.
+\newblock From local actions to global tasks: Stigmergy and collective
+  robotics.
+\newblock In {\em Artificial life IV}, volume 181, page 189, 1994.
+
+\bibitem{beni1991theoretical}
+Gerardo Beni and Jing Wang.
+\newblock Theoretical problems for the realization of distributed robotic
+  systems.
+\newblock In {\em Robotics and Automation, 1991. Proceedings., 1991 IEEE
+  International Conference on}, pages 1914--1920. IEEE, 1991.
+
+\bibitem{beni1993swarm}
+Gerardo Beni and Jing Wang.
+\newblock Swarm intelligence in cellular robotic systems.
+\newblock In {\em Robots and Biological Systems: Towards a New Bionics?}, pages
+  703--712. Springer, 1993.
+
 \bibitem{bernstein1974seasonal}
 Ruth~A Bernstein.
 \newblock Seasonal food abundance and foraging activity in some desert ants.
@@ -76,15 +136,41 @@ Manuele Brambilla, Eliseo Ferrante, Mauro Birattari, and Marco Dorigo.
 \newblock Swarm robotics: a review from the swarm engineering perspective.
 \newblock {\em Swarm Intelligence}, 7(1):1--41, 2013.
 
+\bibitem{brooks1986robust}
+Rodney Brooks et~al.
+\newblock A robust layered control system for a mobile robot.
+\newblock {\em Robotics and Automation, IEEE Journal of}, 2(1):14--23, 1986.
+
+\bibitem{brooks1989robot}
+Rodney~A Brooks.
+\newblock A robot that walks; emergent behaviors from a carefully evolved
+  network.
+\newblock {\em Neural computation}, 1(2):253--262, 1989.
+
+\bibitem{brooks1990elephants}
+Rodney~A Brooks.
+\newblock Elephants don't play chess.
+\newblock {\em Robotics and autonomous systems}, 6(1):3--15, 1990.
+
 \bibitem{campo2007efficient}
 Alexandre Campo and Marco Dorigo.
 \newblock Efficient multi-foraging in swarm robotics.
 \newblock In {\em Advances in Artificial Life}, pages 696--705. Springer, 2007.
 
+\bibitem{cao1997cooperative}
+Y~Uny Cao, Alex~S Fukunaga, and Andrew Kahng.
+\newblock Cooperative mobile robotics: Antecedents and directions.
+\newblock {\em Autonomous robots}, 4(1):7--27, 1997.
+
 \bibitem{collett1998local}
 Matthew Collett, Thomas~S Collett, Sonja Bisch, and R{\"u}diger Wehner.
 \newblock Local and global vectors in desert ant navigation.
 \newblock {\em Nature}, 394(6690):269--272, 1998.
+
+\bibitem{connell1989colony}
+Jonathan~H Connell.
+\newblock A colony architecture for an artificial creature.
+\newblock Technical report, DTIC Document, 1989.
 
 \bibitem{correll2007challenging}
 Nikolaus Correll and Alcherio Martinoli.
@@ -92,6 +178,12 @@ Nikolaus Correll and Alcherio Martinoli.
   inspection of complex engineered structures.
 \newblock In {\em Bulletin of the Swiss Society for Automatic Control}.
   Citeseer, 2007.
+
+\bibitem{de1998modelling}
+Han de~Vries and Jacobus~C Biesmeijer.
+\newblock Modelling collective foraging by means of individual behaviour rules
+  in honey-bees.
+\newblock {\em Behavioral Ecology and Sociobiology}, 44(2):109--124, 1998.
 
 \bibitem{deneubourg1987self}
 J-L Deneubourg, Simon Goss, Jean-Michel Pasteels, Dominique Fresneau, and J-P
@@ -119,6 +211,11 @@ Marco Dorigo and Mauro Birattari.
 \newblock In {\em Encyclopedia of Machine Learning}, pages 36--39. Springer,
   2010.
 
+\bibitem{dorigo2014swarm}
+Marco Dorigo, Mauro Birattari, and Manuele Brambilla.
+\newblock Swarm robotics.
+\newblock {\em Scholarpedia}, 9(1):1463, 2014.
+
 \bibitem{dorigo2000ant}
 Marco Dorigo, Eric Bonabeau, and Guy Theraulaz.
 \newblock Ant algorithms and stigmergy.
@@ -136,11 +233,55 @@ Marco Dorigo, Elio Tuci, Roderich Gro{\ss}, Vito Trianni, Thomas~Halva Labella,
 \newblock The swarm-bots project.
 \newblock In {\em Swarm Robotics}, pages 31--44. Springer, 2005.
 
+\bibitem{ducatelle2011self}
+Frederick Ducatelle, Gianni~A Di~Caro, Carlo Pinciroli, and Luca~M Gambardella.
+\newblock Self-organized cooperation between robotic swarms.
+\newblock {\em Swarm Intelligence}, 5(2):73--96, 2011.
+
+\bibitem{ferrante2013socially}
+Eliseo Ferrante, Manuele Brambilla, Mauro Birattari, and Marco Dorigo.
+\newblock Socially-mediated negotiation for obstacle avoidance in collective
+  transport.
+\newblock In {\em Distributed Autonomous Robotic Systems}, pages 571--583.
+  Springer, 2013.
+
+\bibitem{ferrante2010flocking}
+Eliseo Ferrante, Ali~Emre Turgut, Nithin Mathews, Mauro Birattari, and Marco
+  Dorigo.
+\newblock Flocking in stationary and non-stationary environments: a novel
+  communication strategy for heading alignment.
+\newblock In {\em Parallel Problem Solving from Nature, PPSN XI}, pages
+  331--340. Springer, 2010.
+
 \bibitem{fewell1999division}
 Jennifer~H Fewell and Susan~M Bertram.
 \newblock Division of labor in a dynamic environment: response by honeybees
   (apis mellifera) to graded changes in colony pollen stores.
 \newblock {\em Behavioral ecology and sociobiology}, 46(3):171--179, 1999.
+
+\bibitem{flynn1987gnat}
+Anita~M Flynn.
+\newblock Gnat robots (and how they will change robotics).
+\newblock 1987.
+
+\bibitem{flynn1989world}
+Anita~M Flynn, Rodney Brooks, William~M Wells~III, David~S Barrett, et~al.
+\newblock The world's largest one cubic inch robot.
+\newblock In {\em Micro Electro Mechanical Systems, 1989, Proceedings, An
+  Investigation of Micro Structures, Sensors, Actuators, Machines and Robots.
+  IEEE}, pages 98--101. IEEE, 1989.
+
+\bibitem{freund1984design}
+E~Freund.
+\newblock On the design of multi-robot systems.
+\newblock In {\em Robotics and Automation. Proceedings. 1984 IEEE International
+  Conference on}, volume~1, pages 477--490. IEEE, 1984.
+
+\bibitem{freund1986pathfinding}
+E~Freund and H~Hoyer.
+\newblock Pathfinding in multi-robot systems: Solution and applications.
+\newblock In {\em Robotics and Automation. Proceedings. 1986 IEEE International
+  Conference on}, volume~3, pages 103--111. IEEE, 1986.
 
 \bibitem{frimmel2002recent}
 HE~Frimmel and WEL Minter.
@@ -149,6 +290,22 @@ HE~Frimmel and WEL Minter.
 \newblock {\em Special Publication-Society of Economic Geologists}, 9:17--46,
   2002.
 
+\bibitem{fukuda1990analysis}
+Toshio Fukuda, Yoshio Kawauchi, and Hajime Asama.
+\newblock Analysis and evaluation of cellular robotics (cebot) as a distributed
+  intelligent system by communication information amount.
+\newblock In {\em Intelligent Robots and Systems' 90.'Towards a New Frontier of
+  Applications', Proceedings. IROS'90. IEEE International Workshop on}, pages
+  827--834. IEEE, 1990.
+
+\bibitem{fukuda1989communication}
+Toshio Fukuda, Yoshio Kawauchi, and Martin Buss.
+\newblock Communication method of cellular robotics cebot as a selforganizing
+  robotic system.
+\newblock In {\em Intelligent Robots and Systems' 89. The Autonomous Mobile
+  Robots and Its Applications. IROS'89. Proceedings., IEEE/RSJ International
+  Workshop on}, pages 291--296. IEEE, 1989.
+
 \bibitem{garnier2005aggregation}
 Simon Garnier, Christian Jost, Rapha{\"e}l Jeanson, Jacques Gautrais, Masoud
   Asadpour, Gilles Caprari, and Guy Theraulaz.
@@ -156,11 +313,22 @@ Simon Garnier, Christian Jost, Rapha{\"e}l Jeanson, Jacques Gautrais, Masoud
   of cockroach-like-robots.
 \newblock In {\em Advances in artificial life}, pages 169--178. Springer, 2005.
 
+\bibitem{gauthier1987interprocess}
+David Gauthier, Paul Freedman, Gregory Carayannis, and Alfred~S Malowany.
+\newblock Interprocess communication for distributed robotics.
+\newblock {\em Robotics and Automation, IEEE Journal of}, 3(6):493--504, 1987.
+
 \bibitem{gautrais2002emergent}
 Jacques Gautrais, Guy Theraulaz, Jean-Louis Deneubourg, and Carl Anderson.
 \newblock Emergent polyethism as a consequence of increased colony size in
   insect societies.
 \newblock {\em Journal of Theoretical Biology}, 215(3):363--373, 2002.
+
+\bibitem{gazi2005stability}
+Veysel Gazi and Kevin~M Passino.
+\newblock Stability of a one-dimensional discrete-time asynchronous swarm.
+\newblock {\em Systems, Man, and Cybernetics, Part B: Cybernetics, IEEE
+  Transactions on}, 35(4):834--841, 2005.
 
 \bibitem{gerkey2002sold}
 Brian~P Gerkey and Maja~J Mataric.
@@ -200,6 +368,11 @@ Roderich Gro{\ss} and Marco Dorigo.
 \newblock In {\em Parallel Problem Solving from Nature-PPSN VIII}, pages
   852--861. Springer, 2004.
 
+\bibitem{gross2008self}
+Roderich Gro{\ss} and Marco Dorigo.
+\newblock Self-assembly at the macroscopic scale.
+\newblock {\em Proceedings of the IEEE}, 96(9):1490--1508, 2008.
+
 \bibitem{hamann2008framework}
 Heiko Hamann and Heinz W{\"o}rn.
 \newblock A framework of space--time continuous models for algorithm design in
@@ -213,6 +386,13 @@ Joshua~P Hecker, Kenneth Letendre, Karl Stolleis, Daniel Washington, and
   back again.
 \newblock In {\em Swarm Intelligence}, pages 252--259. Springer, 2012.
 
+\bibitem{hettiarachchi2009review}
+Suranga Hettiarachchi, William~M Spears, Blesson Varghese, and Gerard McKee.
+\newblock A review and implementation of swarm pattern formation and
+  transformation models.
+\newblock {\em International Journal of Intelligent Computing and Cybernetics},
+  2(4):786--817, 2009.
+
 \bibitem{hoff2010two}
 Nicholas~R Hoff, Amelia Sagoff, Robert~J Wood, and Radhika Nagpal.
 \newblock Two foraging algorithms for robot swarms using only local
@@ -224,6 +404,13 @@ Nicholas~R Hoff, Amelia Sagoff, Robert~J Wood, and Radhika Nagpal.
 Bert H{\"o}lldobler.
 \newblock {\em The ants}.
 \newblock Harvard University Press, 1990.
+
+\bibitem{howard2002mobile}
+Andrew Howard, Maja~J Matari{\'c}, and Gaurav~S Sukhatme.
+\newblock Mobile sensor network deployment using potential fields: A
+  distributed, scalable solution to the area coverage problem.
+\newblock In {\em Distributed Autonomous Robotic Systems 5}, pages 299--308.
+  Springer, 2002.
 
 \bibitem{huang1996regulation}
 Zhi-Yong Huang and Gene~E Robinson.
@@ -240,6 +427,12 @@ James~S Jennings, Greg Whelan, and William~F Evans.
 \newblock Cooperative search and rescue with a team of mobile robots.
 \newblock In {\em Advanced Robotics, 1997. ICAR'97. Proceedings., 8th
   International Conference on}, pages 193--200. IEEE, 1997.
+
+\bibitem{jennings1993commitments}
+Nick~R Jennings.
+\newblock Commitments and conventions: The foundation of coordination in
+  multi-agent systems.
+\newblock {\em The knowledge engineering review}, 8(03):223--250, 1993.
 
 \bibitem{jones2003adaptive}
 Chris Jones and Maja~J Mataric.
@@ -261,10 +454,27 @@ Serge Kernbach, Ronald Thenius, Olga Kernbach, and Thomas Schmickl.
   micro-robotic system.
 \newblock {\em Adaptive Behavior}, 17(3):237--259, 2009.
 
+\bibitem{krieger2000call}
+Michael~JB Krieger and Jean-Bernard Billeter.
+\newblock The call of duty: Self-organised task allocation in a population of
+  up to twelve mobile robots.
+\newblock {\em Robotics and Autonomous Systems}, 30(1):65--84, 2000.
+
+\bibitem{kube1993collective}
+C~Ronald Kube and Hong Zhang.
+\newblock Collective robotics: From social insects to robots.
+\newblock {\em Adaptive behavior}, 2(2):189--218, 1993.
+
 \bibitem{kushleyev2013towards}
 Alex Kushleyev, Daniel Mellinger, Caitlin Powers, and Vijay Kumar.
 \newblock Towards a swarm of agile micro quadrotors.
 \newblock {\em Autonomous Robots}, 35(4):287--300, 2013.
+
+\bibitem{labella2004efficiency}
+Thomas~H Labella, Marco Dorigo, and Jean-Louis Deneubourg.
+\newblock Efficiency and task allocation in prey retrieval.
+\newblock In {\em Biologically Inspired Approaches to Advanced Information
+  Technology}, pages 274--289. Springer, 2004.
 
 \bibitem{labella2006division}
 Thomas~H Labella, Marco Dorigo, and Jean-Louis Deneubourg.
@@ -279,6 +489,18 @@ Jong-Hyun Lee, Hyun-Tae Kim, and Chang~Wook Ahn.
   energy efficiency.
 \newblock In {\em Proceedings of the 6th International Conference on Ubiquitous
   Information Management and Communication}, page 100. ACM, 2012.
+
+\bibitem{lerman2002mathematical}
+Kristina Lerman and Aram Galstyan.
+\newblock Mathematical model of foraging in a group of robots: Effect of
+  interference.
+\newblock {\em Autonomous Robots}, 13(2):127--141, 2002.
+
+\bibitem{lerman2001macroscopic}
+Kristina Lerman, Aram Galstyan, Alcherio Martinoli, and Auke Ijspeert.
+\newblock A macroscopic analytical model of collaboration in distributed
+  robotic systems.
+\newblock {\em Artificial Life}, 7(4):375--393, 2001.
 
 \bibitem{lerman2005review}
 Kristina Lerman, Alcherio Martinoli, and Aram Galstyan.
@@ -300,6 +522,16 @@ Wenguo Liu, Alan~FT Winfield, Jin Sa, Jie Chen, and Lihua Dou.
   foraging robots.
 \newblock {\em Adaptive Behavior}, 15(3):289--305, 2007.
 
+\bibitem{liu2004stable}
+Yanfei Liu and Kevin~M Passino.
+\newblock Stable social foraging swarms in a noisy environment.
+\newblock {\em Automatic Control, IEEE Transactions on}, 49(1):30--44, 2004.
+
+\bibitem{lopez1987optimal}
+Joaquin L~Reyes Lopez.
+\newblock Optimal foraging in seed-harvester ants: computer-aided simulation.
+\newblock {\em Ecology}, pages 1630--1633, 1987.
+
 \bibitem{lumer1994diversity}
 Erik~D Lumer and Baldo Faieta.
 \newblock Diversity and adaptation in populations of clustering ants.
@@ -314,12 +546,33 @@ Sylvain Martel and Mahmood Mohammadi.
 \newblock In {\em Robotics and Automation (ICRA), 2010 IEEE International
   Conference on}, pages 500--505. IEEE, 2010.
 
+\bibitem{martinoli1999understanding}
+Alcherio Martinoli, Auke~Jan Ijspeert, and Francesco Mondada.
+\newblock Understanding collective aggregation mechanisms: From probabilistic
+  modelling to experiments with real robots.
+\newblock {\em Robotics and Autonomous Systems}, 29(1):51--63, 1999.
+
+\bibitem{mataric1990distributed}
+Maja~J Mataric.
+\newblock A distributed model for mobile robot environment-learning and
+  navigation.
+\newblock Technical report, DTIC Document, 1990.
+
 \bibitem{mataric1995cooperative}
 Maja~J Mataric, Martin Nilsson, and Kristian~T Simsarin.
 \newblock Cooperative multi-robot box-pushing.
 \newblock In {\em Intelligent Robots and Systems 95.'Human Robot Interaction
   and Cooperative Robots', Proceedings. 1995 IEEE/RSJ International Conference
   on}, volume~3, pages 556--561. IEEE, 1995.
+
+\bibitem{mathews2010establishing}
+Nithin Mathews, Anders~Lyhne Christensen, Eliseo Ferrante, Rehan O'Grady, and
+  Marco Dorigo.
+\newblock Establishing spatially targeted communication in a heterogeneous
+  robot swarm.
+\newblock In {\em Proceedings of the 9th International Conference on Autonomous
+  Agents and Multiagent Systems: volume 1-Volume 1}, pages 939--946.
+  International Foundation for Autonomous Agents and Multiagent Systems, 2010.
 
 \bibitem{mellinger2013cooperative}
 Daniel Mellinger, Michael Shomin, Nathan Michael, and Vijay Kumar.
@@ -418,16 +671,51 @@ Robert~E Page~Jr and Sandra~D Mitchell.
 \newblock In {\em PSA: Proceedings of the biennial meeting of the philosophy of
   science association}, pages 289--298. JSTOR, 1990.
 
+\bibitem{parrish2002self}
+Julia~K Parrish, Steven~V Viscido, and Daniel Gr{\"u}nbaum.
+\newblock Self-organized fish schools: an examination of emergent properties.
+\newblock {\em The biological bulletin}, 202(3):296--305, 2002.
+
 \bibitem{passino2010bacterial}
 Kevin~M Passino.
 \newblock Bacterial foraging optimization.
 \newblock {\em International Journal of Swarm Intelligence Research (IJSIR)},
   1(1):1--16, 2010.
 
+\bibitem{payton2001pheromone}
+David~W Payton, Michael~J Daily, Bruce Hoff, Michael~D Howard, and Craig~L Lee.
+\newblock Pheromone robotics.
+\newblock In {\em Intelligent Systems and Smart Manufacturing}, pages 67--75.
+  International Society for Optics and Photonics, 2001.
+
+\bibitem{pinciroli2011argos}
+Carlo Pinciroli, Vito Trianni, Rehan O'Grady, Giovanni Pini, Arne Brutschy,
+  Manuele Brambilla, Nithin Mathews, Eliseo Ferrante, Gianni~Di Caro, Frederick
+  Ducatelle, et~al.
+\newblock Argos: a modular, multi-engine simulator for heterogeneous swarm
+  robotics.
+\newblock In {\em Intelligent Robots and Systems (IROS), 2011 IEEE/RSJ
+  International Conference on}, pages 5027--5034. IEEE, 2011.
+
 \bibitem{plowright1988elitism}
 R~Christopher Plowright and Catherine~MS Plowright.
 \newblock Elitism in social insects: a positive feedback model.
 \newblock 1988.
+
+\bibitem{premvuti1990consideration}
+Suparerk Premvuti and Shin'ichi Yuta.
+\newblock Consideration on the cooperation of multiple autonomous mobile
+  robots.
+\newblock In {\em Intelligent Robots and Systems' 90.'Towards a New Frontier of
+  Applications', Proceedings. IROS'90. IEEE International Workshop on}, pages
+  59--63. IEEE, 1990.
+
+\bibitem{prorok2011multi}
+Amanda Prorok, Nikolaus Corell, and Alcherio Martinoli.
+\newblock Multi-level spatial modeling for stochastic distributed robotic
+  systems.
+\newblock {\em The International Journal of Robotics Research}, page
+  0278364911399521, 2011.
 
 \bibitem{resnick1994turtles}
 Mitchel Resnick.
@@ -451,6 +739,11 @@ Michael Rubenstein, Christian Ahler, and Radhika Nagpal.
 \newblock Kilobot: A low cost scalable robot system for collective behaviors.
 \newblock In {\em Robotics and Automation (ICRA), 2012 IEEE International
   Conference on}, pages 3293--3298. IEEE, 2012.
+
+\bibitem{ryti1984spatial}
+Randall~T Ryti and Ted~J Case.
+\newblock Spatial arrangement and diet overlap between colonies of desert ants.
+\newblock {\em Oecologia}, 62(3):401--404, 1984.
 
 \bibitem{csahin2005swarm}
 Erol {\c{S}}ahin.
@@ -492,17 +785,51 @@ Miguel Schneider-Fontan and Maja~J Mataric.
 \newblock {\em Robotics and Automation, IEEE Transactions on}, 14(5):815--822,
   1998.
 
+\bibitem{schwager2011time}
+Mac Schwager, Nathan Michael, Vijay Kumar, and Daniela Rus.
+\newblock Time scales and stability in networked multi-robot systems.
+\newblock In {\em Robotics and Automation (ICRA), 2011 IEEE International
+  Conference on}, pages 3855--3862. IEEE, 2011.
+
 \bibitem{seeley2009wisdom}
 Thomas~D Seeley.
 \newblock {\em The wisdom of the hive: the social physiology of honey bee
   colonies}.
 \newblock Harvard University Press, 2009.
 
+\bibitem{seeley2001nest}
+Thomas~D Seeley and Susannah~C Buhrman.
+\newblock Nest-site selection in honey bees: how well do swarms implement the"
+  best-of-n" decision rule?
+\newblock {\em Behavioral Ecology and Sociobiology}, 49(5):416--427, 2001.
+
+\bibitem{seeley1991collective}
+Thomas~D Seeley, Scott Camazine, and James Sneyd.
+\newblock Collective decision-making in honey bees: how colonies choose among
+  nectar sources.
+\newblock {\em Behavioral Ecology and Sociobiology}, 28(4):277--290, 1991.
+
 \bibitem{soysal2007aggregation}
 Onur Soysal, Erkin Bah{\c{c}}eci, and Erol Sahin.
 \newblock Aggregation in swarm robotic systems: Evolution and probabilistic
   control.
 \newblock {\em Turkish Journal Electrical Engineering}, 15(2):199--225, 2007.
+
+\bibitem{soysal2005probabilistic}
+Onur Soysal et~al.
+\newblock Probabilistic aggregation strategies in swarm robotic systems.
+\newblock In {\em Swarm Intelligence Symposium, 2005. SIS 2005. Proceedings
+  2005 IEEE}, pages 325--332. IEEE, 2005.
+
+\bibitem{stirling2010energy}
+Timothy Stirling and Dario Floreano.
+\newblock Energy efficient swarm deployment for search in unknown environments.
+\newblock In {\em Swarm Intelligence}, pages 562--563. Springer, 2010.
+
+\bibitem{sudd1975model}
+JH~Sudd.
+\newblock A model of digging behaviour and tunnel production in ants.
+\newblock {\em Insectes Sociaux}, 22(2):225--235, 1975.
 
 \bibitem{sugawara2002swarming}
 Ken Sugawara and Toshinori Watanabe.
@@ -529,11 +856,39 @@ Guy Theraulaz, Eric Bonabeau, and JN~Denuebourg.
 \newblock {\em Proceedings of the Royal Society of London B: Biological
   Sciences}, 265(1393):327--332, 1998.
 
+\bibitem{trianni2005emergent}
+Vito Trianni and Marco Dorigo.
+\newblock Emergent collective decisions in a swarm of robots.
+\newblock In {\em Swarm Intelligence Symposium, 2005. SIS 2005. Proceedings
+  2005 IEEE}, pages 241--248. IEEE, 2005.
+
 \bibitem{trianni2003evolving}
 Vito Trianni, Roderich Gro{\ss}, Thomas~H Labella, Erol {\c{S}}ahin, and Marco
   Dorigo.
 \newblock Evolving aggregation behaviors in a swarm of robots.
 \newblock In {\em Advances in artificial life}, pages 865--874. Springer, 2003.
+
+\bibitem{trianni2002modeling}
+Vito Trianni, Thomas~H Labella, Roderich Gross, Erol Sahin, Marco Dorigo, and
+  Jean-Louis Deneubourg.
+\newblock Modeling pattern formation in a swarm of self-assembling robots.
+\newblock {\em European community grant 1ST-2000-31010}, 2002.
+
+\bibitem{trianni2006cooperative}
+Vito Trianni, Stefano Nolfi, and Marco Dorigo.
+\newblock Cooperative hole avoidance in a swarm-bot.
+\newblock {\em Robotics and Autonomous Systems}, 54(2):97--103, 2006.
+
+\bibitem{turgut2008self}
+Ali~E Turgut, Hande {\c{C}}elikkanat, Fatih G{\"o}k{\c{c}}e, and Erol
+  {\c{S}}ahin.
+\newblock Self-organized flocking in mobile robot swarms.
+\newblock {\em Swarm Intelligence}, 2(2-4):97--120, 2008.
+
+\bibitem{vaughan2008massively}
+Richard Vaughan.
+\newblock Massively multi-robot simulation in stage.
+\newblock {\em Swarm Intelligence}, 2(2-4):189--208, 2008.
 
 \bibitem{vaughan2000blazing}
 Richard~T Vaughan, Kasper St{\o}y, Gaurav~S Sukhatme, and Maja~J Matari{\'c}.
@@ -542,10 +897,27 @@ Richard~T Vaughan, Kasper St{\o}y, Gaurav~S Sukhatme, and Maja~J Matari{\'c}.
 \newblock In {\em Distributed Autonomous Robotic Systems 4}, pages 111--120.
   Springer, 2000.
 
+\bibitem{wawerla2002collective}
+Jens Wawerla, Gawav~S Sukhatme, and Maja~J Matari{\'c}.
+\newblock Collective construction with multiple robots.
+\newblock In {\em Intelligent Robots and Systems, 2002. IEEE/RSJ International
+  Conference on}, volume~3, pages 2696--2701. IEEE, 2002.
+
 \bibitem{wehner2003desert}
 Rudiger Wehner.
 \newblock Desert ant navigation: how miniature brains solve complex tasks.
 \newblock {\em Journal of Comparative Physiology A}, 189(8):579--588, 2003.
+
+\bibitem{werfel2006extended}
+Justin Werfel and Radhika Nagpal.
+\newblock Extended stigmergy in collective construction.
+\newblock {\em Intelligent Systems, IEEE}, 21(2):20--28, 2006.
+
+\bibitem{werfel2011distributed}
+Justin~K Werfel, Kirsten Petersen, and Radhika Nagpal.
+\newblock Distributed multi-robot algorithms for the termes 3d collective
+  construction system.
+\newblock Institute of Electrical and Electronics Engineers, 2011.
 
 \bibitem{werger1996robotic}
 Barry~Brian Werger and Maja~J Mataric.
@@ -563,6 +935,14 @@ Alan F.~T. Winfield.
 \newblock Foraging robots.
 \newblock In {\em Encyclopedia of Complexity and Systems Science}, pages
   3682--3700. 2009.
+
+\bibitem{winfield2005formal}
+Alan~FT Winfield, Jin Sa, Mari-Carmen Fern{\'a}ndez-Gago, Clare Dixon, and
+  Michael Fisher.
+\newblock On formal specification of emergent behaviours in swarm robotic
+  systems.
+\newblock {\em International journal of advanced robotic systems},
+  2(4):363--370, 2005.
 
 \bibitem{yan2011algorithm}
 Xinan Yan, Alei Liang, and Haibing Guan.
