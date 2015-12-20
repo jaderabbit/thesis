@@ -174,10 +174,11 @@ Non adaptive behaviour design in general refers to techniques of behaviour desig
 
 \subsubsection{Learning}
 
-One can provide agents the tools in order to learn behaviours suited to solve certain problems. A number of techniques are used in order to learn behaviours, most notably reinforcement learning and classically trained neural networks. A nueral network controller for swarms could plausibly be trained using back propogation, but is in general paired with a evolutionary technique in order to evolve the neural network appropriately.as is described in the following sections. 
+One can provide agents the tools in order to learn behaviours suited to solve certain problems. A number of techniques are used in order to learn behaviours, most notably reinforcement learning and classically trained neural networks. A nueral network controller for swarms could plausibly be trained using back propogation, but is in general paired with a evolutionary technique in order to evolve the neural network appropriately.as is described in the following section. 
+%not sure I can do that
 
 \subsubsection{Evolution}
-Neural network or tree-based controllers for swarms of robots can be evolved or optimized using a variety of algorithms from swarm to genetic techniques \cite{baldassarre2003evolving, tuci2014evolutionary}. Francesca et al. define two evolutionary approaches AutoMoDe-Vanilla and EvoStick \cite{francesca2014automode,francesca2014experiment}. The experiments compared the effectiveness of evolving swarm robot controllers in comparison to human created controllers. The interesting result is that the evolved AutoMoDe-Vanilla controller was able to outperform the human created controller, thus showing the promise for using Evolutionary techniques to design swarm controllers.
+Neural network or tree-based controllers for swarms of robots can be evolved or optimized using a variety of algorithms from swarm to genetic techniques \cite{baldassarre2003evolving, tuci2014evolutionary}. Francesca et al define two evolutionary approaches AutoMoDe-Vanilla and EvoStick \cite{francesca2014automode,francesca2014experiment}. The experiments compared the effectiveness of evolving swarm robot controllers in comparison to human created controllers. The interesting result is that the evolved AutoMoDe-Vanilla controller was able to outperform the human created controller, thus showing the promise for using Evolutionary techniques to design swarm controllers.
 
 \subsection{Communication}
 
@@ -187,132 +188,87 @@ Neural network or tree-based controllers for swarms of robots can be evolved or 
 	\item \textbf{Interaction via communication}
 \end{itemize}
 
-\subsection{Problems}
+\subsection{Behaviors}
 \label{swarmrobotapplications}
 
-Brambilla et al \cite{brambilla2013swarm} present a taxonomy of swarm behaviors. The behaviors are divided as follows:
-
-\begin{itemize}
-	\item Spatially organizing behaviours		
-	\item Navigation behaviours
-	\item Collective decision-making
-	\item Others
-\end{itemize}
-
-These behaviors can be used as  ingredients to solve more complex applications - most prominently in this study, foraging. 
+Brambilla et al \cite{brambilla2013swarm} present a taxonomy of swarm behaviors. These behaviors can be used as ingredients to solve more complex applications - most prominently in this study, foraging. The problems are discussed in more details in the next sections.
 
 \subsubsection{Spatially Organizing Behaviors}
 
 \begin{itemize}
-	\item \textbf{Aggregation} Aggregation is the movement of individuals towards one another to form a cluster and it has become one of the fundamental swarm behaviours. In nature, aggregation aids protection from predators, the ability to defend against an unfavourable environment and locate partners \cite{bonabeau2001self}. A variety of approaches to swarm robot aggregation have been investigated \cite{yan2011algorithm, soysal2007aggregation, trianni2003evolving, dimarogonas2008connectedness }. A more recent approach finds inspiration in honey bees \cite{schmickl2011beeclust, schmickl2009two}
+	\item \textbf{Aggregation} Aggregation is the movement of individuals towards one another to form a cluster and has become one of the fundamental swarm behaviours. In nature, aggregation aids protection from predators, the ability to defend against an unfavourable environment and locate partners \cite{bonabeau2001self}. A variety of approaches to swarm robot aggregation have been investigated \cite{yan2011algorithm, soysal2007aggregation, trianni2003evolving, dimarogonas2008connectedness }. A more recent approach finds inspiration in honey bees \cite{schmickl2011beeclust, schmickl2009two}
 	
 	\item \textbf{Pattern formation}
 	%TODO:
 	The goal of pattern formation is for deployed robots to maintain specific distances between each other in order to create a particular shape. Implementation usually utilizes virtual forces in order to co-ordinate positioning of the agents. A review can be found in \cite{bahceci2003review, hettiarachchi2009review}
 	
-	\item \textbf{Path formation} Path formation is the creation of chains of robots in order to connect two or more points. The robot chains can serve as pheromone paths in order to navigate other robots through environments since in general, robots are not equipped with pheromone sensors and deployers. Research in path formation forms part of environmental exploration and navigation \cite{nouyan2006chain}.
-
-Path formation is useful as a navigational strategy is the swarm robotics context as traditional complex forms of navigation do not scale well with the number of robots involved. Path formation techniques also have the advantage of being more failure tolerant since they do not rely in the individual.
-
-Research in path formation initially had the robots emit a signal that omitted their position. Unfortunately this sort of approach would have to tackle the problem of a robot localizing itself globally \cite{goss1992harvesting}. Later, experimentation was performed with path formation with real robots in a prey retrieval experiment where the robots used physical contact to sense each other \cite{werger1996robotic}. More recent approaches attempt to give directionality to the chains by giving the chains a cyclic directional pattern - the approach was tested with real robots to transport heavy objects \cite{nouyan2006group}. Path formation has been used to connect two objects that are too distance from each other to be perceived at the same time by a robot. The control system used uses only local information and is completely homogeneous \cite{nouyan2006chain}.
+	\item \textbf{Path formation} is the creation of chains of robots in order to connect two or more points. The robot chains can serve as pheromone paths in order to navigate other robots through environments as generally, robots are not equipped with pheromone sensors and deployers. Research in path formation forms part of environmental exploration and navigation \cite{nouyan2006chain}. 
+	
+	Path formation is useful as a navigational strategy is the swarm robotics context as traditional complex forms of navigation do not scale well with the number of robots involved. Path formation techniques also have the advantage of being more failure tolerant since they do not rely on a specific individual.
+	
+	Research in path formation initially had the robots emit a signal communicating their position. Unfortunately this sort of approach would have to tackle the problem of a robot localizing itself globally \cite{goss1992harvesting}. Later, experimentation was performed with path formation with real robots in a prey retrieval experiment where the robots used physical contact to sense each other \cite{werger1996robotic}. More recent approaches attempt to give directionality to the chains by giving the chains a cyclic directional pattern - the approach was tested with real robots to transport heavy objects \cite{nouyan2006group}. Path formation has been used to connect two objects that are too distanct from each other to be perceived at the same time by a robot \cite{nouyan2006chain}.
 
 	\item \textbf{Self-assembly and morphogenesis}
-	%TODO:
-	Ants can create connect to each other to pull large prey and build bridges or walls. Self-assembly is where individual robots connect in order to create a compound structure of robots. Self-assembly was a very early behavior of research in the swarm robotics field - originally known as cellular robotics. The idea is that each robot forms a single cell or what metaphorically equates to a multi-cellular organism. In application, self-assembly can be used to stabilize robots on difficult terrain, combine forces to transport another object \cite{brambilla2013swarm}. Self-assembly has remained one of the more complex behaviours due to the challenge of morphogenesis and once the required shape has been achieved, how is the structure controlled in a consistent manner.  
+	Ants can create connections to each other to pull large prey and build bridges or walls. Self-assembly is where individual robots connect in order to create a compound structure of robots. Self-assembly was a very early behavior of research in the swarm robotics field - originally known as cellular robotics. The idea is that each robot forms a single cell or what metaphorically equates to a multi-cellular organism. In application, self-assembly can be used to stabilize robots on difficult terrain, combine forces to transport another object \cite{brambilla2013swarm}. Self-assembly has remained one of the more complex behaviours, due to the challenge of morphogenesis and how to control the structure in a consistent manner.  
 Reviews on self assembly are presented by Groß and Dorigo \cite{gross2008self}	
 	
 	\item \textbf{Object clustering and Assembling}
-	%TODO:
-	The goal of clustering is to group similar objects close to each others. The goal of assembling to link objects in a required way.  Approaches usually involve probabilistic finite state machines involving random walks across the environment and reaction towards available objects. Challenges in this field are to do with interference from robots and obstacles near the cluster site. A variety of implementations of clustering \cite{beckers1994local}, wall creation \cite{wawerla2002collective} and 2D and 3D structure creation \cite{werfel2006extended, werfel2011distributed}
-
-%FORAGING?!	
+	The goal of clustering is to group similar objects close to each others and the goal of assembling to link objects in a required way. Approaches usually involve probabilistic finite state machines involving random walks across the environment and reaction towards available objects. Challenges in this field are to do with interference from robots and obstacles near the cluster site. A variety of implementations of clustering \cite{beckers1994local}, wall creation \cite{wawerla2002collective} and 2D and 3D structure creation \cite{werfel2006extended, werfel2011distributed} have been developed. 
 \end{itemize}
 
 \subsubsection{Navigation behaviours}
+%TODO intro
 
 \begin{itemize}
 \item \textbf{Collective exploration}
-Brambilla et al \cite{} break collective exploration into two behaviors, namely area coverage and swarm-guided navigation. The goal of area coverage is to deploy robots with the aim of creating a grid of communicating robots over a space. Area coverage is usually approached by using virtual physical forces\cite{howard2002mobile,stirling2010energy}.
-Swarm-guided navigation is simply to navigate an environment using swarms. This is usually achieved using probabilistic finite state machines \cite{payton2001pheromone,ducatelle2011self} . 
-%There are loads more where that one came from	
-	Ants use pheromone trains and area coverage studied in wireless sensor networks. \cite{brambilla2013swarm} %fuck references babes. 
+Brambilla et al \cite{brambilla2013swarm} break collective exploration into two behaviors, namely area coverage and swarm-guided navigation. The goal of area coverage is to deploy robots with the aim of creating a grid of communicating robots over a space. Area coverage is usually approached by using virtual physical forces\cite{howard2002mobile,stirling2010energy}.
+Swarm-guided navigation is simply to navigate an environment using swarms which is usually achieved using probabilistic finite state machines \cite{payton2001pheromone,ducatelle2011self}. Ants use pheromone trains and area coverage studied in wireless sensor networks \cite{brambilla2013swarm}. 
 	
-\item \textbf{Coordinated motion}
-Enables robots to move together like a swarm of locusts, a school of fish or a flock of birds. Coordinated motion is similar to pattern formation and often uses similar mechanism as pattern formation such as virtual forces. Navigating effectively as a swarm reduces interference between agents, increases the safety of individuals and reduces energy consumption \cite{parrish2002self}. Research performed in this domain is focused around maintaining a constanct distance between each other and how to calculate the overall heading direction of the swarm \cite{turgut2008self,ferrante2010flocking,baldassarre2003evolving} 
+\item \textbf{Coordinated motion} 
+enables robots to move together like a swarm of locusts, a school of fish or a flock of birds. Coordinated motion is similar to pattern formation and often uses similar mechanism as pattern formation such as virtual forces. Navigating effectively as a swarm reduces interference between agents, increases the safety of individuals and reduces energy consumption \cite{parrish2002self}. Research performed in this domain is focused around maintaining a constant distance between each robot as well as on a means of calculating the overall heading direction of the swarm \cite{turgut2008self,ferrante2010flocking,baldassarre2003evolving} 
 	
 Another problem that falls under collective motion would be hole avoidance \cite{trianni2006cooperative,trianni2005emergent} 
 
-\item \textbf{Collective transport} Collective transport has become benchmark for swarm robotics due to the fact is requires numerous collaborative aspects such as coherence, task allocation, coherence, conflict resolution and communication. Mataric et al use a simple communication protocol on real robots to compensate for noise-ridden sensing to use a group of robots to move a box \cite{mataric1995cooperative}. Hiroshi et al do not utilize explicit communication but rather allow robots to infer the intention of other robots via their behaviour, in order to enable the robots to correctly place desks in an environment and the study indicates the benefit of collaboration \cite{sugie1995placing}
-	
-Gerkey et al implement a dynamic task allocation for a robot group along with an auction-based mechanism using publish/subscribe communication to once again perform a box pushing exercise. \cite{gerkey2002sold}
-
-The SWARM-BOTS project involved substantial work with the s-bots. S-bot robots have the ability to link to each other. Experimentation showed that the chained s-bots were able to transport items more effectively \cite{gross2004group, dorigo2005swarm, ferrante2013socially}. Many of the experiments were conducted on real robots. 
+\item \textbf{Collective transport} has become a benchmark for swarm robotics since it is requires numerous collaborative aspects such as task allocation, coherence, conflict resolution and communication. Mataric et al use a simple communication protocol on real robots to compensate for noise-ridden sensing to use a group of robots to move a box \cite{mataric1995cooperative}. Hiroshi et al do not utilize explicit communication but rather allow robots to infer the intention of other robots via their behaviour, in order to enable the robots to correctly place desks in an environment. The study indicates the benefit of collaboration \cite{sugie1995placing}. Gerkey et al implement a dynamic task allocation for a robot group along with an auction-based mechanism using publish/subscribe communication also to perform a box pushing exercise. \cite{gerkey2002sold}. The SWARM-BOTS project involved substantial work with the s-bots. S-bot robots have the ability to link to each other. Experimentation showed that the chained s-bots were able to transport items more effectively \cite{gross2004group, dorigo2005swarm, ferrante2013socially}.
 
 \end{itemize}
 		
 \subsubsection{Collective decision-making}
 \begin{itemize}
-	\item \textbf{Consensus achievement} is the process of how a group of robots come to a decision among a variety of alternative choices in order to maximise system performance. This is observed in ant colonies in order to determine the shortest path \cite{bonabeau2001self} and bees decide on the next best site for a nest \cite{seeley2001nest}
+	\item \textbf{Consensus achievement} is the process of how a group of robots come to a decision among a variety of alternative choices in order to maximise system performance. This is observed in ant colonies to determine the shortest path \cite{bonabeau2001self} and is used by bees decide on the next best site for a nest \cite{seeley2001nest}
 	
-	\item \textbf{Task allocation or Division of Labour} - Division of labour occurs naturally in insect colonies \cite{gautrais2002emergent}, most notably in bees and ants.
+	\item \textbf{Division of Labour} - Division of labour occurs naturally in insect colonies \cite{gautrais2002emergent}, most notably in bees and ants.
 
-Division of labour is a key primitive problem  in swarm robotics. Most tasks require different behaviours in order to reach completion. The goal of division of labour is how resources can most effectively be assigned behaviours to optimally achieve the final goal. Division of labour is usually addressed as part of a more complex problem such as foraging \cite{jones2003adaptive, krieger2000call}.
+Division of labour is a key primitive problem in swarm robotics. Most tasks require different behaviours in order to reach completion. The goal of division of labour is how resources can most effectively be assigned behaviours to optimally achieve the final goal. Division of labour is usually addressed as part of a more complex problem such as foraging.
  
-A common division of labour problem addresses achieving the optimal quantity of robots performing an activity as opposed to resting. Too many robots performing a task may increase the number of collisions and thus decrease the overall efficiency or too many performing the tasks might just be wasting energy thus motivating the need to achieve effective division of labour between active and passive robots. 
+A common division of labour problem addresses achieving the optimal quantity of robots performing an activity as opposed to resting. Too many robots performing a task may increase the number of collisions and thus decrease the overall efficiency or too many performing the tasks might just be wasting energy thus motivating the need to achieve effective division of labour between active and passive robots \cite{jones2003adaptive, krieger2000call}.
 
-%NEED TO FIGURE OUT HOW TO TREAT IN BIGGER SCHEME
 \end{itemize}
 
-\subsubsection{Complex behaviours}
-%Research in swarm robotics seems to be divided into two level: More primitive functionality addressing the core concepts of swarm robotics, such as aggregation, etc, etc and complex functionality which are more concerned with the real-life application and require a combination of primitive behaviours.
-The behaviors are generally single behaviors which can be seen as granular swarm robotics problems. Some problems are a combination of these simpler behaviour types. Some of the behaviors that may fall into that category are as follows:
-
-%change this
-\subsubsection{Division of Labour}
-
 \section{Division of Labour}
+
 \label{chap:divisionoflabour}
-Due to the importance of division of labor in this research, a variety division of labour strategies should be highlighted, explored and contrasted. 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%The same structure as before, including section, subsections and sub-subsections. Make sure that you follow the same conventions throughout, to avoid confusing the reader. Always remember to include a summary.
-%TODO: Add introduction - do last
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Due to the importance of division of labor in this research, a variety division of labour strategies should be highlighted, explored and contrasted. This chapter defines division of labour as well as analysis difference types of division of labour.
 
 \subsection{Definition}
 \label{sec:second:definition}
 
-Oster et al \cite{oster1978caste} define division of labour can be defined as a "stable" pattern of variation among workers within a colony in terms of the repertoire of tasks that workers perform where each worker specializes on a subset of the complete repertoire of tasks performed by the colony and the subset of tasks varies across individual workers in the colony %rephrase - this is a direct quote%
+Oster et al define division of labour as a "stable" pattern of variation among workers within a colony in terms of the repertoire of tasks that workers perform where each worker specializes on a subset of the complete repertoire of tasks performed by the colony and the subset of tasks varies across individual workers in the colony.  \cite{oster1978caste}  %rephrase - this is a direct quote%
 
 There are two types of division of labour in social insects: 
 \begin{enumerate}
-	\item Temporal polyethism refers to how patterns of tasks are correlated to worker age
-	\item Morphological polyethism where task performance correlates to the workers size and shape
+	\item Temporal polyethism - The pattern of tasks being performed by a worker correlates to the age of the worker. In nature, the younger workers may perform tasks within the nest while the older workers perform tasks outside of the nest.
+	\item Morphological polyethism - A worker with some extreme features in terms of size or shape, will specialize more in particular tasks and the more extreme that feature is, the narrower the repertoire of the of the worker. In nature, for example, larger workers would be more likely to form part of defence of the nest. \cite{beshers2001models}
 \end{enumerate}
 
-\subsubsection{Temporal Polyethism}
-The pattern of tasks being performed by workers correlates to the age of the worker. In nature, the younger workers may perform tasks within the nest while the older workers perform tasks outside of the nest.
-\subsubsection{Morphological Polyethism}
-A worker with some extreme features in terms of size or shape, will specialize more in particular tasks and the more extreme that feature is, the narrower the repertoire of the of the worker. In nature, for example, larger workers would be more likely to form part of defense of the nest. \cite{beshers2001models}
-
-\subsubsection{Discussion}
 Early work in morphological polyethism has been insufficient for a number of reasons \cite{huang1996regulation}: 
 
 %reword the below a bit more
 \begin{enumerate}
-	\item There appeared to be no correlation between worker task performance and morphism
-	\item workers respond to environmental changes and vary task performance independant of specific size and shapes
-	\item As a colony requires change, the workers show behavioral flexibility and perform tasks that were not suitably seen in repertoires or switch between tasks
-
+	\item There appeared to be no correlation between worker task performance and morphism.
+	\item Workers respond to environmental changes and vary task performance independant of specific size and shapes
+	\item As a colony requires change, the workers show behavioral flexibility and perform tasks that were not suitably seen in repertoires or switch between tasks.
 \end{enumerate}
-
-Due to the stated reasons, the hypothesis is that most social insects are able to perform all tasks save for reproduction.
 
 \subsubsection{Task Selection}
 Much of the study of division of labour is how workers select tasks. The factors contributing to the decision are divided into internal and external factors. Internal factors are the internal state of the individual such as neurological, hormonal, experience or genetic factors where as the external factors are environmental stimuli or worker to worker interaction and communication of the increasing need of workers assigned to a particular task. \cite{beshers2001models}
