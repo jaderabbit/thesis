@@ -76,7 +76,7 @@ The movement towards simplicity of controllers in the form of subsumption archit
 %TODO: Make flow
 %How to rearrange? Potentially remove?
 
-Early research involving collaboration of multiple agents was originally a way of verifying entomology research on social insects \cite{dorigo2014swarm, beni1993swarm, seeley2009wisdom}. Multiple researchers modeled and simulated aspects of the insect colonies that were being studied, in order to learn more about their self organizational mechanisms. 
+Early research involving collaboration of multiple agents was originally a way of verifying entomology research on social insects \cite{dorigo2014swarm, beni1993swarm, seeley2009wisdom}. Multiple researchers modelled and simulated aspects of the insect colonies that were being studied, in order to learn more about their self organizational mechanisms. 
 
 Extremely early work included modeling the excavation behaviour and tunnel creation of ants, to simulate the rate of excavation \cite{sudd1975model}. Agent simulation was used to validate a model about the spatial arrangement and diet overlap between colonies of desert ants \cite{ryti1984spatial} 
 
@@ -84,14 +84,12 @@ Seeley et al \cite{seeley1991collective} formulated a mathematical model of coll
 
 From the late 1980s till the mid 1990s, swarm robotics research emerged under many different guises: Collective robotics \cite{kube1993collective}, cellular robotics \cite{freund1984design}, co-operative mobile robotics \cite{cao1997cooperative}, distributed robotics \cite{asama2013distributed}, multi-robot systems \cite{mataric1995cooperative}. It's difficult to determine which terms were used first as they seem to have been in use concurrently. Essentially all of these terms have converged to what we now know as swarm robotics.
 
-In one of the earlier, more notable papers, Freund explores the design of the structure of multi-robot systems based on the nonlinear control approaches, which is demonstrated on the collision avoidance of two robots working on the same space \cite{freund1984design,freund1986pathfinding}.
-%TO DO: Actually read the above paper so as to make conclusions
-Around a similar time, multi-robot design paradigm ACTRESS was developed to also address the design of autonomous distributed robot systems \cite{asama1989design}. 
+In one of the earlier, more notable papers, Freund explores the design of the structure of multi-robot systems based on the nonlinear control approaches, which is demonstrated on the collision avoidance of two robots working on the same space \cite{freund1984design,freund1986pathfinding}. Around a similar time, multi-robot design paradigm ACTRESS was developed to also address the design of autonomous distributed robot systems \cite{asama1989design}. 
 
 In the late 1980s and early 1990s, Fukuda et al \cite{fukuda1989communication,fukuda1990analysis} introduced work in the field of cellular or configurable robotics. Cellular robotics is a robotic system which can reconfigure itself based on dynamic environmental requirements. The idea is that cells of smaller, simpler robots can dock with each other to form a single compound structure that can more effectively handle the pressures of the new environment. The research predominantly explored how the distributed communication between the cells would work. Fukanda et al. evaluate and describe their CEBOT structure with an optimal knowledge allocation method to communicate between cells. 
 Around the same time, Beni et al \cite{beni1991theoretical} explores which problems would have needed to be solved for cellular robotics to become feasible in real-world application.
 
-%TODO: Decide if necessary or expand
+The various ideas for the use of multiple robots to a achieve a task have now been grouped under the umbrella term of swarm robotics. Since the 1990s, swarm robotics has become a popular field of research in artificial intelligence that has peaked the interest of the world. 
 
 \section{Motivations}
 \label{sec:first:advantages}
@@ -100,6 +98,7 @@ Swarm robots draws inspiration from insect swarms due to the characteristics of 
 
 \subsection{Robustness}
 \label{robustness}
+
 
 In swarm robotics, robustness is defined as the ability to continue to function despite failures or abnormalities of the respective individuals and environments. Three aspects of insect swarm algorithms have been identified as enabling robustness: redundancy, decentralized coordination, and multiplicity of sensing \cite{csahin2005swarm}.
 
@@ -114,16 +113,14 @@ The use of a large number of individuals increases the total number of sensors. 
 A swarm robotics algorithm should exhibit the ability to adapt and adjust to new or changing requirements. Ants and bees do this by having effective division of labour strategies. The individuals in many insect societies, such as ants and bees, can take on a variety of different roles required by the nest such as brooding, foraging or nest maintenance when requirements of the nest change \cite{morley1946division}. The ability to take on different roles when requirements change is known as division of labour \cite{beshers2001models}. Many swarm robotics algorithms make use of social insect-like division of labour in order to adapt to changing requirements such as \cite{labella2006division, liu2007towards, gerkey2004formal}. The use of division of labour assists the swarm in maintaining flexibility.
 
 \subsection{Scalability}
-Scalability refers to the ability of the robotic swarm to expand the self-organizational mechanism for larger problems easily by simply adding more robots to the swarm. The performance of the algorithm should not be negatively effected by an increase in swarm size, and an increase in swarm size should adequately improve the performance of the swarm. 
-%TODO: Find citations & scalability studies
+Scalability refers to the ability of the robotic swarm to expand the self-organizational mechanism for larger problems easily by simply adding more robots to the swarm. The performance of the algorithm should not be negatively effected by an increase in swarm size, and an increase in swarm size should adequately improve the performance of the swarm. In order for an algorithm to be considered as a swarm robotics algorithm, scalability studies should be perform in order to determine whether an algorithms performance will increase at an adequate rate as the swarm size increases. Scalability studies have been performed in \cite{nouyan2008path,bahgecci2005evolving,zarzhitsky2005distributed}
 
 \subsection{Cost-effectiveness}
 This runs off the premise that multiple inexpensive robots are likely to be cheaper to buy and maintain than a single large more complex robot. Cost-effectiveness is a debatable attribute, which depends on the complexity of robotics required. 
 
 \section{Current State of Swarm Robotics}
-%In this section I want to discuss what the current focus on swarm robotics is. 
-%Taxonomy/research axes
-There are a number of axes of focus on swarm robotics research. The core dimensions of the field are modelling, behaviour design, communication, analytical studies and problems. This section discusses those core dimensions. 
+
+There are a number of axes of focus on swarm robotics research. The core dimensions of the field are modelling, behaviour design, communication, analytical studies and problems. This section discusses those core dimensions in order to give an overview of the current state of swarm robotics research. 
 
 \subsection{Analysis}
 Models are used to determine if a property of the swarm behaviour is true or not. Both macroscopic and microscopic modelling is very difficult due to the nature of self-organising systems so one technique is usually focused on at a time \cite{abbott2006emergence}. The next sections discuss the modelling techniques.
@@ -137,7 +134,6 @@ Predominantly microscopic models take the form of simulators and are used to val
 
 \subsubsection{Macroscopic Models}
 \label{macroscopicmodels}
-%rephrase
 
 Macroscopic models are focused on a higher level view of the entire system and the individuals of the system are not analysed. A variety of macroscopic models exist as follows: 
 \begin{itemize}
@@ -145,14 +141,14 @@ Macroscopic models are focused on a higher level view of the entire system and t
 
 Similarly differential equations have been used to model swarms and have the advantage of includng noise, stochasticity and spatiality however, these differential equations are often computationally expensive and complex to solve \cite{hamann2008framework, prorok2011multi}
 
-	\item \textbf{Classical Control and stability theory} has been used to prove swarm properties \cite{gazi2005stability,liu2004stable, schwager2011time}. Classical control methods have the advantage of being based on sound mathematics, however they often rely on assumptions in order to simplify the modelling process however in reality, many of those assumptions are usually continuously violated.
+	\item \textbf{Classical Control and stability theory} has been used to prove swarm properties \cite{gazi2005stability,liu2004stable, schwager2011time}. Classical control methods have the advantage of being based on sound mathematics, however they often rely on assumptions in order to simplify the modelling process. In reality, many of those assumptions are continuously violated.
+	
 	\item \textbf{Other methods}
-	A whole variety of other mathematical modeling approaches have also been used in a swarm robotics context such as linear time temporal logic to define safety and liveness of swarm individuals \cite{winfield2005formal}, probabilistic model checking to verify swarm properties {konur2012analysing}, or using branching processes to model communication of a swarm of aerial robots \cite{mathews2010establishing}. 
+	Many other mathematical modeling approaches have been used in a swarm robotics context such as linear time temporal logic to define safety and liveness of swarm individuals \cite{winfield2005formal}, probabilistic model checking to verify swarm properties \cite{konur2012analysing}, or using branching processes to model communication of a swarm of aerial robots \cite{mathews2010establishing}. 
 \end{itemize}
 
 \subsubsection{Real-robot analysis}
 
-%rephrase
 Since it is implausible to attempt to simulate reality completely, real robot experimentation is integral to validating the behaviour of the swarm. These simulations usually occur in controlled environments with the ability to control the level of noise and environmental disruption. 
 The disadvantage of performing real robot analysis is that experimentation is generally more costly, complex and time consuming than simulation or modeling methods. The purpose of real robot analysis is to show that the prospective swarm behaviour is actually obtainable \cite{brambilla2013swarm}.
 
@@ -161,45 +157,43 @@ The disadvantage of performing real robot analysis is that experimentation is ge
 In order for to achieve emergent behaviours of the swarm, a number of approaches for the design of robot controllers have been used. This chapter addresses the techniques of behaviour design namely non-adaptive, learning and evolutionary approaches.
 
 \subsubsection{Non-adaptive}
-Non adaptive behaviour design in general refers to techniques of behaviour design where by the algorithms have specifically been hand-crafted by the human designer. These techniques either utilize mathematical approaches or focus on how to combine simpler behaviours to achieve the desired emergent behavior. 
+Non-adaptive behaviour design, in general, refers to techniques of behaviour design where by the algorithms have specifically been hand-crafted by the human designer. These techniques either utilize mathematical approaches or focus on how to combine simpler behaviours to achieve the desired emergent behaviour. 
 
 \begin{itemize}
-	\item \textbf{Subsumption} - As stated in \ref{}, the invention of subsumption architecture promoted the development of swarm robotics by simplifying the process of building robots, thus it is also fitting that the indivudual robots are modelled using subsumption architecture. Each behaviour forms a separate module that can inhibit other behaviours. 
+	\item \textbf{Subsumption} - The invention of subsumption architecture could have promoted the development of swarm robotics by simplifying the process of building robots, thus it is fitting that the individual robots are modelled using subsumption architecture. Each behaviour forms a separate module that can inhibit other behaviours. 
 	
 	\item \textbf{Probabilistic Finite State Automata} Probabilistic finite state automata are a method to represent dynamical systems with finite state spaces. Each behaviour is a state and transistions are defined between these states with some probabilities and external input \cite{soysal2005probabilistic,labella2004efficiency}. The algorithms addressed in this thesis take the form of probabilistic finite state automata.  
 	
 	\item \textbf{Distributed Potential Field Methods}
-	All vector interactions are represented as vectors where vectors can be positive or negative. This approach is useful in building swarm behaviors that require spatial distribution between robots such as pattern formation or motion coordination. %cite?
+	All vector interactions are represented as vectors where vectors can be positive or negative. This approach is useful in building swarm behaviours that require spatial distribution between robots such as pattern formation or motion coordination. Examples of using distributed potential field methods can be seen in \cite{bennet2010distributed,barnes2007unmanned, kim2006decentralized}  
 \end{itemize}
 
 \subsubsection{Learning}
 
-One can provide agents the tools in order to learn behaviours suited to solve certain problems. A number of techniques are used in order to learn behaviours, most notably reinforcement learning and classically trained neural networks. A nueral network controller for swarms could plausibly be trained using back propogation, but is in general paired with a evolutionary technique in order to evolve the neural network appropriately.as is described in the following section. 
-%not sure I can do that
+One can provide agents the tools in order to learn behaviours suited to solve certain problems. A number of techniques are used in order to learn behaviours, most notably reinforcement learning and classically trained neural networks. A neural network controller for swarms could plausibly be trained using back propagation, but is in general paired with a evolutionary technique in order to evolve the neural network appropriately as is described in the following section. 
 
 \subsubsection{Evolution}
-Neural network or tree-based controllers for swarms of robots can be evolved or optimized using a variety of algorithms from swarm to genetic techniques \cite{baldassarre2003evolving, tuci2014evolutionary}. Francesca et al define two evolutionary approaches AutoMoDe-Vanilla and EvoStick \cite{francesca2014automode,francesca2014experiment}. The experiments compared the effectiveness of evolving swarm robot controllers in comparison to human created controllers. The interesting result is that the evolved AutoMoDe-Vanilla controller was able to outperform the human created controller, thus showing the promise for using Evolutionary techniques to design swarm controllers.
+Neural network or tree-based controllers for swarms of robots can be evolved or optimized using a variety of algorithms from swarm to genetic techniques \cite{baldassarre2003evolving, tuci2014evolutionary}. Francesca et al define two evolutionary approaches AutoMoDe-Vanilla and EvoStick \cite{francesca2014automode,francesca2014experiment}. The experiments compared the effectiveness of evolving swarm robot controllers in comparison to human created controllers. The interesting result is that the evolved AutoMoDe-Vanilla controller was able to outperform the human created controller, thus showing the promise for using evolutionary techniques to design swarm controllers.
 
-\subsection{Communication}
-
+\subsection{Interactions}
+A key element of swarm robotics is the interactions between robots in a swarm. Cao et al \cite{cao1997cooperative} classified the methods of information transfer between robots in their  survey on swarm robotics. Interactions were segmented into three types:
 \begin{itemize}
-	\item \textbf{Interaction via sensing} - no direct communication. Requires discrimination of other robots from environment
-	\item \textbf{Interaction via environment}
-	\item \textbf{Interaction via communication}
+	\item \textbf{Interaction via sensing} where no direct communication between robots occurs and robots simply obtain information from their senses, for instance the stick pulling problem whereby a robot can sense another robot pulling the stick \cite{ijspeert2001collaboration}. 
+	\item \textbf{Interaction via environment} where the robots modify the environment in some way and then other robots perceive and understand that modification such as pheromones in ants. Robots have mimicked pheromone-like deposits in a number of ways.
+	\item \textbf{Interaction via communication} implies that robots interact and transfer information by assigning meaning to specific signals or having a specific language. This language could be in the form of light signals or even direct data transfer via bluetooth.  
 \end{itemize}
 
-\subsection{Behaviors}
+\subsection{Behaviours}
 \label{swarmrobotapplications}
 
-Brambilla et al \cite{brambilla2013swarm} present a taxonomy of swarm behaviors. These behaviors can be used as ingredients to solve more complex applications - most prominently in this study, foraging. The problems are discussed in more details in the next sections.
+Brambilla et al \cite{brambilla2013swarm} present a taxonomy of swarm behaviours. These behaviours can be used as ingredients to solve more complex applications - most prominently in this study, foraging. The problems are discussed in more details in the next sections.
 
-\subsubsection{Spatially Organizing Behaviors}
+\subsubsection{Spatially Organizing Behaviours}
 
 \begin{itemize}
 	\item \textbf{Aggregation} Aggregation is the movement of individuals towards one another to form a cluster and has become one of the fundamental swarm behaviours. In nature, aggregation aids protection from predators, the ability to defend against an unfavourable environment and locate partners \cite{bonabeau2001self}. A variety of approaches to swarm robot aggregation have been investigated \cite{yan2011algorithm, soysal2007aggregation, trianni2003evolving, dimarogonas2008connectedness }. A more recent approach finds inspiration in honey bees \cite{schmickl2011beeclust, schmickl2009two}
 	
 	\item \textbf{Pattern formation}
-	%TODO:
 	The goal of pattern formation is for deployed robots to maintain specific distances between each other in order to create a particular shape. Implementation usually utilizes virtual forces in order to co-ordinate positioning of the agents. A review can be found in \cite{bahceci2003review, hettiarachchi2009review}
 	
 	\item \textbf{Path formation} is the creation of chains of robots in order to connect two or more points. The robot chains can serve as pheromone paths in order to navigate other robots through environments as generally, robots are not equipped with pheromone sensors and deployers. Research in path formation forms part of environmental exploration and navigation \cite{nouyan2006chain}. 
@@ -266,8 +260,8 @@ Early work in morphological polyethism has been insufficient for a number of rea
 %reword the below a bit more
 \begin{enumerate}
 	\item There appeared to be no correlation between worker task performance and morphism.
-	\item Workers respond to environmental changes and vary task performance independant of specific size and shapes
-	\item As a colony requires change, the workers show behavioral flexibility and perform tasks that were not suitably seen in repertoires or switch between tasks.
+	\item Workers respond to environmental changes and vary task performance independent of specific size and shapes
+	\item As a colony requires change, the workers show behavioural flexibility and perform tasks that were not suitably seen in repertoires or switch between tasks.
 \end{enumerate}
 
 \subsubsection{Task Selection}
@@ -359,7 +353,7 @@ Foraging for work can be seen as a special case of the threshold model where all
 
 \subsubsection{Social Inhibition Models}
 
-The sheer presence of older foraging bees affects behavioral development as a proportion of bees becoming foragers is indirectly related to the number of older bees present in the colony \citation{huang1992honeybee} which motivates the activator-inhibitor model.
+The sheer presence of older foraging bees affects behavioural development as a proportion of bees becoming foragers is indirectly related to the number of older bees present in the colony \citation{huang1992honeybee} which motivates the activator-inhibitor model.
 
 Activator-Inhibitor model is driven by 2 hormones:
 \begin{itemize}
@@ -402,12 +396,11 @@ Sahin et al. suggest a number of challenges faced by swarm robotics \cite{csahin
 
 \item \textbf{Emergent Algorithm Design} - As the field stands, there are no real way to actually design individual behaviour in order to guarantee a specific collective emergence. There exist few approaches to design the simplistic behaviour of an individual robot in order to achieve the desired emergent collective behaviour. Hamman et al. attempts to devise a mathematical model to assist in modelling swarm behaviour and communication\cite{hamann2008framework} to help bridge the local behaviour to global behaviour and another modelling technique, but the techniques are limited to specific sensory or actuation abilities. 
 
-\item \textbf{Experimentation} - In order to properly study swarm robotics, one would require infrastructure for real robotic research - from robot hardware, to monitoring software or simply even security. The need for real robots can be alleviated by use of simulation environments. A number of simulators have been developed in order to enable easier experimentation at different levels of accuracy. Some are only 2D grid-world models while others attempt to mimic real life as accurately as possible. Despite the existence of simulators, there could be a whole field of study relating to whether these simulators are accurate enough to model upon.
+\item \textbf{Experimentation} - In order to properly study swarm robotics, one would require infrastructure for real robotic research - from robot hardware, to monitoring software or simply even security. The need for real robots can be alleviated by use of simulation environments. A number of simulators have been developed in order to enable easier experimentation at different levels of accuracy. Some are only 2D grid-world models while others attempt to mimic real life as accurately as possible. There could be a whole field of study relating to whether these simulators are accurate enough to model upon.
 
-\item \textbf{Analysis and Modelling}: Stochastic non-linear systems making parameter optimisation and verification difficult. Both micro- and macro-models for swarm robotics have been developed. Swarm robotic probabilistic macro-models are reviewed in\cite{lerman2005review}.
+\item \textbf{Analysis and Modelling}: Swarm robotics systems are stochastic non-linear systems and as a result parameter optimisation and verification are very difficult. difficult. Both micro- and macro-models for swarm robotics have been developed. Swarm robotic probabilistic macro-models are reviewed in\cite{lerman2005review}.
 
-\item \textbf{Robotic systems are challenging in themselves}. Swarm robotics has it's own problems but will also still be weighed down by the challenges faced by traditional robotics. Challenges such as the sheer variety of very different fields required to design and program a robot intelligently from physics, programming, artificial intelligence, mechanics. Robot systems consist of so many factors from so many fields that require expertise on. Even after simplifying the robots themselves through use of swarm robotics, this problem exists.
-
+\item \textbf{Robotic systems are challenging in themselves}. Swarm robotics has it's own problems but will also still be weighed down by the challenges faced by traditional robotics. Challenges such as the sheer variety of very different fields required to design and program a robot intelligently from physics, programming, artificial intelligence, mechanics.
 \end{itemize}
 
 
