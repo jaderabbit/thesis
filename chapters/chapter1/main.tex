@@ -212,6 +212,7 @@ Reviews on self assembly are presented by Groß and Dorigo \cite{gross2008self}
 
 \subsubsection{Navigation behaviours}
 %TODO intro
+Robot navigation is not a simple task. There is knowledge that could be gained by sharing information about navigation between robots. This section addresses types of navigation behaviours that swarm robots can use. 
 
 \begin{itemize}
 \item \textbf{Collective exploration}
@@ -223,11 +224,13 @@ enables robots to move together like a swarm of locusts, a school of fish or a f
 	
 Another problem that falls under collective motion would be hole avoidance \cite{trianni2006cooperative,trianni2005emergent} 
 
-\item \textbf{Collective transport} has become a benchmark for swarm robotics since it is requires numerous collaborative aspects such as task allocation, coherence, conflict resolution and communication. Mataric et al use a simple communication protocol on real robots to compensate for noise-ridden sensing to use a group of robots to move a box \cite{mataric1995cooperative}. Hiroshi et al do not utilize explicit communication but rather allow robots to infer the intention of other robots via their behaviour, in order to enable the robots to correctly place desks in an environment. The study indicates the benefit of collaboration \cite{sugie1995placing}. Gerkey et al implement a dynamic task allocation for a robot group along with an auction-based mechanism using publish/subscribe communication also to perform a box pushing exercise. \cite{gerkey2002sold}. The SWARM-BOTS project involved substantial work with the s-bots. S-bot robots have the ability to link to each other. Experimentation showed that the chained s-bots were able to transport items more effectively \cite{gross2004group, dorigo2005swarm, ferrante2013socially}.
+\item \textbf{Collective transport} has become a benchmark for swarm robotics since it is requires numerous collaborative aspects such as task allocation, coherence, conflict resolution and communication. Mataric et al use a simple communication protocol on real robots to compensate for noise-ridden sensing to use a group of robots to move a box \cite{mataric1995cooperative}. Hiroshi et al do not utilize explicit communication but rather allow robots to infer the intention of other robots via their behaviour, in order to enable the robots to correctly place desks in an environment. The study indicates the benefit of collaboration \cite{sugie1995placing}. Gerkey et al. implement a dynamic task allocation algorithm for a robot with an auction-based mechanism using publish/subscribe communication also to perform a box pushing exercise \cite{gerkey2002sold}. The SWARM-BOTS project involved substantial work with the s-bots. S-bot robots have the ability to link to each other. Experimentation showed that the chained s-bots were able to transport items more effectively \cite{gross2004group, dorigo2005swarm, ferrante2013socially}.
 
 \end{itemize}
 		
 \subsubsection{Collective decision-making}
+The next section discusses types of collective decision making behaviours. 
+
 \begin{itemize}
 	\item \textbf{Consensus achievement} is the process of how a group of robots come to a decision among a variety of alternative choices in order to maximise system performance. This is observed in ant colonies to determine the shortest path \cite{bonabeau2001self} and is used by bees decide on the next best site for a nest \cite{seeley2001nest}
 	
@@ -247,7 +250,7 @@ Due to the importance of division of labour in this research, a variety division
 \subsection{Definition}
 \label{sec:second:definition}
 
-Oster et al define division of labour as a "stable" pattern of variation among workers within a colony in terms of the repertoire of tasks that workers perform where each worker specializes on a subset of the complete repertoire of tasks performed by the colony and the subset of tasks varies across individual workers in the colony.  \cite{oster1978caste}  %rephrase - this is a direct quote%
+Oster et al. define division of labour as a "stable" pattern of variation among workers within a colony in terms of the repertoire of tasks that workers perform where each worker specializes on a subset of the complete repertoire of tasks performed by the colony and the subset of tasks varies across individual workers in the colony.  \cite{oster1978caste}  %rephrase - this is a direct quote%
 
 There are two types of division of labour in social insects: 
 \begin{enumerate}
