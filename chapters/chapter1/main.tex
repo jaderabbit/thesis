@@ -297,19 +297,26 @@ Fewell et al  use information transfer models to predict swarm level response pa
 
 \subsubsection{Self Reinforcement Models}
 
-Task success is directly proportional of the probability of doing the task again. Self reinforcement models answer the question of whether division of labour be generated as a result of experience \cite{lerman2005review}. If a task was not performed successfully or their was the lack of opportunity then the probability of ever performing that task reduces which leads to the creation of task specialists. 
+Task success is directly proportional of the probability of doing the task again. Self reinforcement models answer the question about whether division of labour is generated as a result of experience \cite{lerman2005review}. If a task was not performed successfully or there was the lack of opportunity then the probability of ever performing that task reduces. The result is that task specialists are created. 
 
-Foraging specialization can develop equal food location and quantities \cite{deneubourg1987self}.
-The study suggests that both self-reinforcement and worker age variation are to account for temporal polyethism. 
-%also all needs to be reorganized and rephrased%
+A study performed on foraging specializations by Deneubourg et al shows that self-reinforcement paired with worker age variation are to account for temporal polyethism \cite{deneubourg1987self}. Plowright and Plowright use self-reinforcement to generate elitism \cite{plowright1988elitism} determining that the result was a bimodal frequency of performing tasks where the agents either became specialists or became entirely inactive.
 
-Plowright and Plowright \cite{plowright1988elitism} use self-reinforcement to generate elitism. Given an initial random population of encountering tasks, the threshold was incremented when tasks were performed. The result was a bi-modally distributed frequency of performing tasks where agents either became specialists or became entirely inactive.
+Theraulaz introduces the concept of learning and forgetting \cite{theraulaz1998response}. Learning is when there is a reduction in response threshold when a worker performs a task. And forgetting is an increase in response threshold when a worker doesn't perform a task. All individuals begin with equal thresholds. Evidence from the model indicated that workers adequately adjusted activity levels according to the task they ended up specializing in and exhibited flexibility such that when workers of a specific task are removed the swarm would adapt in order to cater for for missing individuals. 
 
-Theraulaz \cite{theraulaz1998response} has the concept of learning and forgetting. Learning is when there is a reduction in response threshold when a worker performs a task. And forgetting is an increase in response threshold when a worker performs a task. All individuals begin with equal thresholds. Evidence from the model indicated that workers adequately adjusted activity levels according to the task they ended up specializing in. %rephrase & rework%
-%this is what happens in my own things!!!!!! NBNBNBNBNBNB TO DO - ANALYSIS
-%find citation
+%  /$$$$$$  /$$$$$$$$ /$$$$$$  /$$$$$$$ 
+% /$$__  $$|__  $$__//$$__  $$| $$__  $$
+%| $$  \__/   | $$  | $$  \ $$| $$  \ $$
+%|  $$$$$$    | $$  | $$  | $$| $$$$$$$/
+% \____  $$   | $$  | $$  | $$| $$____/ 
+% /$$  \ $$   | $$  | $$  | $$| $$      
+%|  $$$$$$/   | $$  |  $$$$$$/| $$      
+% \______/    |__/   \______/ |__/      
+%NB: ABOVE is what happens in my own things
+                                   
 
 \subsubsection{Foraging for Work}
+
+Foraging for work is controversial in the fact that it induces division of labour without any explicit worker mechanism but instead a natural result of the environment \cite{beshers2001models}.  
 Foraging for Work (FFW) has two main parts:
 \begin{enumerate}
 	\item Workers repeat the same task when possible.
@@ -318,42 +325,23 @@ Foraging for Work (FFW) has two main parts:
 
 %This forms the basic model of foraging and also is used in MY honey bee algorithm.
 
-Foraging for work makes the assumptions that:
-\begin{itemize}
-	\item Workers are intrinsically identical and thus task performance of workers is dependent on opportunity, rather than intrinsic task preferences. However, it has been shown that in true insect colonies, there is intrinsic variation in each worker's response to the environment as not all workers will respond equally. 
-	\item Tasks are radially spatially localized within the nest. That means the tasks further away are performed by older workers and the younger workers will perform the tasks that are nearer.
-\end{itemize}
+Foraging for work makes the assumptions that workers are intrinsically identical and thus task performance of workers is dependent on opportunity, rather than intrinsic task preferences. However, it has been shown that in true insect colonies, there is intrinsic variation in each worker's response to the environment as not all workers will respond equally. Another assumption is that tasks are radially spatially localized within the nest. That means the tasks further away are performed by older workers and the younger workers will perform the tasks that are nearer.
 
-Foraging for work shows that temporal polyethism doesn't require age-related difference in the mechanism of task choice and can simply stem from the older workers proximity to the nest which is controversial as it sets the base expectation of what level of task organization might occur within a social group in absence of selection efforts or intrinsic mechanism of worker task performance.
+Foraging for work shows that temporal polyethism doesn't require age-related difference in the mechanism of task choice and can simply stem from the older workers proximity to the nest which is controversial as it sets the base expectation of what level of task organization might occur within a social group in absence of selection efforts or intrinsic mechanism of worker task performance \cite{franks1994foraging}.
 
-\subsubsection{Foraging for Work versus Threshold Models} %not sure if this is even necessary
-The exist similarities between foraging for work and threshold models. Patterns of division of labour generated from generated rules and 
-- Random variation exists in task encounter/performance threshold
-
-In foraging for work, spatial organization generates temporal polytheism. 
-With threshold models, lazy workers are generated by the threshold variation. 
-
-Foraging for work can be seen as a special case of the threshold model where all workers have the same threshold. %confirm - sure this is rubbish I'm sputing
+Foraging for work can be seen as a special case of the threshold model where all workers have identical thresholds. The observation of this fact is that with Foraging for Work, temporal polyethism is generated by spatial organization, where as in threshold models polethism is generated by differences in performance threshold. A disadvantage of threshold models is that lazy workers can be generated by those workers with high threhsolds resulting in inactive workers where as according to Foraging for work all workers should either be performing or seeking tasks.
 
 \subsubsection{Social Inhibition Models}
 
-The sheer presence of older foraging bees affects behavioural development as a proportion of bees becoming foragers is indirectly related to the number of older bees present in the colony \citation{huang1992honeybee} which motivates the activator-inhibitor model.
+The sheer presence of older foraging bees affects behavioural development as the proportion of bees becoming foragers is indirectly related to the number of older bees present in the swarm \citation{huang1992honeybee}. This effect is modelled in the activator-inhibitor model.
 
 Activator-Inhibitor model is driven by 2 hormones:
 \begin{itemize}
-	\item The activator is the juvenile hormone which motivates the workers in the hive to become foragers.
-	\item The inhibitor hormone that is transferred from the foragers to the younger workers suppresses the bees development into foragers. If foragers are lost in an accident then more hive workers will mature to foragers due to the decrease of the inhibitor hormone.
+	\item The activator hormone which is the juvenile hormone that motivates the workers in the hive to become foragers.
+	\item The inhibitor hormone which is transferred from the foragers to the younger workers, suppresses the bees development into foragers. If foragers are lost in an accident then more hive workers will mature to foragers due to the decrease of the level of the inhibitor hormone.
 \end{itemize}
 
-The mathematical version of the social inhibition model represents the workers physiological state by a single variable $x$ that changes daily in response to the social environment \cite{beshers2001social}. The model defines the trajectories for behavioral development that are intrinsically determined and responsive to social environment. Task performance is correlated with age. 
-
-The Eusocial wasp shows similar temporal polytheism:
-\begin{itemize}
-	\item Each worker has two pools of chemical inhibitor. One pool affects own behavioural state the other is transferred to the workers in encounters. 
-	\item The effect of inhibitors on a workers state is the ratio of own activator to the other workers inhibitor.
-\end{itemize}
-
-Both reach a dynamically stable allocation of workers to different tasks. Social inhibition provides mechanism of changing worker thresholds as they age. Social inhibition allow colony to flexibly response to changing conditions.
+The mathematical version of the social inhibition model represents the workers physiological state by a single variable $x$ that changes daily in response to the social environment \cite{beshers2001social}. The model defines the trajectories for behavioral development that is intrinsically determined and responsive to social environments. Task performance is correlated with age. Social inhibition provides mechanism of changing worker thresholds as they age which response thresholds fail to do. Social inhibition models allow swarms to flexibly respond to dynamic environments. %pointsless but fuck it!%
 
 \subsubsection{Network Models of Task Allocation}
 In this particular network allocation models a worker performs one of four tasks, where for each task they are either active or inactive. This results in each worker having 8 states. Workers having the same states belong to the same task group.
