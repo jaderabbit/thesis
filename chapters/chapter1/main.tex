@@ -189,6 +189,7 @@ A key element of swarm robotics is the interactions between robots in a swarm. C
 Brambilla et al \cite{brambilla2013swarm} present a taxonomy of swarm behaviours. These behaviours can be used as ingredients to solve more complex applications - most prominently in this study, foraging. The problems are discussed in more details in the next sections.
 
 \subsubsection{Spatially Organizing Behaviours}
+The following behaviours involve agents positioning themselves in their environment in relation to the position of other agents.
 
 \begin{itemize}
 	\item \textbf{Aggregation} Aggregation is the movement of individuals towards one another to form a cluster and has become one of the fundamental swarm behaviours. In nature, aggregation aids protection from predators, the ability to defend against an unfavourable environment and locate partners \cite{bonabeau2001self}. A variety of approaches to swarm robot aggregation have been investigated \cite{yan2011algorithm, soysal2007aggregation, trianni2003evolving, dimarogonas2008connectedness }. A more recent approach finds inspiration in honey bees \cite{schmickl2011beeclust, schmickl2009two}
@@ -229,7 +230,7 @@ Another problem that falls under collective motion would be hole avoidance \cite
 \end{itemize}
 		
 \subsubsection{Collective decision-making}
-The next section discusses types of collective decision making behaviours. 
+With any multi-agent system, the ability for the system to collectively make decisions is far more complicated system than in traditional robotics or more simplistic hive minds. The next section discusses and provides examples of types of collective decision making behaviours. 
 
 \begin{itemize}
 	\item \textbf{Consensus achievement} is the process of how a group of robots come to a decision among a variety of alternative choices in order to maximise system performance. This is observed in ant colonies to determine the shortest path \cite{bonabeau2001self} and is used by bees decide on the next best site for a nest \cite{seeley2001nest}
@@ -245,39 +246,33 @@ A common division of labour problem addresses achieving the optimal quantity of 
 \section{Division of Labour}
 
 \label{chap:divisionoflabour}
-Due to the importance of division of labour in this research, a variety division of labour strategies should be highlighted, explored and contrasted. This chapter defines division of labour as well as analysis difference types of division of labour.
+Due to the importance of division of labour in this research, a variety of division of labour strategies should be highlighted, explored and contrasted. This chapter defines division of labour as well as analyses different types of division of labour.
 
 \subsection{Definition}
 \label{sec:second:definition}
 
-Oster et al. define division of labour as a "stable" pattern of variation among workers within a colony in terms of the repertoire of tasks that workers perform where each worker specializes on a subset of the complete repertoire of tasks performed by the colony and the subset of tasks varies across individual workers in the colony.  \cite{oster1978caste}  %rephrase - this is a direct quote%
+Oster et al. defines division of labour as a "stable pattern of variation" among individuals within a colony in terms of the repertoire of tasks that individuals perform where each individual specializes on a subset of the complete repertoire of tasks performed by the colony and the subset of tasks varies across individuals in the colony \cite{oster1978caste}.  
 
 There are two types of division of labour in social insects: 
-\begin{enumerate}
+\begin{itemize}
 	\item Temporal polyethism - The pattern of tasks being performed by a worker correlates to the age of the worker. In nature, the younger workers may perform tasks within the nest while the older workers perform tasks outside of the nest.
 	\item Morphological polyethism - A worker with some extreme features in terms of size or shape, will specialize more in particular tasks and the more extreme that feature is, the narrower the repertoire of the of the worker. In nature, for example, larger workers would be more likely to form part of defence of the nest. \cite{beshers2001models}
-\end{enumerate}
+\end{itemize}
 
-Early work in morphological polyethism has been insufficient for a number of reasons \cite{huang1996regulation}: 
+%\subsubsection{Task Selection}
+%Much of the study of division of labour is related to how workers select tasks. The factors contributing to the decision are divided into internal and external factors. Internal factors are the internal state of the individual such as neurological, hormonal, experience or genetic factors where as the external factors are environmental stimuli or worker to worker interaction and communication of the increasing need of workers assigned to a particular task. \cite{beshers2001models}.
 
-%reword the below a bit more
-\begin{enumerate}
-	\item There appeared to be no correlation between worker task performance and morphism.
-	\item Workers respond to environmental changes and vary task performance independent of specific size and shapes
-	\item As a colony requires change, the workers show behavioural flexibility and perform tasks that were not suitably seen in repertoires or switch between tasks.
-\end{enumerate}
-
-\subsubsection{Task Selection}
-Much of the study of division of labour is how workers select tasks. The factors contributing to the decision are divided into internal and external factors. Internal factors are the internal state of the individual such as neurological, hormonal, experience or genetic factors where as the external factors are environmental stimuli or worker to worker interaction and communication of the increasing need of workers assigned to a particular task. \cite{beshers2001models}
-
-Research around task selection is focused around the following topics: 
-\begin{enumerate}
-	\item The rules guiding the decision process in workers
-	\item The process of how information about the environment and social stimuli is gathered
-	\item The internal choice mechanism for making the decisions
-\end{enumerate}
+%Research around task selection is focused around the following topics: 
+%\begin{itemize}
+%	\item The rules guiding the decision process in workers
+%	\item The process of how information about the environment and social stimuli is gathered
+%	\item The internal choice mechanism for making the decisions
+%\end{itemize}
 
 \subsection{Models of Division of Labour}
+
+Beshers at al \cite{beshers2001models} provide a extensive overview of models of division of labour in insects. Due to the use of insect division of labour addressed by algorithms developed in this thesis, an overview of existing models is provided in the next section.
+
 \subsubsection{Response Threshold Models}
 
 Workers have internal thresholds for responding to task-specific stimuli. The variation in task thresholds among workers in a colony generates the division of labour \cite{robinson1992regulation}. %rephrase, carbon copy%
