@@ -277,41 +277,26 @@ There are two types of division of labour in social insects:
 
 Beshers at al \cite{beshers2001models} provide a extensive overview of models of division of labour in insects. Due to the use of insect division of labour addressed by algorithms developed in this thesis, an overview of existing models is provided in the next section.
 
-\subsubsection{Response Threshold Models}
+\subsubsection{Response Threshold Model}
 
-In the response threshold model, workers have internal thresholds for reacting to task-specific stimuli. The variation in task thresholds among workers in a swarm induces the division of labour \cite{robinson1992regulation}.
+In the response threshold model, workers have intrinsic thresholds for reacting to task-specific stimuli. The variation in task thresholds among workers in a swarm induces the division of labour \cite{robinson1992regulation}. The response threshold model identifies variation in the worker environment interaction as the primary reason for division of labour
 
-Each task in the repertoire has a response threshold. The default state of all workers is no task. The specialists are workers that have the lowest thresholds for a particular task. All workers have some threshold for a task and higher stimulus levels result in recruitment of additional workers into a task group. A negative feedback loop is formed because as the performance of a task by a worker increases, the stimulus level of that task decreases. If a worker with a lower threshold reaches a task then the worker with the higher threshold may never reach that threshold and this will never perform the task \cite{beshers2001models}.
+Each task in the repertoire has a related response threshold. The default state of all workers is to have no task assigned. All workers have some threshold for a task and higher stimulus levels result in recruitment of additional workers into a task group. Specialist have the lowest thresholds for a particular task. A negative feedback loop is formed because as the performance of a task by a worker increases, the stimulus level of that task decreases. If a worker with a lower threshold reaches a task then the worker with the higher threshold may never reach that threshold and thus will never perform the task \cite{beshers2001models}.
 
-A problem with response threshold models is that a small intrinsic variation in the performance or responsiveness of a task may be amplified into large differences in task repertoire or frequency of task performances. The response threshold model identifies variation in the worker environment interaction as the primary reason for division of labour. The response threshold model makes the assumption that all workers are equally likely to encounter each task.
-  
-%TODO REWRITE THIS SECTION
-Suppose there are $N$ individuals, $K$ tasks, with universal connection between individuals. 
-A stable equilibrium is reached when the number of workers performing a task $N_i$ matches the stimulus level and when individual workers maintain constant task performance probabilities. \cite{page1990self}
+The simplicity of the response threshold model makes it a popular choice for division of labour in swarm robotics, however it suffers from a number of problems. A predominant problem is that a small intrinsic variation in the performance or responsiveness of a workers' ability to complete task may be amplified into large differences in task repertoire or the frequency of task performance. 
 
-%Get citation%
-%Rephrase to remove the enumeration and make more cohesive
-Bonabeau models the variation in thresholds when performing a task as follows: Individual $i$ has a probability of $\tau_{\theta ij}$ of performing task $j$. Given stimulus level $S$ and a response threshold $\theta$ such that $\tau_{\theta ij}(S_j) = S_j^2/(S_j^2 + \theta_{ij}^2)$. Swarm levels constantly incremented by a factor $\delta$ but decremented by task performance.
+The response threshold model makes the assumption that all workers are equally likely to encounter each task and that stable equilibrium is reached when the number of workers performing a task matches the stimulus level and when individual workers maintain constant task performance probabilities \cite{page1990self}.
 
-If one assumes global perception, where an individual perceives all stimuli regardless of the local environment and workers, the result of this model is that stimulus levels are constantly incremented thus equilibrium is never reached. A change in task performance in relation to changes in the proportion of individuals with low versus high thresholds. %I have no idea what I was ttrying to say here
+\subsubsection{Integrated Threshold--Information Transfer Model}
 
-%MISSING SHIT HERE GO READ
+Integrated Threshold Information Transfer model can be discerned from it's name. Workers perform a task when the stimulus they encountered equals an internal threshold - the internal threshold will vary according to genetics. The process of discerning a task stimulus is known as information transfer. Information transfer can be perceived randomly in space, directly or via social information transfer  \cite{fewell1999division}. In Integrated Threshold-Information Transfer, both the integrated threshold can be varied as well as the method of transferring information.
 
+Fewell et al  use information transfer models to predict swarm level response patterns to graded changes in stimulus levels for the tasks. The model predicted that normally distributed patterns of task thresholds would induce a graded response - independently of how the individuals received information about the task \cite{fewell1999division}.
 
-
-%MAY NEED TO DESCRIBE MY DIVISIOn OF LABOUR StrATEGY
-
-\subsubsection{Integrated Threshold Information Transfer Model}
-Integrated Threshold Information Transfer model \cite{fewell1999division} focuses on how workers gather information about tasks as well as how the change in stimulus observation affects worker performance %needs to be totally rephrased%
-
-The model can be discerned from it's name. Workers perform a task when the stimulus they encountered equals an internal threshold - the internal threshold will vary according to genetics. The process of discerning a task stimulus is known as information transfer. Information transfer can be perceived randomly in space, directly or via social information transfer.
-
-Fewell et al \cite{fewell1999division} use information transfer models to predict colony level response patterns to graded changes in stimulus levels for the tasks. The model predicted that normally distributed patterns of task thresholds would generate a graded response - independently of how the individuals received information about the task
-
-%Going to have to read this section again because I don't know what it meant - not even the first time I wrote it%
-The number of workers forming the task stays low until a 'set point' was reached where the stimulus matched thresholds of workers with high thresholds then the colony responded by increasing task performance.
+%NOT VERY GOOD BUT FUCK IT!
 
 \subsubsection{Self Reinforcement Models}
+
 Task success is directly proportional of the probability of doing the task again. Self reinforcement models answer the question of whether division of labour be generated as a result of experience \cite{lerman2005review}. If a task was not performed successfully or their was the lack of opportunity then the probability of ever performing that task reduces which leads to the creation of task specialists. 
 
 Foraging specialization can develop equal food location and quantities \cite{deneubourg1987self}.
