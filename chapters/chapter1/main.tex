@@ -251,7 +251,8 @@ Due to the importance of division of labour in this research, a variety of divis
 \subsection{Definition}
 \label{sec:second:definition}
 
-Oster et al. defines division of labour as a "stable pattern of variation" among individuals within a colony in terms of the repertoire of tasks that individuals perform where each individual specializes on a subset of the complete repertoire of tasks performed by the colony and the subset of tasks varies across individuals in the colony \cite{oster1978caste}.  
+Oster et al. defines division of labour as a "stable pattern of variation" among individuals within a swarm in terms of the repertoire of tasks that individuals perform where each individual specializes on a subset of the complete repertoire of tasks performed by the swarm and the subset of tasks varies across individuals in the swarm \cite{oster1978caste}.  
+More simply, Robinson et al. define division of labour as the adjustment of ratios of workers engaged in different tasks based on external and internal stimuli \cite{robinson1992regulation}.
 
 There are two types of division of labour in social insects: 
 \begin{itemize}
@@ -259,8 +260,11 @@ There are two types of division of labour in social insects:
 	\item Morphological polyethism - A worker with some extreme features in terms of size or shape, will specialize more in particular tasks and the more extreme that feature is, the narrower the repertoire of the of the worker. In nature, for example, larger workers would be more likely to form part of defence of the nest. \cite{beshers2001models}
 \end{itemize}
 
+%NEED SOMETHING HERE
+
+%include if we find we need. for now, you're done
 %\subsubsection{Task Selection}
-%Much of the study of division of labour is related to how workers select tasks. The factors contributing to the decision are divided into internal and external factors. Internal factors are the internal state of the individual such as neurological, hormonal, experience or genetic factors where as the external factors are environmental stimuli or worker to worker interaction and communication of the increasing need of workers assigned to a particular task. \cite{beshers2001models}.
+%Before addressing the different models of division of labour, it's important to discuss one of the main distringuishing characteristics of division of labour: How does an individual select tasks? Much of the study of division of labour is related to how workers select tasks. The factors contributing to the decision are divided into internal and external factors. Internal factors refer to neurological, hormonal, experience or genetic factors where as the external factors refer to environmental stimuli, worker to worker interaction and communication of the increasing need of workers assigned to a particular task. \cite{beshers2001models}.
 
 %Research around task selection is focused around the following topics: 
 %\begin{itemize}
@@ -275,22 +279,19 @@ Beshers at al \cite{beshers2001models} provide a extensive overview of models of
 
 \subsubsection{Response Threshold Models}
 
-Workers have internal thresholds for responding to task-specific stimuli. The variation in task thresholds among workers in a colony generates the division of labour \cite{robinson1992regulation}. %rephrase, carbon copy%
+In the response threshold model, workers have internal thresholds for reacting to task-specific stimuli. The variation in task thresholds among workers in a swarm induces the division of labour \cite{robinson1992regulation}.
 
 Each task in the repertoire has a response threshold. The default state of all workers is no task. The specialists are workers that have the lowest thresholds for a particular task. All workers have some threshold for a task and higher stimulus levels result in recruitment of additional workers into a task group. A negative feedback loop is formed because as the performance of a task by a worker increases, the stimulus level of that task decreases. If a worker with a lower threshold reaches a task then the worker with the higher threshold may never reach that threshold and this will never perform the task \cite{beshers2001models}.
 
-\subsubsection{Analysis and Criticism}
-
 A problem with response threshold models is that a small intrinsic variation in the performance or responsiveness of a task may be amplified into large differences in task repertoire or frequency of task performances. The response threshold model identifies variation in the worker environment interaction as the primary reason for division of labour. The response threshold model makes the assumption that all workers are equally likely to encounter each task.
   
-\subsubsection{Formal Model}
 %TODO REWRITE THIS SECTION
 Suppose there are $N$ individuals, $K$ tasks, with universal connection between individuals. 
 A stable equilibrium is reached when the number of workers performing a task $N_i$ matches the stimulus level and when individual workers maintain constant task performance probabilities. \cite{page1990self}
 
 %Get citation%
 %Rephrase to remove the enumeration and make more cohesive
-Bonabeau models the variation in thresholds when performing a task as follows: Individual $i$ has a probability of $\tau_{\theta ij}$ of performing task $j$. Given stimulus level $S$ and a response threshold $\theta$ such that $\tau_{\theta ij}(S_j) = S_j^2/(S_j^2 + \theta_{ij}^2)$. Colony levels constantly incremented by a factor $\delta$ but decremented by task performance.
+Bonabeau models the variation in thresholds when performing a task as follows: Individual $i$ has a probability of $\tau_{\theta ij}$ of performing task $j$. Given stimulus level $S$ and a response threshold $\theta$ such that $\tau_{\theta ij}(S_j) = S_j^2/(S_j^2 + \theta_{ij}^2)$. Swarm levels constantly incremented by a factor $\delta$ but decremented by task performance.
 
 If one assumes global perception, where an individual perceives all stimuli regardless of the local environment and workers, the result of this model is that stimulus levels are constantly incremented thus equilibrium is never reached. A change in task performance in relation to changes in the proportion of individuals with low versus high thresholds. %I have no idea what I was ttrying to say here
 
