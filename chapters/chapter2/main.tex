@@ -243,25 +243,13 @@ The advantage of using this technique over the other mentioned pheromone techniq
 Bee swarms have been used in swarm robotics for problems such as path planning \cite{lin2009chaotic}, aggregation \cite{kernbach2009re}, collective perception \cite{schmickl2007collective}.%Relevant? Not sure. 
 
 %TODO: Explain each example application
-Foraging algorithms have been developed that simulate a simplified honey bee recruitment in \cite{alers2014biologically}, which focuses on an actual robot demonstration of the technique using a turtle robot. Prior work focuses on implementing the same algorithm on e-pucks. The algorithm consists of two phases: an exploratory phase followed by an exploitive phase. Initially, all robots are located around the hive. In the exploratory phase, all robots perform a random search with a levy distribution until a food source is found by a robot. The exploitation phase begins where the robot that located the food returns to the hive and communicates the location to other members of the robot swarm. The other robots are recruited and begin to commute between the hive and the food source, transporting virtual food. This algorithm claims to exhibit three behaviours of bees: waiting around the hive, exploring the environment and foraging. Unlike bees, the algorithm used does not consider the division of labour between foragers, explorers and waiting robots, but rather uses an extremely simple model for bees which can only exploit a single food source. The robots use path integration in order to remember the location of the food source, and use a northstar type navigation in order to locate the hive. The path integration vector gets communicated to the other robots which use the vector to guide them to the food source. 
+Foraging algorithms have been developed that simulate a simplified honey bee recruitment in \cite{alers2014biologically}, which focuses on an actual robot demonstration of the technique using a turtle robot. Prior work focuses on implementing the same algorithm on e-pucks. The algorithm consists of two phases: an exploratory phase followed by an exploitive phase. Initially, all robots are located around the hive. In the exploratory phase, all robots perform a random search with a levy distribution until a food source is found by a robot. The exploitation phase begins where the robot that located the food returns to the hive and communicates the location to other members of the robot swarm. The other robots are recruited and begin to commute between the hive and the food source, transporting virtual food. This algorithm claims to exhibit three behaviours of bees: waiting around the hive, exploring the environment and foraging. Unlike bees, the algorithm used does not consider the division of labour between foragers, explorers and waiting robots, but rather uses an extremely simple model for bees which can only exploit a single food source. The robots use path integration in order to remember the location of the food source, and use a north-star type navigation in order to locate the hive. The path integration vector gets communicated to the other robots which use the vector to guide them to the food source. 
 
-tep 1: located around hive.
-step 2: start to explore
-step 3: robot finds food.
-
-2. exploitation phase:
-step 1: Robot returns food to hive. 
-step 2: Robot communicates location and recruits other swarm members. 
-step 3: robots commute between hive and food source. 
-%TODO: Finish this paper about turtlebot.
-%TODO: Add moar about bee inspired algorithms
-
-
-\subsubsection{Other Nature-inspired Foraging Algorithms}
+%\subsubsection{Other Nature-inspired Foraging Algorithms}
 %TODO: Research and add 
 
-\subsection{Other Algorithms}
-\label{sec:second:otheralgorithms}
+%\subsection{Other Algorithms}
+%\label{sec:second:otheralgorithms}
 %TODO: Introduction to subsection
 
 \subsection{Standard foraging}
@@ -388,6 +376,7 @@ The simplicity of the response threshold model makes it a popular choice for div
 The response threshold model makes the assumption that all workers are equally likely to encounter each task and that stable equilibrium is reached when the number of workers performing a task matches the stimulus level and when individual workers maintain constant task performance probabilities \cite{page1990self}.
 
 \subsection{Integrated Threshold--Information Transfer Model}
+\label{integratedthreshold}
 
 Integrated Threshold Information Transfer model can be discerned from it's name. Workers perform a task when the stimulus they encountered equals an internal threshold - the internal threshold will vary according to genetics. The process of discerning a task stimulus is known as information transfer. Information transfer can be perceived randomly in space, directly or via social information transfer  \cite{fewell1999division}. In Integrated Threshold-Information Transfer, both the integrated threshold can be varied as well as the method of transferring information.
 
@@ -413,6 +402,7 @@ Foraging for work shows that temporal polyethism doesn't require age-related dif
 Foraging for work can be seen as a special case of the threshold model where all workers have identical thresholds. The observation of this fact is that with Foraging for Work, temporal polyethism is generated by spatial organization, where as in threshold models polyethism is generated by differences in performance threshold. A disadvantage of threshold models is that lazy workers can be generated by those workers with high thresholds resulting in inactive workers where as according to Foraging for work all workers should either be performing or seeking tasks.
 
 \subsection{Self Reinforcement Models}
+\label{selfreinforcement}
 
 Task success is directly proportional of the probability of doing the task again. Self reinforcement models answer the question about whether division of labour is generated as a result of experience \cite{lerman2005review}. If a task was not performed successfully or there was the lack of opportunity then the probability of ever performing that task reduces. The result is that task specialists are created. 
 
@@ -451,3 +441,22 @@ Activator-Inhibitor model is driven by 2 hormones:
 \end{itemize}
 
 The mathematical version of the social inhibition model represents the workers physiological state by a single variable $x$ that changes daily in response to the social environment \cite{beshers2001social}. The model defines the trajectories for behavioural development that is intrinsically determined and responsive to social environments. Task performance is correlated with age. Social inhibition provides mechanism of changing worker thresholds as they age which response thresholds fail to do. Social inhibition models allow swarms to flexibly respond to dynamic environments. %pointsless but fuck it!%
+
+\section{Division of Labour in Robot Swarms}
+
+Numerous division of labour strategies have been used in robot swarms. Labella et al. \cite{labella2006division} develop a division of labour strategy for prey retrieval based on Deneubourg's ant self re-enforcement model as discussed in \ref{selfreinforcement}. Experimentation was performed on real robots as well as in simulation. Robots change from search to rest with probability $p$. This probability gets incremented when a robot successfully returned to the nest with an item and decremented when a robot returns to the nest without an item. They classified the foragers into different types based on the final value of $p$ - loafers, foragers and undecided and showed that the values of $p$ tended towards extremes showing that in general, robots tended to become either loafers or foragers, while only a few became undecided. It was shown that a simple self-reinforcement division of labour model can improve the performance of a swarm of robots at a task without the need for communication, however scalability is still a concern as there are negative effects as group size increases. In the author's opinion, this shows that division of labour is not entirely effective since algorithm able to to effectively divide labour would decrease the number of robots performing a specific task if there are too many robots performing the task.
+
+Agassounon et al. design and demonstrate three threshold-based methods for division of labour\cite{agassounon2002efficiency} on clustering a number of small objects in order to dynamically allocate the most appropriate number of robots to the task. The idea is that initially there will be multiple possible sites for clustering, however later in the clustering process, having too many robots competing for a single site will cause interference decreasing the efficiency of the process. The experiment determined that the swarm benefited from threshold division of labour since the algorithms with division of labour performed similarly or better than those with a fixed group size. 
+
+\begin{itemize}
+\item The first algorithm, PrFT, does not use explicit communication and assigns fixed response thresholds to the robots.
+\item The second algorithm, PrVT, does not use explicit communication and assigns variable response thresholds to each robot. 
+\item The final algorithm, PuFT, makes use of explicit peer-to-peer communication between robots to communicate the worker demand but assigns fixed response thresholds to the robots.  Communication occurs when robots are in each other's communication range. The final worker threshold is calculated by averaging the worker threshold's from all robots in the communication range with their own sensed worker threshold. 
+The PuFT algorithm is an example of Integrated Threshold -- Information Transfer as described in section \ref{integratedthreshold}.
+\end{itemize}
+
+In conclusion, the study determined that after a priori optimization of the fixed thresholds the algorithms performed comparatively similarly. PuFT appeared to perform the best, however the cost of communication was not included in the study. Both fixed threshold algorithms suffered badly in environments where they were not optimized for. They pose that an algorithm combining the advantages of threshold variability and information sharing would be worth exploring. 
+
+Liu et al. \cite{liu2007towards} introduce 3 mechanisms for adapting the number of resting robots to foraging robots in a simple foraging problem. The mechanisms consist of variations on how one perceives the worker demand: internal success at task, collective success at task and environmental interference while performing a task - specifically collisions with other agents. 4 combinations of these factors are evaluated as well as compared to a nai\"ve foraging approach. The efficiency of the swarm is evaluated and compared at different food densities and robot quantities. %results
+
+To conclude, it appears majority of existing division of labour research focus on determining the most efficient number of foragers that should be active at a time. Another observation is that despite the attempt to test scalability, the maximum swarm size is usually 10 or less. It is in the author's opinion that it would be beneficial to attempt this study on a larger scale problem with larger swarm sizes to truly see the benefit in the division of labour strategy to regulate the number of foraging robots.  
