@@ -7,17 +7,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%The same structure as before, including section, subsections and sub-subsections. Make sure that you follow the same conventions throughout, to avoid confusing the reader. Always remember to include a summary.
-
+This chapter presents a simple foraging algorithm called na\"ive foraging which will form the benchmark algorithm for the experiments and presents two novel swarm robotics foraging algorithms inspired by the foraging behaviour of desert ants and honey bees. Each of these algorithms have differing capabilities when it comes to memory, communication, division of labour and navigation. The benchmark algorithm is presented in Section~\ref{naiveforaging} and Section~\ref{desertantforaging} introduces the novel foraging algorithm based on desert ants. Section~\ref{honeybeeforaging} dictates a novel foraging algorithm inspired by honey bees and the algorithms are summarized in Section~\ref{prioritized:summary}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Na\"ive Foraging Algorithm}
+\label{naiveforaging}
 
-%Need to expand over here lots. Add formulas for each one and pictures.
-%Describe specific implementation. 1hr to regather research for specific technique. 0.5 - 1.5 to document what happened in the code. Per technique
-
-Naive foraging is used as a lower bound for comparison as is done in \cite{62} \cite{63}. Na\"\i ve foraging includes only the most minimal set of foraging actions. Na\"\i ve foraging is included as a baseline for comparison to evaluate how a memory-based technique such as desert-ant foraging compares to a standard model \cite{ostergaard2001emergent,hoff2010two}.
+Na\"ive foraging is used as a lower bound for comparison as is done in \cite{62} \cite{63}. Na\"\i ve foraging includes only the most minimal set of foraging actions. Na\"\i ve foraging is included as a baseline for comparison to evaluate how a memory-based technique such as desert-ant foraging compares to a standard model \cite{ostergaard2001emergent,hoff2010two}.
 
  Na\"\i ve foraging consists of the following tasks: searching for an item, grabbing an item, returning home with the item and storing the item at the sink as shown in Figure \ref{naiveforagestate}. The robots repeat the following steps: 
 
@@ -36,7 +33,7 @@ The following random walk is used: A robot chooses a random direction, $\sigma$,
 
 
 \section{Desert Ant Foraging}
-
+\label{desertantforaging}
 Due to the lack of pheromone, desert ant foraging behaviour is a very suitable model for robot foraging. Desert ants use path integration to memorize the location of an existing food source and later to return to the memorized source to find more food. The notion of returning to a previously explored site is known as site fidelity \cite{switzer1993site}. The desert ant algorithm does not require communication between robots or the dispersal of beacons, and is thus simpler than other many swarm robotics foraging algorithms. 
 
 Path integration (PI) is the integration of an ant's odometry such that the ant can maintain a position and heading estimate of where the ant is going, by continuously updating a heading direction vector that points to the starting position \cite{ronacher2008path}. The heading-direction vector is known as the PI vector. This type of behaviour theoretically appears suitable for environments where multiple items occur in similar areas. The disadvantage of PI is the accumulation of localisation errors. The robot control algorithm consists of five states ( illustrated in Fig \ref{fig:desertantstate}):
@@ -61,7 +58,7 @@ All robots begin at random positions adjacent to the sink in the exploration sta
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Honey Bee Foraging}
-
+\label{honeybeeforaging}
 The presented honey bee algorithm is based on the mathematical model of honey bee foraging in \cite{seeley2009wisdom}. A portion of the robots are initialized as scouts and the rest  as unemployed foragers in a waiting state. All robots are initialized adjacent to the item sinks.
 
 Fig \ref{honeybeestate} is a simplified state diagram for the honey bee algorithm. State transitions are described as follows: 
@@ -324,10 +321,12 @@ For the purpose of this study, honey bee robots are initialized to start foragin
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \section{Summary}
-\label{algorithms:summary}
+\label{prioritized:summary}
+
+This chapter introduced two novel algorithms for foraging robot swarms: a desert ant inspired foraging algorithm, as well as a honey bee inspired foraging algorithm. A benchmark algorithm going by the name na\"ive foraging, is also presented. Probabilistic state machines are presented for each algorithm and the algorithms are discussed in terms of their memory, communication and division of labour capabilities. An overview of the properties of the algorithms can be seen in Table \ref{properties}.
 
 \begin{table} [h]
     \caption{Properties of the foraging algorithms used in this study}
