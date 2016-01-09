@@ -4,9 +4,10 @@
 \chapter{Robots}
 \label{chap:robots}
 
-%TODO: Introduction. Mention use of artificial robots
+Foraging robots occur in all shapes, sizes and capabilities - some of them powerful with gps capabilities and advanced long distance sensors, and others much simpler. In this chapter, the capabilities of the robots to be used in this study are defined. The robots are simulated as very simple simulated agents. The robots are described in Section~\ref{robotdescription} while Section~\ref{robots:obstacleavoidance} outlines the navigational capabilities of the robots. Section~\ref{simulator} discusses the simulator used and the chapter is summarized in Section~\ref{robots:summary}.
 
 \section{Description}
+\label{robotdescription}
 
 The artificial robots modelled in this study are based on e-puck robots \cite{mondada2009puck}, adapted with grippers. Each robot is equipped with a 360 degree camera to identify objects around them as well as eight local distance sensors spaced equally around the circular perimeter of the robot. Both camera and distance sensors have a depth of view of five times the robot's size. Robots use local communication, which can occur in a radius of five times the robot's size. The sensor and communication range is sufficiently localized. A robot can forage a single item at a time. The robots do not have a global positioning system (GPS) capability to locate items and to position themselves in the environment. As a result robots have to explore the environment to find the prioritized items. Due to the lack of GPS capabilities, robots can not see an item hidden by another item.
 
@@ -41,15 +42,16 @@ The described navigation and obstacle avoidance technique is used with all algor
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Simulator}
+\label{simulator}
 A spatially discrete 2-dimensional grid world simulator has been developed and is used for the experimentation in order to accelerate computation \cite{sugawara2002swarming} and also because algorithm performance is sensitive to the amount of time taken to pickup item as well as the manoeuvring capabilities of the robots used \cite{ostergaard2001emergent}. The 2-dimensional grid world simulator allows for movement and pickup time to be standardized across all algorithms for effective comparison. Future studies could include these factors as part of algorithm performance, but are removed for simplification. 
 
 The simulation robots function as follows:
 \begin{itemize}
-\item Each robot fits into one grid block and each item takes up one grid block. 
-\item Only one item or robot can occupy a grid block at a time thus allowing for possible collisions and congestion. 
-\item Each robot can only move to an adjacent cell in any direction.
-\item Robots can pick up items
-\item If a robot does not pick up an item, the item forms an obstacle that must be navigated around
+	\item Each robot fits into one grid block and each item takes up one grid block. 
+	\item Only one item or robot can occupy a grid block at a time thus allowing for possible collisions and congestion. 
+	\item Each robot can only move to an adjacent cell in any direction.
+	\item Robots can pick up items
+	\item If a robot does not pick up an item, the item forms an obstacle that must be navigated around
 \end{itemize}
 
 
@@ -60,6 +62,6 @@ The prioritized and non-prioritized sinks were placed next to each other, on a s
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
 \label{robots:summary}
-
+The robots used in this study are based on the capabilities of an e-puck robot, but with gripper capabilities. The robots use a obstacle avoidance technique based on the flocking behaviour of birds where a global attractor force attracts the robot in a specific direction, while the local attractor force guide the robot around localized obstacles. A simple 2D grid-based simulator is used, but unlike many other 2D grid simulation environments, interference between robots can occur since only one robot can fit into a grid block at a time. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
