@@ -7,8 +7,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Sentence introduction.
-The definition of foraging in swarm robotics is discussed in Section~\ref{sec:second:definition}, while Section~\ref{foraging:biologicalinspiration} discusses the biological techniques for foraging in social insects - ants and bees. Section~\ref{sec:second:types} addresses a taxonomy of the types of swarm robotic foraging algorithms and the challenges that foraging algorithms must address are discussed in Section~\ref{challengesinforaging}. Existing swarm robotics foraging algorithms are outlined in Section~\ref{sec:second:existingsolution} and prioritized foraging is defined and discussed in Section~
+In swarm robotics, robot foraging has become a benchmark problem due to its complex nature involving the coordination of numerous sub-tasks and is also one of the swarm robotics problems that has some very obvious useful applications. This chapter aims to provide an in-depth review of what foraging is, how different social insects forage as well as provide a review of existing foraging algorithms in swarm robotics. The definition of foraging in swarm robotics is discussed in Section~\ref{sec:second:definition}, while Section~\ref{foraging:biologicalinspiration} discusses the biological techniques for foraging in social insects - ants and bees. Section~\ref{sec:second:types} addresses a taxonomy of the types of swarm robotic foraging algorithms and the challenges that foraging algorithms must address are discussed in Section~\ref{challengesinforaging}. Existing swarm robotics foraging algorithms are outlined in Section~\ref{sec:second:existingsolution} and prioritized foraging is defined and discussed in Section~
 \ref{sec:second:prioritizedforaging}. Lastly, the chapter is summarized in Section~\ref{foraging:summary}. 
 
 
@@ -18,7 +17,7 @@ The definition of foraging in swarm robotics is discussed in Section~\ref{sec:se
 \section{Definition}
 \label{sec:second:definition}
 
-In swarm robotics, robot foraging has become a benchmark problem due to its complex nature involving the coordination of numerous sub-tasks. The problem was initially addressed by biologists, particularly in the foraging behaviour of ants \cite{holldobler1990ants,bernstein1974seasonal}, bees \cite{seeley2009wisdom} and bacteria \cite{resnick1994turtles}. Foraging has a variety of real-life applications such as search and rescue \cite{jennings1997cooperative,murphy2000biomimetic}, and waste clean-up \cite{balch1995io}. Numerous swarm robotics algorithms have been developed to improve robustness, time and energy efficiency of the foraging process for multiple variations of the foraging problem as outlined in \cite{winfield2009foraging}. 
+Foraging was initially addressed by biologists, particularly in the foraging behaviour of ants \cite{holldobler1990ants,bernstein1974seasonal}, bees \cite{seeley2009wisdom} and bacteria \cite{resnick1994turtles}. Foraging has a variety of real-life applications such as search and rescue \cite{jennings1997cooperative,murphy2000biomimetic}, and waste clean-up \cite{balch1995io}. Numerous swarm robotics algorithms have been developed to improve robustness, time and energy efficiency of the foraging process for multiple variations of the foraging problem as outlined in \cite{winfield2009foraging}. 
 
 Foraging is the act of searching for and collection (or capturing) food for storage and consumption \cite{winfield2009foraging}. Foraging is an important problem that was first addressed by biologists in the examination of nature, particularly with the foraging behaviour of ants and bacteria. In a robot context, foraging is defined as the search and collection of scattered objects in an environment and returning those objects to a collection point.
 
@@ -58,7 +57,7 @@ Similarly to ants, honey bees have efficient division of labour between differen
 
 Unemployed foragers wait on the dance floor, evaluating the dances of the scout bees. An unemployed bee chooses a location described by the scout bees, and becomes an employed forager. Employed forager bees use the information about the resource, attempt to locate the source, load themselves with food and return to the hive where unemployed foragers are ready to offload the food. Jansen \cite{janson2007searching} suggests that unemployed bees become exploring scouts when they do not detect any dancing scout bees. 
 
-\section{Other}
+\subsection{Other}
 \label{otherforaginginspirations}
 %Not sure where to put this but I think it deserves a mention
 Foraging is modelled in the swarm intelligence field. Besides ants and bees, other creatures are also looked to for inspiration.
@@ -179,14 +178,22 @@ The environment classification axis includes addressing aspects such as search s
 \section{Challenges in Foraging}
 \label{challengesinforaging}
 %TODO: Expand on challenges in foraging. 
+Foraging for humans is a near trivial problem. Most children can walk around and retrieve blocks and return them to a single source. The seemingly simple sub-activities required by foraging such as identification and grasping are often relatively complex for robots to perform. Some of the areas which are problematic for robots in a foraging concept are presented as follows:
 
 \begin{itemize}
 \item Physical - Despite how far robotics has come as a field, there are still tasks that are trivial for humans, but still very complex for most robots. For instance, challenge of picking up items and moving them to another location requires a fair amount of research, decent quality sensors and time-consuming amount of calibration. 
+
 \item Environmental - Although research can be performed in a controlled environment, for foraging to truly occur in real-life, environmental factors have to be taken into consideration. Environmental factors such as light, moisture, quality of the surface the robots forage on, often make a robotic solution a complex, non-viable, non-robust or expensive operation. 
-\item Search with local sensors - Since global sensors such as GPS location can't always be used in all environments, the problem of how to find items with or without a global view of the environment and how to effectively guide the search optimally becomes an important issue. The fact 
-\item Localization - The ability for a robot can depict their position on the environment
-\item Energy - Energy conservation and   
+
+\item Search with local sensors - Since global sensors such as GPS location can't always be used in all environments, the problem of how to find items with or without a global view of the environment and how to effectively guide the search optimally becomes a large issue. Swarms need to learn techniques of exploiting local information about the environment and use local communication in order to maintain environmental knowledge to aid search. 
+
+\item Localization - Localization is the ability for a robot can depict their position in the environment. Without a global knowledge, similarly to search, the problem of a robot knowing where it is in relation to the boundaries of the environment or other known locations and robots also becomes difficult.
+
+\item Energy - One of the predominant problems in much modern technology is energy conservation. As technology gets smaller, battery technology also has to become smaller but the devices still must should maintain charge for long periods. As robots get smaller, batteries are also getting smaller so energy conservation and automatic charging become an important problem in swarm robotics that needs to be solved.
+
 \end{itemize}
+
+Due to the complexity of the foraging problem, existing research will often simplify parts of the problem in order to focus on certain aspects. Simplification is often through use of simulators or assuming certain environments or technological capabilities of the robots. 
 
 \section{Foraging Algorithms}
 \label{sec:second:existingsolution}
