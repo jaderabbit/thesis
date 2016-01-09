@@ -7,8 +7,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%The same structure as before, including section, subsections and sub-subsections. Make sure that you follow the same conventions throughout, to avoid confusing the reader. Always remember to include a summary.
-%TODO: Add introduction - do last
+%Sentence introduction.
+The definition of foraging in swarm robotics is discussed in Section~\ref{sec:second:definition}, while Section~\ref{foraging:biologicalinspiration} discusses the biological techniques for foraging in social insects - ants and bees. Section~\ref{sec:second:types} addresses a taxonomy of the types of swarm robotic foraging algorithms and the challenges that foraging algorithms must address are discussed in Section~\ref{challengesinforaging}. Existing swarm robotics foraging algorithms are outlined in Section~\ref{sec:second:existingsolution} and prioritized foraging is defined and discussed in Section~
+\ref{sec:second:prioritizedforaging}. Lastly, the chapter is summarized in Section~\ref{foraging:summary}. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -25,7 +26,7 @@ The foraging sub-tasks involve the efficient search and collection of food, homi
 %TODO: Add citations. 
 
 \section{Biological Inspiration}
-
+\label{foraging:biologicalinspiration}
 As with many swarm robotics problems, the inspiration comes from nature - in particular, social insects such as Ants and Honeybees. This section describes the biological models that are used in the algorithms derived by this thesis. 
 
 \label{sec:second:biological}
@@ -202,7 +203,7 @@ This section discusses some foraging solutions that have been developed as well 
 Insects swarms are used as inspiration throughout swarm robotics due to their robust and flexible nature. Ants utilize pheromones which is a robust strategy for local interactions and would prove useful in hazardous environments. Section \ref{sec:second:natureinspired} discusses nature-inspired foraging algorithms 
 %citation & write better.
  
-\subsection{Nature-inspired Foraging Algorithms}
+\subsection{Nature-inspired Swarm Robotics Foraging Algorithms}
 \label{sec:second:natureinspired}
 
 %TODO: Add introduction to section
@@ -324,7 +325,7 @@ As per Winfield's classification described in section \ref{sec:second:taxonomy},
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
-\label{sec:second:summary}
+\label{foraging:summary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -467,3 +468,6 @@ Lastly, despite the general attempt to test scalability, the maximum swarm size 
 
 \section{Summary}
 \label{sec:second:summary}
+Division of labour is the adjustment of ratios of workers engaged in different tasks based on external and internal stimuli. Division of labour is used in social insect societies such as bees and ants and multiple models for division of labour have been explored by biologists. Extensive research has been performed about response threshold models, internal threshold information transfer, foraging for work and self-reinforcement models. The different models are explained and compared. Despite the large number of models, little verification of these models have been performed in real or simulate environments. 
+
+Lastly, the use of division of labour in swarm robotics is explored. Most of the reviewed research was focused around the problem of using division of labour to regulate the number of active robots where a robot has two division of labour states - either actively performing the task or resting. The techniques used in swarm robotics employ a variety of division of labour models. The author notes that the reviewed research did not adequately address the scalability of the techniques and discussed how more complex version of division of labour problems still need to be addressed.
