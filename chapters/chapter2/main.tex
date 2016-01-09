@@ -171,7 +171,6 @@ The environment classification axis includes addressing aspects such as search s
 		&	& Master slave \\\hline
 \end{tabular}
 \end{table}
-%TODO: Add caption to table if we use it. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -198,23 +197,14 @@ Due to the complexity of the foraging problem, existing research will often simp
 \section{Foraging Algorithms}
 \label{sec:second:existingsolution}
 
-
 This section discusses some foraging solutions that have been developed as well as looks at the different types of foraging problems. 
 
-%Mention the current attempts at foraging. 
-%Keep in mind to mention the papers about the techniques that I am comparing. 
-%The desert ant, bee techniques, basic ones. 
-%Mention but don't go into details about papers that attempt very specific ones.
-%Insect Inspired
-%----------------------------
-Insects swarms are used as inspiration throughout swarm robotics due to their robust and flexible nature. Ants utilize pheromones which is a robust strategy for local interactions and would prove useful in hazardous environments. Section \ref{sec:second:natureinspired} discusses nature-inspired foraging algorithms 
-%citation & write better.
+Insects swarms are used as inspiration throughout swarm robotics due to their robust and flexible nature. Ants utilize pheromones which is a robust strategy for local interactions and would prove useful in hazardous environments. Section \ref{sec:second:natureinspired} discusses nature-inspired foraging algorithms while standard foraging algorithms are addressed in Section~\ref{standardforaging}. Section~\ref{multiforaging} discusses a more complex version of foraging with multiple object types. 
  
 \subsection{Nature-inspired Swarm Robotics Foraging Algorithms}
 \label{sec:second:natureinspired}
 
-%TODO: Add introduction to section
-%TODO: Review
+Foraging is an animal activity performed in order to retrieve food. Social insects in particular have found very efficient means of foraging despite their individual simplicity. The next few sections look deeper into algorithms that have been inspired by ant foraging, bee foraging and other aspects in nature. 
 
 \subsubsection{Ant-inspired Foraging Algorithms}
 
@@ -242,33 +232,21 @@ Hoff \cite{hoff2010two} proposes a two ant-based foraging algorithm which do not
 Virtual pheromone algorithm functions as follows: Two pheromone trails are created - one trail from the source to the food and another trail from the source to the nest. The trail is created by robots: During execution, robots stop exploration and become pheromone beacons. The pheromone beacon robots simply broadcast a floating point number known as virtual pheromone. 
 Local direct communications are used to transmit the virtual pheromone value.
 
-The second technique uses cardinality where if a robot can hear 2 or more beacons then the robot stays a walker else the robot becomes a beacon. 
-%Etc etc add more from paper!!!!
-
-The advantage of using this technique over the other mentioned pheromone techniques is that robots are simpler due to simpler communication mechanisms as well as the lack of need for complex beacon deployment systems. Experiments are conducted with and without obstacles and a real-world simulator is used. The result show that congestion effects performance the most at high robot density. %write more in more detail. The cardin
+The second technique uses cardinality where if a robot can hear 2 or more beacons then the robot stays a walker else the robot becomes a beacon. The advantage of using this technique over the other mentioned pheromone techniques is that robots are simpler due to simpler communication mechanisms as well as the lack of need for complex beacon deployment systems. Experiments are conducted with and without obstacles and a real-world simulator is used. The result show that congestion effects performance the most at high robot density. %write more in more detail. The cardin
 
 \subsubsection{Bee-inspired Foraging Algorithms}
-Bee swarms have been used in swarm robotics for problems such as path planning \cite{lin2009chaotic}, aggregation \cite{kernbach2009re}, collective perception \cite{schmickl2007collective}.%Relevant? Not sure. 
+Bee swarms have been used in swarm robotics for problems such as path planning \cite{lin2009chaotic}, aggregation \cite{kernbach2009re}, collective perception \cite{schmickl2007collective}. Foraging algorithms have been developed that simulate a simplified honey bee recruitment in \cite{alers2014biologically}, which focuses on an actual robot demonstration of the technique using a turtle robot. Prior work focuses on implementing the same algorithm on e-pucks. 
 
-%TODO: Explain each example application
-Foraging algorithms have been developed that simulate a simplified honey bee recruitment in \cite{alers2014biologically}, which focuses on an actual robot demonstration of the technique using a turtle robot. Prior work focuses on implementing the same algorithm on e-pucks. The algorithm consists of two phases: an exploratory phase followed by an exploitive phase. Initially, all robots are located around the hive. In the exploratory phase, all robots perform a random search with a levy distribution until a food source is found by a robot. The exploitation phase begins where the robot that located the food returns to the hive and communicates the location to other members of the robot swarm. The other robots are recruited and begin to commute between the hive and the food source, transporting virtual food. This algorithm claims to exhibit three behaviours of bees: waiting around the hive, exploring the environment and foraging. Unlike bees, the algorithm used does not consider the division of labour between foragers, explorers and waiting robots, but rather uses an extremely simple model for bees which can only exploit a single food source. The robots use path integration in order to remember the location of the food source, and use a north-star type navigation in order to locate the hive. The path integration vector gets communicated to the other robots which use the vector to guide them to the food source. 
-
-%\subsubsection{Other Nature-inspired Foraging Algorithms}
-%TODO: Research and add 
-
-%\subsection{Other Algorithms}
-%\label{sec:second:otheralgorithms}
-%TODO: Introduction to subsection
+The algorithm consists of two phases: an exploratory phase followed by an exploitive phase. Initially, all robots are located around the hive. In the exploratory phase, all robots perform a random search with a levy distribution until a food source is found by a robot. The exploitation phase begins where the robot that located the food returns to the hive and communicates the location to other members of the robot swarm. The other robots are recruited and begin to commute between the hive and the food source, transporting virtual food. This algorithm claims to exhibit three behaviours of bees: waiting around the hive, exploring the environment and foraging. Unlike bees, the algorithm used does not consider the division of labour between foragers, explorers and waiting robots, but rather uses an extremely simple model for bees which can only exploit a single food source. The robots use path integration in order to remember the location of the food source, and use a north-star type navigation in order to locate the hive. The path integration vector gets communicated to the other robots which use the vector to guide them to the food source. 
 
 \subsection{Standard foraging}
-
+\label{standardforaging}
 
 %Fotan & Mataric
 Schneider \cite{schneider1998territorial}, in order to reduce the interference caused by collisions, develop an algorithm to split the foraging environment into bounded areas for which a robot is in charge of. The sink area of one robot is the source area for the next, resulting in the emergence of bucket brigading behaviour. The bucket brigading algorithm is not suitable to environments where the size of the environment is not known - unless an algorithm is developed that will effectively allow a swarm of robots to divide the area. The algorithm is thus not suitable for comparison for the current study. The failure of a robot induces readjustment of territories in order to effectively cover the foraging area. Global information about the environment is used and as a result the algorithm is not suitable for comparison. %Reread to figure out if initial distribution algorithm exists
 
 %Mataric
 \O stergaard \cite{ostergaard2001emergent} determines that there is a finite number of any particular type of robot that is optimal for performing a foraging task. Mataric compares the algorithm to a naive algorithm which represents the baseline foraging task with no improvements. The naive algorithm in the thesis as a baseline comparison measure and is discussed in more detail in further chapters. Mataric found that if too many robots were allocated to the environment then extreme amounts of interference occurred which decreased the performance of the algorithm. Emergent bucket brigading was shown to perform better than naive in highly constrained environments however naive performed better in open environments. Algorithms are tested in environments of differing difficulties. %Need to read this paper to check which one these details came from. Also DO the thing for his name
-
 
 %Goldberg + Mataric
 Goldberg and Mataric \cite{Goldberg01designand} address the foraging problem with multiple sources and sink areas in an open field environment. The study focuses on interference reduction by making use of a dominance hierarchy - only the dominant robot near the sink can take an item to the sink. %mentioned PACK foraging. read up
@@ -281,7 +259,8 @@ Sugawara \cite{sugawara2002swarming} implements a foraging solution for a single
 
 %Alexandre Campo 2006 - Efficient multi-foraging robotics
 \subsection{Multi-foraging}
-Multi-foraging is defined as a type of foraging problem where instead  multiple object types are required to be foraged. \cite{Balch99rewardand}. The types of objects can have different characteristics and can be collected together or separately.
+\label{multiforaging}
+Multi-foraging is defined as a type of foraging problem where instead multiple object types are required to be foraged. \cite{Balch99rewardand}. The types of objects can have different characteristics and can be collected together or separately.
 
 %Adaptive DoL in Large-scale Minimalist MultiRobot systems - Mataric.
 %2 types of items 
@@ -334,6 +313,11 @@ As per Winfield's classification described in section \ref{sec:second:taxonomy},
 \section{Summary}
 \label{foraging:summary}
 
+This chapter focused on reviewing foraging in nature and in swarm robotics as well as presenting a novel form of the foraging algorithm called prioritized foraging. 
+
+In nature, social insects have efficient emergent foraging behaviours. Ants generally lay pheromone to guide the item search process, but the desert ant does not use pheromone and thus use a technique called path integration to relocate a food source. Honey bees employ more complex foraging behaviour including division of labour and communication. Winfield's foraging taxonomy is presented and discussed so that research can be contextualized in the field. 
+
+Existing swarm robotics foraging algorithms are addressed and discussed under three sections: nature-inspired algorithm, standard foraging algorithms and multi foraging algorithms. Lastly, the novel idea of prioritized foraging is introduced. In prioritized foraging a particular item type has higher priority than other items. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\bibliographystyle{}
