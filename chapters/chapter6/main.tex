@@ -3,13 +3,10 @@
 \chapter{Results}
 \label{chap:results}
 
-In order to evaluate the the algorithms, analysis is organised around the four characteristics of swarm robotics algorithms. Section \ref{overview} focuses on providing a general overview of algorithm performances, and the motivation for the development of an algorithm that can adapt to item type ratio is presented in section \ref{relationship}. %TODO: Don't know if this fits.
-
- Section \ref{Adaptability} highlights how efficiently the honey bee algorithm adapts to item type ratio. %Analysis of the other performance measures, a discussion of the performance per individual environment type,  as well as scalability study for grid sizes, number of robots and percentage of objects, will be left for a future publication. 
+In order to evaluate the the algorithms, analysis is organised around three major characteristics of swarm robotics algorithms, namely flexibility, robustness and scalability. Section~\ref{overview} focuses on providing a general overview of algorithm performances, while flexibility of the algorithms over different environmental types and configurations is analysed in Section~\ref{results:flexibility}. The robustness to environmental changes is analysed in Section~\ref{results:robustness} while Section~\ref{results:scability} does a limited exploration of scalability. Section~\ref{results:summary} summarizes the findings of the experimentation. 
 
 \section{General Overview}
 \label{overview}
-When comparing two foraging algorithms, a pairwise Wilcoxon test was performed to determine if a statistical difference occurs, at a significance level of 95\%. The test was performed over all environments. The null  hypothesis is that the results of the two algorithms come from the same distribution. Table \ref{summarytable} gives a final algorithm ranking where 2 is the best performing algorithm and 0 is the worst performing algorithm.
 
 \begin{table}
 \centering
@@ -26,7 +23,12 @@ When comparing two foraging algorithms, a pairwise Wilcoxon test was performed t
     \end{tabular}
 \end{table}
 
-Statistical tests indicate a significant difference between the results of all algorithms. Desert ant foraging performed better than na\"ive foraging showing the positive effect of site fidelity. The honey bee algorithm out-performed the na\"ive foraging algorithm and desert ant algorithm indicating the positive effect of communication and adaptivity of the honey bee foraging algorithm. The standard deviation is high for all algorithms due to the extremely large variations in the environments provided.
+The desert ant, honey and na\"ive foraging algorithms are compared for various robot configurations over various environments. When comparing two foraging algorithms, a pairwise Wilcoxon test was performed to determine if a statistical difference exists, at a significance level of 95\%. The test was performed over all environments with the null  hypothesis that the results of the two algorithms come from the same distribution. Table \ref{summarytable} gives a final algorithm ranking where 2 is the best performing algorithm and 0 is the worst performing algorithm the value indicating the total wins of the pairwise Wilcoxon test.
+
+The pairwise Wilcoxon tests indicate that there exists a significant difference between the results of all three foraging algorithms. Desert ant foraging performed better than na\"ive foraging showing the positive effect of site fidelity. The honey bee algorithm out-performed the na\"ive foraging algorithm and desert ant algorithm indicating the positive effect of communication and adaptivity of the honey bee foraging algorithm. The standard deviation is high for all algorithms due to the extremely large variations in the environments provided.
+
+However, these are results for all algorithms over all configurations of robot specialization and thus comparison is premature. In order to perform a real comparison between algorithms, the robot specialization parameter \tau should be optimized in the potential event that there exists an initial configuration for \tau that performs best across all environment types and robot configurations addressed in the analysis. 
+
 
 
 \section{Flexibility}
