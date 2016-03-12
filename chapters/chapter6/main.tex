@@ -162,10 +162,27 @@ However, according to Table \ref{ratio}, the desert ant algorithm performs bette
 \subsection{Environmental Types}
 \label{results:environmentaltypes}
 
-It is possible that the algorithms will perform differently on different types of environments by exploiting their ability to memorize and communicate the location of areas with a high prioritized item density or conversely by exploiting their ability to explore. The performance of the algorithms is analysed over the different types of environments. The following hypotheses are explored:  
+\begin{table} [h]
+     \caption{Prioritized Items over time over different Environment Types for each Algorithm}
+     \label{ratio}
+	\centering
+	\footnotesize
+	\input{chapters/chapter6/tables/AvgDev_GoldItemsOverTime_EnvironmentType_name.tex}
+\end{table}
+
+
+\begin{figure}[!htb]
+\centering
+\resizebox{0.8\textwidth}{!}{\input{chapters/chapter6/graphs/environment_types.tex}}
+\caption{Prioritized Items over time over different Environment Types for each Algorithm}
+\label{environmenttypes}
+\end{figure}
+
+
+It is possible that the algorithms will perform differently on different types of environments by exploiting their capabilities to memorize and communicate the location of areas with a high prioritized item density or conversely by using their exploration abilities to find new items. The performance of the algorithms is analysed over the different types of environments. The following hypotheses are explored:  
 
 \begin{enumerate}
-	\item The na\"ive foraging algorithm will perform better on environments with a uniform distribution compared to the clustered, and especially the vein and Gaussian environments, due to the algorithms inability to return to areas with high item density. 
+	\item The na\"ive foraging algorithm will perform better on environments with a uniform distribution compared to the clustered, the vein and Gaussian environments, due to the algorithms inability to return to areas with high item density. 
 	\item The desert ant foraging algorithm will perform better on clustered, Gaussian and vein environments environments due to the ability to remember locations.
 	 \item The honey bee foraging algorithm will perform best on Gaussian distribution environments since it will be able to recruit members to explore and forage even quicker than the desert ant. Honey bee will likely perform worse on the uniformly distributed environments as there may be time wasted to recruit robots to areas which do not especially contain prioritized items.
 \end{enumerate}
@@ -176,6 +193,10 @@ It is possible that the algorithms will perform differently on different types o
 \caption{Prioritized items over time per environment type for each algorithm}
 \label{environmentgoldplot}
 \end{figure}
+
+
+\subsection{Item Density}
+\label{results:itemdensity}
 
 \begin{table} [h]
      \caption{Prioritized Items over Time over Item Density in Environment for each Algorithm}
@@ -272,14 +293,10 @@ Scalability is a key feature of swarm robotics. In order to examine the scalabil
 \end{figure}
 
 %Discussion
-The purpose of examining the effect of additional robots is to determine whether the addition of extra robots negatively effects the algorithm's performance. An algorithm that would scale perfectly would show a linear increase in performance as the number of robots increases. A slow down in the rate of improvement could allude to a few possibilities as follows:
+The purpose of examining the effect of additional robots is to determine whether the addition of extra robots negatively effects an algorithm's performance. An algorithm that would scale perfectly would show a linear increase in performance as the number of robots increases. The addition of more robots could potentially create interference between the robots or cause malfunction of the algorithms and impacting scalability. 
+% The addition of more robots creates interference between the robots or causes malfunction within the algorithms thus impacting scalability. 
 
-The hypothesis is that the honey bee algorithm would be the least impacted by the increase in robot density since the robots will rest if they have not foraged an item for a particular period and thus the an increase in robots would not cause as much of an increase in interference. One needs to take care when selecting the environments for analysis. In order to confirm that any analysis about the slow down in the rate of foraging is caused by the increase in robot density, one should only analyse environments where the robots are unable to complete foraging of all items for all robot densities. For this reason, the analysis has only been performed over a high object density. 
-
-\begin{itemize}
-\item The robots correctly increase  manage to successfully forage the entire environment and thus addition of robots makes no difference. TODO: This statement is invalid. 
-\item The addition of more robots creates interference between the robots or causes malfunction within the algorithms thus impacting scalability. 
-\end{itemize}
+The hypothesis is that the honey bee algorithm would be the least impacted by the increase in robot density since the robots will rest if they have not foraged an item for a particular period and thus the an increase in robots would not cause as much of an increase in interference. One needs to take care when selecting the environments for analysis. In order to confirm that any analysis about the slow down in the rate of foraging is caused by the increase in robot density, one should only analyse environments where the robots are unable to complete foraging of all items for all robot densities. For this reason, the analysis has only been performed over a high object density where all items were not able to be foraged at all item density. 
 
 Figure~\ref{robotswasteplot} displays the fitted logarithmic line, the equation of the trend-line and the value of the coefficient of determination, $r^2$, is shown. The honey bee algorithm has the smallest error when fitting a linear line and has the steepest slope on the fitted logarithmic line which means it is the least negatively affected by the increase in robots. The desert ant is similar followed by desert ant soon after and na\"ive foraging being the most effected by an increase in robots. %TODO-PLOT THAT
 
@@ -320,12 +337,8 @@ One should also keep in mind that although this seems to imply that the honey be
 \label{sizewasteplot}
 \end{figure}
 
-%Discussion
-It should be noted that as the environment size increases, that the number of robots assigned to each environment will also increase since the number of robots is based on a percentage of $S$, the environment size.
-
-
 %Need help here
-As the environment size increases, one would expect the performance to get quadratically less since the algorithms were run for the same amount of time. For this analysis, the experiments would ideally be run until no more items can be foraged, but due to time constraints only a limited study could be performed. 
+As the environment size increases, one would expect the performance to get quadratically less since the algorithms were run for the same amount of time. For this analysis, the experiments would ideally be run until no more items can be foraged, but due to time constraints only a limited study could be performed. For this reasons, the results have been presented however no valid analysis can be performed.
 
 
 Analysing each algorithm individually a few observations are evident:
