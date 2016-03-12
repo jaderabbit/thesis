@@ -22,7 +22,7 @@ In order to evaluate the the algorithms, analysis is organised around three majo
     \end{tabular}
 \end{table}
 
-The desert ant, honey and na\"ive foraging algorithms are compared for various robot configurations over various environments. When comparing two foraging algorithms, for each instance of the experiment, 2 one-tailed tests are performed. In order to compare two experiments, two one-tailed Wilcoxin tests are performed where the first test determines if the samples in algorithm A are greater than the samples in algorithm B - which is counted as a win and the second test determines if the samples in algorithm A are less than the samples in algorithm B - which is counted as a loss. In order to get an idea of an algorithms performance against the other algorithms, the wins and losses per experiment are counted per algorithm. This statistical analysis approach has been used in \cite{helbig2013performance}. Table \ref{summarytable} shows the sum of the wins and losses per algorithm.
+The desert ant, honey and na\"ive foraging algorithms are compared for various robot configurations over various environments. In order to compare two experiments, two one-tailed Wilcoxin tests are performed where the first test determines if the samples in algorithm A are greater than the samples in algorithm B - which is counted as a win and the second test determines if the samples in algorithm A are less than the samples in algorithm B - which is counted as a loss. In order to get an idea of an algorithms performance against the other algorithms, the wins and losses per experiment are counted per algorithm. This statistical analysis approach has been used in \cite{helbig2013performance}. Table \ref{summarytable} shows the sum of the wins and losses per algorithm.
 
 The pairwise Wilcoxon tests indicate that there exists a significant difference between the results of all three foraging algorithms. Desert ant foraging performed better than na\"ive foraging showing the positive effect of site fidelity. The honey bee algorithm out-performed the na\"ive foraging algorithm and desert ant algorithm indicating the positive effect of communication and adaptivity of the honey bee foraging algorithm. The standard deviation is high for all algorithms due to the extremely large variations in the environments provided.
 
@@ -87,7 +87,7 @@ The next section addresses the following hypotheses:
 \item Algorithm performance depends on the $r$ as well as $\tau$ and that as $r$ increases, the value of $\tau$ that yields the greatest value of $\sigma$, $\tau_{best}$, will increase approximately linearly for the na\"ive and desert ant algorithms, while the performance of the honey bee algorithm will be independent of $r$ due to division of labour.
 \end{enumerate}
 
-An algorithm configured with $\tau=1$ indicates that only prioritized items are foraged. By analysing Table \ref{ratio}, for the na\"ive and desert ant algorithms, for all values of $r$ where $r \neq 1$, $\tau_{best}$ is never equal to $1$, the hypothesis that the algorithms achieved the best performance when some robots are configured to forage non-prioritized items can be proven true. The result is likely because non-prioritized items are moved out of the way to allow for easier, faster access to prioritized items or allow access to inaccessible prioritized items.
+An algorithm configured with $\tau=1$ indicates that only prioritized items are foraged. By analysing Table \ref{ratio}, for the na\"ive and desert ant algorithms, for all values of $r$ where $r \neq 1$, $\tau_{best}$ is never equal to $1$, the hypothesis that the algorithms achieved the best performance when some robots are configured to forage non-prioritized items is true. The result is likely because non-prioritized items are moved out of the way to allow for easier, faster access to prioritized items or allow access to inaccessible prioritized items.
 
 
 \begin{table} [h]
@@ -213,12 +213,7 @@ As indicated in \ref{objectgoldplot}, all algorithms are shown to degrade quite 
 \subsection{Specialization}
 \label{results:specialization}
 
-%Desert Ant algorithm
-%Has optimal configuration that is unaffected by ratio. 
-%Honey bee: 
-%Does the division of labour benefit the algorithm.
-%No, not in static context? Why? 
-%Possibly in a dynamic context? Discussion. Future work
+The reason the initial robot specialization has been included under robustness is that the more dependant the algorithm is to robot specialization, the more sensitive  the algorithm is to robots becoming damaged. When referring to specialization in this chpater, it is referring specifically to the initial specialization ratio of the robots. 
 
 \begin{figure}[!htb]
 \centering
@@ -226,7 +221,6 @@ As indicated in \ref{objectgoldplot}, all algorithms are shown to degrade quite 
 \caption{Prioritized items over time over ratio of robots in environment for each algorithm }
 \label{divisiongoldplot}
 \end{figure}
-
 
 \begin{figure}[!htb]
 \centering
@@ -236,25 +230,23 @@ As indicated in \ref{objectgoldplot}, all algorithms are shown to degrade quite 
 \end{figure}
 
 %Discuss Naive
-The na\"ive algorithm has been shown to perform worst out of all algorithms. The overall trend is that as the ratio of robots foraging the prioritized type increases, the performance of the na\"ive algorithm increases. An interesting observation is that a robot specialization ratio $r=0.8$ results in the best performance, while $r=1$, where all robots are foraging prioritized items, has slightly less effective performance. This can be attributed to the fact that foraging a portion of non-prioritized items benefits the algorithm.       
+An examination of Figure~\ref{divisiongoldplot} and Figure~\ref{divisionwasteplot} reveals some surprising observations.
+As was discussed in Section~\ref{results:flexibility}, the overall trend is that as the ratio of robots foraging the prioritized type increases, the performance of the na\"ive algorithm increases. An interesting observation is that a robot specialization ratio $r=0.8$ results in the best performance for the na\"ive foraging aglorithms, while $r=1$, where all robots are foraging prioritized items, has slightly less effective performance. This can be attributed to the fact that foraging a portion of non-prioritized items benefits the algorithm.
 
 %Discuss Desert Ant
-The desert ant algorithm shows similar trends to the na\"ive algorithm with performance peaking around $r=0.8$ . 
+The desert ant algorithm shows similar trends to the na\"ive algorithm with performance peaking around $r=0.8$ while the honey bee algorithm is consistent over specialization, indicating that the honey bee algorithm does indeed perform division of labour to some level of adequacy. The desert ant does however outperform the honey bee algorithm on most of the configurations. There is space for the honey bee algorithm to be optimized so to more adequately compare the algorithms, one would have to optimize the parameters. 
+The performance of desert ant algorithm is interesting since there exists a configuration for $r$, $r=0.8$ that results in the best performance, independent of all environment types. That performance is better than the honey bee performance which means that a swarm of robots running the desert ant algorithm with the correct specialization ratio of robots will perform better than a honey bee algorithm at any robot specialization. 
 
-%Discuss Honey Bee Trend
-The honey bee algorithm is consistent over specialization, indicating that the honey bee algorithm does indeed perform division of labour to some level of adequacy. The desert ant does however outperform the honey bee algorithm on most of the configurations. There is space for the honey bee algorithm to be optimized so to more adequately compare the algorithms, one would have to optimize the parameters. 
+The desert ant algorithm, however, is less robust since if an event causes a change in robot specialization ratio (for example robots becoming damaged in a rock fall), the performance of the desert ant algorithm will be affected by the change in ratio, where as the honey bee algorithm performance would remain constant due to the division of labour and it's attempts to optimize (albeit sub-optimally) the specialization ratio of robots. 
 
-Why do none of the other graphs reflect the fact that the honey bee algorithm is outperformed by the na\"ive algorithm? The overall results are most likely skewed by the $r=0$ where no desert ant robots can forage prioritized items. 
-
-Possible reasons that the desert ant algorithm may outperform the honey bee algorithm are discussed below:
+The result does make one wonder why none of the other graphs reflect the fact that the honey bee algorithm is outperformed by the desert ant algorithm. The other results and graphs in this study are most likely skewed by the experiments when $r=0$ where no desert ant robots can forage prioritized items and thus when examining results aggregated over a different parameter, the results are skewed. One should note that since the study is not focused on a comparison of performance of the various foraging algorithms, but rather an exploration in parameter sensitivity, the relative performance of the algorithms to each other is not important, however it is still an interesting result considering that since the honey bee agents can share information as well as divide their labour appropriately. 
+ 
+Some possible reasons why the desert ant algorithm may outperform the honey bee algorithm are that:
 \begin{enumerate}
-\item The honey bee division of labour does not perfectly divide labour between the item types.
-\item Honey bee algorithm has a limiting factor such as one of the unoptimized parameters $f_{max}$ and $t_{max}$. 
-\item The process of the division of labour is slowing down the algorithm to some degree.
+	\item The honey bee division of labour does not perfectly divide labour between the item types.
+	\item Honey bee algorithm has a limiting factor such as one of the unoptimized parameters $f_{max}$ and $t_{max}$. 
+	\item The process of the division of labour is slowing down the algorithm to some degree.
 \end{enumerate}
-
-%TODO: Filter out r=0 
-
 
 \section{Scalability}
 \label{results:scability}
@@ -263,32 +255,33 @@ Scalability is a key feature of swarm robotics. In order to examine the scalabil
 \subsection{Robot Density}
 \label{results:numberenvironments}
 
-%Mann Whitney U tables
+%Mann Whitney U tables? Needed? Yes
 
-%Graphs comparing performance of # of robots, per algorithm,  2 performance measures.
 \begin{figure}[!htb]
 \centering
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/gold_robots.tex}}
-\caption{Density of Robots }
+\caption{Prioritized items over time over Robot Density}
 \label{robotsgoldplot}
 \end{figure}
 
 \begin{figure}[!htb]
 \centering
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/waste_robots.tex}}
-\caption{Non-prioritized items over Time over Robot Density}
+\caption{Non-prioritized items over time over Robot Density}
 \label{robotswasteplot}
 \end{figure}
 
 %Discussion
 The purpose of examining the effect of additional robots is to determine whether the addition of extra robots negatively effects the algorithm's performance. An algorithm that would scale perfectly would show a linear increase in performance as the number of robots increases. A slow down in the rate of improvement could allude to a few possibilities as follows:
 
+The hypothesis is that the honey bee algorithm would be the least impacted by the increase in robot density since the robots will rest if they have not foraged an item for a particular period and thus the an increase in robots would not cause as much of an increase in interference. One needs to take care when selecting the environments for analysis. In order to confirm that any analysis about the slow down in the rate of foraging is caused by the increase in robot density, one should only analyse environments where the robots are unable to complete foraging of all items for all robot densities. For this reason, the analysis has only been performed over a high object density. 
+
 \begin{itemize}
-\item That the robots manage to successfully forage the entire environment and thus addition of robots makes no difference.
-\item That the addition of more robots creates interference between the robots or causes malfunction within the algorithms thus impacting scalability. 
+\item The robots correctly increase  manage to successfully forage the entire environment and thus addition of robots makes no difference. TODO: This statement is invalid. 
+\item The addition of more robots creates interference between the robots or causes malfunction within the algorithms thus impacting scalability. 
 \end{itemize}
 
-Figure~\ref{robotswasteplot} displays the logarithmic trend line, the equation of the trend-line and the value of the coefficient of determination, $r^2$, is shown. Honey-bee has the greatest slope which means it is the least negatively affected by the increase in robots, followed by desert ant soon after and na\"ive foraging being the most effected by an increase in robots. 
+Figure~\ref{robotswasteplot} displays the fitted logarithmic line, the equation of the trend-line and the value of the coefficient of determination, $r^2$, is shown. The honey bee algorithm has the smallest error when fitting a linear line and has the steepest slope on the fitted logarithmic line which means it is the least negatively affected by the increase in robots. The desert ant is similar followed by desert ant soon after and na\"ive foraging being the most effected by an increase in robots. %TODO-PLOT THAT
 
 %Why?
 %The lower b is, the slower the rate at which the algorithm degrades as robot density increases
