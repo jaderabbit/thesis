@@ -186,6 +186,13 @@ However, according to Table \ref{ratio}, the desert ant algorithm performs bette
 \end{figure}
 
 
+\begin{figure}[!htb]
+\centering
+\resizebox{0.8\textwidth}{!}{\input{chapters/chapter6/graphs/waste_environment_types.tex}}
+\caption{Prioritized Items over time over different Environment Types for each Algorithm}
+\label{environmenttypes}
+\end{figure}
+
 It is possible that the algorithms will perform differently on different types of environments by exploiting their capabilities to memorize and communicate the location of areas with a high prioritized item density or conversely by using their exploration abilities to find new items. The performance of the algorithms is analysed over the different types of environments. The following hypotheses are explored:  
 
 \begin{enumerate}
@@ -194,12 +201,6 @@ It is possible that the algorithms will perform differently on different types o
 	 \item The honey bee foraging algorithm will perform best on Gaussian distribution environments since it will be able to recruit members to explore and forage even quicker than the desert ant. Honey bee will likely perform worse on the uniformly distributed environments as there may be time wasted to recruit robots to areas which do not especially contain prioritized items.
 \end{enumerate}
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=\textwidth]{chapters/chapter6/graphs/gold_environment.pdf}
-\caption{Prioritized items over time per environment type for each algorithm}
-\label{environmentgoldplot}
-\end{figure}
 %TODO: Insert graph and table from new results.
 By examining table X and graph Y, it is clear that suprisingly the environment types have less of an effect on performance ($\sigma$ and $\mu$) than expected thus one can conclude that the algorithms either do not effectively take advantage of some of the environment types or do take advantage of environment types but are hindered by other difficulties related to the environment type. Another general and suprising notion across all environments is that performance of the algorithm over clustered environments seems to be similar performance of the algorithms over uniform environments. This is unexpected since, due to the fact that the clustered environment has grouped areas of prioritized items, one would expect the performance of algorithms over clustered environments to be more similar to the performance of algorithms over vein and gaussian environments since vein and gaussian environments also have grouped areas of prioritized items. The conclusion after examining a number of the environments is that the generated clustered environments do not have sparsely defined clusters and thus the clustered environments are perhaps more similar to the uniform environments. 
 
