@@ -43,12 +43,12 @@ endobj
 <?adobe-xap-filters esc="CRLF"?>
 <x:xmpmeta xmlns:x='adobe:ns:meta/' x:xmptk='XMP toolkit 2.9.1-13, framework 1.6'>
 <rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' xmlns:iX='http://ns.adobe.com/iX/1.0/'>
-<rdf:Description rdf:about='uuid:19cd4ae9-00ef-11e6-0000-26abd19d7116' xmlns:pdf='http://ns.adobe.com/pdf/1.3/' pdf:Producer='MiKTeX GPL Ghostscript 9.05'/>
-<rdf:Description rdf:about='uuid:19cd4ae9-00ef-11e6-0000-26abd19d7116' xmlns:xmp='http://ns.adobe.com/xap/1.0/'><xmp:ModifyDate>Sat -Ap-r T09: 2:0:36::5 </xmp:ModifyDate>
-<xmp:CreateDate>Sat -Ap-r T09: 2:0:36::5 </xmp:CreateDate>
+<rdf:Description rdf:about='uuid:e396c824-00fc-11e6-0000-26abd19d7116' xmlns:pdf='http://ns.adobe.com/pdf/1.3/' pdf:Producer='MiKTeX GPL Ghostscript 9.05'/>
+<rdf:Description rdf:about='uuid:e396c824-00fc-11e6-0000-26abd19d7116' xmlns:xmp='http://ns.adobe.com/xap/1.0/'><xmp:ModifyDate>Sun -Ap-r T10: 0:0:20::4 </xmp:ModifyDate>
+<xmp:CreateDate>Sun -Ap-r T10: 0:0:20::4 </xmp:CreateDate>
 <xmp:CreatorTool>gnuplot 5.0 patchlevel 3</xmp:CreatorTool></rdf:Description>
-<rdf:Description rdf:about='uuid:19cd4ae9-00ef-11e6-0000-26abd19d7116' xmlns:xapMM='http://ns.adobe.com/xap/1.0/mm/' xapMM:DocumentID='uuid:19cd4ae9-00ef-11e6-0000-26abd19d7116'/>
-<rdf:Description rdf:about='uuid:19cd4ae9-00ef-11e6-0000-26abd19d7116' xmlns:dc='http://purl.org/dc/elements/1.1/' dc:format='application/pdf'><dc:title><rdf:Alt><rdf:li xml:lang='x-default'>gold_robots.tex</rdf:li></rdf:Alt></dc:title><dc:creator><rdf:Seq><rdf:li>Wesley</rdf:li></rdf:Seq></dc:creator><dc:description><rdf:Seq><rdf:li>gnuplot plot</rdf:li></rdf:Seq></dc:description></rdf:Description>
+<rdf:Description rdf:about='uuid:e396c824-00fc-11e6-0000-26abd19d7116' xmlns:xapMM='http://ns.adobe.com/xap/1.0/mm/' xapMM:DocumentID='uuid:e396c824-00fc-11e6-0000-26abd19d7116'/>
+<rdf:Description rdf:about='uuid:e396c824-00fc-11e6-0000-26abd19d7116' xmlns:dc='http://purl.org/dc/elements/1.1/' dc:format='application/pdf'><dc:title><rdf:Alt><rdf:li xml:lang='x-default'>gold_robots.tex</rdf:li></rdf:Alt></dc:title><dc:creator><rdf:Seq><rdf:li>Wesley</rdf:li></rdf:Seq></dc:creator><dc:description><rdf:Seq><rdf:li>gnuplot plot</rdf:li></rdf:Seq></dc:description></rdf:Description>
 </rdf:RDF>
 </x:xmpmeta>
                                                                         
@@ -58,8 +58,8 @@ endstream
 endobj
 2 0 obj
 <</Producer(MiKTeX GPL Ghostscript 9.05)
-/CreationDate(Sat Apr 09 20:36:35 2016)
-/ModDate(D:20160409224240+02'00')
+/CreationDate(Sun Apr 10 00:20:34 2016)
+/ModDate(D:20160410002122+02'00')
 /Title(gold_robots.tex)
 /Creator(gnuplot 5.0 patchlevel 3)
 /Subject(gnuplot plot)
@@ -78,7 +78,7 @@ xref
 0000000829 00000 n 
 trailer
 << /Size 10 /Root 1 0 R /Info 2 0 R
-/ID [<5AA7BEFBC03AFFB9EC0EAACE7E6F0695><5AA7BEFBC03AFFB9EC0EAACE7E6F0695>]
+/ID [<93C34EBCD04E56A0F22ED08FE52B28C6><93C34EBCD04E56A0F22ED08FE52B28C6>]
 >>
 startxref
 2646

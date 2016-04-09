@@ -323,6 +323,12 @@ Scalability is a key feature of swarm robotics. In order to examine the scalabil
 	\footnotesize
 	\input{chapters/chapter6/tables/AvgDev_GoldItemsOverTime_Experiment_robots.tex}
 \end{table}
+\begin{figure}[!htb]
+\centering
+\resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/gold_robots.tex}}
+\caption{Prioritized items over time over Swarm Density($c$)}
+\label{robotsgoldplot}
+\end{figure}
 
 \begin{table} [h]
      \caption{Non-prioritized Items over Time over Swarm Density for each Algorithm}
@@ -333,12 +339,7 @@ Scalability is a key feature of swarm robotics. In order to examine the scalabil
 \end{table}
 
 
-\begin{figure}[!htb]
-\centering
-\resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/gold_robots.tex}}
-\caption{Prioritized items over time over Swarm Density($c$)}
-\label{robotsgoldplot}
-\end{figure}
+
 
 \begin{figure}[!htb]
 \centering
@@ -350,9 +351,19 @@ Scalability is a key feature of swarm robotics. In order to examine the scalabil
 %Discussion
 The purpose of examining the effect of additional robots is to determine whether the addition of extra robots negatively effects an algorithm's performance. An algorithm that would scale perfectly would show a linear increase in performance as the number of robots increases. The addition of more robots could potentially create interference between the robots or cause malfunction of the algorithms and impacting scalability. 
 
-A slow down of the rate of increase as the swarm density ($c$) increases could also mean that the robots are just successfully foraging the entire environment with a lesser swarm density which will explain as the number of robots increases, the performance does not increase. In order to avoid the situation where the entire environment is foraged, analysis should only be performed on large, high density environments where $S >= 200$ and $p >= 0.8$
+The hypothesis is that the honey bee algorithm would be the least impacted by the increase in swarm density since the robots will rest if they have not foraged an item for a particular period and thus the an increase in robots would not cause as much of an increase in interference. The na\"ive and desert ant algorithms should scale less effectively, since they have no mechanism to react to increased interference.
 
-The hypothesis is that the honey bee algorithm would be the least impacted by the increase in swarm density since the robots will rest if they have not foraged an item for a particular period and thus the an increase in robots would not cause as much of an increase in interference. One needs to take care when selecting the environments for analysis. In order to confirm that any analysis about the slow down in the rate of foraging is caused by the increase in swarm density, one should only analyse environments where the robots are unable to complete foraging of all items for all robot densities. For this reason, the analysis has only been performed over a high object density where all items were not able to be foraged at any given swarm density.
+One needs to take care when selecting the environments for analysis. In order to confirm that any analysis about the slow down in the rate of foraging is caused by the increase in swarm density, one should only analyse environments where the robots are unable to complete foraging of all items for all robot densities. For this reason, the analysis has only been performed over a high object density where all items were not able to be foraged at any given swarm density where $S >= 200$ and $p >= 0.8$.
+
+Table~\ref{specializationprioritized} and Figure~\ref{robotsgoldplot} indicate that the hypothesis is true as the honey bee is the most scalable since the addition of new robots negatively impacted the swarm the least, as in the rate of improvement as robots are added is closest to linear, however does slow down as swarm density gets very high indicating that the division of labour mechanism that allows an agent to switch to the waiting state when intereference is detected can likely be optimized. 
+
+The na\"ive foraging algorithm improves very slowly as swarm density is increased indicated that adding more agents does not improve the algorithms performance very much. Since the na\"ive algorithm does not have any mechanism to react to increased interfence, these results are expected. The lack of such a machanism paired with the fact that the algorithm forages rather inefficiently to begin with likely means that the agents get stuck near the sink attempting to avoid each other and not managing to forage very much.
+
+The desert ant algorithm is not as badly affected as the na\"ive algorithm by the increase in swarm density and is most likely a result of more optimal navigation allowing robots to stick to the paths they found instead of randomly navigating into one another. 
+
+Examination of Table~\ref{specializationnonprioritized} and Figure~\ref{robotswasteplot} which show the effect of swarm density $c$ on $\mu$ are similar to those indicating the effect of swarm density $c$ on $\sigma$.
+
+One can conclude that at least two factors effect the scalability of the swarm: the ability for the swarm to react to increased interference (like the honey bee algorithm) as well as the ability to avoid interference in the first place by having a more advanced navigation mechanism (like the desert ant algorithm).
 
 \subsection{Environment Size}
 \label{results:environmentsize}
