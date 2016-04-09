@@ -71,39 +71,42 @@
       \expandafter\def\csname LT8\endcsname{\color{black}}%
     \fi
   \fi
-  \setlength{\unitlength}{0.0500bp}%
-  \begin{picture}(7200.00,5040.00)%
+    \setlength{\unitlength}{0.0500bp}%
+    \ifx\gptboxheight\undefined%
+      \newlength{\gptboxheight}%
+      \newlength{\gptboxwidth}%
+      \newsavebox{\gptboxtext}%
+    \fi%
+    \setlength{\fboxrule}{0.5pt}%
+    \setlength{\fboxsep}{1pt}%
+\begin{picture}(7200.00,5040.00)%
     \gplgaddtomacro\gplbacktext{%
       \csname LTb\endcsname%
-      \put(1078,704){\makebox(0,0)[r]{\strut{} 0.25}}%
-      \put(1078,1163){\makebox(0,0)[r]{\strut{} 0.3}}%
-      \put(1078,1623){\makebox(0,0)[r]{\strut{} 0.35}}%
-      \put(1078,2082){\makebox(0,0)[r]{\strut{} 0.4}}%
-      \put(1078,2541){\makebox(0,0)[r]{\strut{} 0.45}}%
-      \put(1078,3001){\makebox(0,0)[r]{\strut{} 0.5}}%
-      \put(1078,3460){\makebox(0,0)[r]{\strut{} 0.55}}%
-      \put(1078,3920){\makebox(0,0)[r]{\strut{} 0.6}}%
-      \put(1078,4379){\makebox(0,0)[r]{\strut{} 0.65}}%
-      \put(1210,484){\makebox(0,0){\strut{} 0.1}}%
-      \put(1831,484){\makebox(0,0){\strut{} 0.2}}%
-      \put(2453,484){\makebox(0,0){\strut{} 0.3}}%
-      \put(3074,484){\makebox(0,0){\strut{} 0.4}}%
-      \put(3696,484){\makebox(0,0){\strut{} 0.5}}%
-      \put(4317,484){\makebox(0,0){\strut{} 0.6}}%
-      \put(4939,484){\makebox(0,0){\strut{} 0.7}}%
-      \put(5560,484){\makebox(0,0){\strut{} 0.8}}%
-      \put(6182,484){\makebox(0,0){\strut{} 0.9}}%
-      \put(6803,484){\makebox(0,0){\strut{} 1.0}}%
-      \put(176,2541){\rotatebox{-270}{\makebox(0,0){\strut{}Prioritized items over time ($\sigma$)}}}%
-      \put(4006,154){\makebox(0,0){\strut{}Swarm Density($c$)}}%
-      \put(4006,4709){\makebox(0,0){\strut{}Prioritized items over time for each algorithm over swarm density}}%
+      \put(946,704){\makebox(0,0)[r]{\strut{}$0.1$}}%
+      \put(946,1317){\makebox(0,0)[r]{\strut{}$0.15$}}%
+      \put(946,1929){\makebox(0,0)[r]{\strut{}$0.2$}}%
+      \put(946,2542){\makebox(0,0)[r]{\strut{}$0.25$}}%
+      \put(946,3154){\makebox(0,0)[r]{\strut{}$0.3$}}%
+      \put(946,3766){\makebox(0,0)[r]{\strut{}$0.35$}}%
+      \put(946,4379){\makebox(0,0)[r]{\strut{}$0.4$}}%
+      \put(1078,484){\makebox(0,0){\strut{}$0.1$}}%
+      \put(1714,484){\makebox(0,0){\strut{}$0.2$}}%
+      \put(2350,484){\makebox(0,0){\strut{}$0.3$}}%
+      \put(2986,484){\makebox(0,0){\strut{}$0.4$}}%
+      \put(3622,484){\makebox(0,0){\strut{}$0.5$}}%
+      \put(4259,484){\makebox(0,0){\strut{}$0.6$}}%
+      \put(4895,484){\makebox(0,0){\strut{}$0.7$}}%
+      \put(5531,484){\makebox(0,0){\strut{}$0.8$}}%
+      \put(6167,484){\makebox(0,0){\strut{}$0.9$}}%
+      \put(6803,484){\makebox(0,0){\strut{}$1$}}%
     }%
     \gplgaddtomacro\gplfronttext{%
       \csname LTb\endcsname%
+      \put(176,2541){\rotatebox{-270}{\makebox(0,0){\strut{}Prioritized items over time ($\sigma$)}}}%
+      \put(3940,154){\makebox(0,0){\strut{}Swarm Density ($c$)}}%
+      \put(3940,4709){\makebox(0,0){\strut{}Prioritized items over time for each algorithm over swarm density ($c$)}}%
       \put(5816,4206){\makebox(0,0)[r]{\strut{}Na\"ive}}%
-      \csname LTb\endcsname%
       \put(5816,3986){\makebox(0,0)[r]{\strut{}Desert Ant}}%
-      \csname LTb\endcsname%
       \put(5816,3766){\makebox(0,0)[r]{\strut{}Honey Bee}}%
     }%
     \gplbacktext
