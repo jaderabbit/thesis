@@ -10,7 +10,7 @@ In order to evaluate the the algorithms, analysis is organised around three majo
 
 \begin{table}
 \centering
-    \caption{The overall Pairwise One-tailed Mann Whitney U wins and losses , averages and standard deviations of for $\sigma$ for each algorithm}
+    \caption{Overall pairwise one-tailed Mann Whitney U wins and losses, averages and standard deviations for $\sigma$ for each algorithm}
         \label{summarytable}
     \begin{tabular}{l|llll}
     \hline \hline
@@ -22,19 +22,19 @@ In order to evaluate the the algorithms, analysis is organised around three majo
     \end{tabular}
 \end{table}
 
-The desert ant, honey and na\"ive foraging algorithms are compared for various robot configurations over various environments. In order to compare two experiments, two one-tailed Wilcoxin tests are performed where the first test determines if the samples in algorithm A are greater than the samples in algorithm B - which is counted as a win and the second test determines if the samples in algorithm A are less than the samples in algorithm B - which is counted as a loss. In order to get an idea of an algorithms performance against the other algorithms, the wins and losses per experiment are counted per algorithm. This statistical analysis approach has been used in \cite{helbig2013performance}. Table \ref{summarytable} shows the sum of the wins and losses per algorithm.
+The desert ant, honey-bee and na\"ive foraging algorithms are compared for various robot configurations over various environments. In order to compare two experiments, two one-tailed Wilcoxin tests are performed where the first test determines if the samples in algorithm A are greater than the samples in algorithm B - which is counted as a win and the second test determines if the samples in algorithm A are less than the samples in algorithm B - which is counted as a loss. In order to get an idea of an algorithms performance against the other algorithms, the wins and losses per experiment are counted per algorithm. This statistical analysis approach has been used in \cite{helbig2013performance}. Table \ref{summarytable} shows the sum of the wins and losses per algorithm.
 
 The pairwise Wilcoxon tests indicate that there exists a significant difference between the results of all three foraging algorithms. Desert ant foraging performed better than na\"ive foraging showing the positive effect of site fidelity. The honey bee algorithm out-performed the na\"ive foraging algorithm and desert ant algorithm indicating the positive effect of communication and adaptivity of the honey bee foraging algorithm. The standard deviation is high for all algorithms due to the extremely large variations in the environments provided.
 
-However, these are results for all algorithms over all configurations of robot specialization and thus comparison is premature. In order to perform a real comparison between algorithms, the robot specialization parameter $\tau$ should be optimized in the potential event that there exists an initial configuration for $\tau$ that performs best across all environment types and robot configurations addressed in the analysis. 
+However, these are results for all algorithms over all configurations of robot specialization and thus comparison is premature. In order to perform a real comparison between algorithms, the robot specialization parameter $\tau$ should be optimized in the potential event that there exists an initial configuration for $\tau$ that performs best across all environment types and robot configurations addressed in the analysis. This study rather focuses on a sensitivity study of the algorithms to a variety of environmental, and algorithmic parameters.
 
 
 \section{Flexibility}
 \label{results:flexibility}
 
-In real life environments, it's rarely feasible to optimize parameters per the environment in which a swarm of robots needs to be introduced. As a result, it's important that swarm robotics algorithms are insensitive to types of environment and either have a set of parameters that generalize well or have the ability to adapt their parameters to an unseen environment.
+In real life environments, it's rarely feasible to optimize parameters per the environment where a swarm of robots needs to be introduced. As a result, it's important that swarm robotics algorithms are insensitive to types of environment and either have a set of parameters that generalize well or have the ability to adapt their parameters to an unseen environment.
 
-In order to determine the flexibility of the three proposed foraging algorithms, the effect of the ratio of item types in the environment as well as the effect on different types of distributions of gold and waste items in the environments is analysed. The more insensitive an algorithm is to the change in environmental parameters, the more flexible the algorithm can be considered to be. 
+In order to determine the flexibility of the three proposed foraging algorithms, the effect of the ratio of item types in the environment and the effect on different types of distributions of prioritized and non-prioritized items in the environments is analysed. The more insensitive an algorithm is to the change in environmental parameters, the more flexible the algorithm can be considered to be. 
 
 \subsection{Environment Item Ratio}
 \label{results:ratio}
@@ -61,12 +61,12 @@ In order to determine the flexibility of the three proposed foraging algorithms,
 	\end{tabular}
 \end{table}
 
-Environment item ratio refers to the ratio of prioritized items to non-prioritized items $r$. In order to truly analyse the effects of the environment, one should optimize each algorithm for all the environments as there may exist a parameter set for the algorithms that performs well over all environments. For this reason, we first analyse two hypotheses related to the dependency of the performance of an algorithm in environments with a particular item ratio and the ratio of specialization of the robots themselves.
+Environment item ratio refers to the ratio of prioritized items to non-prioritized items $r$ in the foraging environment. In order to truly analyse the effects of the environment, one should optimize each algorithm for all the environments since there may exist a parameter set for the algorithms that performs well over all environments. For this reason, we first analyse two hypotheses related to the dependency of the performance of an algorithm in environments with a particular item ratio and the ratio of specialization of the robots themselves.
 
 \begin{figure}[!htb]
 \centering
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/gold_ratio.tex}}
-\caption{Prioritized items over time over ratio of Items in Environment for each algorithm }
+\caption{Prioritized items over time over environment ratio $r$ for each algorithm }
 \label{ratiogoldplot}
 \end{figure}
 
@@ -74,20 +74,20 @@ Environment item ratio refers to the ratio of prioritized items to non-prioritiz
 \begin{figure}[!htb]
 \centering
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/waste_ratio.tex}}
-\caption{Non-prioritized items over time over ratio of Items in Environment for each algorithm}
+\caption{Non-prioritized items over time over environment ratio $r$ for each algorithm}
 \label{ratiowasteplot}
 \end{figure}
 
-\subsubsection{The Relationship between Item Ratio in Environment and Specialization Ratio of Robots}
+\subsubsection{The Relationship between Environment Item Ratio and Specialization Ratio of Robots}
 \label{relationship}
 
 The next section addresses the following hypotheses:
 \begin{enumerate}
 \item An algorithm that forages a portion of non-prioritized items will have greater performance than an algorithm that does not forage any non-prioritized items.
-\item Algorithm performance depends on the $r$ as well as $\tau$ and that as $r$ increases, the value of $\tau$ that yields the greatest value of $\sigma$, $\tau_{best}$, will increase approximately linearly for the na\"ive and desert ant algorithms, while the performance of the honey bee algorithm will be independent of $r$ due to division of labour.
+\item Algorithm performance depends on the environment ratio $r$ and the specialization ratio $\tau$. As $r$ increases, the value of $\tau$ that yields the greatest value of $\sigma$, $\tau_{best}$, will increase approximately linearly for the na\"ive and desert ant algorithms, while the performance of the honey bee algorithm will be independent of $r$ due to division of labour.
 \end{enumerate}
 
-An algorithm configured with $\tau=1$ indicates that only prioritized items are foraged. By analysing Table \ref{ratio}, for the na\"ive and desert ant algorithms, for all values of $r$ where $r \neq 1$, $\tau_{best}$ is never equal to $1$, the hypothesis that the algorithms achieved the best performance when some robots are configured to forage non-prioritized items is true. The result is likely because non-prioritized items are moved out of the way to allow for easier, faster access to prioritized items or allow access to inaccessible prioritized items.
+An algorithm configured with $\tau=1$ indicates that only prioritized items are foraged. By analysing Table \ref{ratio}, for the na\"ive and desert ant algorithms, for all values of $r$ where $r \neq 1$, $\tau_{best}$ is never equal to $1$, thus the hypothesis that the algorithms achieved the best performance when some robots are configured to forage non-prioritized items is true. The result is likely because non-prioritized items are moved out of the way to allow for easier, faster access to prioritized items or allow access to inaccessible prioritized items.
 
 
 \begin{table} [h]
