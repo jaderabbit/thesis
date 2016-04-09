@@ -1,7 +1,9 @@
-set terminal epslatex 
+set style data histogram
+set style histogram cluster gap 1
 set style fill solid border rgb "black"
 set auto x
-set yrange [0:*]
+set yrange [0:0.7]
+set term epslatex 
 set output "environment_types.tex"
 plot 'environment_types.dat' using 2:xtic(1) title col, \
         '' using 3:xtic(1) title col, \
