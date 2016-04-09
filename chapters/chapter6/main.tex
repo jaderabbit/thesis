@@ -155,11 +155,11 @@ Fig \ref{desertantplot} shows the region in parameter space where the desert ant
 \subsubsection{Independence of the Honey Bee Foraging Algorithm to Item Type Ratio}
 \label{Adaptability}
 
-Analysis of Table \ref{ratio} indicates that the honey bee foraging algorithm has similar performance throughout all configurations for $r$ and $\tau$, which highlights that the performance of the honey bee algorithm is independent of the configuration of $\tau$, resulting in an algorithm that is potentially more flexible and robust. This could mean that the honey bee algorithm could perform well in dynamic environments where robots and items can be destroyed.
+Analysis of Table \ref{ratio} indicates that the honey bee foraging algorithm has similar performance throughout all configurations for $r$ and $\tau$, which highlights that the performance of the honey bee algorithm is independent of the configuration of $\tau$, thus one can conclude that the honey bee algorithm is more flexible and robust. This could mean that the honey bee algorithm could perform well in dynamic environments where robots and items can be destroyed.
 
 However, according to Table \ref{ratio}, the desert ant algorithm performs better than the honey bee algorithm, for particular configurations of $r$ and $\tau$. This indicates that, if the value of $r$ is known for a particular environment, then it is beneficial to use desert ant foraging and choose $\tau$ appropriately. A possible reason why the desert ant algorithm performs better when optimally configured for a particular environment than the honey bee algorithm is that the honey bee algorithm takes time to adapt to the environment, while the desert ant algorithm with optimal configurations has no division of labour overhead and may outperform the honey bee algorithm under those circumstances.
 
-\subsection{Environmental Types}
+\subsection{Environment Types}
 \label{results:environmentaltypes}
 
 \begin{table} [h]
@@ -183,7 +183,7 @@ It is possible that the algorithms will perform differently on different types o
 
 \begin{enumerate}
 	\item The na\"ive foraging algorithm will perform better on environments with a uniform distribution compared to the clustered, the vein and Gaussian environments, due to the algorithms inability to return to areas with high item density. 
-	\item The desert ant foraging algorithm will perform better on clustered, Gaussian and vein environments environments due to the ability to remember locations.
+	\item The desert ant foraging algorithm will perform better on clustered, Gaussian and vein environments environments due to their capability to remember locations and thus are able to return quickly to areas that are rich in prioritized items.
 	 \item The honey bee foraging algorithm will perform best on Gaussian distribution environments since it will be able to recruit members to explore and forage even quicker than the desert ant. Honey bee will likely perform worse on the uniformly distributed environments as there may be time wasted to recruit robots to areas which do not especially contain prioritized items.
 \end{enumerate}
 
@@ -193,7 +193,14 @@ It is possible that the algorithms will perform differently on different types o
 \caption{Prioritized items over time per environment type for each algorithm}
 \label{environmentgoldplot}
 \end{figure}
+%TODO: Insert graph and table from new results.
+By examining table X and graph Y, it is clear that suprisingly the environment types have less of an effect on performance ($\sigma$ and $\mu$) than expected thus one can conclude that the algorithms either do not effectively take advantage of some of the environment types or do take advantage of environment types but are hindered by other difficulties related to the environment type. Another general and suprising notion across all environments is that performance of the algorithm over clustered environments seems to be similar performance of the algorithms over uniform environments. This is unexpected since, due to the fact that the clustered environment has grouped areas of prioritized items, one would expect the performance of algorithms over clustered environments to be more similar to the performance of algorithms over vein and gaussian environments since vein and gaussian environments also have grouped areas of prioritized items. The conclusion after examining a number of the environments is that the generated clustered environments do not have sparsely defined clusters and thus the clustered environments are perhaps more similar to the uniform environments. 
 
+As expected, the na\"ive algorithm performs the best on uniform environments and the worst on gaussian and vein environments. As discussed above, the na\"ive algorithm also performs similarly on the clustered environments as it does on the uniform environments, but besides that anomaly, the first hypothesis about na\"ive environments is confirmed. 
+
+Table x and graph Y surpisingly do not confirm the second hypothesis that the desert ant algorithm will perform better on the gaussian and vein environments than the uniform environments. The reason for this is actually obvious after careful thought. The uniform environment can be considered a simpler environment type than the  clustered, gaussian and vein environments since the uniform environment is less likely to result in large areas of non-prioritized items that may form larger obstacles that are difficult to navigate around. Not only that, but the uniform distribution will result in less robot-to-robot interference than gaussian and vein environments since the robots are not all trying to navigate towards the same area to locate the items and are thus likely to be evenly spread across the environment. Unlike the honey bee algorithm, which may actively be at a disadvantage in a uniform environment due to potential overhead from division of labour between foraging and resting robots and the specialization ratio division of labour, the desert ant algorithm has no such overhead. Due to the simpler nature of the uniform environment, it is thus not suprising that the desert ant algorithm performs better on the uniform environment as opposed to the more difficult vein and gaussian environments. As discussed above, the desert ant algorithm performed similarly on clustered environments as it did on uniform environments. 
+
+The honey bee algorithm performs as expected, performing better on gaussian and environments and worse on the clustered and uniform environments. As stated above, the honey bee algorthim is actively hindered in uniform environments as it may falsely detect that the location of an environment is worth broadcasting to other robots, and thus robots are unnecessarily recruited to an area which does not have a rich concentration of prioritized items. The other problem is that there may be overhead where robots falsely switch between foraging prioritized and non-prioritized items when falsely detecting that a switch is required and thus robots end up thrashing back and forth between foraging prioritized and non-prioritized items. The honey bee algorithm is thus more suited to environments which has areas of higher concentrations of particular types of items so that division of labour does not cause unnecessary overhead and instead benefits the performance of the algorithm. 
 
 \subsection{Item Density}
 \label{results:itemdensity}
@@ -205,6 +212,7 @@ It is possible that the algorithms will perform differently on different types o
 	\footnotesize
 	\input{chapters/chapter6/tables/AvgDev_GoldItemsOverTime_Environment_objects.tex}
 \end{table}
+
 
 \begin{figure}[!htb]
 \centering
