@@ -16,10 +16,10 @@ This chapter details the experimental setup for the simulations that were perfor
 \section{Parameters}
 \label{parameters}
 
-For each class of environment, the following configurations were tested: The environment grid size, $S=50,100,200,300, 500$ where $S$ is the width and length of the grid and the percentage $p$ of the grid covered by objects, with $p= 5\%$, $20\%$, $50\%$, $70\%$, $90\%$. The ratio of prioritized to non-prioritized items $r$, is varied, where $r=0$, $0.2$,$0.25$, $0.333$, $0.5$, $0.667$, $0.75$, $0.8$, $1$. Honey bee specific parameters were selected based on \cite{seeley2009wisdom} as 
+For each class of environment, the following configurations were tested: The environment grid size, $S=50,100,200,300, 500$ where $S$ is the width and length of the grid and the percentage of the grid covered by items $p$, where $p= 0.05\%$, $0.2\%$, $0.5\%$, $0.7\%$, $0.9\%$. The ratio of prioritized to non-prioritized items $r$, is varied, where $r=0$, $0.2$,$0.25$, $0.333$, $0.5$, $0.667$, $0.75$, $0.8$, $1$. Honey bee specific parameters were selected based on \cite{seeley2009wisdom} as 
 $t_{max}=200$ time steps, $f_{max}=100$ time steps, $\phi=0.8$ and $\rho=0.1$.
 
-For all algorithms, robots were initially configured to forage either the prioritized item or the non-prioritized item with a ratio of $\tau=0$, $0.2$, $0.25$, $0.333$, $0.5$, $0.667$, $0.75$, $0.8$,$1$. Different numbers of robots, $c$, were used with $c=10, 30, 50, 70, 100$; $c$ is defined as the percentage of cells of the grid size $S$ that are occupied by robots.
+For all algorithms, robots were initially configured to forage either the prioritized item or the non-prioritized item with a ratio of $\tau=0$, $0.2$, $0.25$, $0.333$, $0.5$, $0.667$, $0.75$, $0.8$,$1$. The density of robots, $c$, is defined as the percentage of cells of the grid size $S$ (the length of the side of an environment) that are occupied by robots, where $c=0.1, 0.3, 0.5, 0.7, 1$.
 
 All agents begin at random positions adjacent to the sink in the exploration state. All algorithms were run for 10000 time steps, where an agent can move maximum 1 grid cell at a time, to any adjacent cell not occupied by another robot or item. For all algorithms, the agents begin randomly positioned next to the sink. The beacon locating of the sinks is simulated by each agent evaluating and moving up a light intensity gradient. The colour of the light is used to distinguish between the 2 sinks.
 
