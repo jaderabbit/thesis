@@ -26,7 +26,7 @@ The desert ant, honey-bee and na\"ive foraging algorithms are compared for vario
 
 The pairwise Wilcoxon tests indicate that there exists a significant difference between the results of all three foraging algorithms. Desert ant foraging performed better than na\"ive foraging showing the positive effect of site fidelity. The honey bee algorithm out-performed the na\"ive foraging algorithm and desert ant algorithm indicating the positive effect of communication and adaptivity of the honey bee foraging algorithm. The standard deviation is high for all algorithms due to the extremely large variations in the environments provided.
 
-However, these are results for all algorithms over all configurations of robot specialization and thus comparison is premature. In order to perform a real comparison between algorithms, the robot specialization parameter $\tau$ should be optimized in the potential event that there exists an initial configuration for $\tau$ that performs best across all environment types and robot configurations addressed in the analysis. This study rather focuses on a sensitivity study of the algorithms to a variety of environmental, and algorithmic parameters.
+However, these are results for all algorithms over all configurations of swarm specialization ratio and thus comparison is premature. In order to perform a real comparison between algorithms, the swarm specialization ratio parameter $\tau$ should be optimized in the potential event that there exists an initial configuration for $\tau$ that performs best across all environment types and robot configurations addressed in the analysis. This study rather focuses on a sensitivity study of the algorithms to a variety of environmental, and algorithmic parameters.
 
 
 \section{Flexibility}
@@ -164,12 +164,19 @@ However, according to Table \ref{ratio}, the desert ant algorithm performs bette
 
 \begin{table} [h]
      \caption{Prioritized Items over time over different Environment Types for each Algorithm}
-     \label{ratio}
+     \label{environmenttypeprioritized}
 	\centering
 	\footnotesize
 	\input{chapters/chapter6/tables/AvgDev_GoldItemsOverTime_EnvironmentType_name.tex}
 \end{table}
 
+\begin{table} [h]
+     \caption{Non-prioritized Items over time over different Environment Types for each Algorithm}
+     \label{environmenttypenonprioritized}
+	\centering
+	\footnotesize
+	\input{chapters/chapter6/tables/AvgDev_WasteItemsOverTime_Environment_objects.tex}
+\end{table}
 
 \begin{figure}[!htb]
 \centering
@@ -207,10 +214,18 @@ The honey bee algorithm performs as expected, performing better on gaussian and 
 
 \begin{table} [h]
      \caption{Prioritized Items over Time over Item Density in Environment for each Algorithm}
-     \label{ratio}
+     \label{itemdensityprioritized}
 	\centering
 	\footnotesize
 	\input{chapters/chapter6/tables/AvgDev_GoldItemsOverTime_Environment_objects.tex}
+\end{table}
+
+\begin{table} [h]
+     \caption{Non-prioritized Items over Time over Item Density in Environment for each Algorithm}
+     \label{itemdensitynonprioritized}
+	\centering
+	\footnotesize
+	\input{chapters/chapter6/tables/AvgDev_WasteItemsOverTime_Environment_objects.tex}
 \end{table}
 
 
@@ -236,10 +251,26 @@ Item density is examined in order to determine if algorithm performance is affec
 
 Robustness can be defined as an algorithms ability to degrade gracefully or recover from damage or mulfunction of a portion of the swarm. A robust algorithms performance should thus be independant of any specific initial swarm configuration such as the specialization ratio. The more homogenous the swarm, in general, the more robust the swarm will be to failure of a portion of the swarm since the swarm will not have any dependancies on a specific individual or group of individuals within the swarm. The less homogenous the swarm is, the most likely the swarm will suffer when individuals with specific capabilities malfunction or are damaged.
 
-\subsection{Specialization}
+\subsection{Swarm Specialization}
 \label{results:specialization}
 
-The reason the initial robot specialization has been included under robustness is that the more dependant the algorithm is to robot specialization, the more sensitive  the algorithm is to robots becoming damaged. When referring to specialization in this chpater, it is referring specifically to the initial specialization ratio $\tau$ of the swarm of robots. 
+The reason the initial swarm specialization ratio has been included under robustness is that the more dependant the algorithm is to swarm specialization ratio, the more sensitive  the algorithm is to robots becoming damaged. When referring to specialization in this chapter, it is referring specifically to the initial swarm specialization ratio $\tau$ of the swarm of robots. 
+
+\begin{table} [h]
+     \caption{Prioritized Items over Time over Swarm Specialization Ratio for each Algorithm}
+     \label{specializationprioritized}
+	\centering
+	\footnotesize
+	\input{chapters/chapter6/tables/AvgDev_GoldItemsOverTime_Experiment_division.tex}
+\end{table}
+
+\begin{table} [h]
+     \caption{Non-prioritized Items over Time over Swarm Specialization Ratio for each Algorithm}
+     \label{specializationnonprioritized}
+	\centering
+	\footnotesize
+	\input{chapters/chapter6/tables/AvgDev_WasteItemsOverTime_Experiment_division.tex}
+\end{table}
 
 \begin{figure}[!htb]
 \centering
@@ -256,11 +287,11 @@ The reason the initial robot specialization has been included under robustness i
 \end{figure}
 
 An examination of Figure~\ref{divisiongoldplot} and Figure~\ref{divisionwasteplot} reveals some surprising observations.
-As was discussed in Section~\ref{results:flexibility}, the overall trend is that as the ratio of robots foraging the prioritized type increases, the performance of the na\"ive algorithm increases. An interesting observation is that a robot specialization ratio $r=0.8$ results in the best performance for the na\"ive foraging aglorithms, while $r=1$, where all robots are foraging prioritized items, has slightly less effective performance. This can be attributed to the fact that foraging a portion of non-prioritized items benefits the algorithm.
+As was discussed in Section~\ref{results:flexibility}, the overall trend is that as the ratio of robots foraging the prioritized type increases, the performance of the na\"ive algorithm increases. An interesting observation is that a swarm specialization ratio $r=0.8$ results in the best performance for the na\"ive foraging aglorithms, while $r=1$, where all robots are foraging prioritized items, has slightly less effective performance. This can be attributed to the fact that foraging a portion of non-prioritized items benefits the algorithm.
 
 %Discuss Desert Ant
 The desert ant algorithm shows similar trends to the na\"ive algorithm with performance peaking around $r=0.8$ while the honey bee algorithm is consistent over specialization, indicating that the honey bee algorithm does indeed perform division of labour to some level of adequacy. The desert ant does however outperform the honey bee algorithm on most of the configurations. There is space for the honey bee algorithm to be optimized so to more adequately compare the algorithms, one would have to optimize the parameters. 
-The performance of desert ant algorithm is interesting since there exists a configuration for $r$, $r=0.8$ that results in the best performance, independent of all environment types. That performance is better than the honey bee performance which means that a swarm of robots running the desert ant algorithm with the correct specialization ratio of robots will perform better than a honey bee algorithm at any robot specialization. 
+The performance of desert ant algorithm is interesting since there exists a configuration for $r$, $r=0.8$ that results in the best performance, independent of all environment types. That performance is better than the honey bee performance which means that a swarm of robots running the desert ant algorithm with the correct specialization ratio of robots will perform better than a honey bee algorithm at any swarm specialization ratio. 
 
 The desert ant algorithm, however, is less robust since if an event causes a change in robot specialization ratio (for example robots becoming damaged in a rock fall), the performance of the desert ant algorithm will be affected by the change in ratio, where as the honey bee algorithm performance would remain constant due to the division of labour and it's attempts to optimize (albeit sub-optimally) the specialization ratio of robots. 
 
@@ -277,44 +308,48 @@ In terms of robustness, despite the desert ant outperforming the honey bee algor
 
 \section{Scalability}
 \label{results:scability}
-Scalability is a key feature of swarm robotics. In order to examine the scalability of the proposed foraging algorithms, the performance of algorithms is compared over differing robot densities. 
+Scalability is a key feature of swarm robotics. In order to examine the scalability of the proposed foraging algorithms, the performance of algorithms is compared over differing swarm densities. 
 
-\subsection{Robot Density}
+\subsection{Swarm Density}
 \label{results:numberenvironments}
 
-%Mann Whitney U tables? Needed? Yes
+\begin{table} [h]
+     \caption{Prioritized Items over Time over Swarm Density for each Algorithm}
+     \label{specializationprioritized}
+	\centering
+	\footnotesize
+	\input{chapters/chapter6/tables/AvgDev_GoldItemsOverTime_Experiment_robots.tex}
+\end{table}
+
+\begin{table} [h]
+     \caption{Non-prioritized Items over Time over Swarm Density for each Algorithm}
+     \label{specializationnonprioritized}
+	\centering
+	\footnotesize
+	\input{chapters/chapter6/tables/AvgDev_WasteItemsOverTime_Experiment_robots.tex}
+\end{table}
+
 
 \begin{figure}[!htb]
 \centering
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/gold_robots.tex}}
-\caption{Prioritized items over time over Robot Density($c$)}
+\caption{Prioritized items over time over Swarm Density($c$)}
 \label{robotsgoldplot}
 \end{figure}
 
 \begin{figure}[!htb]
 \centering
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/waste_robots.tex}}
-\caption{Non-prioritized items over time over Robot Density ($c$)}
+\caption{Non-prioritized items over time over Swarm Density ($c$)}
 \label{robotswasteplot}
 \end{figure}
 
 %Discussion
 The purpose of examining the effect of additional robots is to determine whether the addition of extra robots negatively effects an algorithm's performance. An algorithm that would scale perfectly would show a linear increase in performance as the number of robots increases. The addition of more robots could potentially create interference between the robots or cause malfunction of the algorithms and impacting scalability. 
 
-A slow down of the rate of increase as the robot density ($c$) increases could also mean that the robots are just successfully foraging the entire environment with a lesser robot density which will explain as the number of robots increases, the performance does not increase. In order to avoid the situation where the entire environment is foraged, analysis should only be performed on large, high density environments where $S >= 200$ and $p >= 0.8$
+A slow down of the rate of increase as the swarm density ($c$) increases could also mean that the robots are just successfully foraging the entire environment with a lesser swarm density which will explain as the number of robots increases, the performance does not increase. In order to avoid the situation where the entire environment is foraged, analysis should only be performed on large, high density environments where $S >= 200$ and $p >= 0.8$
 
-The hypothesis is that the honey bee algorithm would be the least impacted by the increase in robot density since the robots will rest if they have not foraged an item for a particular period and thus the an increase in robots would not cause as much of an increase in interference. One needs to take care when selecting the environments for analysis. In order to confirm that any analysis about the slow down in the rate of foraging is caused by the increase in robot density, one should only analyse environments where the robots are unable to complete foraging of all items for all robot densities. For this reason, the analysis has only been performed over a high object density where all items were not able to be foraged at any given robot density.
-
-%TODO: Get graph and do analysis
-\subsection{Energy}
-\label{results:energy}
-
-%GET THIS GRAPH
-Since energy usage was not the focus of this study, the process of assigning and monitoring energy usage to the various foraging tasks was not performed and was not considered a major metric for this study. However it is worth mentioning that the honey bee algorithm does have some waiting time where less or no energy would be spent, where as the na\"ive and desert ant algorithms do not save energy by going into a hibernation or resting state. It is thus potentially worth analysing the amount of time that the robots spend waiting at the sink in the honey bee algorithm to see if energy saving actually occurred due to active to inactive forager division of labour capabilities of the honey bee algorithm. 
-
-One would expect the amount of time spent waiting to increase as robot density increases and the environment becomes saturated by robots since more robots would fail to find items and return to the waiting state. The graph indicates that a surprisingly small amount of time was spent waiting at the sink regardless of the robot density which tends to imply that there is room for improvement in the active to inactive forager division of labour strategy such that robots are more inefficient robots. 
-
-One should also keep in mind that although this seems to imply that the honey bee algorithm performs more efficiently, the comparison is quite limited since the task of direct communication is likely to, in practice, be a very expensive activity energy-wise.
+The hypothesis is that the honey bee algorithm would be the least impacted by the increase in swarm density since the robots will rest if they have not foraged an item for a particular period and thus the an increase in robots would not cause as much of an increase in interference. One needs to take care when selecting the environments for analysis. In order to confirm that any analysis about the slow down in the rate of foraging is caused by the increase in swarm density, one should only analyse environments where the robots are unable to complete foraging of all items for all robot densities. For this reason, the analysis has only been performed over a high object density where all items were not able to be foraged at any given swarm density.
 
 \subsection{Environment Size}
 \label{results:environmentsize}
