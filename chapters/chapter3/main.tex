@@ -90,34 +90,55 @@ All robots begin at random positions adjacent to the sink in the exploration sta
 \label{honeybeeforaging}
 %TODO Describe the 3 states referring back to where they were discussed in the previous section.
 
-The honey bee priotizied foraging algorithm presented in this section is based on the mathematical model of honey bee foraging in \cite{seeley2009wisdom}. A portion of the robots are initialized as scouts and the rest  as unemployed foragers in a waiting state. All robots are initialized adjacent to the item sinks.
+The honey bee prioritized foraging algorithm presented in this section is based on the foraging behaviour of honey bees as described in Section~\ref{honeybeeinnature}. The algorithm described requires robots to take on three roles, namely, scout robots, unemployed forager robots and employed forager robots. 
 
-Fig \ref{honeybeestate} provides a simplified state diagram for the honey bee prioritized foraging algorithm. State transitions are described as follows: 
+Further description of the roles of the robots and the transitions to and from those roles are described as follows: 
 
-\begin{enumerate}
+\subsection{Scout Robots}
+Scout robots mimic the scouting behaviour of the scout honeys bees as discussed in Section~\ref{honeybeeinnature}. The purpose of the scout robot is to locate sites of items and if the discovered site is of a high enough quality, then the scout will broadcast the location of the site to the unemployed forager robots. In more detail, each scout robot begins in the explore state. In the explore state, a scout robot performs a random walk. The random walk performed is the same random walk discussed in Section~\ref{naiveforaging}. Upon finding an item $\vartheta$ at site $\xi$, the robot loads the item and then performs an evaluation of the quality of the site $\xi$. The site quality is denoted by $\mu$. Before returning to the sink, the scout memorizes the PI vector $v$. Using PI vector $v$, the scout returns the item $u$ to the sink. When the scout robot has returned to the sink and successfully offloaded the item, the scout robot switches into the dance state.
 
-\item Each scout robot performs a random walk. The random walk used is the same as discussed in Section~\ref{naiveforaging}. Upon finding an item $\vartheta$ at site $\xi$, the robot loads the item and then performs an evaluation of the quality of the site $\xi$. The site quality is denoted by $\mu$. Before returning to the sink, the scout memorizes the PI vector $v$. Using PI vector $v$, The scout then returns the item $u$ to the sink, resulting in the most direct route to the sink.  When the scout robot has returned to the sink and successfully offloaded the item, the scout robot switches into the recruitment state.
+In the dance state, the scout robot will decide whether to communicate the location, $v$, and quality $\mu$, of the previous site $\xi$, to the unemployed workers at the sink. The communication is akin to the waggle dance performed by honey bees in nature, as discussed in Section~\ref{honeybeeinnature}. A scout robot's ``dance" takes the form of a localized broadcast communication between the scout and the unemployed forager robots at sink $S$.
 
-\item In the recruitment state, the scout robot will decide whether to communicate the location, $v$ and quality $\mu$, of the previous site $\xi$, to the unemployed workers at the sink. The communication is akin to the dance performed by honey bees in nature, as discussed in Section~\ref{honeybeeinnature}. A scout robot's ``dance" takes the form of broadcast communication between the scout and the unemployed forager robots at sink $S$.
+The scout robot will examine the site quality, $\mu$, to decide whether to communicate the details of site $\xi$. If the estimated quality of the site, $\mu$, is less than the dance threshold, $\phi$, the scout robot does not communicate the site details and instead returns to foraging state. If $\mu$, is greater or equal to $\phi$, the scout robot will communicate the site quality and location for the unemployed foragers. The scout robot broadcasts for $t_{dance}$ time steps.
 
-The scout robot will examine the site quality, $\mu$, to decide whether to communicate the details of site $\xi$. If the estimated quality of the site, $\mu$, is less than the dance threshold, $\phi$, the scout robot does not communicate the site details and instead returns to foraging state. If $\mu$, is greater or equal to $\phi$, the scout robot will communicate the site quality and location for the unemployed foragers.
-
-\item After the scout robot has completed the recruitment step, the scout robot must decide to either stay a scout and switch back to the exploration state or become a forager and begin foraging the previous site. The scout robot generates a random variable, $r\in(0,1)$. If $r$ is less than a division of labour control parameter, $\rho$, then the scout robot remains a scout and begins to explore the environment. If A$r$ is greater than or equal to $\rho$ then the scout becomes a forager and begins to location the prior site
+After the scout robot has completed broadcasting details to the unemployed foragers, the scout robot must decide to either stay a scout robot and switch back to the explore state or become an employed forager robot and begin foraging the previous site. The scout robot generates a random number, $r\in(0,1)$. If $r$ is less than a division of labour control parameter, $\rho\in(0,1)$, then the scout robot remains a scout and begins to explore the environment. If $r$ is greater than or equal to $\rho$ then the scout becomes a forager and begins to location the prior site
 
 \item Each unemployed forager chooses, with a probability $\alpha$, to be recruited by a broadcasting scout robot. If a unemployed forager robot are recruited by the scout robot, the unemployed forager robot becomes an employed forager robot in the locating state, else the unemployed forager robot stays in the waiting state.
 
 \item An employed forager robot becomes an unemployed forager robot, when the foraging site that the scout broadcasted has been depleted. A foraging site has been depleted when a employed forager robot can't detect an item in the area surrounding location $v$.
 
-\item Unemployed foragers become scout robots, if no scout robot broadcasts are detected for $t_{max}$ time steps. The control parameter $t_{max}$ 
-is the maximum waiting time an unemployed forager can spend in the waiting state, before switching to a scout robot. Decreasing $t_{max}$ results in more scout robots exploring the environment and less unemployed foragers that a scout robot, who may have found quality sites, can recruit. Increasing $t_{max}$ results in a greater quantity of unemployed foragers. The greater quantity of unemployed foragers can form a large work force for a recruiting scout, however too many unemployed foragers results in a smaller workforce in the foraging environment.
+\item Unemployed foragers become scout robots, if no scout robot broadcasts are detected for $t_{wait_{max}}$ time steps. The control parameter $t_{wait_{max}}$ is the maximum waiting time an unemployed forager can spend in the waiting state, before switching to a scout robot and $t_{wait}$ is the time spent by a robot in the waiting state. Decreasing $t_{max}$ results in more scout robots exploring the environment and less unemployed foragers that a scout robot, who may have found quality sites, can recruit. Increasing $t_{wait_{max}}$ results in a greater quantity of unemployed foragers. The greater quantity of unemployed foragers can form a large work force for a recruiting scout, however too many unemployed foragers results in a smaller workforce in the foraging environment.
 \end{enumerate}
+
+
+A portion of the robots are initialized as scout robots and the rest as unemployed forager robots in the wait state. All robots are initialized adjacent to the sink. The percentage of robots initialized as scout robots is $X$. Robots can't be initialized as employed forager robots since unemployed forager require a scout robot to recruit them to learn the location of the sites and become employed foragers.
+
+
+Figure~\ref{honeybeestate} provides a simplified state diagram for the honey bee prioritized foraging algorithm. Robots that are in the wait state are considered unemployed forager robots, while the employed forager robots are robots that are in the forage state. Robots in the dance and explore states are considered scout robots. 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{chapters/chapter3/figures/HoneyBee.pdf}
+	\begin{tikzpicture}[node distance=10cm]
+	\node (wait) [process] {wait};
+	\node (forage) [process, right of=wait] {forage};
+	\node (dance) [process, below of=forage,yshift=5cm] {dance};
+	\node (scout) [process, left of=dance] {explore};
+	
+	\draw [arrow,postaction={decorate,decoration={text along path,raise=1ex,text align=center,text={recruited}}}] (wait) to[bend left=20] (forage);
+	
+	\draw [arrow] (forage) -- node[anchor=north] {$t_{forage} > t_{forage_{max}}$} (wait);
+	
+	\draw [arrow] (forage) to[bend left=20] node[anchor=west] {$\mu \geq \Phi$} (dance);
+	\draw[arrow] (dance) to[bend left=20] node[anchor=east] {$r \geq \rho$} (forage);
+	\draw [arrow] (dance) -- node[anchor=south] {$r < \rho$} (scout);
+	\draw [arrow] (scout) -- node[anchor=east] {$t_{wait} > t_{wait_{max}}$} (wait);
+	\draw [arrow,postaction={decorate,decoration={text along path,raise=1ex,text align=center,text={locates new site}}}] (scout) to (forage);
+	\draw [arrow] (forage) to[loop] node[anchor=south] {$\mu < \Phi$} (forage);
+	\end{tikzpicture}
 	\caption{Honey Bee Foraging State Diagram }
 	\label{honeybeestate}
 \end{figure}
+
 
 The quality, $\mu_t$, of site $\xi$, for a robot scouting items of type $t$ is calculated as the estimated density of items of type $t$ in the local vicinity of the found item. The robot has distance sensor values $k_i\in[0,1]$ for $ i = 1...n$ where $n$ is the number of distance sensors. A distance sensor reading of 0 means that nothing is detected in the sensor's range and a distance sensor reading of 1 indicates that the robot is touching an item. The sensor value $k_i$, for item type $t$, denoted $k_{i_t}$, is calculated using 
 \begin{equation}
