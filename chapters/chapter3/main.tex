@@ -14,7 +14,7 @@ This chapter presents three algorithms for prioritized foraging. These three alg
 \section{Na\"ive Foraging Algorithm}
 \label{naiveforaging}
 
- Na\"\i ve foraging consists of the following tasks: searching for an item, grabbing an item, returning home with the item and storing the item at the sink. The steps performed by the algorithm are illustrated in Figure~\ref{naiveforagestate}.  
+ Na\"\i ve foraging consists of the following tasks: searching for an item, grabbing an item, returning home with the item and storing the item at the sink. The steps performed by the algorithm are illustrated in Figure~\ref{naiveforagingstatediagram}.  
 
 \begin{enumerate}
 	\item Robots perform a random walk until they find an item.
@@ -38,7 +38,7 @@ This chapter presents three algorithms for prioritized foraging. These three alg
 	\draw[arrow,postaction={decorate,decoration={text along path,reverse path,raise=1ex,text align=center,text={unsuccessful load}}}] (loaditem) to[bend right=45] (randomwalk);
 	\end{tikzpicture}
 	\caption{Nai\"ve Foraging State Diagram}
-	\label{foragingstatediagram}
+	\label{naiveforagingstatediagram}
 \end{figure}
 
 Na\"\i ve foraging includes only the most minimal set of foraging actions and is included as a baseline for comparison to evaluate how novel techniques, such as the desert-ant foraging or honey-bee foraging, compare to a standard model \cite{ostergaard2001emergent,hoff2010two}.
@@ -94,7 +94,7 @@ The honey bee prioritized foraging algorithm presented in this section is based 
 
 A portion of the robots are initialized as scout robots and the rest as unemployed forager robots in the wait state. All robots are initialized adjacent to the sink. The percentage of robots initialized as scout robots is $X$. One should note that robots can't be initialized as employed forager robots since unemployed forager require a scout robot to recruit them to learn the location of the sites and become employed foragers and at initialization, the scouts do not yet have site location details available.
 
-Figure~\ref{honeybeestate} provides a simplified state diagram for the honey bee prioritized foraging algorithm. Robots that are in the wait state are considered unemployed forager robots, while the employed forager robots are robots that are in the forage state. Robots in the dance and explore states are considered scout robots. 
+Figure~\ref{honeybeestate} provides a simplified diagram for the honey bee prioritized foraging algorithm showing the roles and the transitions between them. The dance and explore states of the scout robots are shown separately for clarity.
 
 \begin{figure}[h]
 	\centering
@@ -114,12 +114,11 @@ Figure~\ref{honeybeestate} provides a simplified state diagram for the honey bee
 	\draw [arrow] (scout) -- node[anchor=east] {$t_{wait} > t_{wait_{max}}$} (wait);
 	\draw [arrow,postaction={decorate,decoration={text along path,raise=1ex,text align=center,text={locates new site}}}] (scout) to[bend left=20] (dance);
 	\draw [arrow] (forage) to[loop] node[anchor=south] {$\mu < \Phi$} (forage);
+	\node[process, fit=(scout)(dance), inner sep=1.5cm, label={270:scout}] (all) {};
 	\end{tikzpicture}
-	\caption{Honey Bee Foraging State Diagram }
+	\caption{Honey Bee Foraging State Diagram}
 	\label{honeybeestate}
 \end{figure}
-
-
 
 \subsection{Scout Robots}
 Scout robots mimic the scouting behaviour of the scout honeys bees as discussed in Section~\ref{honeybeeinnature}. The purpose of the scout robot is to locate sites of items and if the discovered site is of a high enough quality, then the scout will broadcast the location of the site to the unemployed forager robots. In more detail, each scout robot begins in the explore state. In the explore state, a scout robot performs a random walk. The random walk performed is the same random walk discussed in Section~\ref{naiveforaging}. Upon finding an item $\vartheta$ at site $\xi$, the robot loads the item and then performs an evaluation of the quality of the site $\xi$. The site quality is denoted by $\mu$. Before returning to the sink, the scout memorizes the PI vector $v$. Using PI vector $v$, the scout returns the item $u$ to the sink. When the scout robot has returned to the sink and successfully offloaded the item, the scout robot switches into the dance state.
