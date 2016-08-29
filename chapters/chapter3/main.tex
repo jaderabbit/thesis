@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Nature-based Algorithms for Prioritized Foraging}
+\chapter{Nature Inspired Algorithms for Prioritized Foraging}
 \label{chap:third}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20,8 +20,6 @@ This chapter presents three algorithms for prioritized foraging. These three alg
 	\item Robots perform a random walk until they find an item.
 	\item On locating an item, the robot grips the item. If the item has been moved before the robot is able to pick it up, the robot will continue to explore; otherwise, the robot returns the item to the correct sink using a beacon-based homing algorithm.
 \end{enumerate}
-
-
 
 \begin{figure} [h]
 	\centering
@@ -92,8 +90,6 @@ All robots begin at random positions adjacent to the sink in the exploration sta
 
 The honey bee prioritized foraging algorithm presented in this section is based on the foraging behaviour of honey bees as described in Section~\ref{honeybeeinnature}. The algorithm described requires robots to take on three roles, namely, scout robots, unemployed forager robots and employed forager robots. The roles of the robots and the transitions to and from those roles are described in this section. 
 
-A portion of the robots are initialized as scout robots and the rest as unemployed forager robots in the wait state. All robots are initialized adjacent to the sink. The percentage of robots initialized as scout robots is $X$. One should note that robots can't be initialized as employed forager robots since unemployed forager require a scout robot to recruit them to learn the location of the sites and become employed foragers and at initialization, the scouts do not yet have site location details available.
-
 Figure~\ref{honeybeestate} provides a simplified diagram for the honey bee prioritized foraging algorithm showing the roles and the transitions between them. The dance and explore states of the scout robots are shown separately for clarity.
 
 \begin{figure}[h]
@@ -106,7 +102,7 @@ Figure~\ref{honeybeestate} provides a simplified diagram for the honey bee prior
 	
 	\draw [arrow,postaction={decorate,decoration={text along path,raise=1ex,text align=center,text={recruited}}}] (wait) to[bend left=20] (forage);
 	
-	\draw [arrow] (forage) -- node[anchor=north] {$t_{forage} > t_{forage_{max}}$} (wait);
+	\draw [arrow] (forage) -- node[anchor=north] {$t_{forage} \geq t_{forage_{max}}$} (wait);
 	
 	\draw [arrow] (forage) to[bend left=20] node[anchor=west] {$\mu \geq \Phi$} (dance);
 	\draw[arrow] (dance) to[bend left=20] node[anchor=east] {$r \geq \rho$} (forage);
@@ -114,6 +110,7 @@ Figure~\ref{honeybeestate} provides a simplified diagram for the honey bee prior
 	\draw [arrow] (scout) -- node[anchor=east] {$t_{wait} > t_{wait_{max}}$} (wait);
 	\draw [arrow,postaction={decorate,decoration={text along path,raise=1ex,text align=center,text={locates new site}}}] (scout) to[bend left=20] (dance);
 	\draw [arrow] (forage) to[loop] node[anchor=south] {$\mu < \Phi$} (forage);
+	\draw [arrow] (wait) to[loop] node[anchor=south] {$t_{forage} < t_{forage_{max}}$} (wait);
 	\node[process, fit=(scout)(dance), inner sep=1.5cm, label={270:scout}] (all) {};
 	\end{tikzpicture}
 	\caption{Honey Bee Foraging State Diagram}
@@ -149,16 +146,42 @@ After the scout robot has completed broadcasting site details to the unemployed 
 
 There are two types of forager robots: The unemployed foragers and employed foragers. The unemployed forager robots and forager robots are discussed in this section together.
 
-Th unemployed forager robots take on the role of unemployed foragers from foraging honey bees discussed in Section~\ref{honeybeeinnature}.
-Unemployed forager robots remain at the sink and await recruitment behaviour from a scout robot. When a scout robot dances at the sink after locating an item $v$, each unemployed forager chooses, with a probability $\alpha$, to listen to the details broadcasted by the scout robot of location $v$. The acceptance of the details broadcasted by the scout is known as recruitment. If an unemployed forager robot is recruited by the scout robot, the unemployed forager robot becomes an employed forager robot in the locating state.
+Th unemployed forager robots take on the role of unemployed foragers or workers from foraging honey bees discussed in Section~\ref{honeybeeinnature}. Unemployed forager robots remain at the sink and await recruitment behaviour from a scout robot. When a scout robot dances at the sink after locating an item $v$, each unemployed forager chooses, with a probability $\alpha$, whether to listen to the details broadcasted by the scout robot of location $v$. The acceptance of the details broadcasted by the scout is known as recruitment. If an unemployed forager robot is recruited by the scout robot, the unemployed forager robot becomes an employed forager robot.
 
-The employed forager robots are modelled after the employed forager bees as discussed in Sectionn~\ref{honeybeeinnature}. The purpose of the employed forager robot is to forage the sites broadcasted by scout robots. After an unemployed forager robot has become an employed forager robot after recruitment by a scout robot, the employed forager begins in a locating state. In the locating state, the employed forager robot uses the PI vector calculated by the scout robot, to relocate the site of the scout robot. Once the site has been relocated, the employed forager robot switches into the loading state and picks up the item. After successfully loading them item, the robot uses the PI vector to relocate the sink and then off-loads the item. After the employed forager drops off the item at the sink, the employed forager robot switches to the locating step again and then repeats the steps of foraging the site that the robot was recruited to forage.
+The employed forager robots are modelled after the employed forager bees as discussed in Section~\ref{honeybeeinnature}. The purpose of the employed forager robot is to forage the sites broadcasted by scout robots. After an unemployed forager robot has become an employed forager robot after recruitment by a scout robot, the employed forager begins in the locate state. In the locate state, the employed forager robot uses the PI vector calculated and communicated by the scout robot to the employed forager, to relocate the site of the scout robot. Once the site has been relocated, the employed forager robot switches into the load state and picks up the item. After successfully loading them item, the robot uses the PI vector to relocate the sink and then off-loads the item. Once the employed forager drops off the item at the sink, the employed forager robot switches to the locate step and then repeats the steps of foraging the site that the robot was recruited to forage. 
 
-An employed forager robot becomes an unemployed forager robot, when the foraging site that the scout broadcasted has been depleted. A foraging site has been depleted when a employed forager robot can't detect an item in the area surrounding the broadcasted location $v$ at which point the employed forager returns to the sink without and item and becomes an unemployed forager robot in the waiting state. 
+An employed forager robot becomes an unemployed forager robot, when the foraging site that the scout broadcasted has been depleted. A foraging site has been depleted when a employed forager robot can't detect an item in the area surrounding the broadcasted location $v$ at which point the employed forager returns to the sink without and item and becomes an unemployed forager robot in the wait state. 
+
+The states and transitions of the employed forager are shown in more detail in Figure~\ref{employedforagerstatediagram}, since they could not fit into Figure~\ref{honeybeestate}. 
+
+\begin{figure} [h]
+	\centering
+	\begin{tikzpicture}[node distance=6cm]
+	\node (locate) [process] {locate};
+	\node[initial, left of=locate,xshift=3cm] (start) {start};
+	\node (load) [process, right of=locate] {load};
+	\node (homing) [process, below of=load,yshift=2cm] {homing};
+	\node (offload) [process, left of=homing] {off-load};
+	\draw [arrow] (locate) -- node[anchor=south] {locates site} (load);
+	\node[initial, right of=load,xshift=-1.5cm] (end) {end};
+	\draw [arrow] (load) -- node[anchor=west] {successful loading} (homing);
+	\draw [arrow] (homing) -- node[anchor=south] {arrive at sink} (offload);
+	\draw [arrow] (offload) -- node[anchor=east] {offload complete} (locate);
+	\draw [arrow] (start) -- node[anchor=east] {} (locate);
+	\draw [arrow] (load) -- node[anchor=north] {load failed} (end);
+	\end{tikzpicture}
+	\caption{State Diagram of an Employed Forager Robot}
+	\label{employedforagerstatediagram}
+\end{figure}
+
 
 The unemployed forager robot role allows the number of active robots in the environment to be regulated so that there are not too many robots attempting to forage or explore at once. An environment with too many employed foragers would result in more collisions between robots, which would mean the employed foragers take longer to forage items. Also, if there too many employed foragers in a environment which is sparse in items, then the employed foragers are not only causing collisions but they're also wasting energy by exploring areas unnecessarily.
 
 Unemployed forager robots become scout robots, if no scout robot broadcasts are detected for $t_{wait_{max}}$ time steps. The control parameter $t_{wait_{max}}$ is the maximum waiting time an unemployed forager can spend in the waiting state, before switching to a scout robot and $t_{wait}$ is the time spent by a robot in the waiting state. Decreasing $t_{max}$ results in more scout robots exploring the environment and less unemployed foragers that a scout robot, who may have found quality sites, can recruit. Increasing $t_{wait_{max}}$ results in a greater amount of unemployed forager robots waiting to be recruited. The greater quantity of unemployed foragers can form a large work force for a recruiting scout, however too many unemployed foragers results in a smaller workforce in the foraging environment.
+
+\subsection{Initial States}
+
+A portion of the robots are initialized as scout robots and the rest as unemployed forager robots in the wait state. All robots are initialized adjacent to the sink. The percentage of robots initialized as scout robots is $X$. One should note that robots can't be initialized as employed forager robots since unemployed forager require a scout robot to recruit them to learn the location of the sites and become employed foragers and at initialization, the scouts do not yet have site location details available.
 
 
 \subsection{Item Level Division Of Labour}
