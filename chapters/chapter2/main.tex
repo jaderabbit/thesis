@@ -59,13 +59,47 @@ Unemployed foragers wait on the dance floor, and evaluate the dances of the scou
 \section{Types of Robot Foraging}
 \label{sec:second:types}
 
-Foraging is a popular problem due to the vast opportunity of foraging for application to a variety of real-world problems from agriculture, construction to mining. The foraging problem has been adapted by many swarm robotics resources into a variety of flavours of foraging. Thus it is beneficial to present a taxonomy of robot foraging that can be used to classify existing research about foraging as well as contextualize the specific foraging problems addressed by this thesis. Multiple taxonomies have been developed as robot foraging research has progressed \cite{oster1978caste,ostergaard2001emergent}. However a more recent and complete foraging taxonomy is presented in \cite{winfield2009foraging}. The taxonomy classifies foraging solutions based on four major characteristics: the foraging environment, robots used for foraging, performance aspects, and the foraging strategy used. Each of these major characteristics have a number of minor characteristics which are outlined in Table~\cite{foragingtaxonomytable_part1}.  
+Foraging is a popular problem due to the vast potential opportunity of foraging for application to a variety of real-world problems from search and rescue \cite{jennings1997cooperative} to toxic waste retrieval to mining. The foraging problem has been adapted by many swarm robotics resources into a variety of flavours of foraging. Thus it is beneficial to present a taxonomy of robot foraging that can be used to classify existing research about foraging as well as contextualize the specific foraging problems addressed by this thesis. Multiple taxonomies have been developed as robot foraging research has progressed \cite{oster1978caste,ostergaard2001emergent}. However a more recent and complete foraging taxonomy is presented in \cite{winfield2009foraging}. The taxonomy classifies foraging solutions based on four major axes: the foraging environment, the capabilities and types of robots used for foraging, performance aspects, and the foraging strategy used in a foraging algorithm. Each of these major axes have a number of minor axes which are outlined in Table~\cite{foragingtaxonomytable_part1}.  
 
-The environment classification characteristic includes addressing aspects such as the type of search space, the type and placement of objects in the environment as well as the number of sinks. The robot classification characteristic refers to qualities such as  the number of robots, as well as sensory, power and actuation capabilities. The performance axis characterises robot foraging on the the goal of the research such as energy gained or time taken to forage. The strategy axis characterizes algorithms by how the algorithm goes about solving the foraging problem. 
+The environment axis contains minor axes as follows:
+\begin{itemize}
+\item The type of search space which can be either unbounded or constrained by a boundary wall.
+\item The type of objects in terms of whether they move (active) or not (static) and the quantity of objects (single or multiple).
+\item The types of object sources that exist in the environment. A "single limited" source denotes that all objects come from the same source and the source as a limited capacity for objects. A foraging environment with a "single unlimited" source means that only one source exists and an unlimited number of items can be foraged from the source. A foraging environment can also have multiple sources.
+\item The environment can have a single or multiple sinks
+\item Objects can be placed in known locations, in a uniform distribution or in clusters in the environment.
+\end{itemize}
+
+The robot axis refers to qualities such as  the number of robots and the sensory, power and actuation capabilities of the robots. 
+\begin{itemize}
+\item Robots of the swarm can either be all identical (homogenous) or have different capabilities (heterogenous).  
+\item The sensors of the robot can be of a limited range or  versus global sensors with unlimited range. 
+\item Localization refers to the robots ability to position themselves in the environment. Localization could be non-existent, relative (such as path integration) or absolute (such as GPS).
+\item Communication capabilities of the robots to each other can have infinite range, near range or not exist at all.
+\item Robots can have an infinite power source, a limited power source, or a power source which can be sustained by foraging resources.
+\end{itemize}
+
+The performance axis characterises robot foraging on the methods used to evaluate the performance of a foraging algorithm, such as energy usage, or time taken to forage each item. Each minor axis described as follows:
+
+\begin{itemize}
+\item Performance of a foraging algorithm can be classified in terms of time taken to forage. A foraging experiment can be allowed infinite time to foraged, a fixed time for foraging or is attempting to minimize the time taken to forage
+\item The energy that a robot can spend on foraging can be a fixed amount of energy, an unlimited amount of energy or a foraging algorithm can attempt to minimize the energy used to forage.
+\end{itemize}
+
+The strategy axis characterizes algorithms by the techniques that a foraging algorithm implements such as the type of search used or the type of recruitment technique used in a foraging algorithm. Each type of strategy is discussed as follows:
+
+\begin{itemize}
+\item The first stage of most foraging algorithm is the search for items. Search can occur in a number of ways. Foraging algorithms can be categorized in terms of their search technique such as: random search, following trails of items, following other robots, groups of robots looking for items together, where robots search in geometrical patterns and where search can only occur in a limited range of the sink.
+\item Once an item is found it must be picked up. The techniques used by an algorithm for grabbing an item can be used to classify the algorithm. An item can be grabbed by a single robot or a group of robots can attempt to co-operatively grab an item.
+\item Transport of an item back to the sink be performed by a single robot or by a a group of co-operating robots.
+\item In order to get to the sink, a number of homing techniques can be used such as homing on a beacon, following a trail or self-navigation (such as path integration).
+\item Robots can recruit other robots to forage certain areas. The technique for recruitment can be used to classify foraging algorithms. Direct recruitment is where a robot explicitly communicates to another robot to come forage an item source. Indirect recruitment is where a robot is recruited to forage by inexplicit communication from other robots (for instance, the number of robots waiting at the sink has increased above a threshold). 
+\item Coordination between robots in a swarm can occur in a number of ways: there are can centralized control between all robots (not a true robot swarm), a master-slave configuration where one robot leads the others. Robots can be self-organized or can have no coordination at all.
+\end{itemize}
 
 \begin{table}
 \centering
-    \caption{Winfield's Robot Foraging Taxonomy}
+    \caption{Winfield's Robot Foraging Taxonomy \cite{winfield2009foraging}}
     \label{foragingtaxonomytable_part1}
     
 \begin{tabular}{ | c | c | c |}
@@ -117,7 +151,7 @@ The environment classification characteristic includes addressing aspects such a
 
 \begin{table}
 \centering
-    \caption{Winfield's Robot Foraging Taxonomy Part 2}
+    \caption{Winfield's Robot Foraging Taxonomy Part 2 \cite{winfield2009foraging}}
     \label{foragingtaxonomytable_part2}
     
 \begin{tabular}{ | c | c | c |}
@@ -160,6 +194,7 @@ The environment classification characteristic includes addressing aspects such a
 		&	& Master slave \\\hline
 \end{tabular}
 \end{table}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
