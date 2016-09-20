@@ -218,18 +218,16 @@ Swarm robotics researchers often choose to use simulated robot platforms such as
 \section{Foraging Algorithms}
 \label{sec:second:existingsolution}
 
-This section discusses some foraging solutions that have been developed as well as looks at the different types of foraging problems. 
-
-Insects swarms are used as inspiration throughout swarm robotics due to their robust and flexible nature. Ants utilize pheromones which is a robust strategy for local interactions and would prove useful in hazardous environments. Section \ref{sec:second:natureinspired} discusses nature-inspired foraging algorithms while standard foraging algorithms are addressed in Section~\ref{standardforaging}. Section~\ref{multiforaging} discusses a more complex version of foraging with multiple object types. 
+This section discusses some foraging algorithms that have been developed and at the different types of foraging problems. Section \ref{sec:second:natureinspired} discusses nature-inspired foraging algorithms while foraging algorithms that have not been inspired by nature are addressed in Section~\ref{standardforaging}. Section~\ref{multiforaging} discusses a more complex version of foraging with multiple object types. 
  
 \subsection{Nature-inspired Swarm Robotics Foraging Algorithms}
 \label{sec:second:natureinspired}
 
-Foraging is an animal activity performed in order to retrieve food. Social insects in particular have found very efficient means of foraging despite their individual simplicity. The next few sections look deeper into algorithms that have been inspired by ant foraging, bee foraging and other aspects in nature. 
+Foraging is an animal activity performed in order to retrieve food \cite{charnov1976optimal}. The next few sections describe in detail the algorithms that have been inspired by ant foraging, bee foraging and other animals in nature. 
 
 \subsubsection{Ant-inspired Foraging Algorithms}
+\label{sec:second:natureinspired:ant}
 
-%Blazing a trail => Nice paper - need to discuss more. Maybe in navigation
 Vaughan presents a swarm robotic algorithm allowing for robust transportation of items from a single source to a single sink in an environment with spatial constraints \cite{vaughan2000blazing}. The algorithm presented makes use of both ant-like and bee-like foraging techniques. The ants broadcast the landmarks in the area for odometric localization as well as uses a form of the  honey bee "waggle dance" that communicates the direction of the food source from the robot that has found the food source to other robots. The robots use a technique called path integration utilized by both ants and bees in order to maintain position and heading estimate. Using these techniques the robots communicate multi-segment paths. These communications occur globally. This technique suffers from accumulation of localization errors over time due to the use of global communication. Local communication is preferred for the algorithms developed in this study.   %Our robot algorithms can reaign the sink %citations required!!!! %necessary? Worth a mention. 
 
 
