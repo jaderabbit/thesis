@@ -94,7 +94,7 @@ The strategy axis characterizes algorithms by the techniques that a foraging alg
 \item Transport of an item back to the sink be performed by a single robot or by a a group of co-operating robots.
 \item In order to get to the sink, a number of homing techniques can be used such as homing on a beacon, following a trail or self-navigation (such as path integration).
 \item Robots can recruit other robots to forage certain areas. The technique for recruitment can be used to classify foraging algorithms. Direct recruitment is where a robot explicitly communicates to another robot to come forage an item source. Indirect recruitment is where a robot is recruited to forage by inexplicit communication from other robots (for instance, the number of robots waiting at the sink has increased above a threshold). 
-\item Coordination between robots in a swarm can occur in a number of ways: there are can centralized control between all robots (not a true robot swarm), a master-slave configuration where one robot leads the others. Robots can be self-organized or can have no coordination at all.
+\item Coordination between robots in a swarm can occur in a number of ways: there are can centralized control between all robots (not a true robot swarm), a master-slave configuration where one robot leads the others. Robots can be self-organized or can have no coordination at all. 
 \end{itemize}
 
 \begin{table}
@@ -200,23 +200,20 @@ The strategy axis characterizes algorithms by the techniques that a foraging alg
 
 \section{Challenges in Foraging}
 \label{challengesinforaging}
-%TODO: Expand on challenges in foraging. 
-Foraging for humans is a near trivial problem. Most children can walk around and retrieve blocks and return them to a single source. The seemingly simple sub-activities required by foraging such as identification and grasping are often relatively complex for robots to perform. Some of the areas which are problematic for robots in a foraging concept are presented as follows:
+%TODO: Citations
+
+Foraging for humans is a near trivial problem. Most children can walk around and retrieve blocks and return them to a single source. The seemingly simple sub-activities required by foraging such as identification and grasping are often relatively complex for robots to perform. Unlike other simpler, swarm robotics problems such as aggregation, foraging is made up of a group of non-trivial sub-tasks. Some of the aspects which are problematic for robots in a foraging are discussed below:
 
 \begin{itemize}
-\item Physical - Despite how far robotics has come as a field, there are still tasks that are trivial for humans, but still very complex for most robots. For instance, challenge of picking up items and moving them to another location requires a fair amount of research, decent quality sensors and time-consuming amount of calibration. 
+\item Mechanically Challenging Interactions - Despite how far robotics has come as a field, there are still tasks that are trivial for humans, but still very complex for most robots. For instance, the challenge of picking up items \cite{saxena2008robotic} and moving them to another location requires high quality sensors, sensitive actuators and time-consuming calibration \cite{mondada2005cooperation}. 
 
-\item Environmental - Although research can be performed in a controlled environment, for foraging to truly occur in real-life, environmental factors have to be taken into consideration. Environmental factors such as light, moisture, quality of the surface the robots forage on, often make a robotic solution a complex, non-viable, non-robust or expensive operation. 
+\item Complex Noisy Environments - Although research can be performed in a controlled environment, for robust foraging to be efficiently applied in real-life, environmental factors have to be taken into consideration. Environmental factors such as light \cite{browning2005real,jungel2003real} and quality of the surface the robots forage on \cite{trianni2006cooperative}, often make a robotic solution complex, non-viable, non-robust or expensive. To cope with real-life environments, the robots require adaptive algorithms and more complex hardware for their sensors and actuators for basic navigation and object detection in unknown terrains with unknown lighting and weather conditions. 
 
-\item Search with local sensors - Since global sensors such as GPS location can't always be used in all environments, the problem of how to find items with or without a global view of the environment and how to effectively guide the search optimally becomes a large issue. Swarms need to learn techniques of exploiting local information about the environment and use local communication in order to maintain environmental knowledge to aid search. 
-
-\item Localization - Localization is the ability for a robot can depict their position in the environment. Without a global knowledge, similarly to search, the problem of a robot knowing where it is in relation to the boundaries of the environment or other known locations and robots also becomes difficult.
-
-\item Energy - One of the predominant problems in much modern technology is energy conservation. As technology gets smaller, battery technology also has to become smaller but the devices still must should maintain charge for long periods. As robots get smaller, batteries are also getting smaller so energy conservation and automatic charging become an important problem in swarm robotics that needs to be solved.
+\item Localization, Navigation and Obstacle Avoidance - Localization is the ability for a robot to depict their position in the environment. In swarm robotics, global knowledge about location (such as GPS) cannot be used by a robot to determine their position and where they are going. Non-trivial algorithms must be designed in order for a robot to position itself in the environment as ins \cite{zhou2012motion,rothermich2004distributed,arkin1992cooperation}. 
 
 \end{itemize}
 
-Due to the complexity of the foraging problem, existing research will often simplify parts of the problem in order to focus on certain aspects. Simplification is often through use of simulators or assuming certain environments or technological capabilities of the robots. 
+Swarm robotics researchers often choose to use simulated robot platforms such as Stage \cite{vaughan2008massively} or Argos \cite{pinciroli2011argos}, instead of real robots, in order to remove or regulate the amount of environmental noise. If a swarm robotics experiment uses real-life robots, the environments are usually simplified, by creating an environment where temperature, lighting and moisture are regulated\cite{labella2006division,nouyan2006group}. Due to the discussed complexities of foraging, existing swarm robotic research often simplifies the some of the complexities such as environmental changes, sensor noise, and the use of physical robots, in order to focus on a single aspect of foraging. 
 
 \section{Foraging Algorithms}
 \label{sec:second:existingsolution}
