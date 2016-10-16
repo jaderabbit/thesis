@@ -26,7 +26,8 @@ The foraging sub-tasks involve the efficient search and collection of food, homi
 
 \section{Foraging in Nature}
 \label{foraginginnature}
-%TODO:
+As with many swarm robotics problems, the inspiration for foraging comes from nature, in particular, social insects such as ants and honey bees. This section describes the biological inspiration for foraging.
+
 
 \subsection{Ants}
 \label{sec:second:biological}
@@ -57,12 +58,23 @@ Honey bees have efficient division of labour between different functions in the 
 
 Unemployed foragers wait on the dance floor, and evaluate the dances of the scout bees. An unemployed bee select a location described by the scout bees, and become an employed forager. Employed forager bees use the information about the resource, attempt to locate the source, load themselves with food, and return to the hive where unemployed foragers are ready to offload the food. Jansen \cite{janson2007searching} suggests that unemployed bees become exploring scouts when they do not detect any dancing scout bees. 
 
-\section{Taxonomy of Robot Foraging}
+\subsection{Bacteria}
+
+The foraging behaviour of $E. coli$ bacteria is used for inspiration for a computational intelligence algorithm \cite{passino2010bacterial} and particle swarm optimization is, for instance based on the flocking behaviour of birds - a flocking behaviour exhibited when finding food, amongst other things \cite{kennedy1995particle}. 
+
+\subsection{Predator Prey}
+
+The predator prey models could also be considered a foraging task with items with changing position. These models are often used with other swarm intelligence techniques, for use in multi-objective optimization problems \cite{nolfi1998coevolving}.
+
+
+\section{Foraging in Swarm Robotics}
+
+\subsection{Taxonomy of Robot Foraging}
 \label{sec:second:types}
 
 Foraging is a popular problem due to the vast potential opportunity of foraging for application to a variety of real-world problems from search and rescue \cite{jennings1997cooperative} to toxic waste retrieval to mining. It is beneficial to present a taxonomy of robot foraging that can be used to classify existing research about foraging as well as contextualize the specific foraging problems addressed by this thesis. One should note that the foraging taxonomy presented also includes non-swarm robotic foraging.
 
-Multiple taxonomies have been developed as robot foraging research has progressed \cite{oster1978caste,ostergaard2001emergent}. However a more recent and complete foraging taxonomy is presented in \cite{winfield2009foraging}. The taxonomy classifies foraging solutions based on four major axes: the foraging environment, the capabilities and types of robots used for foraging, performance aspects, and the foraging strategy used in a foraging algorithm. Each of these major axes have a number of minor axes which are outlined in Table~\cite{foragingtaxonomytable_part1} and Table~\cite{foragingtaxonomytable_part2}.  The following sections discuss each of the major and minor axes in more detail
+Multiple taxonomies have been developed as robot foraging research has progressed \cite{oster1978caste,ostergaard2001emergent}. However a more recent and complete foraging taxonomy is presented in \cite{winfield2009foraging}. The taxonomy classifies foraging solutions based on four major axes: the foraging environment, the capabilities and types of robots used for foraging, performance aspects, and the foraging strategy used in a foraging algorithm. Each of these major axes have a number of minor axes which are outlined in Table~\ref{foragingtaxonomytable_part1} and Table~\ref{foragingtaxonomytable_part2}.  The following sections discuss each of the major and minor axes in more detail
 
 \begin{table}
 \centering
@@ -228,9 +240,9 @@ Balch \cite{balch1999impact} develops a technique for multi-foraging and determi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Nature-inspired Swarm Robotics Foraging Algorithms}
+\subsection{Nature Inspired Swarm Robotics Foraging Algorithms}
 
-\subsection{Ant-inspired Foraging Algorithms}
+\subsubsection{Ant Inspired Foraging Algorithms}
 \label{sec:second:natureinspired:ant}
 
 Vaughan presents a swarm robotic algorithm allowing for robust transportation of items from a single source to a single sink in an environment with spatial constraints \cite{vaughan2000blazing}. The algorithm presented makes use of both ant-like and bee-like foraging techniques. The ants broadcast the landmarks in the area for odometric localization as well as uses a form of the  honey bee "waggle dance" that communicates the direction of the food source from the robot that has found the food source to other robots. The robots use a technique called path integration utilized by both ants and bees in order to maintain position and heading estimate. Using these techniques the robots communicate multi-segment paths. These communications occur globally. This technique suffers from accumulation of localization errors over time due to the use of global communication. Local communication is preferred for the algorithms developed in this study.
@@ -257,16 +269,14 @@ Local direct communications are used to transmit the virtual pheromone value.
 
 The second technique uses cardinality where if a robot can hear 2 or more beacons then the robot stays a walker else the robot becomes a beacon. The advantage of using this technique over the other mentioned pheromone techniques is that robots are simpler due to simpler communication mechanisms as well as the lack of need for complex beacon deployment systems. Experiments are conducted with and without obstacles and a real-world simulator is used. The result show that congestion effects performance the most at high robot density. 
 
-\subsection{Honey Bee-inspired Foraging Algorithms}
+\subsubsection{Honey Bee Inspired Foraging Algorithms}
 Bee swarms have been used in swarm robotics for problems such as path planning \cite{lin2009chaotic}, aggregation \cite{kernbach2009re}, collective perception \cite{schmickl2007collective}. Foraging algorithms have been developed that simulate a simplified honey bee recruitment in \cite{alers2014biologically}, which focuses on an actual robot demonstration of the technique using a turtle robot. Prior work focuses on implementing the same algorithm on e-pucks. 
 
 The algorithm consists of two phases: an exploratory phase followed by an exploitive phase. Initially, all robots are located around the hive. In the exploratory phase, all robots perform a random search with a levy distribution until a food source is found by a robot. The exploitation phase begins where the robot that located the food returns to the hive and communicates the location to other members of the robot swarm. The other robots are recruited and begin to commute between the hive and the food source, transporting virtual food. This algorithm claims to exhibit three behaviours of bees: waiting around the hive, exploring the environment and foraging. Unlike bees, the algorithm used does not consider the division of labour between foragers, explorers and waiting robots, but rather uses an extremely simple model for bees which can only exploit a single food source. The robots use path integration in order to remember the location of the food source, and use a north-star type navigation in order to locate the hive. The path integration vector gets communicated to the other robots which use the vector to guide them to the food source. 
 
-\subsection{Foraging Algorithms inspired by other Animals}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Challenges in Foraging}
+\subsection{Challenges in Swarm Robotic Foraging}
 \label{challengesinforaging}
 %TODO: Citations
 
