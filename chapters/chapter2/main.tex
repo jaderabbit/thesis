@@ -60,17 +60,22 @@ Unemployed foragers wait on the dance floor, and evaluate the dances of the scou
 
 \subsection{Bacteria}
 
+The $E. coli$ bacteria forage for cardohydrates in the human gut. They have a unique search mechanism whereby they move in the same direction for a period of time (which is called a "run") and then change direction using their complex flagella (known as a "tumble"). The bacteria exhibit the behaviour continuing to move in a direction, if the bacteria are moving up a nutrient gradient. Bacteria stop moving in a direction, if they're moving down a nutrient gradient in order to avoid toxic substances. Under certain conditions, the bacteria secrete an attractant substance which attracts the bacteria to one another for protection.
+
 The foraging behaviour of $E. coli$ bacteria is used for inspiration for a computational intelligence algorithm \cite{passino2010bacterial} and particle swarm optimization is, for instance based on the flocking behaviour of birds - a flocking behaviour exhibited when finding food, amongst other things \cite{kennedy1995particle}. 
 
 \subsection{Predator Prey}
 
-The predator prey models could also be considered a foraging task with items with changing position. These models are often used with other swarm intelligence techniques, for use in multi-objective optimization problems \cite{nolfi1998coevolving}.
+Predator prey scenarios are foraging problems where the items to be foraged actively avoid capture (known as prey)  and the animals pursuing the prey are known as predators \cite{winfield2009foraging}. Predator prey foraging has been extensively studied in the field of Optimal Foraging Theory, which aims to predict the behaviour of an animal searching for food \cite{charnov1976optimal}. 
 
+% TODO: Quote some of the examples of how certain predators capture certain prey.
+
+Predator-prey  models have been used in other swarm intelligence techniques in multi-objective optimization problems \cite{nolfi1998coevolving}.
 
 \section{Foraging in Swarm Robotics}
 
 \subsection{Taxonomy of Robot Foraging}
-\label{sec:second:types}
+\label{sec:second:taxonomy}
 
 Foraging is a popular problem due to the vast potential opportunity of foraging for application to a variety of real-world problems from search and rescue \cite{jennings1997cooperative} to toxic waste retrieval to mining. It is beneficial to present a taxonomy of robot foraging that can be used to classify existing research about foraging as well as contextualize the specific foraging problems addressed by this thesis. One should note that the foraging taxonomy presented also includes non-swarm robotic foraging.
 
@@ -215,6 +220,7 @@ The strategy axis characterizes algorithms by the techniques that a foraging alg
 \end{itemize}
 
 \subsubsection{Environment Axis}
+\label{environmentaxis}
 The environment axis can be divided into minor axes as follows:
 \begin{itemize}
 \item \textbf{The type of search space} which can be either unbounded or constrained by a boundary wall. Goldberg and Mataric \cite{Goldberg01designand} implement a foraging method for an unbounded environment. Schneider \cite{schneider1998territorial} developed a foraging algorithm which splits a constrained environment where the environments dimensions are known into bounded areas. Each robot is in charge of their own area.
@@ -310,18 +316,20 @@ Existing swarm robotics foraging algorithms are addressed and discussed under th
 \chapter{Division of Labour}
 \label{chap:divisionoflabour}
 
-Due to the importance of division of labour in this research, a variety of division of labour strategies from social insects should be highlighted, explored and contrasted. This chapter defines division of labour as well as analyses different types of division of labour that occur in social insects. Lastly, division of labour strategies employed by different swarm robotics algorithms are employed. 
 
-\section{Definition}
+As explained in Section~\ref{flexibility}, division of labour forms part of foraging activities of social insects. This chapter highlights, explores and contrasts a variety of division of labour strategies from social insects. This chapter defines division of labour as well as analyses different types of division of labour that occur in social insects. Lastly, division of labour strategies employed by different swarm robotics algorithms are employed. 
+
+\section{Definition of Division of Labour}
 \label{sec:second:definition}
 
-Oster et al. defines division of labour as a "stable pattern of variation" among individuals within a swarm in terms of the repertoire of tasks that individuals perform where each individual specializes on a subset of the complete repertoire of tasks performed by the swarm and the subset of tasks varies across individuals in the swarm \cite{oster1978caste}.  
-More simply, Robinson et al. define division of labour as the adjustment of ratios of workers engaged in different tasks based on external and internal stimuli \cite{robinson1992regulation}.
+Oster et al. \cite{oster1978caste} defines division of labour as a ``stable pattern of variation" of the repertoire of tasks that individuals perform. Each individual specializes on a subset of the complete repertoire of tasks. The subset of the complete repertoire of tasks is called the specialization of an individual and the specialization of individuals varies across the swarm. 
 
-There are two types of division of labour in social insects: 
+Robinson et al. \cite{robinson1992regulation}, more simply, defines division of labour as the adjustment of ratios of workers engaged in different tasks based on external and internal stimuli.
+
+There are two types of division of labour in social insects \cite{beshers2001models}: 
 \begin{itemize}
-	\item Temporal polyethism - The pattern of tasks being performed by a worker correlates to the age of the worker. In nature, the younger workers may perform tasks within the nest while the older workers perform tasks outside of the nest.
-	\item Morphological polyethism - A worker with some extreme features in terms of size or shape, will specialize more in particular tasks and the more extreme that feature is, the narrower the repertoire of the of the worker. In nature, for example, larger workers would be more likely to form part of defence of the nest. \cite{beshers2001models}
+	\item \textbf{Temporal polyethism} where the pattern of tasks being performed by a worker correlates to the age of the worker. In nature, the younger workers may perform tasks within the nest while the older workers perform tasks outside of the nest.
+	\item \textbf{Morphological polyethism} where a worker with extreme physical features in terms of size or shape, will specialize more in particular tasks. The more extreme a particular physical feature is, the narrower the repertoire of the worker. For example, soldier ants are larger in order to defend the nest, while the smaller workers are involved with foraging.
 \end{itemize}
 
 %NEED SOMETHING HERE
@@ -339,52 +347,46 @@ There are two types of division of labour in social insects:
 
 \section{Models of Division of Labour from Biology}
 
-Beshers at al \cite{beshers2001models} provide a extensive overview of models of division of labour in insects. Due to the use of insect division of labour addressed by algorithms developed in this thesis, an overview of existing models is provided in the next section.
+An overview of existing models is provided in this section since insect-like division of labour is used by the algorithms developed in this thesis. The section focuses on common models and models used by the algorithms described in this thesis.
 
 \subsection{Response Threshold Model}
 
-In the response threshold model, workers have intrinsic thresholds for reacting to task-specific stimuli. The variation in task thresholds among workers in a swarm induces the division of labour \cite{robinson1992regulation}. The response threshold model identifies variation in the worker environment interaction as the primary reason for division of labour
+The response threshold model is where individuals each have a response threshold for each specific tasks that individuals in the swarm can perform.  The task-specific thresholds vary across individuals in the swarm. %citations
 
-Each task in the repertoire has a related response threshold. The default state of all workers is to have no task assigned. All workers have some threshold for a task and higher stimulus levels result in recruitment of additional workers into a task group. Specialist have the lowest thresholds for a particular task. A negative feedback loop is formed because as the performance of a task by a worker increases, the stimulus level of that task decreases. If a worker with a lower threshold reaches a task then the worker with the higher threshold may never reach that threshold and thus will never perform the task \cite{beshers2001models}.
+Suppose $R$ is the set of tasks that can be performed by individuals of the swarm. An individual $i$ will only perform task $t \in R$ when the environmental stimuli for task t, $S_t$ exceed the response threshold $r_(i,t)$ for task $t$ for individual $i$. Each response threshold for a task for an individual is constant. If an individual has a lower threshold for a specific task, compared to other tasks in the repertoire, then it is likely that the individual will become a specialist in that task. An individual with equal thresholds for all tasks will be a generalist. % need to think this through a bit more
 
-The simplicity of the response threshold model makes it a popular choice for division of labour in swarm robotics, however it suffers from a number of problems. A predominant problem is that a small intrinsic variation in the performance or responsiveness of a workers' ability to complete task may be amplified into large differences in task repertoire or the frequency of task performance. 
+Due to the response threshold model's simplicity, it has become a popular choice for division of labour in swarm robotics.  %motivate with citations
 
-The response threshold model makes the assumption that all workers are equally likely to encounter each task and that stable equilibrium is reached when the number of workers performing a task matches the stimulus level and when individual workers maintain constant task performance probabilities \cite{page1990self}.
-
-\subsection{Integrated Threshold--Information Transfer Model}
-\label{integratedthreshold}
-
-Integrated Threshold Information Transfer model can be discerned from it's name. Workers perform a task when the stimulus they encountered equals an internal threshold - the internal threshold will vary according to genetics. The process of discerning a task stimulus is known as information transfer. Information transfer can be perceived randomly in space, directly or via social information transfer  \cite{fewell1999division}. In Integrated Threshold-Information Transfer, both the integrated threshold can be varied as well as the method of transferring information.
-
-Fewell et al  use information transfer models to predict swarm level response patterns to graded changes in stimulus levels for the tasks. The model predicted that normally distributed patterns of task thresholds would induce a graded response - independently of how the individuals received information about the task \cite{fewell1999division}.
-
-%NOT VERY GOOD BUT FUCK IT!
+%Add disadvantages
+The disadvantage of response threshold model is that individuals that have slightly higher response thresholds compared to other individuals in the swarm, become inactive individuals.
 
 \subsection{Foraging for Work}
 
-Foraging for work is controversial in the fact that it induces division of labour without any explicit worker mechanism but instead a natural result of the environment \cite{beshers2001models}.  
-Foraging for Work has two main parts:
+Foraging for work assumes that individuals are intrinsically identical and thus performance of individuals at a task is dependent on opportunity to perform a task, rather than intrinsic task preferences.
+
+Foraging for work has two main principles:
 \begin{enumerate}
-	\item Workers repeat the same task when possible.
-	\item Workers actively seek work when they have no task.
+	\item Individuals repeat the same task when possible.
+	\item Individuals actively seek work when they have no task.
 \end{enumerate}
 
 %This forms the basic model of foraging and also is used in MY honey bee algorithm.
 
-Foraging for work makes the assumptions that workers are intrinsically identical and thus task performance of workers is dependent on opportunity, rather than intrinsic task preferences. However, it has been shown that in true insect colonies, there is intrinsic variation in each worker's response to the environment as not all workers will respond equally. Another assumption is that tasks are radially spatially localized within the nest. That means the tasks further away are performed by older workers and the younger workers will perform the tasks that are nearer.
+Foraging for work also assumes that tasks are radially spatially localized within the nest. This means that  tasks further away from the nest are performed by older individuals and the younger individuals perform the tasks that are closer the nest.
 
-Foraging for work shows that temporal polyethism doesn't require age-related difference in the mechanism of task choice and can simply stem from the older workers proximity to the nest which is controversial as it sets the base expectation of what level of task organization might occur within a social group in absence of selection efforts or intrinsic mechanism of worker task performance \cite{franks1994foraging}.
+Foraging for work shows that temporal polyethism does not require age-related differences in the mechanism of task choice and can simply stem from an individual's proximity to the nest. Foraging for work is controversial since it shows that task organization might occur within a social group in absence of selection efforts or intrinsic mechanism of task performance \cite{franks1994foraging}. 
 
-Foraging for work can be seen as a special case of the threshold model where all workers have identical thresholds. The observation of this fact is that with Foraging for Work, temporal polyethism is generated by spatial organization, where as in threshold models polyethism is generated by differences in performance threshold. A disadvantage of threshold models is that lazy workers can be generated by those workers with high thresholds resulting in inactive workers where as according to Foraging for work all workers should either be performing or seeking tasks.
+Foraging for work can be seen as a special case of the threshold model where all individuals have identical thresholds. In foraging for work, temporal polyethism is generated by spatial organisation, where as response threshold model generate temporal polyethism by differences in internal thresholds. Unlike response threshold models, foraging for work does not suffer from inactive individuals as all workers are either performing or seeking tasks.
+
+Foraging for work is controversial in the fact that it induces division of labour without any explicit mechanism, but instead as a natural result of the environment \cite{beshers2001models}. However, it has been shown that in insect colonies, there is intrinsic variation in each individuals' response to environmental  stimuli, rather than from opportunity alone. %citation required
 
 \subsection{Self Reinforcement Models}
 \label{selfreinforcement}
 
-Task success is directly proportional of the probability of doing the task again. Self reinforcement models answer the question about whether division of labour is generated as a result of experience \cite{lerman2005review}. If a task was not performed successfully or there was the lack of opportunity then the probability of ever performing that task reduces. The result is that task specialists are created. 
+% What are self reinforceme models citation
+Self reinforcement models adjust an individual's probability of performing a task, based on prior success or failure to perform that task. Initially, the probability of performing all tasks are equal. If a task is performed successfully or there is  no opportunity to perform a task, then the probability of performing that task again is reduced. Individuals that continuously successfully perform a specific task becomes specialists in that task. Task success is directly proportional of the probability of doing the task again. %citations
 
-A study performed on foraging specializations by Deneubourg et al shows that self-reinforcement paired with worker age variation are to account for temporal polyethism \cite{deneubourg1987self}. Plowright and Plowright use self-reinforcement to generate elitism \cite{plowright1988elitism} determining that the result was a bimodal frequency of performing tasks where the agents either became specialists or became entirely inactive.
-
-Theraulaz introduces the concept of learning and forgetting \cite{theraulaz1998response}. Learning is when there is a reduction in response threshold when a worker performs a task. And forgetting is an increase in response threshold when a worker doesn't perform a task. All individuals begin with equal thresholds. Evidence from the model indicated that workers adequately adjusted activity levels according to the task they ended up specializing in and exhibited flexibility such that when workers of a specific task are removed the swarm would adapt in order to cater for for missing individuals. 
+% More details?
 
 %  /$$$$$$  /$$$$$$$$ /$$$$$$  /$$$$$$$ 
 % /$$__  $$|__  $$__//$$__  $$| $$__  $$
@@ -395,28 +397,26 @@ Theraulaz introduces the concept of learning and forgetting \cite{theraulaz1998r
 %|  $$$$$$/   | $$  |  $$$$$$/| $$      
 % \______/    |__/   \______/ |__/      
 %NB: ABOVE is what happens in my own things
-                                   
-\subsection{Network Models of Task Allocation}
-
-Network models of Task allocation, developed in \cite{gordon1992parallel} and extended upon in \cite{pacala1996effects} are a model of simple interactions between workers. It assumes that workers are identical and instead division of labour is induced directly by effective communication of the number of workers required per task between workers. 
- 
-In this particular network allocation models a worker performs one of four tasks, where for each task they are either active or inactive. This results in each worker having 8 states. Workers having the same states belong to the same task group and all worker interactions are bias towards transferring information with workers that belong to the same task group \cite{gordon1992parallel}. The worker behaviour in each iteration is determined by a linear combination of interactions. The system moves to a balance of active and inactive workers. 
-
-Pascala \cite{pacala1996effects} developed a differential equation to investigate the effects of social group size on task allocation. Information was received directly from the environment, through success or failure of task performance and random encounters with other group members. It was shown that large networks (ie a large number of agents) track environmental changes more efficiently as there is a higher rate of information flow but interaction increases substantially causing interference. Thus as colony size increases, the overhead from interactions becomes faster than the information collection rate from the environment. The solution is to limit the frequency of interaction \cite{pacala1996effects}
-
-The key similarity between network models and foraging for work models is that despite the fact that goals differ, they both share the view that division of labor can be generated by changes in local information encountered by an individual worker. Local information is affected by availability of performance of other tasks, resulting in workers switching between task spaces. Network models are more accurate than the linear model of foraging for work, but network model lacks self organizational properties of foraging for work models.
+% IS IT?! Will have to check
 
 \subsection{Social Inhibition Models}
+With social inhibition models, individuals change tasks as they age, however the process of aging is inhibited by social environments \citation{huang1992honeybee}. The model is based on the activator-inhibitor behaviour present in bee swarms. 
 
-The sheer presence of older foraging bees affects behavioural development as the proportion of bees becoming foragers is indirectly related to the number of older bees present in the swarm \citation{huang1992honeybee}. This effect is modelled in the activator-inhibitor model.
+In honey bee swarm, juvenile bees work in the hive while an older bee forages. When a juvenile bee develops, it becomes a forager bee. The activator hormone motivates growth of a juvenile bee into a forager bee. 
 
-Activator-Inhibitor model is driven by 2 hormones:
-\begin{itemize}
-	\item The activator hormone which is the juvenile hormone that motivates the workers in the hive to become foragers.
-	\item The inhibitor hormone which is transferred from the foragers to the younger workers, suppresses the bees development into foragers. If foragers are lost in an accident then more hive workers will mature to foragers due to the decrease of the level of the inhibitor hormone.
-\end{itemize}
+An inhibitor hormone is released by the forager bees which is transferred to the juvenile worker bees. The inhibitor hormone inhibits the development of a juvenile bee into a forager bee. 
 
-The mathematical version of the social inhibition model represents the workers physiological state by a single variable $x$ that changes daily in response to the social environment \cite{beshers2001social}. The model defines the trajectories for behavioural development that is intrinsically determined and responsive to social environments. Task performance is correlated with age. Social inhibition provides mechanism of changing worker thresholds as they age which response thresholds fail to do. Social inhibition models allow swarms to flexibly respond to dynamic environments. %pointsless but fuck it!%
+The existence of forager bees in the hive slows the development process of the juvenile bees and thus the juvenile bees remain workers. If forager bees are destroyed, then less inhibitor hormone is released and more worker bees become forager bees, replenishing the number of foragers. 
+
+The advantage of social inhibition models is that they allow the swarm to respond to a dynamic environment. 
+
+                                
+\subsection{Network Models of Task Allocation}
+
+Network models assume that swarm individuals are identical and that division of labour is induced by effective communication of the number of individuals required per task, between individuals of the swarm \cite{gordon1992parallel}. A number of network models exist \cite{gordon1992parallel,pacala1996effects}
+
+Network models are similar to foraging for work models in that division of labour is generated by changes in local information encountered by each individual. 
+
 
 \section{Division of Labour in Robot Swarms}
 
@@ -440,6 +440,14 @@ To conclude, it appears majority of existing division of labour research is focu
 That said, there is space for addressing other types of division of labour and task allocation problems besides that of optimal number of active robots as many systems require division of labour between multiple active tasks. There is also a lack of implementation of other types of division of labour models such as the network based models which may be worth exploring.
 
 Lastly, despite the general attempt to test scalability, the maximum swarm size is usually 10 or less. It is in the author's opinion that it would be beneficial to attempt this study on a larger scale problem with larger swarm sizes to truly see the benefit in the division of labour strategy to regulate the number of foraging robots. 
+
+% Experiments about self reinforcement models. These are related to swarm robotics. Are they relevant?!
+
+Self reinforcement models answer the question about whether division of labour is generated as a result of experience \cite{lerman2005review}. 
+
+A study performed on foraging specializations by Deneubourg et al shows that self-reinforcement paired with worker age variation are to account for temporal polyethism \cite{deneubourg1987self}. Plowright and Plowright use self-reinforcement to generate elitism \cite{plowright1988elitism} determining that the result was a bimodal frequency of performing tasks where the agents either became specialists or became entirely inactive.
+
+Theraulaz introduces the concept of learning and forgetting \cite{theraulaz1998response}. Learning is when there is a reduction in response threshold when a worker performs a task. And forgetting is an increase in response threshold when a worker doesn't perform a task. All individuals begin with equal thresholds. Evidence from the model indicated that workers adequately adjusted activity levels according to the task they ended up specializing in and exhibited flexibility such that when workers of a specific task are removed the swarm would adapt in order to cater for for missing individuals. 
 
 \section{Summary}
 \label{sec:second:summary}

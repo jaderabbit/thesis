@@ -16,7 +16,7 @@ This chapter presents a foraging variation known as prioritized foraging as well
 
 %Focus on the robots used, the model used and the experiments performed
 
-The multi-foraging problem is a more complex version of standard foraging, where more than one type of item must be foraged to a separate sink \cite{balch1999impact}. That in mind, the prioritized foraging problem, shown in Fig.\ref{prioritizedforaging}, is defined as a modified version of the multi-foraging problem where an environment has two types of items: prioritized items and non-prioritized items. The goal is to forage all the items of the prioritized type. The possibility exists that prioritized items become trapped among non-prioritized items and thus the non-prioritized items need to be removed from the environment to clear an access route to the prioritized items. 
+The prioritized foraging problem, shown in Fig.\ref{prioritizedforaging}, is a modified version of the multi-foraging problem as discussed in Section~\ref{environmentaxis}. In prioritized foraging, an environment has two types of items: prioritized items and non-prioritized items. The goal is to forage all the items of the prioritized type. The possibility exists that prioritized items become trapped among non-prioritized items and thus the non-prioritized items need to be removed from the environment to clear an access route to the prioritized items. 
 
 The prioritized foraging problem has increased difficulty due the fact that  foraging the non-prioritized item more than required will result in a waste of time and energy. The goal of research in prioritized foraging is to develop an algorithm to efficiently adapt the number of robots searching for prioritized items to those moving non-prioritized items out the way. 
 
@@ -30,7 +30,7 @@ The prioritized foraging problem is suitably applied to search and rescue. For e
 	\label{prioritizedforaging}
 \end{figure}
 
-As per Winfield's classification described in section \ref{sec:second:taxonomy}, the prioritized foraging problem has a constrained environment, multiple source areas with multiple sinks, multiple object types, object placement is tested in a number of environment types explained in the following sections. There are multiple homogenous robots with limited sensing, relative localisation with near communications and unlimited power. Power is kept as unlimited since the energy preservation of algorithms is to be studied as a performance measure. 
+As per Winfield's classification discussed in Section~\ref{sec:second:taxonomy}, the prioritized foraging problem has a constrained environment, multiple source areas with multiple sinks, multiple object types, object placement is tested in a number of environment types explained in the following sections. There are multiple homogeneous robots with limited sensing, relative localisation with near communications and unlimited power. Power is kept as unlimited since the energy preservation of algorithms is to be studied as a performance measure. 
 
 
 \section{Na\"ive Foraging Algorithm}
