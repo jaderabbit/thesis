@@ -129,7 +129,7 @@ Experiments run in a vein environment aimed to test whether robots of a specific
 \end{figure}
 
 
-\subsection{Robot Parameters}
+\section{Swarm Parameters}
 \label{parameters}
 
 For all algorithms, the robot swarm was initialized with 
@@ -140,7 +140,7 @@ The density of robots, $c$, is defined as the density of cells of the grid size 
 Honey bee specific parameters were selected based on \cite{seeley2009wisdom} as
 -$t_{max}=200$ time steps, $f_{max}=100$ time steps, $\phi=0.8$ and $\rho=0.1$. Testing the effect of each of the honey bee algorithm specific parameters was not in the scope of this thesis.
 
-The initial position of each robot was randomly selected, adjacent to the sink. All robots began in the exploration state, which a state that is shared by all algorithms. All experiments were run for 10000 time steps.
+The initial position of each robot was randomly selected, adjacent to the sink. All robots began in the exploration state, which a state that is shared by all algorithms. For each set of algorithmic, environmental and swarm configurations, each sample was run for 10000 time steps. An experiment consists of 30 repeated sample runs.
 
 \section{Performance Measures}
 \label{thri:third:performancemeasures}
@@ -157,6 +157,8 @@ The following performance measures were used:
 	
 Future studies could include the average time taken by a robot to forage an item, the average distance moved by a robot and a measure to explain the randomness of a robots movement. 
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -165,9 +167,10 @@ Future studies could include the average time taken by a robot to forage an item
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
 \label{third:summary}
-The robots used in this study are based on that of the e-puck robots, but with gripper capabilities. The robots used a navigation and obstacle avoidance technique based on the flocking behaviour of birds where a global attractor force attracts the robot in a specific direction, while the local attractor force guide the robot around localized obstacles. A simple 2-dimensional grid-based simulator is used. Only a single robot or item could occupy a single grid cell at once, resulting in interference between robots and items. The item sinks were placed at the same end of the environment, since this research was inspired by a gold mining scenario where the robots would inhabit a tunnel with only one exit.
+The robots used in this study are based on that of the e-puck robots, but with gripper capabilities. The robots used a navigation and obstacle avoidance technique based on the flocking behaviour of birds where a global attractor force attracts the robot in a specific direction, while the local attractor force guide the robot around localized obstacles. A simple 2-dimensional grid-based simulator is used. Only a single robot or item could occupy a single grid cell at once.
 
-The chapter details the parameters chosen for the algorithms as well as the performance measures selected in order to compare various aspects of the algorithms: the different percentages of each type of item foraged as well as the time spent waiting by the sink. Lastly, the environment types that were generated for experimentation in order to test different properties of the algorithms are discussed. The environment types defined have the four following distributions: uniform distribution, Gaussian distribution, clustered distribution and vein distribution. The robots were the described in terms of the capabilities of the robots themselves, techniques used by the robots for navigation and obstacle avoidance  as well as the simulation environment used.
+The environment types that were generated for experimentation in order to test different properties of the algorithms are discussed. The environment types defined have the four following distributions: uniform distribution, Gaussian distribution, clustered distribution and vein distribution. The following environmental parameters were varied: item density, environment size and item type ratio. The following swarm parameters chosen for each of the algorithms were presented: initial swarm configuration, swarm density, and honey bee specific parameters. Performance measures were selected to compare different aspects of the algorithms: the different percentages of each type of item foraged as well as the time spent waiting by the sink. 
+
 
 
 %%%
