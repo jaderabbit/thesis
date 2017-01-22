@@ -203,6 +203,7 @@ The following hypotheses have been formulated based on those descriptions:
 
 \begin{enumerate}
 	\item The na\"ive foraging algorithm will perform better on environments with a uniform distribution compared to the clustered, vein and Gaussian environments, due to the algorithm's inability to return to areas with high item density. 
+	
 	\item The desert ant foraging algorithm will perform better on clustered, Gaussian and vein environments. In the desert ant foraging algorithm, robots remember location of an item source and can return quickly to areas with prioritized items.
 	
 	 \item The honey bee foraging algorithm will perform best on Gaussian distribution environments since robots in the honey bee foraging algorithm recruit members to forage rich prioritized item sources. 
@@ -211,7 +212,15 @@ The following hypotheses have been formulated based on those descriptions:
 \end{enumerate}
 
 %TODO: Insert graph and table from new results.
-By examining Table~\ref{environmenttypeprioritized} and Figure~\ref{fig:environmenttypes}, it is clear that suprisingly the environment types have less of an effect on performance ($\sigma$ and $\mu$) than expected thus one can conclude that the algorithms either do not effectively take advantage of some of the environment types or do take advantage of environment types but are hindered by other difficulties related to the environment type. Another general and suprising notion across all environments is that performance of the algorithm over clustered environments seems to be similar performance of the algorithms over uniform environments. This is unexpected since, due to the fact that the clustered environment has grouped areas of prioritized items, one would expect the performance of algorithms over clustered environments to be more similar to the performance of algorithms over vein and gaussian environments since vein and gaussian environments also have grouped areas of prioritized items. The conclusion after examining a number of the environments is that the generated clustered environments do not have sparsely defined clusters and thus the clustered environments are perhaps more similar to the uniform environments. 
+Table~\ref{environmenttypeprioritized} and Figure~\ref{fig:environmenttypes} show the performance of the each algorithm on each type of item distribution, with respect to $\sigma$ and $\mu$. 
+
+% Are these valid?
+The performance of each algorithm over the environment item distributions vary within a small range. Either the environment distributions are not. 
+
+
+ , it is clear that suprisingly the environment types have less of an effect on performance () than expected thus one can conclude that the algorithms either do not effectively take advantage of some of the environment types or do take advantage of environment types but are hindered by other difficulties related to the environment type. 
+ 
+ Another general and  notion across all environments is that performance of the algorithm over clustered environments seems to be similar performance of the algorithms over uniform environments. This is unexpected since, due to the fact that the clustered environment has grouped areas of prioritized items, one would expect the performance of algorithms over clustered environments to be more similar to the performance of algorithms over vein and gaussian environments since vein and gaussian environments also have grouped areas of prioritized items. The conclusion after examining a number of the environments is that the generated clustered environments do not have sparsely defined clusters and thus the clustered environments are perhaps more similar to the uniform environments. 
 
 As expected, the na\"ive algorithm performs the best on uniform environments and the worst on gaussian and vein environments. As discussed above, the na\"ive algorithm also performs similarly on the clustered environments as it does on the uniform environments, but besides that anomaly, the first hypothesis about na\"ive environments is confirmed. 
 
