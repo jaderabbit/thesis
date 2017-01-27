@@ -31,11 +31,17 @@
 \usepackage{algorithm}% http://ctan.org/pkg/algorithms
 \usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
 \usepackage{tikz}
+\usepackage[%
+    style=numeric-comp,sorting=none,
+    sortcites=true,doi=false,url=false,
+    giveninits=true,hyperref,backend=bibtex]{biblatex}
+    
 \usetikzlibrary{shapes.geometric, arrows, decorations.text, fit}
 				% glossary file environments
 \tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
 \tikzstyle{arrow} = [thick,->,>=stealth]
 \tikzstyle{initial}=[circle,draw=black,text=black,text centered,minimum width=1cm,minimum height=1cm]
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%          PDFLaTeX-Specific setup          %%%
@@ -138,7 +144,7 @@
 %%%               List Counters               %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcounter{listcount}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%         Index and Glossary Terms          %%%
@@ -195,6 +201,8 @@
 \newlength{\abovesubfiglabelskip}
 \setlength{\abovesubfiglabelskip}{0.5\abovecaptionskip}
 
+
+\addbibresource{thesis.bib}
 
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -255,9 +263,7 @@
 \phantomsection
 \fi
 \label{bibliography}
-\addcontentsline{toc}{chapter}{Bibliography}
-\bibliographystyle{IEEEtran}
-\bibliography{thesis}
+\printbibliography
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
