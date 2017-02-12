@@ -70,11 +70,11 @@ The prioritized and non-prioritized sinks were placed next to each other, on a s
 
 The experiments are to be run in different environments with different item distributions, sizes, item densities and different ratios of prioritized to non--prioritized items. 
 
-The sizes of the environment grid, $S$, were varied, where $S\in \left\{ 50,100,200,300, 500\right\}$, such that $S$ was the width and length of the grid.  Experiments were run on different environment size to test how each algorithm can scale to larger environments.
+The sizes of the environment grid, $S$, were varied, where $S\in \left\{ 50, 100, 200, 300, 500\right\}$, such that $S$ was the width and length of the grid.  Experiments were run on different environment size to test how each algorithm can scale to larger environments.
 
-Different values for the density of the items on the grid, $p$, were chosen where $p\in\left\{ 0.05, 0.2, 0.5, 0.7, 0.9\right\}$. Environments with a higher item density are more complex to forage since there exists a higher probability of an item on the unassigned type blocking the path to items of a robot's assigned type.
+Different values for the density of the items on the grid, $p$, were chosen where $p\in \{ 0.05,\allowbreak 0.2,\allowbreak 0.5,\allowbreak 0.7,\allowbreak 0.9\}$. Environments with a higher item density are more complex to forage since there exists a higher probability of an item on the unassigned type blocking the path to items of a robot's assigned type.
 
-The ratio of prioritized to non-prioritized items $r$, was varied, where $r\in \left\{0, 0.2,0.25, 0.33, 0.5, 0.67, 0.75, 0.8, 1\right\}$. When no prioritized items on the grid existed, then $r=0$ and when only prioritized items on the grid existed, then $r=1$ .
+The ratio of prioritized to non-prioritized items $r$, was varied, where $r\in \{0,\allowbreak 0.2,\allowbreak 0.25,\allowbreak 0.33,\allowbreak 0.5,\allowbreak 0.67,\allowbreak 0.75,\allowbreak 0.8, 1\}$. When no prioritized items on the grid existed, then $r=0$ and when only prioritized items on the grid existed, then $r=1$ .
 
 In environments with a small $r$ value, the abundance of non-prioritized items increases the likelihood of non-prioritized items blocking the access to prioritized items. 
 
@@ -135,58 +135,57 @@ The vein environments aimed to test whether a swarm of robots, of each algorithm
 \caption{Uniform Distributed Environments}
 \label{algorithm:uniform}
 \begin{algorithmic}[1]
-\Function{uniform}{numberitems, specializationratio, environmentsize}
-\State \text{nonprioritizeditemsleft = floor((1-specializationratio)*numberitems)}
-\State \text{prioritizeditemsleft = floor(specializationratio*numberitems)}
-\While{\text{prioritizeditemsleft > 0}}
-	\State \text{x $\gets$ uniform(0, environmentsize)}
-	\State \text{y $\gets$ uniform(0, environmentsize)}
-	\If{\text{position (x,y) is empty}}
-		\State \text{Place prioritized item at (x,y)}
-		\State \text{Decrement prioritizeditemsleft}
-	\EndIf
-\EndWhile
+\Function{uniform}{$numberitems, \sigma, environmentsize$}
+	\State \text{nonprioritizeditemsleft = floor((1-$\sigma$)*numberitems)}
+	\State \text{prioritizeditemsleft = floor( $\sigma$*numberitems)}
+	\While{\text{$prioritizeditemsleft > 0$}}
+		\State \text{x $\gets$ uniform(0, environmentsize)}
+		\State \text{y $\gets$ uniform(0, environmentsize)}
+		\If{\text{position (x,y) is empty}}
+			\State \text{Place prioritized item at (x,y)}
+			\State \text{Decrement $prioritizeditemsleft$}
+		\EndIf
+	\EndWhile
 
-\While{\text{nonprioritizeditemsleft > 0}}
-	\State \text{x $\gets$ uniform(0, environmentsize)}
-	\State \text{y $\gets$ uniform(0, environmentsize)}
-	\If{\text{position (x,y) is empty}}
-		\State \text{Place prioritized item at (x,y)}
-		\State \text{Decrement nonprioritizeditemsleft}
-	\EndIf
-\EndWhile
+	\While{\text{$nonprioritizeditemsleft > 0$}}
+		\State \text{x $\gets$ uniform(0, environmentsize)}
+		\State \text{y $\gets$ uniform(0, environmentsize)}
+		\If{\text{position (x,y) is empty}}
+			\State \text{Place prioritized item at (x,y)}
+			\State \text{Decrement $nonprioritizeditemsleft$}
+		\EndIf
+	\EndWhile
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
 
 
 \begin{algorithm}
-
 \caption{Gaussian Distributed Environments}
 \label{algorithm:gaussian}
 \begin{algorithmic}[1]
-\Function{gaussian}{numberitems, specializationratio, environmentsize}
-\State \text{calculate environment centre point (center_x, center_y)}
-\State \text{prioritizeditemsleft = floor(specializationratio*numberitems)}
-\State \text{nonprioritizeditemsleft = floor((1-specializationratio)*numberitems)}
-\State \text{deviation = environmentsize*specializationratio/2}
-\While{\text{prioritizeditemsleft > 0}}
-	\State \text{x $\gets$ floor(gaussian(center_x, deviation)}
-	\State \text{y $\gets$ floor(gaussian(center_y, deviation)}
-	\If{\text{position (x,y) is empty and is valid}}
-		\State \text{Place prioritized item at (x,y)}
-		\State \text{Decrement prioritizeditemsleft}
-	\EndIf
-\EndWhile
+\Function{gaussian}{$numberitems, \sigma, environmentsize$}
+	\State \text{Calculate environment centre point $(center_x, center_y)$}
+	\State \text{prioritizeditemsleft = floor($\sigma$*numberitems)}
+	\State \text{nonprioritizeditemsleft = floor((1-$\sigma$)*numberitems)}
+	\State \text{deviation = environmentsize*$\sigma$/2}
+	\While{\text{$prioritizeditemsleft > 0$}}
+		\State \text{$x \gets floor(gaussian(center_x, deviation))$}
+		\State \text{$y \gets floor(gaussian(center_y, deviation))$}
+		\If{\text{position (x,y) is empty and is valid}}
+			\State \text{Place prioritized item at (x,y)}
+			\State \text{Decrement $prioritizeditemsleft$}
+		\EndIf
+	\EndWhile
 
-\While{\text{nonprioritizeditemsleft > 0}}
-	\State \text{x $\gets$ uniform(0, environmentsize)}
-	\State \text{y $\gets$ uniform(0, environmentsize)}
-	\If{\text{position (x,y) is empty}}
-		\State \text{Place prioritized item at (x,y)}
-		\State \text{Decrement nonprioritizeditemsleft}
-	\EndIf
-\EndWhile
+	\While{\text{$nonprioritizeditemsleft > 0$}}
+		\State \text{x $\gets$ uniform(0, environmentsize)}
+		\State \text{y $\gets$ uniform(0, environmentsize)}
+		\If{\text{position (x,y) is empty}}
+			\State \text{Place prioritized item at (x,y)}
+			\State \text{Decrement $nonprioritizeditemsleft$}
+		\EndIf
+	\EndWhile
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
@@ -196,33 +195,33 @@ The vein environments aimed to test whether a swarm of robots, of each algorithm
 \caption{Vein Distributed Environments}
 \label{algorithm:vein}
 \begin{algorithmic}[1]
-\Function{vein}{numberitems, specializationratio, environmentsize}
-\State \text{select 2 random sides from the grid}
-\State \text{select a random points on each sides, $(x_0,y_0)$ and $(x_1,y_1)$}
-\State \text{calculate gradient of vein, $m = (y_0 - y_1)/(x_0 - x_1)$}
-\State \text{calculate $c$ of equation for line vein, $c = (y_0 - m*x_0)$
+\Function{vein}{$numberitems, \sigma, environmentsize$}
+	\State \text{Select 2 random sides from the grid}
+	\State \text{Select a random points on each sides, $(x_0,y_0)$ and $(x_1,y_1)$}
+	\State \text{calculate gradient of vein, $m = (y_0 - y_1)/(x_0 - x_1)$}
+	\State \text{calculate $c$ of equation for line vein, $c = (y_0 - m*x_0)$
 }
 
-\State \text{prioritizeditemsleft = floor(specializationratio*numberitems)}
-\State \text{nonprioritizeditemsleft = floor((1-specializationratio)*numberitems)}
+	\State \text{prioritizeditemsleft = floor($\sigma$*numberitems)}
+	\State \text{nonprioritizeditemsleft = floor((1-$\sigma$)*numberitems)}
 
-\While{\text{prioritizeditemsleft > 0}}
-	\State \text{x $\gets$ uniform($min(x_0,x_1), max(x_0, x_1)$)}
-	\State \text{y $\gets m*x + c$}
-	\If{\text{position (x,y) is valid and position (x,y) is empty}}
-		\State \text{Place prioritized item at (x,y)}
-		\State \text{Decrement prioritizeditemsleft}
-	\EndIf
-\EndWhile
+	\While{\text{$prioritizeditemsleft > 0$}}
+		\State \text{$x \gets uniform(min(x_0,x_1), max(x_0, x_1))$}
+		\State \text{$y \gets m*x + c$}
+		\If{\text{position (x,y) is valid and position (x,y) is empty}}
+			\State \text{Place prioritized item at (x,y)}
+			\State \text{Decrement $prioritizeditemsleft$}
+		\EndIf
+	\EndWhile
 
-\While{\text{nonprioritizeditemsleft > 0}}
-	\State \text{x $\gets$ uniform(0, environmentsize)}
-	\State \text{y $\gets$ uniform(0, environmentsize)}
-	\If{\text{position (x,y) is empty}}
-		\State \text{Place nonprioritized item at (x,y)}
-		\State \text{Decrement nonprioritizeditemsleft}
-	\EndIf
-\EndWhile
+	\While{\text{$nonprioritizeditemsleft > 0$}}
+		\State \text{x $\gets$ uniform(0, environmentsize)}
+		\State \text{y $\gets$ uniform(0, environmentsize)}
+		\If{\text{position (x,y) is empty}}
+			\State \text{Place nonprioritized item at (x,y)}
+			\State \text{Decrement $nonprioritizeditemsleft$}
+		\EndIf
+	\EndWhile
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
@@ -231,64 +230,77 @@ The vein environments aimed to test whether a swarm of robots, of each algorithm
 \begin{algorithm}
 
 %TODO
-\caption{Clustered Distributed Environments}
-\label{algorithm:uniform}
+\caption{Clustered Distributed Environments (Part 1)}
+\label{algorithm:clustered}
 \begin{algorithmic}[1]
-\Function{uniform}{numberitems, specializationratio, environmentsize}
-\State \text{generate number of clusters, $totalclusters = uniform(3,15)$}
-\State \text{Calculate number of prioritized clusters, $clusters_p = floor(specializationratio*totalclusters)$}
-\State \text{Calculate number of non-prioritized clusters, $clusters_{np} = floor((1-specializationratio)*totalclusters)$}
-\State \text{Calculate total number of prioritized items ,$total_p = floor(specializationratio*numberitems)$}
-\State \text{Calculate total number of non-prioritized items ,$total_{np} = floor((1-specializationratio)*numberitems)$}
-\State \text{Calculate average number of prioritized items per prioritized cluster, $ave_p = total_p/clusters_{p}$}
-\State \text{Calculate average number of non-prioritized items per non-prioritized cluster, $ave_np = total_{np}/clusters_{np}$}
-\State \text{$clusterstogenerate_p = clusters_p$}
-\State \text{$clusterstogenerate_{np} = clusters_{np}$}
+\Function{clustered}{$numitems, \sigma, environmentsize$}
+  \State \text{Generate number of clusters, $total = uniform(3,15)$}
+  \State \text{Calculate number of prioritized clusters, $clusters_p = floor(\sigma*total)$}    
+  \State \text{Calculate number of non-prioritized clusters, $clusters_{np} = floor((1-\sigma)*total)$}
+  
+  \State \text{Calculate total number of prioritized, $total_p = floor(\sigma*numitems)$}
+  
+  \State \text{Calculate total number of non-prioritized items, $total_{np} = floor((1-\sigma)*numitems)$}
+  
+  \State \text{$ave_p = total_p/clusters_{p}$}
+  \State \text{$ave_np = total_{np}/clusters_{np}$}
+  \State \text{$clusterstogenerate_p = clusters_p$}
+  \State \text{$clusterstogenerate_{np} = clusters_{np}$}
 
-\While{\text{$clusterstogenerate_p > 0$}}
-	\State \text{sample centroid for cluster $C$ (x,y) uniformly from grid}
-	\State \text{sample random number of items, $num_p$ for cluster $C$ from uniform range ($ave_p/2$, $2ave_p$)}
-	\State \text{Calculus radius, $r$, of cluster $C$ as $r = \sqrt{num_p/\pi}$}
-	\If{\text{centroid (x,y) of cluster $C$ does not collide with boundaries of existing clusters}}
-		\State \text{Save centroid and radius of cluster $C$ to list}
-		\State \text{Decrement $clusterstogenerate_p$}
-		\State \text{$itemstogenerate_p = num_p$}
-				
-		\While {$itemstogenerate_p > 0$}
-			\State \text{Sample prioritized item position $(x_p,y_p)$ from Gaussian distribution with centre (x,y) and deviation $r$  }
-			\If{\text{position $(x_{p},y_{p})$ is valid}}
-				\State \text{Place prioritized item at $(x_p,y_p)$}
-				\State \text{Decrement $itemstogenerate_{np}$}	
-			\EndIf
-		\EndWhile
-	\EndIf
-	\EndIf
-\EndWhile
+  \While{\text{$clusterstogenerate_p > 0$}}
+    \State \text{sample centroid for cluster $C$ (x,y) uniformly from grid}
+    \State \text{$num_p = uniform(ave_p/2$, $2ave_p$)}
+    \State \text{Calculus radius, $r$, of cluster $C$ as $r = \sqrt{num_p/\pi}$}
+    \If{\text{cluster $C$ does not collide with existing clusters}}
+      \State \text{Save centroid and radius of cluster $C$ to list}
+      \State \text{Decrement $clusterstogenerate_p$}
+      \State \text{$itemstogenerate_p = num_p$}
+          
+      \While {$itemstogenerate_p > 0$}
+        \State \text{$x_p = gaussian(x, r)$}
+        \State \text{$y_p = gaussian(y, r)$}
+        \If{\text{position $(x_{p},y_{p})$ is valid}}
+          \State \text{Place prioritized item at $(x_p,y_p)$}
+          \State \text{Decrement $itemstogenerate_{np}$}	
+        \EndIf
+      \EndWhile
+    \EndIf
+  \EndWhile
+  \algstore{clusteredalg}
+\end{algorithmic}
+\end{algorithm}
+  
+\begin{algorithm}
 
-\While{\text{$clusterstogenerate_{np} > 0$}}
-	\State \text{sample centroid for cluster $C$ (x,y) uniformly from grid}
-	\State \text{sample random number of items, $num_{np}$ for cluster $C$ from uniform range ($ave_{np}/2$, $2ave_{np}$)}
-	\State \text{Calculus radius, $r$, of cluster $C$ as $r = \sqrt{num_{np}/\pi}$}
-	\If{\text{centroid (x,y) of cluster $C$ does not collide with boundaries of existing clusters}}
+%TODO
+\caption{Clustered Distributed Environments (Part 2)}
+\label{algorithm:clustered}
+\begin{algorithmic}[1]
+  \algrestore{clusteredalg}
+  \While{\text{$clusterstogenerate_{np} > 0$}}
+	  \State \text{sample centroid for cluster $C$ (x,y) uniformly from grid}
+	  \State \text{$num_{np}=uniform(ave_{np}/2,2ave_{np})$}
+	  \State \text{Calculus radius, $r$, of cluster $C$ as $r = \sqrt{num_{np}/\pi}$}
+	  \If{\text{cluster $C$ does not collide with existing clusters}}
 	
-		\State \text{Save centroid and radius of cluster $C$ to list}
-		\State \text{Decrement $clusterstogenerate_{np}$}
-		\State \text{$itemstogenerate_{np} = num_{np}$}
+		  \State \text{Save centroid and radius of cluster $C$ to list}
+		  \State \text{Decrement $clusterstogenerate_{np}$}
+		  \State \text{$itemstogenerate_{np} = num_{np}$}
 				
-		\While {$itemstogenerate_{np} > 0$}
-			\State \text{Sample prioritized item position $(x_{np},y_{np})$ from Gaussian distribution with centre (x,y) and deviation $r$  }
+		  \While {$itemstogenerate_{np} > 0$}
+        	\State \text{$x_p = gaussian(x, deviation=r)$}
+        	\State \text{$y_p = gaussian(y, deviation=r)$}
 			\If{\text{position $(x_{np},y_{np})$ is valid}}
-				\State \text{Place non-prioritized item at $(x_{np},y_{np})$}
-				\State \text{Decrement $itemstogenerate_{np}$}	
-			\EndIf
-		\EndWhile
-	\EndIf
-	\EndIf
-\EndWhile
-
+				  \State \text{Place non-prioritized item at $(x_{np},y_{np})$}
+				  \State \text{Decrement $itemstogenerate_{np}$}	
+			  \EndIf
+		  \EndWhile
+		\EndIf
+	\EndWhile
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
+
 
 \section{Swarm Parameters}
 \label{parameters}
@@ -301,7 +313,7 @@ As discussed in Section~\ref{experimentenvironments}, $\tau$ is varied, with a s
 The density of robots, $c$, is defined as the density of cells, of the grid size $S$ (the length of the side of an environment) that are occupied by robots, where $c\in\left\{0.1, 0.3, 0.5, 0.7, 1\right\}$. The density of robots is varied in order to test the scalability of the algorithm. The density of robots is also varied to test each algorithms' ability to adjust the amount of actively  foraging robots to the density of the items in the environment.
 
 The honey bee algorithm specific parameters were selected based on \cite{seeley2009wisdom}, where
--$t_{max}=200$ time steps, $f_{max}=100$ time steps, $\phi=0.8$ and $\rho=0.1$. Testing the effect of each of the honey bee algorithm specific parameters was not in the scope of this thesis.
+-$t_{max}=200$ time steps, $f_{max}=100$ time steps, $\phi=0.8$ and $\rho=0.1$. Testing thse effect of each of the honey bee algorithm specific parameters was not in the scope of this thesis.
 
 The initial position of each robot was randomly selected, adjacent to the sink. All robots began in the exploration state, which a state that is shared by all algorithms. For each set of algorithmic, environmental and swarm configurations, each simulation was run for 10000 time steps. An experiment consists of 30 repeated simulations for a specific set of parameters.
 
