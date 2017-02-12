@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Experimental Setup}
+1\chapter{Experimental Setup}
 \label{chap:third}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,6 +129,166 @@ The vein environments aimed to test whether a swarm of robots, of each algorithm
         \caption{Environment Classes}\label{fig:environments}
 \end{figure}
 
+
+\begin{algorithm}
+
+\caption{Uniform Distributed Environments}
+\label{algorithm:uniform}
+\begin{algorithmic}[1]
+\Function{uniform}{numberitems, specializationratio, environmentsize}
+\State \text{nonprioritizeditemsleft = floor((1-specializationratio)*numberitems)}
+\State \text{prioritizeditemsleft = floor(specializationratio*numberitems)}
+\While{\text{prioritizeditemsleft > 0}}
+	\State \text{x $\gets$ uniform(0, environmentsize)}
+	\State \text{y $\gets$ uniform(0, environmentsize)}
+	\If{\text{position (x,y) is empty}}
+		\State \text{Place prioritized item at (x,y)}
+		\State \text{Decrement prioritizeditemsleft}
+	\EndIf
+\EndWhile
+
+\While{\text{nonprioritizeditemsleft > 0}}
+	\State \text{x $\gets$ uniform(0, environmentsize)}
+	\State \text{y $\gets$ uniform(0, environmentsize)}
+	\If{\text{position (x,y) is empty}}
+		\State \text{Place prioritized item at (x,y)}
+		\State \text{Decrement nonprioritizeditemsleft}
+	\EndIf
+\EndWhile
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}
+
+\caption{Gaussian Distributed Environments}
+\label{algorithm:gaussian}
+\begin{algorithmic}[1]
+\Function{gaussian}{numberitems, specializationratio, environmentsize}
+\State \text{calculate environment centre point (center_x, center_y)}
+\State \text{prioritizeditemsleft = floor(specializationratio*numberitems)}
+\State \text{nonprioritizeditemsleft = floor((1-specializationratio)*numberitems)}
+\State \text{deviation = environmentsize*specializationratio/2}
+\While{\text{prioritizeditemsleft > 0}}
+	\State \text{x $\gets$ floor(gaussian(center_x, deviation)}
+	\State \text{y $\gets$ floor(gaussian(center_y, deviation)}
+	\If{\text{position (x,y) is empty and is valid}}
+		\State \text{Place prioritized item at (x,y)}
+		\State \text{Decrement prioritizeditemsleft}
+	\EndIf
+\EndWhile
+
+\While{\text{nonprioritizeditemsleft > 0}}
+	\State \text{x $\gets$ uniform(0, environmentsize)}
+	\State \text{y $\gets$ uniform(0, environmentsize)}
+	\If{\text{position (x,y) is empty}}
+		\State \text{Place prioritized item at (x,y)}
+		\State \text{Decrement nonprioritizeditemsleft}
+	\EndIf
+\EndWhile
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}
+\caption{Vein Distributed Environments}
+\label{algorithm:vein}
+\begin{algorithmic}[1]
+\Function{vein}{numberitems, specializationratio, environmentsize}
+\State \text{select 2 random sides from the grid}
+\State \text{select a random points on each sides, $(x_0,y_0)$ and $(x_1,y_1)$}
+\State \text{calculate gradient of vein, $m = (y_0 - y_1)/(x_0 - x_1)$}
+\State \text{calculate $c$ of equation for line vein, $c = (y_0 - m*x_0)$
+}
+
+\State \text{prioritizeditemsleft = floor(specializationratio*numberitems)}
+\State \text{nonprioritizeditemsleft = floor((1-specializationratio)*numberitems)}
+
+\While{\text{prioritizeditemsleft > 0}}
+	\State \text{x $\gets$ uniform($min(x_0,x_1), max(x_0, x_1)$)}
+	\State \text{y $\gets m*x + c$}
+	\If{\text{position (x,y) is valid and position (x,y) is empty}}
+		\State \text{Place prioritized item at (x,y)}
+		\State \text{Decrement prioritizeditemsleft}
+	\EndIf
+\EndWhile
+
+\While{\text{nonprioritizeditemsleft > 0}}
+	\State \text{x $\gets$ uniform(0, environmentsize)}
+	\State \text{y $\gets$ uniform(0, environmentsize)}
+	\If{\text{position (x,y) is empty}}
+		\State \text{Place nonprioritized item at (x,y)}
+		\State \text{Decrement nonprioritizeditemsleft}
+	\EndIf
+\EndWhile
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}
+
+%TODO
+\caption{Clustered Distributed Environments}
+\label{algorithm:uniform}
+\begin{algorithmic}[1]
+\Function{uniform}{numberitems, specializationratio, environmentsize}
+\State \text{generate number of clusters, $totalclusters = uniform(3,15)$}
+\State \text{Calculate number of prioritized clusters, $clusters_p = floor(specializationratio*totalclusters)$}
+\State \text{Calculate number of non-prioritized clusters, $clusters_{np} = floor((1-specializationratio)*totalclusters)$}
+\State \text{Calculate total number of prioritized items ,$total_p = floor(specializationratio*numberitems)$}
+\State \text{Calculate total number of non-prioritized items ,$total_{np} = floor((1-specializationratio)*numberitems)$}
+\State \text{Calculate average number of prioritized items per prioritized cluster, $ave_p = total_p/clusters_{p}$}
+\State \text{Calculate average number of non-prioritized items per non-prioritized cluster, $ave_np = total_{np}/clusters_{np}$}
+\State \text{$clusterstogenerate_p = clusters_p$}
+\State \text{$clusterstogenerate_{np} = clusters_{np}$}
+
+\While{\text{$clusterstogenerate_p > 0$}}
+	\State \text{sample centroid for cluster $C$ (x,y) uniformly from grid}
+	\State \text{sample random number of items, $num_p$ for cluster $C$ from uniform range ($ave_p/2$, $2ave_p$)}
+	\State \text{Calculus radius, $r$, of cluster $C$ as $r = \sqrt{num_p/\pi}$}
+	\If{\text{centroid (x,y) of cluster $C$ does not collide with boundaries of existing clusters}}
+		\State \text{Save centroid and radius of cluster $C$ to list}
+		\State \text{Decrement $clusterstogenerate_p$}
+		\State \text{$itemstogenerate_p = num_p$}
+				
+		\While {$itemstogenerate_p > 0$}
+			\State \text{Sample prioritized item position $(x_p,y_p)$ from Gaussian distribution with centre (x,y) and deviation $r$  }
+			\If{\text{position $(x_{p},y_{p})$ is valid}}
+				\State \text{Place prioritized item at $(x_p,y_p)$}
+				\State \text{Decrement $itemstogenerate_{np}$}	
+			\EndIf
+		\EndWhile
+	\EndIf
+	\EndIf
+\EndWhile
+
+\While{\text{$clusterstogenerate_{np} > 0$}}
+	\State \text{sample centroid for cluster $C$ (x,y) uniformly from grid}
+	\State \text{sample random number of items, $num_{np}$ for cluster $C$ from uniform range ($ave_{np}/2$, $2ave_{np}$)}
+	\State \text{Calculus radius, $r$, of cluster $C$ as $r = \sqrt{num_{np}/\pi}$}
+	\If{\text{centroid (x,y) of cluster $C$ does not collide with boundaries of existing clusters}}
+	
+		\State \text{Save centroid and radius of cluster $C$ to list}
+		\State \text{Decrement $clusterstogenerate_{np}$}
+		\State \text{$itemstogenerate_{np} = num_{np}$}
+				
+		\While {$itemstogenerate_{np} > 0$}
+			\State \text{Sample prioritized item position $(x_{np},y_{np})$ from Gaussian distribution with centre (x,y) and deviation $r$  }
+			\If{\text{position $(x_{np},y_{np})$ is valid}}
+				\State \text{Place non-prioritized item at $(x_{np},y_{np})$}
+				\State \text{Decrement $itemstogenerate_{np}$}	
+			\EndIf
+		\EndWhile
+	\EndIf
+	\EndIf
+\EndWhile
+
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
 
 \section{Swarm Parameters}
 \label{parameters}
