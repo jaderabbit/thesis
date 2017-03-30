@@ -7,7 +7,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In swarm robotics, robot foraging has become a benchmark problem due to its complex nature involving the coordination of numerous sub-tasks. Robot foraging is also one of the swarm robotics problems that has some very obvious useful applications. This chapter aims to provide an in-depth review of what foraging is, how different social insects forage as well as to provide a review of existing foraging algorithms in swarm robotics. The definition of foraging in swarm robotics is discussed in Section~\ref{sec:second:definition}, while Section~\ref{foraging:biologicalinspiration} discusses the biological techniques for foraging in social insects, considering ants and bees. Section~\ref{sec:second:types} provides a taxonomy of the types of swarm robotic foraging algorithms, and the challenges that foraging algorithms must address are discussed in Section~\ref{challengesinforaging}. Existing swarm robotics foraging algorithms are outlined in Section~\ref{sec:second:existingsolution} , and prioritized foraging is defined and discussed in Section~
+In swarm robotics, robot foraging has become a benchmark problem due to its complex nature involving the coordination of numerous sub-tasks. Robot foraging is also one of the swarm robotics problems that has some very obvious useful applications. This chapter aims to provide an in-depth review of what foraging is, how different social insects forage as well as to provide a review of existing foraging algorithms in swarm robotics. The definition of foraging in swarm robotics is discussed in Section~\ref{sec:second:definition}, while Section~{foraginginnature} describes foraging behaviours observed in nature, specifically in bees and ants. Section~\ref{biological:ants} provides a taxonomy of the types of swarm robotic foraging algorithms, and the challenges that foraging algorithms must address are discussed in Section~\ref{challengesinforaging}. Existing swarm robotics foraging algorithms are outlined in Section~\ref{sec:second:existingsolution} , and prioritized foraging is defined and discussed in Section~
 \ref{sec:second:prioritizedforaging}. Lastly, the chapter is summarized in Section~\ref{foraging:summary}. 
 
 
@@ -30,7 +30,7 @@ As with many swarm robotics problems, the inspiration for foraging comes from na
 
 
 \subsection{Ants}
-\label{sec:second:biological}
+\label{biological:ants}
 % Intro 
 As with many swarm robotics problems, the inspiration for foraging comes from nature, in particular, social insects such as ants and honey bees. This section describes the biological models that are used in the algorithms derived by this thesis. 
 
@@ -60,7 +60,7 @@ Unemployed foragers wait on the dance floor, and evaluate the dances of the scou
 
 \subsection{Bacteria}
 
-The $E. coli$ bacteria forage for cardohydrates in the human gut. They have a unique search mechanism whereby they move in the same direction for a period of time (which is called a "run") and then change direction using their complex flagella (known as a "tumble"). The bacteria exhibit the behaviour continuing to move in a direction, if the bacteria are moving up a nutrient gradient. Bacteria stop moving in a direction, if they're moving down a nutrient gradient in order to avoid toxic substances. Under certain conditions, the bacteria secrete an attractant substance which attracts the bacteria to one another for protection.
+The $E. coli$ bacteria forage for carbohydrates in the human gut. The bacteria have a unique search mechanism whereby they move in the same direction for a period of time (which is called a "run") and then change direction using their complex flagella (known as a "tumble"). The bacteria exhibit the behaviour continuing to move in a direction, if the bacteria are moving up a nutrient gradient. Bacteria stop moving in a direction, if they're moving down a nutrient gradient in order to avoid toxic substances. Under certain conditions, the bacteria secrete an attractant substance which attracts the bacteria to one another for protection.
 
 The foraging behaviour of $E. coli$ bacteria is used for inspiration for a computational intelligence algorithm \cite{passino2010bacterial} and particle swarm optimization is, for instance based on the flocking behaviour of birds - a flocking behaviour exhibited when finding food, amongst other things \cite{kennedy1995particle}. 
 
@@ -73,13 +73,14 @@ Predator prey scenarios are foraging problems where the items to be foraged acti
 Predator-prey  models have been used in other swarm intelligence techniques in multi-objective optimization problems \cite{nolfi1998coevolving}.
 
 \section{Foraging in Swarm Robotics}
+The following section addresses foraging in a swarm robotics context. Firstly, a taxonomy of robot foraging is presented and then existing nature-inspired swarm robotics foraging algorithms are discussed.
 
 \subsection{Taxonomy of Robot Foraging}
 \label{sec:second:taxonomy}
 
 Foraging is a popular problem due to the vast potential opportunity of foraging for application to a variety of real-world problems from search and rescue \cite{jennings1997cooperative} to toxic waste retrieval to mining. It is beneficial to present a taxonomy of robot foraging that can be used to classify existing research about foraging as well as contextualize the specific foraging problems addressed by this thesis. One should note that the foraging taxonomy presented also includes non-swarm robotic foraging.
 
-Multiple taxonomies have been developed as robot foraging research has progressed \cite{oster1978caste,ostergaard2001emergent}. However a more recent and complete foraging taxonomy is presented in \cite{winfield2009foraging}. The taxonomy classifies foraging solutions based on four major axes: the foraging environment, the capabilities and types of robots used for foraging, performance aspects, and the foraging strategy used in a foraging algorithm. Each of these major axes have a number of minor axes which are outlined in Table~\ref{foragingtaxonomytable_part1} and Table~\ref{foragingtaxonomytable_part2}.  The following sections discuss each of the major and minor axes in more detail
+Multiple taxonomies have been developed as robot foraging research has progressed \cite{oster1978caste,ostergaard2001emergent}. However a more recent and complete foraging taxonomy is presented in \cite{winfield2009foraging}. The taxonomy classifies foraging solutions based on four major axes: the foragi ng environment, the capabilities and types of robots used for foraging, performance aspects, and the foraging strategy used in a foraging algorithm. Each of these major axes have a number of minor axes which are outlined in Table~\ref{foragingtaxonomytable_part1} and Table~\ref{foragingtaxonomytable_part2}.  The following sections discuss each of the major and minor axes in more detail
 
 \begin{table}
 \centering
@@ -184,13 +185,13 @@ The robot axis refers to qualities such as  the number of robots and the sensory
 \begin{itemize}
 \item The number of robots used in the foraging problem. If only a single robot or few robots are used to forage, then that would not be considered a swarm robotics.
 
-\item Robots can either be all identical (homogenous) or have different capabilities (heterogenous). Homogenous swarms are the more common type of swarm, but there does exist foraging research using a heterogenous swarm. In particular, the Swarmanoid project uses a heterogenous swarm to forage an item \cite{dorigo2013swarmanoid}. The Swarmanoid swarm consists of three types of robots with three separate responsibilities: The eye-bots locate the item, the foot-bots transport the hand-bot to the item and the hand-bot climbs until it can grab the item.
+\item Robots can either be all identical (homogenous) or have different capabilities (heterogenous). Homogenous swarms are the more common type of robots in swarm foraging, but there does exist foraging research using a heterogenous swarm. In particular, the Swarmanoid project uses a heterogenous swarm to forage an item \cite{dorigo2013swarmanoid}. The Swarmanoid swarm consists of three types of robots with three separate responsibilities: The eye-bots locate the item, the foot-bots transport the hand-bot to the item and the hand-bot climbs until it can grab the item. 
 
-\item The sensors of the robots can be of a limited range or global sensors with unlimited range. Foraging research that uses global sensors is not considered swarm robotics, thus the sensor type of robots is not addressed in this literature study.
+\item The sensors of the robots can be of a limited range or global sensors with unlimited range. Foraging research that uses global sensors is not considered swarm robotics, thus foraging algorithms using global sensors are not addressed in this literature study.
 
-\item Localization refers to the robots ability to position themselves in the environment. Localization could be non-existent, relative or absolute ( a global positioning system (GPS)). Absolute localization is not considered swarm robotics as then the swarm is dependant on a centralized source of information. % TODO: Add something about relative
+\item Localization refers to the robots ability to position themselves in the environment. Localization could be non-existent, relative or absolute ( a global positioning system (GPS)). Absolute localization is not considered swarm robotics as then the swarm is dependant on a centralized source of information violating the swarm robotic principle of decentralization. Relative positioning is the use of local information in order for a robot to position itself in an environment, and is suited to swarm robotics foraging problems. Relative localization techniques such as path integration are used in this thesis.
 
-\item Communication capabilities of the robots to each other can have infinite range, near range or not exist at all. Infinite range communication is also out of scope for swarm robotics research since local communication is a requirement of swarm robotics. Near range communication can occur via light-based signals\cite{sugawara2002swarming} or local direct communication methods such as bluetooth. The communication can also occur in differing topologies such as broadcast, direct, tree or graph topologies \cite{dudek1993taxonomy}
+\item Communication capabilities of the robots to each other can have infinite range, near range or not exist at all. Infinite range communication is out of scope for swarm robotics research since local communication is a requirement of swarm robotics. Near range communication can occur via light-based signals\cite{sugawara2002swarming} or local direct communication methods such as Bluetooth. The communication occurs in differing topologies such as broadcast, direct, tree or graph topologies \cite{dudek1993taxonomy}
 
 \item Robots can have an infinite power source, a limited power source, or an energy source which can be sustained by foraging resources. Studies focused on energy efficiency or automatic-charging have robots with limited energy sources or an energy source that can be sustained by foraging energy resources \cite{liu2006strategies}.
 
@@ -216,7 +217,7 @@ The strategy axis characterizes algorithms by the techniques that a foraging alg
 
 \item Recruitment has been defined as activities that bring individuals to a location where work is required \cite{holldobler1990ants}. Robots can recruit other robots to forage certain areas. Direct recruitment is where a robot explicitly communicates to another robot to come forage an item source \cite{krieger2000ant,labella2006division}. Indirect recruitment occurs when a robot is recruited to forage by inexplicit markers, such as an increase in the number of foragers waiting by the sink, or an increase in the density of other foragers moving towards a particular source of the environment \cite{arkin1992cooperation}. 
 
-\item There exist various techniques for coordination of tasks between the robots in a swarm. There can exist a centralized control for all robots, which would not be considered swarm robotics. There can exist master-slave configuration where one robot leads the others - this would not be considered swarm robotics, unless there exists a mechanism for electing a new master once an existing master is removed from the swarm \cite{karpov2015leader, hoeing2007auction}. Robots can also be self-organized or can have no coordination at all. 
+\item There exist various techniques for coordination of tasks between the robots in a swarm. A centralized control mechanism can be used for controlling all robots robots. Centralized control is not be considered swarm robotics and thus foraging algorithms that use centralized control are not addressed in this thesis. Master-slave configurations, where one robot leads the others, is another option for coordination of robots. A master-slave configuration with the ability to select a new master in the case that a master is destroyed, is swarm robotics since the swarm is then robust to individual failures \cite{karpov2015leader, hoeing2007auction}. A swarm with master-slave configuration that does not have the ability to select a new master is not swarm robotics. Swarms can have self-organized coordination, which means that each robot is in control of it's own activities and the self-organised coordination is an emergent property of the swarm. %TODO citation
 \end{itemize}
 
 \subsubsection{Environment Axis}
@@ -240,7 +241,6 @@ Campo \cite{campo2007efficient} identifies characteristics of efficient multi-fo
 Balch \cite{balch1999impact} develops a technique for multi-foraging and determining the impact of robot diversity on multi-foraging performance. This thesis's does not consider robot diversity since robots are homogeneous.
 
 \end{itemize}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -317,7 +317,7 @@ Existing swarm robotics foraging algorithms are addressed and discussed under th
 \label{chap:divisionoflabour}
 
 
-As explained in Section~\ref{flexibility}, division of labour forms part of foraging activities of social insects. This chapter highlights, explores and contrasts a variety of division of labour strategies from social insects. This chapter defines division of labour as well as analyses different types of division of labour that occur in social insects. Lastly, division of labour strategies employed by different swarm robotics algorithms are employed. 
+As explained in Section~\ref{flexibility}, division of labour forms part of foraging activities of social insects. This chapter defines division of labour as well as analyses different types of division of labour that occur in social insects. Lastly, division of labour strategies employed by different swarm robotics algorithms are described. 
 
 \section{Definition of Division of Labour}
 \label{sec:second:definition}
@@ -328,7 +328,7 @@ Robinson et al. \cite{robinson1992regulation}, more simply, defines division of 
 
 There are two types of division of labour in social insects \cite{beshers2001models}: 
 \begin{itemize}
-	\item \textbf{Temporal polyethism} where the pattern of tasks being performed by a worker correlates to the age of the worker. In nature, the younger workers may perform tasks within the nest while the older workers perform tasks outside of the nest.
+	\item \textbf{Temporal polyethism} where the pattern of tasks being performed by a worker correlate to the age of the worker. In nature, the younger workers may perform tasks within the nest while the older workers perform tasks outside of the nest.
 	\item \textbf{Morphological polyethism} where a worker with extreme physical features in terms of size or shape, will specialize more in particular tasks. The more extreme a particular physical feature is, the narrower the repertoire of the worker. For example, soldier ants are larger in order to defend the nest, while the smaller workers are involved with foraging.
 \end{itemize}
 
@@ -347,15 +347,14 @@ There are two types of division of labour in social insects \cite{beshers2001mod
 
 \section{Models of Division of Labour from Biology}
 
-An overview of existing models is provided in this section since insect-like division of labour is used by the algorithms developed in this thesis. The section focuses on common models and models used by the algorithms described in this thesis.
+An overview of existing models from entomology is provided in this section, since insect-like division of labour is used by the algorithms developed in this thesis. The section focuses on common models and models used by the algorithms described in this thesis.
 
 \subsection{Response Threshold Model}
 \label{responsethresholdmodel}
 
 The response threshold model is where individuals each have a response threshold for each specific tasks that individuals in the swarm can perform.  The task-specific thresholds vary across individuals in the swarm \cite{robinson1989genetic}.
 
-Suppose $R$ is the set of tasks that can be performed by individuals of the swarm. An individual $i$ will only perform task $t \in R$ when the environmental stimuli for task t, $S_t$ exceed the response threshold $r_{i,t}$ for task $t$ for individual $i$. Each response threshold for a task for an individual is constant. If an individual has a lower threshold for a specific task, compared to other individuals in the swarm, then it is likely that the individual will become a specialist in that task \cite{
-robinson1989genetic}
+Suppose $R$ is the set of tasks that can be performed by individuals of the swarm. An individual $\gamma$ will only perform task $\nu \in R$ when the environmental stimuli for task $\nu$, $S_\nu$, exceeds the response threshold, $r_{\gamma,\nu}$, for task $\nu$, for an individual $\gamma$. Each response threshold for a task, for an individual is constant. If an individual has a lower threshold for a specific task, compared to other individuals in the swarm, then it is likely that the individual will become a specialist in that task \cite{robinson1989genetic}
 
 Response threshold models have been modelled formally by Page et al. \cite{page1990self} and Bonabeau et al. \cite{bonabeau1999role}. Response thresholds have been used to explain temporal polyethism in honey bees where the response thresholds of the honey bees would change as the honey bees age \cite{robinson1987regulation}.
 
@@ -383,7 +382,7 @@ Foraging for work is controversial in the fact that it induces division of labou
 \label{selfreinforcement}
 
 % What are self reinforceme models citation
-Self reinforcement models adjust an individual's probability of performing a task, based on prior success or failure to perform that task. Initially, the probability of performing all tasks are equal. If a task is performed successfully or there is  no opportunity to perform a task, then the probability of performing that task again is reduced. Individuals that continuously successfully perform a specific task becomes specialists in that task. Task success is directly proportional of the probability of doing the task again \cite{theraulaz1998response, pasteels1987individual}. elf reinforcement has been attributed for division of labour in many systems in nature \cite{spencer1998dynamics}%citations
+Self reinforcement models adjust an individual's probability of performing a task, based on prior success or failure to perform that task. Initially, the probability of performing all tasks are equal. If a task is performed successfully or there is  no opportunity to perform a task, then the probability of performing that task again is reduced. Individuals that continuously successfully perform a specific task become specialists in that task. Task success is directly proportional of the probability of doing the task again \cite{theraulaz1998response, pasteels1987individual}. Self reinforcement has been attributed for division of labour in many systems in nature \cite{spencer1998dynamics}%citations
 
 % More details?
 
@@ -401,9 +400,7 @@ Self reinforcement models adjust an individual's probability of performing a tas
 \subsection{Social Inhibition Models}
 With social inhibition models, individuals change tasks as they age, however the process of aging is inhibited by social environments \cite{huang1992honeybee}. The model is based on the activator-inhibitor behaviour present in bee swarms. 
 
-In honey bee swarm, juvenile bees work in the hive while an older bee forages. When a juvenile bee develops, it becomes a forager bee. The activator hormone motivates growth of a juvenile bee into a forager bee \cite{robinson1989genetic}. 
-
-An inhibitor hormone is released by the forager bees which is transferred to the juvenile worker bees. The inhibitor hormone inhibits the development of a juvenile bee into a forager bee \cite{huang1992honeybee}.
+In honey bee swarm, juvenile bees work in the hive while an older bee forages. When a juvenile bee develops, it becomes a forager bee. The activator hormone motivates growth of a juvenile bee into a forager bee \cite{robinson1989genetic}. An inhibitor hormone is released by the forager bees which is transferred to the juvenile worker bees. The inhibitor hormone inhibits the development of a juvenile bee into a forager bee \cite{huang1992honeybee}.
 
 The existence of forager bees in the hive slows the development process of the juvenile bees and thus the juvenile bees remain workers. If forager bees are destroyed, then less inhibitor hormone is released and more worker bees become forager bees, replenishing the number of foragers. 
 
@@ -412,18 +409,18 @@ The existence of forager bees in the hive slows the development process of the j
 
 Network models assume that swarm individuals are identical and that division of labour is induced by effective communication of the number of individuals required per task, between individuals of the swarm \cite{gordon1992parallel}. A number of network models exist \cite{gordon1992parallel,pacala1996effects}.
 
-Network models are similar to foraging for work models in that division of labour is generated by changes in local information encountered by each individual. 
+Network models are similar to foraging for work models in that division of labour is generated by changes in local information encountered by each individual, rather than by intrinsic differences in individuals. 
 
 
 \section{Division of Labour in Robot Swarms}
 
-Division of labour has been used in swarm robotics, so this section provides an overview of the use of division of labour in swarm robotics.
+Division of labour has been used in swarm robotics. This section provides an overview of the use of division of labour in swarm robotics.
 
-Agassounon et al. \cite{agassounon2002efficiency} design and demonstrate three response threshold-based methods for division of labour. Response threshold model is described in Section~\ref{responsethresholdmodel}. The robots had to perform a clustering task with multiple sites. The task choice to be made my division of labour was to select which site to cluster. Division of labour techniques were employed to avoid interference between robots that occurs more often when too many robots attempt to cluster the same site. 
+Agassounon et al. \cite{agassounon2002efficiency} design and demonstrate three response threshold-based methods for division of labour. Response threshold model is described in Section~\ref{responsethresholdmodel}. The robots had to perform a clustering task with multiple sites. The task choice was to select which site to cluster. Division of labour techniques were employed to avoid interference between robots that occurs more often when too many robots attempt to cluster the same site. 
 
-The experiment determined that the swarm benefited from threshold division of labour since the algorithms with division of labour performed similarly or better than those with a fixed group size. The experiment also determined that local communication improved performance.
+The experiment determined that the swarm benefited from threshold division of labour since the algorithms with division of labour performed similarly or better than those with a fixed task group size. The experiment also determined that local communication improved swarm performance.
 
-Labella et al. \cite{labella2006division} developed a division of labour strategy for prey retrieval based on Deneubourg's ant self re-enforcement model, discussed in Section~\ref{selfreinforcement}. Experimentation was performed on simulated and real robots. The Robots switched from search behaviour to rest behaviour with probability $p$. This probability was incremented by a delta, $\delta$, when a robot successfully returned to the nest with an item and decremented by the same delta when a robot returns to the nest without an item. Labella et al. classified the foragers into different types, loafers, foragers or  undecided, based on the final value of $p$. Experiments showed that the values of $p$ tended towards extreme values, showing that, robots tended to become either loafers or foragers, while only a few became undecided. It was shown that a simple self-reinforcement division of labour model can improve the performance of a swarm of robots at a task without the need for communication. However scalability is still a concern as there are negative effects as group size increases. 
+Labella et al. \cite{labella2006division} developed a division of labour strategy for prey retrieval based on Deneubourg's ant self re-enforcement model, discussed in Section~\ref{selfreinforcement}. Experimentation was performed on simulated and real robots. The Robots switched from search behaviour to rest behaviour with probability $z$. This probability was incremented by a delta, $d$, when a robot successfully returned to the nest with an item and decremented by the same delta when a robot returns to the nest without an item. Labella et al. classified the foragers into different types, loafers, foragers or  undecided, based on the final value of $z$. Experiments showed that the values of $z$ tended towards extreme values, showing that, robots tended to become either loafers or foragers, while only a few became undecided. It was shown that a simple self-reinforcement division of labour model can improve the performance of a swarm of robots at a task, without the need for communication. However scalability was still a concern, since the swarm experienced negative performance as swarm size increased. 
 
 Liu et al. \cite{liu2007towards} introduce three mechanisms for adapting the number of resting robots to foraging robots in a simple foraging problem. The mechanisms consist of variations on how one perceives the worker demand. The mechanisms were as follows:
 
@@ -438,14 +435,14 @@ Four combinations of these factors are evaluated as well as compared to a nai\"v
 
 The experiments discovered that the use of the mechanisms improved performance significantly compared to swarms without such mechanisms. It was also shown that the mechanisms resulted in emergent division of labour, regulating the number of foraging and resting robots. The experiments resulted in robustness in environmental changes related to the density of items. The experiments using collective success of the swarm achieved the highest net energy income to the swarm and also had the fastest adaptation of the ratio of foragers to resting robots, when food density changes. Liu et al. \cite{liu2007towards} notes that scalability was not tested in the experiments.
 
-By examining the existing swarm robot division of labour literature, one can conclude that the majority of research in division of labour for swarm robotics, is concerned with regulating the number of active robots in a swarm. The existing research shows that the ability of a swarm to adjust the amount of robots actively participating in a task with the amount of robots at rest, enables the swarm to adapt to changes in the environment. Existing research also concluded that division of labour improved swarm robustness to destruction of robots, by replenishing the number of active robots when active robots have been removed. There exists scope to investigate division of labour between multiple different active tasks. This thesis addresses division of labour between two active tasks, rather than division of labour between activity and inactivity of robots.
+By examining the existing swarm robot division of labour literature, one can conclude that the majority of research in division of labour for swarm robotics, is concerned with regulating the number of active robots in a swarm. The existing research shows that the ability of a swarm to adjust the amount of robots actively participating in a task with the amount of robots at rest, enables the swarm to adapt to changes in the environment. Existing research also concluded that division of labour improved swarm robustness to destruction of robots, by replenishing the number of active robots when active robots had been removed. There exists scope to investigate division of labour between multiple different active tasks. This thesis addresses division of labour between two active tasks, contrasting the most division of labour research.
 
-The existing research did not test scalability of the division of labour techniques since the maximum swarm size is usually 10 or less. This thesis will evaluate the scalability of division of labour techniques used. There also exists scope for investigating other types of division of labour in swarm robotics such as network models but is not the scope of this thesis.
+The existing research did not test scalability of the division of labour techniques, since the maximum swarm size was usually 10 or less. This thesis will evaluate the scalability of division of labour techniques used. There exists scope for investigating other types of division of labour in swarm robotics, such as network models, but is not the scope of this thesis.
 
 
 \section{Summary}
 \label{sec:second:summary}
-Division of labour is the adjustment of ratios of workers engaged in different tasks based on external and internal stimuli. Division of labour is used in social insect societies such as bees and ants. Multiple models for division of labour have been explored by biologists. Extensive research has been performed about response threshold models, foraging for work, network models and self-reinforcement models. Despite the large amount of models, little verification of these models have been performed in real or simulated environments. 
+Division of labour is the adjustment of ratios of workers engaged in different tasks, based on external and internal stimuli. Division of labour is used in social insect societies such as bees and ants. Multiple models for division of labour have been explored by biologists. Extensive research has been performed about response threshold models, foraging for work, network models and self-reinforcement models. Despite the large amount of models, little verification of these models have been performed in real or simulated environments. 
 
 The use of division of labour in swarm robotics was reviewed. Most of the reviewed research was focused around the problem of using division of labour to regulate the number of active robots to the number of inactive robots. The techniques used in swarm robotics employ a variety of division of labour models such as response threshold models, self re-enforcement and social inhibition models. 
 

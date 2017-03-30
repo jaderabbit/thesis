@@ -23,7 +23,7 @@
 \section{Motivation}
 \label{sec:introduction:motivation}
 
-Swarm robotics is the co-coordination of large numbers of  relatively simple robots to perform a single collaborative function, inspired from the observation of social insects such as ants, termites, and bees \cite{dorigo2004swarm}. An important activity of all natural swarms is foraging for resources. Foraging is defined as the search and collection of resources from sources in an environment and returning the resources to a collection point \cite{winfield2009foraging}. These resources could be food, water, or building materials. %TODO: Citation
+Swarm robotics is the co-coordination of large numbers of  relatively simple robots to perform a single collaborative function. Swarm robotics is inspired from the observation of social insects such as ants, termites, and bees \cite{dorigo2004swarm}. An important activity of all natural swarms is foraging for resources. Foraging is defined as the search and collection of resources from sources in an environment and returning the resources to a collection point \cite{winfield2009foraging}. These resources could be food, water, or building materials. %TODO: Citation
 % and is formally defined in \cite{stephens1986foraging}. 
 
 In times of stress, the collection of one resource may be prioritized over others - such as water during a drought or food before winter. Individuals in a natural swarm often adapt behaviour appropriately to enable greater collection of the prioritized item.
@@ -37,14 +37,16 @@ Item prioritization during foraging exists in real-world robot foraging problems
 \section{Objectives}
 \label{sec:introduction:objectives}
 
-Introduce the research objectives of your work. It is quite likely that these may only become clear after you have completed the rest of the thesis, so revisit this list once you have finished everything else. Include broad objectives, like ``conduct a survey of available techniques in the field of \ldots'', or ``present practical case studies in the realm of \ldots''. You should use a bulleted list, as follows:
+The primary objectives of this thesis are as follows:
+
 \begin{itemize}
-	\item First objective here.
-
-	\item Then, second objective here.
-
-	\item Third objective here, and so on.
+	\item Conduct a survey of the swarm robotics field
+	\item Conduct a survey of foraging in social insects and  swarm robotics.
+	\item Define the prioritized foraging problem.
+	\item Selection and implementation of different nature-inspired algorithms in a simulated swarm robotic environment, to be evaluated on the prioritized foraging problem.
+	\item Evaluate and contrast the performance of the nature-inspired algorithms over different types of foraging environments and different swarm configurations.
 \end{itemize}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -52,15 +54,52 @@ Introduce the research objectives of your work. It is quite likely that these ma
 \section{Contributions}
 \label{sec:introduction:contributions}
 
-%Enumerate the novel contributions that your work sets out to make to the field. Include specific novel contributions to the field, such as taxonomies, or empirical results. These will be quite closely related to the objectives listed in Section~\ref{sec:introduction:objectives}. You may also use a bulleted list here.
+\begin{itemize}
+	\item A novel variation of the foraging problem - prioritized foraging.
+	\item A novel desert ant prioritized foraging algorithm for robot swarms.
+	\item A novel honey bee inspired prioritized foraging algorithm for robot swarms.
+	\item Methods for generating various types of foraging environments.
+	\item An analysis of the performance of various nature inspired algorithms under a various environmental and swarm configurations.
+\end{itemize}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Thesis Outline}
 \label{sec:introduction:outline}
+This thesis consists of 8 chapters, each handling a separate topic. The chapters are as follows:
 
-%Introduce a list of the remaining chapters of your work, in which a brief (two to three line) description of the material covered in each is included:
+\begin{itemize}
+\item\textbf{Chapter~\ref{chap:first}} introduces the user to swarm robotics in terms of its origin, motivation, development and current state.
+
+\item\textbf{Chapter~\ref{chap:second}} defines foraging. The chapter summarizes foraging behaviour of social insects and reviews existing foraging algorithms in swarm robotics.
+
+\item\textbf{Chapter~\ref{chap:divisionoflabour}} defines division of labour and summarizes strategies for division of labour employed by social insects. The chapter reviews where division of labour strategies have been employed by robot swarms.
+
+\item\textbf{Chapter~\ref{chap:third}} introduces a novel foraging variation called prioritized foraging. The chapter presents three swarm robotic foraging algorithms inspired by social insects, whose performance is to be evaluated on prioritized foraging problem.
+
+\item\textbf{Chapter~\ref{chap:experiment}} presents an experiment designed to evaluate the discussed foraging algorithms in a simplified simulation environment on the prioritized foraging problem. This chapter describes the environmental parameters, algorithm parameters and the swarm parameters that the algorithms are run with. This chapter presents the relevant performance measures to be used to evaluate the discussed algorithms. This chapter also describes the capabilities of the simulated robots as well .
+
+\item\textbf{Chapter~\ref{chap:results}} discusses and summarizes the results of applying the discussed foraging algorithms to the prioritized foraging problem
+
+\item\textbf{Chapter~\ref{chap:conclusions}} summarizes the findings of this research.
+
+\end{itemize}
+
+The thesis contains 3 appendices, which are organised as follows:
+
+\begin{itemize}
+\item\textbf{Appendix~\ref{app:acronyms}} provides a list of important acronyms that are used in the course of this work, along with their definitions
+
+\item\textbf{Appendix~\ref{app:symbols}} lists and defines the mathematical symbols used in this thesis, divided according to the chapter in which they appear.
+
+\item\textbf{Appendix~\ref{app:derived_publications}} contains the publications derived from this work.
+
+\end{itemize}
+
+
+
 
 %You might also include a page reference to the index (if you decide to include one) here, as follows: page~\pageref{index}.
 
