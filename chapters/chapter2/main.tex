@@ -260,8 +260,8 @@ Vaughan presents a swarm robotic algorithm allowing for robust transportation of
 Hoff \cite{hoff2010two} classifies different types of ant-inspired pheromone-based foraging algorithms by how the pheromones are represented: physical marks \cite{alcoholfromants2012}, use of existing communication channels such as sharing over wireless networks as well as virtual pheromone. %Read further
 
 %DoL in a Group of Robots Inspired by Ants Foraging Behaviour - Labella + Dorigo
-Labella et al \cite{labella2006division} propose a foraging model inspired by the foraging of ants, where individual robots adapt to the environment using only locally available information. The adaption allows for effective division of labour to occur. The probability $p1$ that a robot will changed from rest to searching is adapted upon return to the sink and from deposit to rest. If a robot fails to forage any prey after searching for a specified maximum time, then the robot returns and rests. 
-The adaption rule increases or decreases $p1$ by a constant $\Delta$ that is multiplied by the number of consecutive successes or failures. The study showed that adaption improved the amount of time spent not at rest. The advantage to this type of algorithm is its simplicity as no communication is required to regulate the number of robots. As pointed out, there is a global negative effect on overall efficiency at large group sizes. This is to be expected, but is not a serious problem since less energy is used, and this would be an advantage when energy is a scarce resource. %rephrase%
+Labella et al \cite{labella2006division} propose a foraging model inspired by the foraging of ants, where individual robots adapt to the environment using only locally available information. The adaptation allows for effective division of labour to occur. The probability $p1$ that a robot will changed from rest to searching is adapted upon return to the sink and from deposit to rest. If a robot fails to forage any prey after searching for a specified maximum time, then the robot returns and rests. 
+The adaptation rule increases or decreases $p1$ by a constant, that is multiplied by the number of consecutive successes or failures. The study showed that adaptation improved the amount of time spent not at rest. The advantage to this type of algorithm is its simplicity as no communication is required to regulate the number of robots. As pointed out, there is a global negative effect on overall efficiency at large group sizes. This is to be expected, but is not a serious problem since less energy is used, and this would be an advantage when energy is a scarce resource. %rephrase%
 %Different from the problem proposed in this study as different priorities of items are not considered
 %Come back and do a bit later. 
 %Says prey
@@ -385,15 +385,7 @@ Foraging for work is controversial in the fact that it induces division of labou
 Self reinforcement models adjust an individual's probability of performing a task, based on prior success or failure to perform that task. Initially, the probability of performing all tasks are equal. If a task is performed successfully or there is  no opportunity to perform a task, then the probability of performing that task again is reduced. Individuals that continuously successfully perform a specific task become specialists in that task. Task success is directly proportional of the probability of doing the task again \cite{theraulaz1998response, pasteels1987individual}. Self reinforcement has been attributed for division of labour in many systems in nature \cite{spencer1998dynamics}%citations
 
 % More details?
-
-%  /$$$$$$  /$$$$$$$$ /$$$$$$  /$$$$$$$ 
-% /$$__  $$|__  $$__//$$__  $$| $$__  $$
-%| $$  \__/   | $$  | $$  \ $$| $$  \ $$
-%|  $$$$$$    | $$  | $$  | $$| $$$$$$$/
-% \____  $$   | $$  | $$  | $$| $$____/ 
-% /$$  \ $$   | $$  | $$  | $$| $$      
-%|  $$$$$$/   | $$  |  $$$$$$/| $$      
-% \______/    |__/   \______/ |__/      
+    
 %NB: ABOVE is what happens in my own things
 % IS IT?! Will have to check
 
@@ -420,7 +412,7 @@ Agassounon et al. \cite{agassounon2002efficiency} design and demonstrate three r
 
 The experiment determined that the swarm benefited from threshold division of labour since the algorithms with division of labour performed similarly or better than those with a fixed task group size. The experiment also determined that local communication improved swarm performance.
 
-Labella et al. \cite{labella2006division} developed a division of labour strategy for prey retrieval based on Deneubourg's ant self re-enforcement model, discussed in Section~\ref{selfreinforcement}. Experimentation was performed on simulated and real robots. The Robots switched from search behaviour to rest behaviour with probability $z$. This probability was incremented by a delta, $d$, when a robot successfully returned to the nest with an item and decremented by the same delta when a robot returns to the nest without an item. Labella et al. classified the foragers into different types, loafers, foragers or  undecided, based on the final value of $z$. Experiments showed that the values of $z$ tended towards extreme values, showing that, robots tended to become either loafers or foragers, while only a few became undecided. It was shown that a simple self-reinforcement division of labour model can improve the performance of a swarm of robots at a task, without the need for communication. However scalability was still a concern, since the swarm experienced negative performance as swarm size increased. 
+Labella et al. \cite{labella2006division} developed a division of labour strategy for prey retrieval based on Deneubourg's ant self re-enforcement model, discussed in Section~\ref{selfreinforcement}. Experimentation was performed on simulated and real robots. The Robots switched from search behaviour to rest behaviour with probability $z$. This probability was incremented by a delta when a robot successfully returned to the nest with an item and decremented by the same delta when a robot returns to the nest without an item. Labella et al. classified the foragers into different types, loafers, foragers or  undecided, based on the final value of $z$. Experiments showed that the values of $z$ tended towards extreme values, showing that, robots tended to become either loafers or foragers, while only a few became undecided. It was shown that a simple self-reinforcement division of labour model can improve the performance of a swarm of robots at a task, without the need for communication. However scalability was still a concern, since the swarm experienced negative performance as swarm size increased. 
 
 Liu et al. \cite{liu2007towards} introduce three mechanisms for adapting the number of resting robots to foraging robots in a simple foraging problem. The mechanisms consist of variations on how one perceives the worker demand. The mechanisms were as follows:
 
