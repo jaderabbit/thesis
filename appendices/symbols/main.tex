@@ -94,3 +94,41 @@ node[anchor=west] {$_ \geq $} (dance);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Chapter~\ref{chap:experiment}: Experimental Setup}
+\label{sec:symbols:foraging}
+
+
+\begin{description}
+	\item[\parbox{\namewidth}{$d$}] Desirability of a direction $i$.
+	\item[\parbox{\namewidth}{$i$}] A direction a robot can perceive.
+	
+	\item[\parbox{\namewidth}{$\kappa_i$}] The clarity which indicates the distance of next nearest obstacle.
+	 
+	\item[\parbox{\namewidth}{$v$}] The depth of view of a robot's perception.
+
+	\item[\parbox{\namewidth}{$\iota_i$}] The directness of a direction $i$, calculated as the angular deviation from the direction of the destination
+
+	\item[\parbox{\namewidth}{$f$}] The	field of view of a robot's perception.
+		
+	\item[\parbox{\namewidth}{$\lambda$}] A ratio which determines whether clarity, $\kappa_i$ or directness, $\iota_i$ of direction $i$, has more effect on desirability $d$.
+	
+	\item[\parbox{\namewidth}{$S$}] The	size of the environment grid.
+
+	\item[\parbox{\namewidth}{$p$}] The density of the items on the grid.
+
+	\item[\parbox{\namewidth}{$r$}] The ratio of prioritized to non-prioritized items.
+
+	\item[\parbox{\namewidth}{$\tau$}] The ratio of robots foraging prioritized items to the ratio of robots foraging non-prioritized items.
+
+	\item[\parbox{\namewidth}{$c$}] The density of robots.
+
+	\item[\parbox{\namewidth}{$\sigma$}] The percentage of prioritized items foraged over time.
+
+	\item[\parbox{\namewidth}{$\mu$}] The percentage of non-prioritized items foraged over time.
+
+	\item[\parbox{\namewidth}{$\epsilon$}] The average time spent by agents waiting at the sink.
+	
+\end{description}
+
+The effect of the local attractor is modelled by  evaluating each direction in the field of view, to select the most desirable direction. Desirability, $d$, of a direction, $i$,

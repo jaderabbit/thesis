@@ -38,7 +38,7 @@ The effect of the local attractor is modelled by  evaluating each direction in t
 \begin{equation}
 	d_i= \lambda \kappa_i + (1 - \lambda)\iota_i \\
 	\label{eq:1}
-\end{equation} where $\lambda$ determines whether clarity, $c_i$ or directness, $\iota_i$ of direction $i$, has more effect on desirability. The described navigation and obstacle avoidance technique is used with all algorithms in the experiment and for algorithms $\lambda$ is set to 0.5.
+\end{equation} where $\lambda$ determines whether clarity, $\kappa_i$ or directness, $\iota_i$ of direction $i$, has more effect on desirability. The described navigation and obstacle avoidance technique is used with all algorithms in the experiment and for algorithms $\lambda$ is set to 0.5.
 
 \begin{figure}
 	\centering
@@ -78,7 +78,7 @@ The ratio of prioritized to non-prioritized items $r$, was varied, where $r\in \
 
 In environments with a small $r$ value, the abundance of non-prioritized items increases the likelihood of non-prioritized items blocking the access to prioritized items. 
 
-As $r$ is varied over varied, the swarm specialization ratio, $\tau$, is also varied, in order to determine of there exists a relationship between $r$, $\tau$ and the performance of the algorithms, in therms of $\sigma$. The parameter $r$ is also used to determine if the algorithms can adapt to the swarm specialization ratio, $\tau$, to optimally forage an environment of a given $r$. 
+As $r$ is varied over varied, the swarm specialization ratio, $\tau$, is also varied, in order to determine of there exists a relationship between $r$, $\tau$ and the performance of the algorithms. The parameter $r$ is also used to determine if the algorithms can adapt to the swarm specialization ratio, $\tau$, to optimally forage an environment of a given $r$. 
 
 Different distributions of items over the environment were chosen to examine different characteristics of the algorithms. The item distributions are shown in Figure~\ref{fig:environments}, where each lighter shaded square is a prioritized item and a non-prioritized item is shown by a darker shaded square. Four different classes of environments were generated as follows:
 
@@ -315,7 +315,7 @@ As discussed in Section~\ref{experimentenvironments}, $\tau$ is varied, with a s
 The density of robots, $c$, is defined as the density of cells, of the grid size $S$ (the length of the side of an environment) that are occupied by robots, where $c\in\left\{0.1, 0.3, 0.5, 0.7, 1\right\}$. The density of robots is varied in order to test the scalability of the algorithm. The density of robots is also varied to test each algorithms' ability to adjust the amount of actively  foraging robots to the density of the items in the environment.
 
 The honey bee algorithm specific parameters were selected based on \cite{seeley2009wisdom}, where
--$t_{max}=200$ time steps, $f_{max}=100$ time steps, $\phi=0.8$ and $\rho=0.1$. Testing thse effect of each of the honey bee algorithm specific parameters was not in the scope of this thesis.
+ $t_{wait}=200$ time steps, $f_{max}=100$ time steps, $\Phi=0.8$ and $\rho=0.1$. Testing the effect of each of the honey bee algorithm specific parameters was not in the scope of this thesis.
 
 The initial position of each robot was randomly selected, adjacent to the sink. All robots began in the exploration state, which a state that is shared by all algorithms. For each set of algorithmic, environmental and swarm configurations, each simulation was run for 10000 time steps. An experiment consists of 30 repeated simulations for a specific set of parameters.
 
