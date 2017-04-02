@@ -133,7 +133,7 @@ To more succinctly define the honey bee prioritized foraging algorithm, the algo
 	\draw [arrow] (dance) -- node[anchor=south] {$\varrho < \rho$} (scout);
 	\draw [arrow] (scout) -- node[anchor=east] {$i_{wait} > t_{wait}$} (wait);
 	\draw [arrow,postaction={decorate,decoration={text along path,raise=1ex,text align=center,text={locates new site}}}] (scout) to[bend left=20] (dance);
-	\draw [arrow] (forage) to[loop] node[anchor=south] {$\mu_\varrho < \Phi$} (forage);
+	\draw [arrow] (forage) to[loop] node[anchor=south] {$\mu_\varsigma < \Phi$} (forage);
 	\draw [arrow] (wait) to[loop] node[anchor=south] {$i_{forage} < t_{forage}$} (wait);
 	\node[process, fit=(scout)(dance), inner sep=1.5cm, label={270:scout}] (all) {};
 	\end{tikzpicture}
@@ -171,12 +171,12 @@ Each scout robot begins in the explore state where the scout robot performs a ra
 \end{algorithmic}
 \end{algorithm}
 
-The quality, $\mu_\varsigma$, of site $\xi$, for a robot scouting items of type $\varsigma$ is calculated as the estimated density of items of type $\varsigma$ in the local vicinity of the found item $\vartheta$. The robot has distance sensor values $k_i\in[0,1]$ for $ i = 1...n$ where $n$ is the number of distance sensors. A distance sensor reading of 0 means that nothing is detected in the sensor's range and a distance sensor reading of 1 indicates that the robot is touching an item. The sensor value $k_i$, for item type $\varsigma$, denoted $k_{i_\varsigma}$, is calculated as 
+The quality, $\mu_\varsigma$, of site $\xi$, for a robot scouting items of type $\varsigma$ is calculated as the estimated density of items of type $\varsigma$ in the local vicinity of the found item $\vartheta$. The robot has distance sensor values $k_j\in[0,1]$ for $j = 1...n$ where $n$ is the number of distance sensors. A distance sensor reading of 0 means that nothing is detected in the sensor's range and a distance sensor reading of 1 indicates that the robot is touching an item. The sensor value $k_j$, for item type $\varsigma$, denoted $k_{j_\varsigma}$, is calculated as 
 \begin{equation}
 \label{densitytype}
-k_{i_\varsigma}=
+k_{j_\varsigma}=
     \begin{cases}
-      k_i & \text{if item $i$ is type $\varsigma$} \\
+      k_j & \text{if detected item is type $\varsigma$} \\
       0 & \text{otherwise}
     \end{cases}
 \end{equation}
@@ -187,7 +187,7 @@ The site quality of type $\varsigma$, $\mu_\varsigma$, is calculated using
 \mu_\sigma = \frac{1}{n}\sum\limits_{i=1}^n k_{i_\varsigma}
 \end{equation}
  
-Before returning to the sink with the item, the scout memorizes the PI vector $v$ in site location variable $\omega$. The scout robot then switches to the homing state as shown in Algorithm~\ref{algorithm:scout:homing}. Using PI vector $\omega$, the scout returns the item $\vartheta$ to the sink. When the scout robot has returned to the sink, $S_\varsigma$, the scout robot offloads the item $\vartheta$. If the quality $\mu_\varsigma$ of the visited site $\xi$ is larger than threshold $\phi$, the scout robot switches into the dance state, which is depicted in Algorithm~\ref{algorithm:recruit}. If the quality $\mu_\varsigma$ of the visited site $\xi$ is less than threshold $\phi$, the robot takes on the role of an employed forager and switches into the locate state which is outlined in Algorithm~\ref{algorithm:employedforager:locating}.
+Before returning to the sink with the item, the scout memorizes the PI vector $v$ in site location variable $\omega$. The scout robot then switches to the homing state as shown in Algorithm~\ref{algorithm:scout:homing}. Using PI vector $\omega$, the scout returns the item $\vartheta$ to the sink. When the scout robot has returned to the sink, $S_\varsigma$, the scout robot offloads the item $\vartheta$. If the quality $\mu_\varsigma$ of the visited site $\xi$ is larger than threshold $\Phi$, the scout robot switches into the dance state, which is depicted in Algorithm~\ref{algorithm:recruit}. If the quality $\mu_\varsigma$ of the visited site $\xi$ is less than threshold $\Phi$, the robot takes on the role of an employed forager and switches into the locate state which is outlined in Algorithm~\ref{algorithm:employedforager:locating}.
 
 
 \begin{algorithm}
@@ -254,7 +254,7 @@ Before returning to the sink with the item, the scout memorizes the PI vector $v
 
 In the dance state, the scout robot communicates the location, $\omega$, and quality $\mu_\varsigma$, of the previous site $\xi$, to the unemployed workers at the sink. The communication is akin to the waggle dance performed by honey bees in nature, as discussed in Section~\ref{bees:biologicalinspiration}. A scout robot's ``dance" takes the form of a localized broadcast communication between the scout and the unemployed forager robots near the sinks. The scout robot will communicate the site quality and location for the unemployed foragers for $t_{dance}$ time steps.
 
-After the scout robot has completed broadcasting site details to the unemployed foragers, the scout robot must decide to either stay a scout robot and switch back to the explore state or become an employed forager robot and begin foraging the previous site. The scout robot generates a random number, $\varrho\in(0,1)$. If $\varrho$ is less than a site quality threshold $\rho$, then the scout robot remains a scout and begins to explore the environment. If $\varrho$ is greater than or equal to $\rho$ then the scout becomes an employed forager. Increasing the site quality threshold $\rho$ will make the scout robots more selective about the sites they broadcast. Decreasing $\rho$ will result in scout robots being less selective about the sites they broadcast.
+After the scout robot has completed broadcasting site details to the unemployed foragers, the scout robot must decide to either stay a scout robot and switch back to the explore state or become an employed forager robot and begin foraging the previous site. The scout robot becomes an employed forager robot with the probability of $\rho$. If random number $\varrho\in{0,1}$ is selected such that $\varrho$ is less than $\rho$, then the scout robot remains a scout and begins to explore the environment. If $\varrho$ is greater than or equal to $\rho$ then the scout becomes an employed forager. Increasing the site quality threshold $\rho$ will make the scout robots more selective about the sites they broadcast. Decreasing $\rho$ will result in scout robots being less selective about the sites they broadcast.
 
 \subsection{Forager Robots}
 

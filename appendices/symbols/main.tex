@@ -5,22 +5,7 @@
 \label{app:symbols}
 
 The following appendix defines the symbols used in each chapter.  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Chapter~\ref{chap:first}: Swarm Robotics}
-\label{sec:symbols:swarmrobotics}
-
-\begin{description}
-\setlength{\itemsep}{-1mm}
-	\item[\parbox{\namewidth}{$p1$}] The probability that a robot will changed from rest to searching is adapted upon return to the sink and from deposit to rest.
-	\item[\parbox{\namewidth}{$R$}] The set of tasks that can be performed by individuals of the swarm.
-	\item[\parbox{\namewidth}{$\gamma$}] An individual robot in a swarm.
-	\item[\parbox{\namewidth}{$\nu$}] A task such that $\nu \in R$
-	\item[\parbox{\namewidth}{$r_{\gamma,\nu}$}] A response threshold for of robot $\gamma$ for task $\u$
-	\item[\parbox{\namewidth}{$z$}] The probability of a robot to switch from search behaviour to rest behaviour.
-	\item[\parbox{\namewidth}{$\gamma$}] An individual robot in a swarm.
-\end{description}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -28,10 +13,83 @@ The following appendix defines the symbols used in each chapter.
 \section{Chapter~\ref{chap:second}: Foraging}
 \label{sec:symbols:foraging}
 
+
+\begin{description}
+	\item[\parbox{\namewidth}{$p1$}] The probability that a robot will changed from rest to searching is adapted upon return to the sink and from deposit to rest.
+
+
+\section{Chapter~\ref{chap:divisionoflabour}: Division Of Labour}
+\label{sec:symbols:divisionoflabour}
+
+
+\begin{description}
+	\item[\parbox{\namewidth}{$R$}] The set of tasks that can be performed by individuals of the swarm.
+	\item[\parbox{\namewidth}{$\gamma$}] An individual robot in a swarm.
+	\item[\parbox{\namewidth}{$\nu$}] A task such that $\nu \in R$
+	\item[\parbox{\namewidth}{$r_{\gamma,\nu}$}] A response threshold for of robot $\gamma$ for task $\u$
+	\item[\parbox{\namewidth}{$z$}] The probability of a robot to switch from search behaviour to rest behaviour.
+\end{description}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Chapter~\ref{chap:third}: Nature Inspired Algorithms for Prioritized Foraging}
+\label{sec:symbols:foraging}
+node[anchor=west] {$_ \geq $} (dance);
+	\draw[arrow] (dance) to[bend left=20] node[anchor=east] {$\varrho \geq \rho$} (forage);
+	\draw [arrow] (dance) -- node[anchor=south] {$\varrho < \rho$} (scout)
+
 \begin{description}
 \setlength{\itemsep}{-1mm}
-	\item[\parbox{\namewidth}{$\beta$}] Yet another symbol
-	\item[\parbox{\namewidth}{$\eta(t)$}] And another one\hfill[Eq.~(\ref{eq:eqn}), pg.~\pageref{eq:eqn}]
+	\item[\parbox{\namewidth}{$i$}] The current time step in a swarm robot experiment
+	
+\item[\parbox{\namewidth}{$state$}] The state a particular robot is in.
+
+\item[\parbox{\namewidth}{$role$}] The role of a particular robot in the honey bee algorithm.
+
+	\item[\parbox{\namewidth}{$i_{state}$}] The current time step of being in consecutive state $state$, where $state$ is any valid state for the robot.
+	
+	\item[\parbox{\namewidth}{$t_{wait}$}] The maximum time a robot can spend consecutively in wait state.
+	
+	\item[\parbox{\namewidth}{$t_{ls}$}] The maximum time a robot can spend consecutively in the local search state.
+	
+	\item[\parbox{\namewidth}{$t_{forage}$}] The maximum time a robot can spend consecutively in the forage state.
+
+	\item[\parbox{\namewidth}{$t_{explore}$}] The maximum time a robot can spend consecutively in the explore state
+
+
+	\item[\parbox{\namewidth}{$t_{dance}$}] The maximum time a robot can spend consecutively in the recruitment state.
+	
+	
+	\item[\parbox{\namewidth}{$\varsigma$}] The type of an item which can either be prioritized or non-prioritized.
+
+	\item[\parbox{\namewidth}{$\mu_\varsigma$}] The evaluation of the quality of a site of type $\varsigma$.
+	
+	\item[\parbox{\namewidth}{$\Phi$}] site quality threshold determining whether a the scout robot switches into the dance state. 
+	
+	\item[\parbox{\namewidth}{$v$}] A robot's path integration vector
+
+	\item[\parbox{\namewidth}{$\omega$}] A memorized path integration vector representing the location of a site.
+	
+	\item[\parbox{\namewidth}{$\vartheta$}] An item found by a robot.
+	\item[\parbox{\namewidth}{$\xi$}] The site where an item is found.
+
+	\item[\parbox{\namewidth}{$\varrho$}] A random number selected from a uniform distribution such that $\varrho\in(0,1)$.
+	
+	\item[\parbox{\namewidth}{$\rho$}] The probability that a scout robot becomes a forager robot.
+	
+\item[\parbox{\namewidth}{$\k_j$}] is the value captured on the $j-$th distance sensor of a robot.
+
+\item[\parbox{\namewidth}{$n$}] The number of distance sensors.
+
+\item[\parbox{\namewidth}{$d$}] The direction a robot must take to get to the sink.
+
+\item[\parbox{\namewidth}{$\alpha$}] The probability of listening to the details communicated by the scout robot.		
+
+\item[\parbox{\namewidth}{$f_{max}$}] The maximum time a robot will forage for prioritized items, without finding any before switching to foraging a non-prioritized type.
+
+\item[\parbox{\namewidth}{$X$}] The percentage of robots initialized as scout robots.
 \end{description}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
