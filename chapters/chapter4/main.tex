@@ -7,7 +7,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter describes the experimental setup for the simulations that were performed, for the purpose of this study. Section~\ref{chap:robots} describes the robots used in the study, and the simulation environment is described in Section~\ref{simulator}. The environments used in the experiment are discussed in Section~\ref{experimentenvironments}, while Section~\ref{parameters} defines the parameters for the robot swarm. Section~\ref{thri:third:performancemeasures} defines the performance measures used to evaluate the results of the experiments. The chapter is summarized in Section~\ref{third:summary}.
+This chapter describes the experimental setup for the simulations that were performed, for the purpose of this study. Section~\ref{chap:robots} describes the robots used in the study, while the simulation environment is described in Section~\ref{simulator}. The environments used in the experiment are discussed in Section~\ref{experimentenvironments}, while Section~\ref{parameters} defines the parameters for the robot swarm. Section~\ref{thri:third:performancemeasures} defines the performance measures used to evaluate the results of the experiments. The chapter is summarized in Section~\ref{third:summary}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -52,7 +52,7 @@ The effect of the local attractor is modelled by  evaluating each direction in t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Simulator}
 \label{simulator}
-A spatially discrete 2-dimensional grid world simulator has been developed and used in this thesis in order to accelerate computation \cite{sugawara2002swarming}. In real root experiments, algorithm performance is sensitive to the amount of time taken to load items and manoeuvre the robots \cite{ostergaard2001emergent}. The 2-dimensional grid world simulator allows for movement and loading time to be standardized across all algorithms for effective comparison.
+A spatially discrete 2-dimensional grid world simulator has been developed and used in this thesis in order to accelerate computation; a technique also used in \cite{sugawara2002swarming, hecker2015beyond}. In real root experiments, algorithm performance is sensitive to the amount of time taken to load items and manoeuvre the robots \cite{ostergaard2001emergent}. The 2-dimensional grid world simulator allows for movement and loading time to be standardized across all algorithms for effective comparison.
 
 The simulation robots function as follows:
 \begin{itemize}
@@ -78,7 +78,7 @@ The ratio of prioritized to non-prioritized items $r$, was varied, where $r\in \
 
 In environments with a small $r$ value, the abundance of non-prioritized items increases the likelihood of non-prioritized items blocking the access to prioritized items. 
 
-As $r$ is varied over varied, the swarm specialization ratio, $\tau$, is also varied, in order to determine of there exists a relationship between $r$, $\tau$ and the performance of the algorithms. The parameter $r$ is also used to determine if the algorithms can adapt to the swarm specialization ratio, $\tau$, to optimally forage an environment of a given $r$. 
+As $r$ is varied over varied, the swarm specialization ratio, $\tau$, is also varied, in order to determine of there exists a relationship between $r$, $\tau$ and the efficiency of the algorithms. The parameter $r$ is also used to determine if the algorithms can adapt to the swarm specialization ratio, $\tau$, to optimally forage an environment of a given $r$. 
 
 Different distributions of items over the environment were chosen to examine different characteristics of the algorithms. The item distributions are shown in Figure~\ref{fig:environments}, where each lighter shaded square is a prioritized item and a non-prioritized item is shown by a darker shaded square. Four different classes of environments were generated as follows:
 
@@ -138,8 +138,8 @@ The vein environments aimed to test whether a swarm of robots, of each algorithm
 \label{algorithm:uniform}
 \begin{algorithmic}[1]
 \Function{uniform}{$numberitems, \sigma, environmentsize$}
-	\State \text{nonprioritizeditemsleft = floor((1-$\sigma$)*numberitems)}
-	\State \text{prioritizeditemsleft = floor( $\sigma$*numberitems)}
+	\State \text{nonprioritizeditemsleft = floor((1-$E_p$)*numberitems)}
+	\State \text{prioritizeditemsleft = floor( $E_p$*numberitems)}
 	\While{\text{$prioritizeditemsleft > 0$}}
 		\State \text{x $\gets$ uniform(0, environmentsize)}
 		\State \text{y $\gets$ uniform(0, environmentsize)}
@@ -168,9 +168,9 @@ The vein environments aimed to test whether a swarm of robots, of each algorithm
 \begin{algorithmic}[1]
 \Function{gaussian}{$numberitems, \sigma, environmentsize$}
 	\State \text{Calculate environment centre point $(center_x, center_y)$}
-	\State \text{prioritizeditemsleft = floor($\sigma$*numberitems)}
-	\State \text{nonprioritizeditemsleft = floor((1-$\sigma$)*numberitems)}
-	\State \text{deviation = environmentsize*$\sigma$/2}
+	\State \text{prioritizeditemsleft = floor($E_p$*numberitems)}
+	\State \text{nonprioritizeditemsleft = floor((1-$E_p$)*numberitems)}
+	\State \text{deviation = environmentsize*$E_p$/2}
 	\While{\text{$prioritizeditemsleft > 0$}}
 		\State \text{$x \gets floor(gaussian(center_x, deviation))$}
 		\State \text{$y \gets floor(gaussian(center_y, deviation))$}
@@ -204,8 +204,8 @@ The vein environments aimed to test whether a swarm of robots, of each algorithm
 	\State \text{calculate $c$ of equation for line vein, $c = (y_0 - m*x_0)$
 }
 
-	\State \text{prioritizeditemsleft = floor($\sigma$*numberitems)}
-	\State \text{nonprioritizeditemsleft = floor((1-$\sigma$)*numberitems)}
+	\State \text{prioritizeditemsleft = floor($E_p$*numberitems)}
+	\State \text{nonprioritizeditemsleft = floor((1-$E_p$)*numberitems)}
 
 	\While{\text{$prioritizeditemsleft > 0$}}
 		\State \text{$x \gets uniform(min(x_0,x_1), max(x_0, x_1))$}
@@ -305,14 +305,14 @@ The vein environments aimed to test whether a swarm of robots, of each algorithm
 
 
 \section{Swarm Parameters}
-\label{parameters}
+\label{swarmparameters}
 
 For all algorithms, each robot swarm was initialized with 
 a swarm specialization ratio, $\tau$ where $\tau\in\left\{0, 0.2, 0.25, 0.333, 0.5, 0.667, 0.75, 0.8,1\right\}$. The swarm specialization ratio is ratio of robots foraging prioritized items to non-prioritized items. When no robots are set to initially forage prioritized items then $\tau=0$ and when all robots are set to initially forage prioritized items then $\tau=1$.
 
-As discussed in Section~\ref{experimentenvironments}, $\tau$ is varied, with a specific $r$, to determine if the ratio of $\tau$ to $r$ has an effect on algorithm performance. Also, the ability of an algorithm to adapt the value of $\tau$ appropriately for a given $r$, indicates the flexibility of an algorithm. %Why? How?
+As discussed in Section~\ref{experimentenvironments}, $\tau$ is varied, with a specific $r$, to determine if the ratio of $\tau$ to $r$ has an effect on algorithm efficiency. Also, the ability of an algorithm to adapt the value of $\tau$ appropriately for a given $r$, indicates the flexibility of an algorithm. %Why? How?
 
-The density of robots, $c$, is defined as the density of cells, of the grid size $S$ (the length of the side of an environment) that are occupied by robots, where $c\in\left\{0.1, 0.3, 0.5, 0.7, 1\right\}$. The density of robots is varied in order to test the scalability of the algorithm. The density of robots is also varied to test each algorithms' ability to adjust the amount of actively  foraging robots to the density of the items in the environment.
+The swarm size, $c$, is defined as the density of cells, of the grid size $S$ (the length of the side of an environment) that are occupied by robots, where $c\in\left\{0.1, 0.3, 0.5, 0.7, 1\right\}$. The swarm size is varied in order to test the scalability of the algorithm. The density of robots is also varied to test each algorithms' ability to adjust the amount of actively  foraging robots to the density of the items in the environment.
 
 The honey bee algorithm specific parameters were selected based on \cite{seeley2009wisdom}, where
  $t_{wait}=200$ time steps, $f_{max}=100$ time steps, $\Phi=0.8$ and $\rho=0.1$. Testing the effect of each of the honey bee algorithm specific parameters was not in the scope of this thesis.
@@ -322,14 +322,88 @@ The initial position of each robot was randomly selected, adjacent to the sink. 
 \section{Performance Measures}
 \label{thri:third:performancemeasures}
 
-%What do I need to add to 
-%TODO: The idea is to add more robots foraging the prioritized items.
+The performance of swarm robotics algorithms can be measured by examining the algorithm's ability to perform a task, in terms of scalability, flexibility, and robustness. The experiments directly evaluate the scalability and flexibility of each of the algorithms, as well as provides rational arguments which discuss the robustness of the algorithms, based on the findings of the experiments. 
+
+\subsection{Foraging Efficiency}
+\label{setup:foragingefficiency}
+The foraging efficiency of a particular algorithm is defined as the total number of prioritized items collected by all robots in a fixed time period on a specific environment $E_p$. This foraging efficiency metric is similar to the efficiency metric used by Hecker et al \cite{hecker2015beyond}. The metrics used in experiments performed by Hecker et al. evaluate the performance of foraging algorithms and are thus appropriate for use in the experiments of this study. The metric has been adapted to only look at the prioritized items, for the purpose of examining efficiency in prioritized foraging.
+
+\subsection{Flexibility}
+\label{setup:flexibility}
+As stated in Section~\ref{flexibility}, to measure flexibility is to measure of how  variations in environments and tasks affect the co-ordination mechanisms of swarm robotics algorithms. An algorithm that is highly flexible, is one that has been optimized for a specific distribution, but us equally efficient on a different distribution \cite{hecker2015beyond}.
+
+The flexibility performance measures used in this study are based on the flexibility performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem.
+
+The flexibility study looks at two aspects of flexibility: (i) Flexibility over the prioritized item ratios, $\r_i$  and (ii) flexibility over environment distribution types (EDT).
+
+
+
+\subsubsection{Flexibility over prioritized item ratio}
+\label{setup:flexibility:prioritizeditemratio}
+
+This study evaluates flexibility by looking at how swarm efficiency is effected by different environmental item distributions $r_i$, as described in Section~\ref{experimentenvironments} and swarm specialization ratio, $\tau_i$, as described in Section~\ref{swarmparameters}.
+
+
+\subsubsection{Flexibility over environment distribution types}
+\label{setup:flexibility:environmentdistributions}
+
+This study evaluates flexibility by analysing at how swarm efficiency on various EDTs (described in Section~\ref{experimentenvironments) is affected by swarm specialization ratio, $\tau_i$ (described in Section~\ref{swarmparameters})
+
+\subsection{Scalability}
+\label{setup:scalability}
+
+The study of scalability can be separated into two types, as addressed in Section~\ref{sr:scalability}: (i) Swarm size scalability and (ii) problem size scalability.
+
+\subsubsection{Swarm size Scalability}
+\label{swarmsizescalability}
+Swarm size scalability is that efficiency of a robot swarm should be relatively undisturbed by changes in group sizes. When the efficiency of an algorithm improves linearly (or superlinearly) as swarm size is increased, then an algorithm is considered scalable. However, due to increased inter-robot interference in larger swarm sizes, scalability is often sub-linear \cite{lerman2002mathematical}. Many swarm robotics algorithms focus on the use of division of labour, navigation or communication in order to decrease inter-robot interference \cite{lerman2002mathematical, schneider1998territorial}. The scalability performance measures are based on the scalability performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem.
+
+In order to evaluate the swarm size scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of swarm sizes, $c_i$, as defined in Section~\ref{swarmparameters}. In order to compare scalability of the algorithms, the efficiency $E_p$ at each swarm size $c$ is normalized by the efficiency of each algorithm, at the smallest swarm size ($c_0=0.1$). Swarm size scalability, $SS$, for a specific algorithm is calculated as follows:
+
+\begin{equation}
+	SS(c_i) = \dfrac{E_p(c_i)-E_p(c_0)}{E_p(c_0)}
+\end{equation}
+
+\begin{equation}
+	SS = \sum_{i=1}^{n} SS(c_i)
+\end{equation}
+
+where $E_p(c_i)$ is the average efficiency $E_p$ over all environments with swarm density $c_i$, and $E_p(c_0)$ is the average efficiency $E_p$ over all experiments where swarm density is $c_0$. By plotting $SS(c_i)$ for all values of $i\in(0,N)$, one will be able to determine how linear the scalability of each algorithm is. Normalizing each value for $E_p(c_i)$ by $E_p(c_0)$ for each algorithm, removes the specific overall efficiencies of each algorithm, and allows the algorithms to be compared purely on scalability. The total swarm scalability $SS$, provides a single figure, per algorithm, which one can use to compare overall swarm scalability. The larger $SS$ is, the better the swarm size scalability. 
+
+The swarm size scalability study will specifically look at large environments ($S=500$) to avoid the possibility of an environment running out of items to forage.
+
+
+\subsubsection{Problem Scalability}
+If the efficiency $E_p$ of an algorithm decreases linearly (or super-linearly) as problem complexity increases, then an algorithm can be seen as scalable. Similarly to swarm size scalability, described in Section~\ref{swarmsizescalability}, problem scalability is often sub-linear, due to increased environmental interference.
+
+In order to evaluate the problem scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of environment item densities, $p$, defined in Section~\ref{experimentenvironments}. In order to compare scalability of the algorithms to each other, the efficiency $E_p$ at each item density $p_i$ is normalized by the efficiency of each algorithm, at the smallest item density ($p_0=0.1$). 
+
+Problem scalability (PS) for an algorithm, for at an item density $p_i$ is defined as follows:
+
+\begin{equation}
+	PS(p_i) = \dfrac{E_p(p_i)-E_p(p_0)}{E_p(p_0)}
+\end{equation}
+
+\begin{equation}
+	PS = \sum_{i=1}^{n} PS(c_i)
+\end{equation}
+
+, where $E_p(p_i)$ is the average efficiency $E_p$ over all environments with environment density $p_i$, and $E_p(p_0)$ is the average efficiency $E_p$ over all experiments where environment density is $p_0$. By plotting $PS(c_i)$ for all values of $i\in(0,N)$, one will be able to determine how linear the problem scalability of each algorithm is. Normalizing each value for $E_p(p_i)$ by $E_p(p_0)$, for each algorithm, removes the specific overall efficiencies of each algorithm, and allows the algorithms to be compared purely on scalability.
+
+Similarly to total swarm scalability $SS$, defined in Section~\ref{swarmsizescalability}, the total problem scalability, $PS$, provides a single figure, per algorithm, which one can use to compare overall problem scalability. The larger $PS$ is, the better the problem scalability.
+
+The problem scalability study will specifically look at large environments ($S=500$) to avoid the possibility of an environment running out of items to forage.
+
+\subsection{Behavioural Performance Measures}
+\label{behaviouralperformancemeasures}
+
 The following performance measures were used: 
 
 	\begin{itemize}
-		\item	The percentage of prioritized items foraged over time,  $\sigma$ 
-		\item	The percentage of non-prioritized items foraged over time, $\mu$
+		\item	The total percentage of prioritized items foraged over time,  $E_p$ 
+		\item	The total percentage of non-prioritized items foraged over time, $\mu$
 		\item   The average time spent by agents waiting at the sink, $\epsilon$
+		\item The average time spent
 	\end{itemize}
 	
 Future studies could include the average time taken by a robot to forage an item, the average distance moved by a robot and a measure to explain the randomness of a robots movement, but are not addressed in this thesis. 

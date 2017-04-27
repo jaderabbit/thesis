@@ -10,7 +10,7 @@ In order to evaluate the the algorithms, the analysis of the performance measure
 
 \begin{table}
 \centering
-    \caption{Pairwise one-tailed Mann Whitney U wins and losses, averages and standard deviations for the percentage of prioritized items foraged over time, $\sigma$, for each algorithm, over all environments, parameter value choices }
+    \caption{Pairwise one-tailed Mann Whitney U wins and losses, averages and standard deviations for the percentage of prioritized items foraged over time, $E_p$, for each algorithm, over all environments, parameter value choices }
         \label{summarytable}
     \begin{tabular}{l|llll}
     \hline \hline
@@ -88,14 +88,14 @@ Two hypotheses were formulated and tested. The hypotheses are related to the dep
 
 \begin{enumerate}
 \item An algorithm that forages a portion of non-prioritized items will have better performance than an algorithm that does not forage any non-prioritized items.
-\item Algorithm performance depends on the environment ratio $r$ and the specialization ratio $\tau$. As $r$ increases, the value of $\tau$ that yields the greatest value of $\sigma$, $\tau_{best}$, will increase approximately linearly for the na\"ive and desert ant algorithms, while the performance of the honey bee algorithm will be independent of $r$ due to division of labour.
+\item Algorithm performance depends on the environment ratio $r$ and the specialization ratio $\tau$. As $r$ increases, the value of $\tau$ that yields the greatest value of $E_p$, $\tau_{best}$, will increase approximately linearly for the na\"ive and desert ant algorithms, while the performance of the honey bee algorithm will be independent of $r$ due to division of labour.
 \end{enumerate}
 
 An algorithm configured with $\tau=1$ indicates that only prioritized items are foraged. By analysing Table \ref{ratio}, for the na\"ive and desert ant algorithms, for all values of $r$ where $r \neq 1$, $\tau_{best}$ is never equal to $1$, thus the hypothesis that the algorithms achieved the best performance when some robots are configured to forage non-prioritized items is true. The result is likely because non-prioritized items are moved out of the way to allow for easier, faster access to prioritized items or allow access to inaccessible prioritized items.
 
 
 \begin{table} [h]
-     \caption{The performance, $\sigma$, for each foraging algorithm, for each combinations of $r$ and $\tau$. If $\tau_{best}$ exists, $\tau_{best}$ is provided. The best value of $\sigma$ is shown in bold.}
+     \caption{The performance, $E_p$, for each foraging algorithm, for each combinations of $r$ and $\tau$. If $\tau_{best}$ exists, $\tau_{best}$ is provided. The best value of $E_p$ is shown in bold.}
      \label{ratio}
 	\centering
 	\footnotesize
@@ -142,14 +142,14 @@ Fig \ref{desertantplot} shows the region in parameter space where the desert ant
 \begin{figure}[!htb]
 \centering
 \resizebox{0.8\textwidth}{!}{\input{chapters/chapter6/desertantplot.tex}}
-\caption{Contour plot of values for $\sigma$ over values for $r$ and $\tau$ for desert ant foraging}
+\caption{Contour plot of values for $E_p$ over values for $r$ and $\tau$ for desert ant foraging}
 \label{desertantplot}
 \end{figure}
 
 
 %\begin{figure}
 %\input{naiveplot.tex}
-%\caption{Contour plot of values for $\sigma$ over values for $r$ and $\tau$ for nai%\"ve foraging}
+%\caption{Contour plot of values for $E_p$ over values for $r$ and $\tau$ for nai%\"ve foraging}
 %\end{figure}
 
  %But why? Give reason 
@@ -167,7 +167,7 @@ The desert ant algorithm performed better than the honey bee algorithm, for all 
 \label{results:environmentaltypes}
 
 \begin{table} [h]
-     \caption{Average $\sigma $, the percentage prioritized items over time, for different environment types for each algorithm}
+     \caption{Average $E_p $, the percentage prioritized items over time, for different environment types for each algorithm}
      \label{environmenttypeprioritized}
 	\centering
 	\footnotesize
@@ -185,7 +185,7 @@ The desert ant algorithm performed better than the honey bee algorithm, for all 
 \begin{figure}[!htb]
 \centering
 \resizebox{0.8\textwidth}{!}{\input{chapters/chapter6/graphs/environment_types.tex}}
-\caption{Average and standard deviation of $\sigma $, the percentage prioritized items over time, for different environment types for each algorithm}
+\caption{Average and standard deviation of $E_p $, the percentage prioritized items over time, for different environment types for each algorithm}
 \label{fig:environmenttypes}
 \end{figure}
 
@@ -212,7 +212,7 @@ The following hypotheses have been formulated based on those descriptions:
 \end{enumerate}
 
 %TODO: Insert graph and table from new results.
-Table~\ref{environmenttypeprioritized} and Figure~\ref{fig:environmenttypes} show the performance of the each algorithm on each type of item distribution, with respect to $\sigma$ and $\mu$. 
+Table~\ref{environmenttypeprioritized} and Figure~\ref{fig:environmenttypes} show the performance of the each algorithm on each type of item distribution, with respect to $E_p$ and $\mu$. 
 
 % Are these valid?
 The performance  of each algorithm over the environment item distributions vary within a small range. 
@@ -319,7 +319,7 @@ Some possible reasons why the desert ant algorithm may outperform the honey bee 
 \begin{enumerate}
 	\item The honey bee division of labour does not perfectly divide labour between the item types.
 	\item Honey bee algorithm has a limiting factor such as one of the unoptimized parameters $f_{max}$ and $t_{max}$. 
-	\item The process of the division of labour is slowing down the algorithm to some degree.
+	\item The process of the division of labour is slowing down the algorithm to some degree. A Honey Bee robots spends 0.280115462929251 of its time in recruitment behaviour in uniform environments which shows that the robots in the honey bee algorithm are spending 28 percent of their time engaged in 
 \end{enumerate}
 
 In terms of robustness, despite the desert ant outperforming the honey bee algorithm on certain configurations, the fact that performance of the desert ant algorithm is dependant on the initial specialization ratio of the swarm indicates that the desert ant algorithm is less robust since if large portion of robots are damaged, and the specialization ratio is thus changed, the algorithms performance may decrease significantly. The honey bee algorithm can adjust the specialization ratio of the swarm to a near optimal configuration and thus if damange to the robots causes a change in specialization ratio, the algorithm should have the ability to adapt the specialization ratio in order to maintain a gracefully degraded performance. The performance of na\"ive algorithm, similarly to the performance of desert ant algorithm is also dependant on the initial specializtion ratio as can be seen in Figure~\ref{divisiongoldplot} and Figure~\ref{divisionwasteplot}. 
@@ -376,7 +376,7 @@ The na\"ive foraging algorithm improves very slowly as swarm density is increase
 
 The desert ant algorithm is not as badly affected as the na\"ive algorithm by the increase in swarm density and is most likely a result of more optimal navigation allowing robots to stick to the paths they found instead of randomly navigating into one another. 
 
-Examination of Table~\ref{specializationnonprioritized} and Figure~\ref{robotswasteplot} which show the effect of swarm density $c$ on $\mu$ are similar to those indicating the effect of swarm density $c$ on $\sigma$.
+Examination of Table~\ref{specializationnonprioritized} and Figure~\ref{robotswasteplot} which show the effect of swarm density $c$ on $\mu$ are similar to those indicating the effect of swarm density $c$ on $E_p$.
 
 One can conclude that at least two factors effect the scalability of the swarm: the ability for the swarm to react to increased interference (like the honey bee algorithm) as well as the ability to avoid interference in the first place by having a more advanced navigation mechanism (like the desert ant algorithm).
 

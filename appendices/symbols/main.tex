@@ -16,7 +16,7 @@ The following appendix defines the symbols used in each chapter.
 
 \begin{description}
 	\item[\parbox{\namewidth}{$p1$}] The probability that a robot will changed from rest to searching is adapted upon return to the sink and from deposit to rest.
-
+\end{description}
 
 \section{Chapter~\ref{chap:divisionoflabour}: Division Of Labour}
 \label{sec:symbols:divisionoflabour}
@@ -26,7 +26,7 @@ The following appendix defines the symbols used in each chapter.
 	\item[\parbox{\namewidth}{$R$}] The set of tasks that can be performed by individuals of the swarm.
 	\item[\parbox{\namewidth}{$\gamma$}] An individual robot in a swarm.
 	\item[\parbox{\namewidth}{$\nu$}] A task such that $\nu \in R$
-	\item[\parbox{\namewidth}{$r_{\gamma,\nu}$}] A response threshold for of robot $\gamma$ for task $\u$
+	\item[\parbox{\namewidth}{$r_{\gamma,\nu}$}] A response threshold for of robot $\gamma$ for task $\nu$.
 	\item[\parbox{\namewidth}{$z$}] The probability of a robot to switch from search behaviour to rest behaviour.
 \end{description}
 
@@ -36,9 +36,6 @@ The following appendix defines the symbols used in each chapter.
 
 \section{Chapter~\ref{chap:third}: Nature Inspired Algorithms for Prioritized Foraging}
 \label{sec:symbols:foraging}
-node[anchor=west] {$_ \geq $} (dance);
-	\draw[arrow] (dance) to[bend left=20] node[anchor=east] {$\varrho \geq \rho$} (forage);
-	\draw [arrow] (dance) -- node[anchor=south] {$\varrho < \rho$} (scout)
 
 \begin{description}
 \setlength{\itemsep}{-1mm}
@@ -79,7 +76,7 @@ node[anchor=west] {$_ \geq $} (dance);
 	
 	\item[\parbox{\namewidth}{$\rho$}] The probability that a scout robot becomes a forager robot.
 	
-\item[\parbox{\namewidth}{$\k_j$}] is the value captured on the $j-$th distance sensor of a robot.
+\item[\parbox{\namewidth}{$k_j$}] is the value captured on the $j-$th distance sensor of a robot.
 
 \item[\parbox{\namewidth}{$n$}] The number of distance sensors.
 
@@ -130,5 +127,3 @@ node[anchor=west] {$_ \geq $} (dance);
 	\item[\parbox{\namewidth}{$\epsilon$}] The average time spent by agents waiting at the sink.
 	
 \end{description}
-
-The effect of the local attractor is modelled by  evaluating each direction in the field of view, to select the most desirable direction. Desirability, $d$, of a direction, $i$,
