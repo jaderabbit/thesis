@@ -330,29 +330,50 @@ The foraging efficiency of a particular algorithm is defined as the total number
 
 \subsection{Flexibility}
 \label{setup:flexibility}
-As stated in Section~\ref{flexibility}, to measure flexibility is to measure of how  variations in environments and tasks affect the co-ordination mechanisms of swarm robotics algorithms. An algorithm that is highly flexible, is one that has been optimized for a specific distribution, but us equally efficient on a different distribution \cite{hecker2015beyond}.
+As stated in Section~\ref{flexibility}, to measure flexibility is to measure of how variations in environments and tasks affect the co-ordination mechanisms of swarm robotics algorithms. An algorithm that is highly flexible, is one that has been optimized for a specific distribution, but us equally efficient on a different distribution \cite{hecker2015beyond}.
 
-The flexibility performance measures used in this study are based on the flexibility performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem.
-
-The flexibility study looks at two aspects of flexibility: (i) Flexibility over the prioritized item ratios, $\r_i$  and (ii) flexibility over environment distribution types (EDT).
-
-
+The flexibility performance measures used in this study are based on the flexibility performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem. The flexibility study addresses at two aspects: (i) Flexibility over the prioritized item ratios, $r_i$, and (ii) flexibility over environment distributions (ED).
 
 \subsubsection{Flexibility over prioritized item ratio}
 \label{setup:flexibility:prioritizeditemratio}
 
-This study evaluates flexibility by looking at how swarm efficiency is effected by different environmental item distributions $r_i$, as described in Section~\ref{experimentenvironments} and swarm specialization ratio, $\tau_i$, as described in Section~\ref{swarmparameters}.
+This study evaluates flexibility by looking at how swarm efficiency is effected by different environment item ratio $r_i$, as described in Section~\ref{experimentenvironments} and swarm specialization ratio, $\tau_i$, as described in Section~\ref{swarmparameters}. The value for $\tau$, which results in the best average efficiency, $E_p$, for a specific $r_i$ is denoted as $\hat{\tau}_{r_i}$ and the average efficiency for a specific swarm specialization ratio, $\tau$ over specific environment item ratio, $r$ is denoted $E_p(\tau, r)$.
+
+Flexibility over prioritized item ratio, $F_r$ is defined as:
+
+\begin{equation}
+	F_r = \sum_{i=1}^{n} \sum_{j=1}^{n} \dfrac{|E_p(\hat{\tau}_{r_i}, {r_i})-E_p(\hat{\tau}_{r_i}, {r_j})|}{E_p(\hat{\tau}_{r_i}, {r_i})}
+\end{equation}
+
+A larger $F_r$ is for an algorithm compared to another, the means the algorithm cannot generalize well over other  environment item ratios, and is thus less flexible.
+
+The differences are normalized by $E_p(\hat{\tau}_{r_i}, {r_i})$ in order to remove the differences in average efficiencies for each algorithm, so that the algorithms can be compared, purely on flexibility.
 
 
 \subsubsection{Flexibility over environment distribution types}
 \label{setup:flexibility:environmentdistributions}
 
-This study evaluates flexibility by analysing at how swarm efficiency on various EDTs (described in Section~\ref{experimentenvironments) is affected by swarm specialization ratio, $\tau_i$ (described in Section~\ref{swarmparameters})
+This study evaluates flexibility by analysing at how swarm efficiency on various EDs (described in Section~\ref{experimentenvironments}) is affected by swarm specialization ratio, $\tau_i$ (described in Section~\ref{swarmparameters})
+
+The value for $\tau$, which results in the best average efficiency, $E_p$, for a specific $ED$ is denoted as $\hat{\tau}_{ED}$ and the average efficiency for a specific swarm specialization ratio, $\tau$ with specific ED is denoted $E_p(\tau, ED)$.
+
+Flexibility over a specific environment distribution $ED_i$ is defined as:
+
+\begin{equation}
+F_{ED_i} = \sum_{j=1}^{n} \dfrac{|E_p(\hat{\tau}_{ED_i}, ED_i)-E_p(\hat{\tau}_{ED_i}, ED_j)|}{E_p(\hat{\tau}_{ED_i}, ED_i)}
+\end{equation}
+
+Flexibility over all environment distributions $ED$ is defined as:
+\begin{equation}
+	F_{ED} = \sum_{i=1}^{n} F_{ED_i}
+\end{equation}
+
+A larger $F_{ED}$ is for an algorithm compared to another, the means the algorithm cannot generalize well over other  environment item distributions, and is less flexible.
 
 \subsection{Scalability}
 \label{setup:scalability}
 
-The study of scalability can be separated into two types, as addressed in Section~\ref{sr:scalability}: (i) Swarm size scalability and (ii) problem size scalability.
+Scalability is described in Section~\ref{scalability}. The study of scalability can be separated into two types, as addressed in Section~\ref{sr:scalability}: (i) Swarm size scalability and (ii) problem size scalability.
 
 \subsubsection{Swarm size Scalability}
 \label{swarmsizescalability}
@@ -385,7 +406,7 @@ Problem scalability (PS) for an algorithm, for at an item density $p_i$ is defin
 \end{equation}
 
 \begin{equation}
-	PS = \sum_{i=1}^{n} PS(c_i)
+	PS = \sum_{i=1}^{n} PS(p_i)
 \end{equation}
 
 , where $E_p(p_i)$ is the average efficiency $E_p$ over all environments with environment density $p_i$, and $E_p(p_0)$ is the average efficiency $E_p$ over all experiments where environment density is $p_0$. By plotting $PS(c_i)$ for all values of $i\in(0,N)$, one will be able to determine how linear the problem scalability of each algorithm is. Normalizing each value for $E_p(p_i)$ by $E_p(p_0)$, for each algorithm, removes the specific overall efficiencies of each algorithm, and allows the algorithms to be compared purely on scalability.
