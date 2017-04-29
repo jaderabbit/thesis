@@ -418,17 +418,26 @@ The problem scalability study will specifically look at large environments ($S=5
 \subsection{Behavioural Performance Measures}
 \label{behaviouralperformancemeasures}
 
-The following performance measures were used: 
+Despite not being one of the more typical performance measures for swarm robotics, a number of measures are included to enable further understanding of why the scalability, flexibility and efficiency metrics were observed.
 
-	\begin{itemize}
-		\item	The total percentage of prioritized items foraged over time,  $E_p$ 
-		\item	The total percentage of non-prioritized items foraged over time, $\mu$
-		\item   The average time spent by agents waiting at the sink, $\epsilon$
-		\item The average time spent
-	\end{itemize}
-	
-Future studies could include the average time taken by a robot to forage an item, the average distance moved by a robot and a measure to explain the randomness of a robots movement, but are not addressed in this thesis. 
+\subsubsection{Items foraged over time}
+To give incite into the effect of environmental and swarm parameters of overall performance, and characterise the effects of certain behaviours, the following metrics have been recorded:
 
+\begin{itemize}
+\item The total prioritized items foraged over time, $E_pt$. The total prioritized items foraged are recorded every 200 time steps and are normalized with the total prioritized items that exist in the specific environment.
+\item The total non-prioritized items foraged over time, $E_npt$. The total non-prioritized items foraged are recorded every 200 time steps and are normalized with the total non-prioritized items that exist in the specific environment.
+\end{itemize}
+
+\subsubsection{Swarm Specialization Ratio over time}
+Swarm specialization ratio stays constant for DAA and NA, but the swarm specialization ratio changes for HBA, due to the division of labour mechanisms. In order to gain more understanding of how the division of labour mechanism is performing, the swarm specialization ratio over time, $\tau_t$ is a useful measure to track. The swarm specialization ratio is recorded every 200 time steps.
+
+\subsubsection{Time Spent Performing Recruitment}
+Unlike DAA and NA, HBA robots perform behaviours that are not directly involved in retrieving items - in particular, the recruitment activities form part of the division of labout mechanism. In order to better understand the influence of the division of labour mechanisms, the average percentage of each robot in a swarm spent on each division of labour activity is recorded as follows:
+
+\begin{itemize}
+\item $t_{wait}$ - the average percentage of total time steps spent by each robot in the waiting state.
+\item $t_{recruitment}$ - the average percentage of total time steps spent by each robot in the waiting state.
+\end{itemize}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -439,9 +448,11 @@ Future studies could include the average time taken by a robot to forage an item
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
 \label{third:summary}
-The robots used in this study are based on the e-puck robots, but with gripper capabilities. The robots used a navigation and obstacle avoidance technique based on the flocking behaviour of birds where a global attractor force attracts the robot in a specific direction, while the local attractor force guide the robot around localized obstacles. A simple 2-dimensional grid-based simulator is used. Only a single robot or item could occupy a single grid cell at once.
+The robots used in this study are based on the e-puck robots, but with gripper capabilities. The robots used a navigation and obstacle avoidance technique based on the flocking behaviour of birds where a global attractor force attracts the robot in a specific direction, while the local attractor force guides a robot around localized obstacles. A simple 2-dimensional grid-based simulator is used. Only a single robot or item occupy a single grid cell at any time point.
 
-The environment types, that were generated for experimentation in order to test different properties of the algorithms were discussed. The environment types defined have the four following distributions: uniform distribution, Gaussian distribution, clustered distribution and vein distribution. The following environmental parameters were varied: item density, environment size and item type ratio. The following swarm parameters chosen for each of the algorithms were presented: initial swarm configuration, swarm density, and honey bee specific parameters. Performance measures were selected to compare different aspects of the algorithms: the different percentages of each type of item foraged as well as the time spent waiting by the sink. 
+Different types of environment distributions were generated for experimentation. The environment types defined have the four following distributions: uniform distribution, Gaussian distribution, clustered distribution and vein distribution. The following environmental parameters were varied: item density, environment size and item type ratio. The following swarm parameters chosen for each of the algorithms were presented: initial swarm specialization ratio, swarm density, and honey bee specific parameters.
+
+Performance measures were selected to evaluate the efficiency of the algorithms, as well as the scalability and flexibility of the algorithms. Lastly, a set of behavioural performance measures are presented in order to gain insight into individual behaviours of the algorithms, namely (i) Items foraged over time (ii) Swarm specialization ratio over time and (iii) the time spent performing recruitment activities.
 
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
