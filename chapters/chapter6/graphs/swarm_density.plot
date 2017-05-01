@@ -1,6 +1,6 @@
-set title "Prioritized items over time for each algorithm over swarm density ($c$)"
-set xlabel "Swarm Density ($c$)"
-set ylabel "Prioritized items over time ($\\sigma$)"
+set title "Problem Scalability, $PS$, for each environment density $p$, for each algorithm"
+set xlabel "Environment Density ($p$)"
+set ylabel "Problem Scalability ($PS$)"
 set autoscale
 set xtic auto
 set ytic auto

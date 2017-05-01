@@ -21,16 +21,76 @@ In order to evaluate the the algorithms, the analysis of the performance measure
 \section{Flexibility}
 \label{results:flexibility}
 
+%TODO: Write flexibility intro
+
+
 \subsection{Flexibility in terms of prioritized item ratio}
 \label{results:prioritizeditemratio}
 
-\subsection{Flexibility in terms of environment distributions}
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+\centering
+\caption{Flexibility in terms of prioritized item ratio, $F_r$, and flexibility in terms of environment distribution, $F_{ED}$, for each algorithm}
+\label{table:flexibility}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{}         & Naive         & Desert Ant        & Honey Bee         \\ \midrule
+\textbf{$F_r$}    & 1.18580054603 & 3.12400224646     & 0.827991739287    \\ \midrule
+\textbf{$F_{ED}$} & 1.11160672365 & 0.507371308759 & 0.458295680454 
+\end{tabular}
+\end{table}
 
 \section{Scalability}
 \label{results:scalability}
 
 \subsection{Swarm scalability}
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+\centering
+\caption{Swarm scalability, $SS$, for each swarm density, $c$, for each algorithm}
+\label{table:swarmscalability}
+\begin{tabular}{@{}lllllll@{}}
+\toprule
+\textbf{$c$}            & \textbf{0.1} & \textbf{0.3}         & \textbf{0.5}         & \textbf{0.7}         & \textbf{1}           \\ \midrule
+\textbf{Na\"ive}    & 1   & 2.148309055 & 2.95067493  & 3.567754813 & 4.25529855  \\
+\textbf{Desert Ant} & 1   & 1.972768821 & 2.604500744 & 3.05833543  & 3.555516648 \\
+\textbf{Honey Bee}  & 1   & 2.067364168 & 2.706034502 & 3.119174449 & 3.532352867 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[!htb]
+\centering
+\resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/scalability/swarmscalability.tex}}
+\caption{swarmscalability}
+\label{fig:swarmscalability}
+\end{figure}
+
+
 \subsection{Problem scalability}
+
+
+\begin{table}[]
+\centering
+\caption{Problem Scalability, $PS$, for each environment density $p$, for each algorithm}
+\label{table:problemscalability}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+\textbf{$p$}                  & \textbf{0.05} & \textbf{0.2        } & \textbf{0.5}         & \textbf{0.7}         & \textbf{0.9}         \\ \midrule
+\textbf{Desert Ant}           & 1    & 0.487816741 & 0.231581619 & 0.181686679 & 0.167953071 \\
+\textbf{Honey Bee}            & 1    & 0.602283728 & 0.283264856 & 0.216749784 & 0.195686487 \\
+\textbf{Na\"ive}              & 1    & 0.501722909 & 0.256758663 & 0.195206738 & 0.174522486 \\
+\textbf{Expected Performance} & 1    & 0.25        & 0.1         & 0.071428571 & 0.055555556 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[!htb]
+\centering
+\resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/scalability/problemscalability.tex}}
+\caption{Captions}
+\label{fig:problemscalability}
+\end{figure}
 
 \section{Robustness}
 \label{results:robustness}
