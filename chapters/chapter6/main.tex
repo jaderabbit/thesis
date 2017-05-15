@@ -35,7 +35,7 @@ In order to evaluate the the algorithms, the analysis of the performance measure
 \label{table:flexibility}
 \begin{tabular}{@{}llll@{}}
 \toprule
-\textbf{}         & Naive         & Desert Ant        & Honey Bee         \\ \midrule
+\textbf{}         & Na\"ive         & Desert Ant        & Honey Bee         \\ \midrule
 \textbf{$F_r$}    & 1.18580054603 & 3.12400224646     & 0.827991739287    \\ \midrule
 \textbf{$F_{ED}$} & 1.11160672365 & 0.507371308759 & 0.458295680454 
 \end{tabular}
@@ -62,8 +62,9 @@ In order to evaluate the the algorithms, the analysis of the performance measure
 
 \begin{figure}[!htb]
 \centering
+\small
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/scalability/swarmscalability.tex}}
-\caption{swarmscalability}
+\caption{Swarm Scalability, $SS$, for each swarm density $c$, for each algorithm}
 \label{fig:swarmscalability}
 \end{figure}
 
@@ -81,14 +82,14 @@ In order to evaluate the the algorithms, the analysis of the performance measure
 \textbf{Desert Ant}           & 1    & 0.487816741 & 0.231581619 & 0.181686679 & 0.167953071 \\
 \textbf{Honey Bee}            & 1    & 0.602283728 & 0.283264856 & 0.216749784 & 0.195686487 \\
 \textbf{Na\"ive}              & 1    & 0.501722909 & 0.256758663 & 0.195206738 & 0.174522486 \\
-\textbf{Expected Performance} & 1    & 0.25        & 0.1         & 0.071428571 & 0.055555556 \\ \bottomrule
+\textbf{Expected} & 1    & 0.25        & 0.1         & 0.071428571 & 0.055555556 \\ \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{figure}[!htb]
 \centering
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/scalability/problemscalability.tex}}
-\caption{Captions}
+\caption{Problem Scalability, $PS$, for each environment density $p$, for each algorithm}
 \label{fig:problemscalability}
 \end{figure}
 
@@ -107,7 +108,14 @@ Suppose all the robots which were foraging for prioritized items (for some $\tau
 
 Because the the robots running the na\"ive algorithm and desert ant algorithms are heterogenous, because they each forage a specified item type, there is less redundancy than an algorithm where robots can forage both types of items or switch to foraging different types of items.
 
-As shown in Section~\ref{results:flexibility}, the Honey-bee algorithm does not experience large changes to efficiency, when $\tau$ is varied. The Honey-bee algorithm would not suffer the same problem, due to the division of labour mechanism, described in Section~\ref{honeybeeforaging}, which allows each robot to switch which type of item that robot will forage. The honey-bee algorithm adapts the swarm specialization ratio, $\tau$, over time and would, as a result, re-adapt the swarm specialization ratio, in order to recover from the destruction of individuals foraging specific item types. Figure~\ref{TOBEADDED} provides evidence that the honey bee algorithm allows the swarm to adapt the swarm specialization ratio. The initial swarm specialization ratio, $\tau$, is configured to $\tau=0$, on an environment which only has prioritized items ($r=1$). 
+As shown in Section~\ref{results:flexibility}, the Honey-bee algorithm does not experience large changes to efficiency, when $\tau$ is varied. The Honey-bee algorithm would not suffer the same problem, due to the division of labour mechanism, described in Section~\ref{honeybeeforaging}, which allows each robot to switch which type of item that robot will forage. The honey-bee algorithm adapts the swarm specialization ratio, $\tau$, over time and would, as a result, re-adapt the swarm specialization ratio, in order to recover from the destruction of individuals foraging specific item types. Figure~\ref{fig:specializationratioovertime} provides evidence that the honey bee algorithm allows the swarm to adapt the swarm specialization ratio. In Figure~\ref{fig:specializationratioovertime}, the initial swarm specialization ratio, $\tau$, is configured set t 0, in an environment which only mostly prioritized items ($r=0.75$). After no honey bee scouts can find any non-prioritized items, the scouts all switch to foraging prioritized items, such that $\tau$ goes from 0 to 1 in 200 iterations. Specialization ratio, $\tau$, steadily declines throughout the experiment from 1 till 0.73.
+
+\begin{figure}[!htb]
+\centering
+\resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/robustness/specializationratioovertime.tex}}
+\caption{Specialization Ratio, $\tau$, of the honey bee algorithm, over time}
+\label{fig:specializationratioovertime}
+\end{figure}
 
 % insert analysis
 
@@ -122,10 +130,30 @@ The desert ant and na\"ive algorithm do not have coordination between any indivi
 
 The Honey-bee algorithm uses communication as a coordination mechanism, in order to recruit foragers to areas with a high density of prioritized items, as described in Section~\ref{honeybeeforaging}. If the scout robots experiences a fault in evaluating the quality of a site (for instance, detecting whether a site is of high quality, when it is actually a poor quality site), then foragers will be recruited to forage sites of low quality, incorrectly. Only a few individuals (the scouts), can coordinate the swarm and therefore any faults in the scout robots, can negatively influence effect the efficiency of the entire swarm. Co-ordination mechanisms are therefore, not entirely decentralized.
 
-Table~\ref{stilltodo} shows the average time steps, per robot, that were spent performing recruitment, for the honey bee algorithm, in each environment distribution, for each environment item type ratio. 
+Table~\ref{averagetimerecruitment} shows the average time steps, per robot, that were spent performing recruitment, for the honey bee algorithm, in each environment distribution, for each environment item type ratio. 
 
-In a uniformly distributed environment, with a low ratio of prioritized items, sites with a high quality do not exist. However, Table~\ref{stilltodo} shows that each robot spent on average <insertstathere> broadcasting site quality to other robots. This result supports the fact that faults in the scouts can mislead the swarm to foraging sites with low quality.
+In a uniformly distributed environment, with a low ratio of prioritized items, sites with a high quality do not exist. However, Table~\ref{averagetimerecruitment} shows that each robot spent on average more than a 10th of the total duration of the experiment broadcasting site quality to other robots, where $r$ is between 0 and 0.25. This means that the scouts were recruiting other robots to forage areas that were not of a high quality. The fact that scouts can mislead the swarm to foraging sites with low quality, shows that the honey bee algorithm is less robust.
 
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+\centering
+\caption{Average time steps, per robot, that were spent performing recruitment, for the honey bee algorithm, in each environment distribution, for each environment item type ratio}
+\label{averagetimerecruitment}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+$r$            & \textbf{clustered} & \textbf{gaussian} & \textbf{uniform} & \textbf{vein} \\ \midrule
+\textbf{0}        & 0.163853094        & 0.162636914       & 0.159305395      & 0.163353443   \\
+\textbf{0.2}      & 0.119486333        & 0.152139262       & 0.11962912       & 0.160737113   \\
+\textbf{0.25}     & 0.126752914        & 0.144484389       & 0.127568794      & 0.158813789   \\
+\textbf{0.333333} & 0.140492087        & 0.135243974       & 0.139460537      & 0.151803907   \\
+\textbf{0.5}      & 0.161644793        & 0.15738657        & 0.16335568       & 0.168543223   \\
+\textbf{0.666667} & 0.181659692        & 0.174940591       & 0.183477822      & 0.151701447   \\
+\textbf{0.75}     & 0.179285021        & 0.177420259       & 0.183721153      & 0.171862739   \\
+\textbf{0.8}      & 0.182807781        & 0.182650316       & 0.186144899      & 0.190969001   \\
+\textbf{1}        & 0.167397088        & 0.172990294       & 0.163048904      & 0.219223401   \\ \bottomrule
+\end{tabular}
+\end{table}
 \section{Behavioural Analysis}
 \label{results:behaviouralanalysis}
 
