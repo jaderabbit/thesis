@@ -106,6 +106,13 @@ The vein environments aimed to test whether a swarm of robots, of each algorithm
 
 \end{enumerate} 
 
+To generalize, the challenges introduced by the more complex distributions (the Gaussian, clustered and vein environment) aim to test a swarm's ability to:
+
+\begin{itemize}
+\item Navigate past obstacles efficiently or alternatively, forage obstacles efficiently.
+\item Return to high quality areas to forage them.
+\end{itemize}
+
 \begin{figure} [h]
         \centering
         \begin{subfigure}[b]{0.21\textwidth}
@@ -308,7 +315,8 @@ The vein environments aimed to test whether a swarm of robots, of each algorithm
 \label{swarmparameters}
 
 For all algorithms, each robot swarm was initialized with 
-a swarm specialization ratio, $\tau$ where $\tau\in\left\{0, 0.2, 0.25, 0.333, 0.5, 0.667, 0.75, 0.8,1\right\}$. The swarm specialization ratio is ratio of robots foraging prioritized items to non-prioritized items. When no robots are set to initially forage prioritized items then $\tau=0$ and when all robots are set to initially forage prioritized items then $\tau=1$.
+a swarm specialization ratio, $
+$ where $\tau\in\left\{0, 0.2, 0.25, 0.333, 0.5, 0.667, 0.75, 0.8,1\right\}$. The swarm specialization ratio is ratio of robots foraging prioritized items to non-prioritized items. When no robots are set to initially forage prioritized items then $\tau=0$ and when all robots are set to initially forage prioritized items then $\tau=1$.
 
 As discussed in Section~\ref{experimentenvironments}, $\tau$ is varied, with a specific $r$, to determine if the ratio of $\tau$ to $r$ has an effect on algorithm efficiency. Also, the ability of an algorithm to adapt the value of $\tau$ appropriately for a given $r$, indicates the flexibility of an algorithm. %Why? How?
 
@@ -395,6 +403,7 @@ The swarm size scalability study will specifically look at large environments ($
 
 
 \subsubsection{Problem Scalability}
+\label{setup:problemscalability}
 If the efficiency $E_p$ of an algorithm decreases linearly (or super-linearly) as problem complexity increases, then an algorithm can be seen as scalable. Similarly to swarm size scalability, described in Section~\ref{swarmsizescalability}, problem scalability is often sub-linear, due to increased environmental interference.
 
 In order to evaluate the problem scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of environment item densities, $p$, defined in Section~\ref{experimentenvironments}. In order to compare scalability of the algorithms to each other, the efficiency $E_p$ at each item density $p_i$ is normalized by the efficiency of each algorithm, at the smallest item density ($p_0=0.1$). 
