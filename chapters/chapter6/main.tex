@@ -91,7 +91,7 @@ The Honeybee algorithm allows robots to switch specialization (described in Sect
 \small
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/flexibility/flexibility-ED-gaussian-honeybee.tex}}
 \caption{Efficiency of prioritized item foraging $E_P$, Efficiency of non-prioritized item foraging $E_{NP}$, Specialization ratio $\tau$ over time, for Honeybee Algorithm on a Gaussian Environment}
-\label{fig:gaussianhighdensityperformance}
+\label{fig:gaussianhighdensityperformancehoneybee}
 \end{figure}
 
 \begin{figure}[!htb]
@@ -99,15 +99,26 @@ The Honeybee algorithm allows robots to switch specialization (described in Sect
 \small
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/flexibility/flexibility-ED-gaussian-naive.tex}}
 \caption{Efficiency of prioritized item foraging $E_P$, Efficiency of non-prioritized item foraging $E_{NP}$, Specialization ratio $\tau$ over time, for Nai\"ve algorithm on a Gaussian Environment}
-\label{fig:gaussianhighdensityperformance}
+\label{fig:gaussianhighdensityperformancenaive}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\small
+\resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/flexibility/flexibility-ED-uniform-honeybee.tex}}
+\caption{Efficiency of prioritized item foraging $E_P$, Efficiency of non-prioritized item foraging $E_{NP}$, Specialization ratio $\tau$ over time, for Honeybee algorithm on a Uniform Environment}
+\label{fig:uniformhighdensityperformancehoneybee}
 \end{figure}
 
 
 Consider the experiment where the initial specialization ratio, $\tau$, set to mostly forage prioritized items ($\tau=0.8$) with $c=50$ on the described environment. 
 
-Figure~\ref{doesnotexistyet} show the specialization ratio, $\tau$,  of the Honeybee algorithm, for each 200 time steps, on the environment described above. 
+Figure~\ref{fig:gaussianhighdensityperformancehoneybee} shows the efficiency of foraging prioritized items $E_p$ and the efficiency of foraging non-prioritized items $E_p$, as well as the specialization ratio, $\tau$, for the honey bee algorithm, for each 200 time steps, on the environment described above. The specialization ratio $\tau$ starts at 0.8 and then very quickly decreases to near 0 and soon after, the $E_{NP}$ picks up very quickly (since more robots are foraging non-prioritized items). After a couple 100 time steps, $E_{P}$ and $\tau$ increase dramatically, since the non-prioritized items have been cleared and the concentration of prioritized items in the centre have been reached. 
+Figure~\ref{fig:gaussianhighdensityperformancehoneybee} shows the efficiency of foraging prioritized items $E_p$ and the efficiency of foraging non-prioritized items $E_p$, as well as the specialization ratio, $\tau$, for the Na\"ive algorithm, for each 200 time steps, on the environment described above. The swarm specialization, $\tau$, stays constant. As a result, the increase of $E_{NP}$ is slow because few robots can forage the non-prioritized items which are forming obstacles for the prioritized items. As a result on the swarm's inability to clear the non-prioritized items $E_P$ also remains low since foraging the prioritized items is slowed by obstacles. The graph for the Desert Ant algorithm is similar, except final efficiency is higher than for the Na\"ive algorithm.
 
-Figure~\ref{alsodoesnotexistyet} show the efficiency of foraging prioritized items $E_p$ and the efficiency of foraging non-prioritized items $E_p$, for each algorithm, for each 200 time steps, on the environment described above. 
+The final $E_P$ for the Honeybee algorithm is 0.9, where as the final $E_P$ for the Na\"ive algorithm is 0.3. This behaviour of the Honeybee algorithm compared to the Na\"ive algorithm, motivates the notion that the Honeybee algorithm's ability to adapt the swarm specialization ratio, means in an swarm that can forage non-prioritized items that are obstacles to reaching the prioritized items. The ability to forage non-prioritized items that are forming obstacles results in an algorithm that can perform well on a variety of environment distributions and the Honey-bee algorithm is thus more flexible.
+
+% Examine flexibility of UNIFORM as a contrast to show the different behaviour and how that results in a higher perrformance? Maybe?
 
 \section{Scalability}
 \label{results:scalability}
@@ -139,12 +150,18 @@ Figure~\ref{alsodoesnotexistyet} show the efficiency of foraging prioritized ite
 
 \subsection{Problem scalability}
 
-Figure~\ref{fig:problemscalability} plots the problem scalability performance measure $PS$ (described in Section~\ref{setup:problemscalability}) for each algorithm shown in Table~\ref{table:problemscalability}. 
+
+Figure~\ref{fig:problemscalability} plots the problem scalability performance measure $PS$ (described in Section~\ref{setup:problemscalability}) for each algorithm, with values given in Table~\ref{table:problemscalability}. The plot of Expected scalability runs on the assumption that efficiency would degrade proportionally to the total number of items that can be foraged, and plots the expected value for $PS$ accordingly. All algorithm's outperform the expected scalability and thus problem scalability for all algorithms is super-linear. % Need to motivate
+
+According to Figure~\ref{fig:problemscalability}, the Honeybee algorithm is the most scalable in terms of the problem, followed by the Na\"ive algorithm, with the Desert ant algorithm having the worst scalability. %WHY CAN I SAY THAT?
+
+As stated in Section~\ref{setup:problemscalability}, the inability for an algorithm to scale with regards to the size of the problem, is due to an ineffectiveness of handling the increased environmental interference that occurs in problems of greater complexity.
+
+
 
 % The below statement does not explain it
 %The line plotting expected scalability , runs on the assumption that efficiency would degrade proportionally to the total number of items that can be foraged, and plots the expected value for $PS$ accordingly. All algorithm's outperform the expected scalability. Rationally, one can motivate why that is the case, by understanding that environments with low density of items would require more time spent on exploration to find the items that can be foraging, which are more sparsely scattered around the environment. An environment with high density of items, despite having more items that require foraging, are more likely to have items closer to the sink and thus initially foraging could be fast. Figure~\ref{doesnotexistyet} supports the prior claim , by comparing the foraging performance of the Na\"ive algorithm, for each 200 time steps on a uniform environment with a sparse density $c=0.05$ compared to a uniform environment with a higher density $c=0.5$. 
 
-The line plotting expected scalability , runs on the assumption that efficiency would degrade proportionally to the total number of items that can be foraged, and plots the expected value for $PS$ accordingly. All algorithm's outperform the expected scalability. 
 
 
 As discussed in Section~\ref{setup:problemscalability}, 
