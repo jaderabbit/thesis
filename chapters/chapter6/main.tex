@@ -118,17 +118,30 @@ Figure~\ref{fig:gaussianhighdensityperformancehoneybee} shows the efficiency of 
 
 The final $E_P$ for the Honeybee algorithm is 0.9, where as the final $E_P$ for the Na\"ive algorithm is 0.3. This behaviour of the Honeybee algorithm compared to the Na\"ive algorithm, motivates the notion that the Honeybee algorithm's ability to adapt the swarm specialization ratio, means in an swarm that can forage non-prioritized items that are obstacles to reaching the prioritized items. The ability to forage non-prioritized items that are forming obstacles results in an algorithm that can perform well on a variety of environment distributions and the Honey-bee algorithm is thus more flexible.
 
-% Examine flexibility of UNIFORM as a contrast to show the different behaviour and how that results in a higher perrformance? Maybe?
-
 \section{Scalability}
 \label{results:scalability}
 
 \subsection{Swarm scalability}
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
+
+According to Table~\ref{table:swarmscalability} and Figure~\ref{fig:swarmscalability}, which illustrate results of the swarm scalability performance measure $SS$, the Na\"ive algorithm is the most scalable in terms of swarm size. The Desert ant and Honey bee algorithms show similar scalability. The Honey bee algorithm at lower densities appears to be more scalable than the Desert Ant algorithm, but at the higher densities, $SS$ of the Desert Ant algorithm over takes the Honey bee algorithm.
+
+Figure~\ref{fig:swarmscalability} also plots ideal linear scalability, where the increase in swarm size is directly proportional to the increase in efficiency. The performance of all algorithms is sub-linear. In Section~\ref{swarmsizescalability}, increased inter-robot interference is highlighted as a major factor impacting swarm scalability and thus one can conclude that the reason for sub-linear performance is because all algorithms suffer from increased inter-robot interference as swarm size increases
+
+The Na\"ive algorithm, being the most simple foraging algorithm, has no mechanism to enable the swarm to exploit high quality sites of prioritized items and can only locate items by randomly exploring the environment. Both the Desert ant algorithm and the Hony bee algorithm have mechanisms to exploit high quality areas: The Desert ant algorithm uses site fidelity and the Honey bee algorithm uses recruitment to exploit high quality sites. 
+
+To understand why the exploitative nature of the Desert ant and Honey bee algorithm results in the algorithm's being less scalable than the Na\"ive algorithm, consider the following scenario:
+
+There exists a single high quality site in an environment. By use of site-fidelity and recruitment, the Desert Ant and Honey bee algorithms can exploit that area. In exploiting that high quality site, the path between the sink and the high-quality site becomes more congested. The increased congestion will cause more inter-robot interference, but due to the focused efforts, the exploitation will still improve performance overall. However, if swarm density increases, the congestion on the route between the high quality site and the sink, will increase, hindering the overall efficiency. It follows that the Desert ant algorithm and Honey bee algorithm are less scalable in terms of swarm sie, then the Na\"ive algorithm, due to the congestion caused by exploitation.
+
+The Honey bee algorithm performed slightly better than the Desert ant algorithm, according to Table~\ref{table:swarmscalability}, for everything except the extremely high values of $c$. The recruitment mechanism used by the Honey bee algorithm is a more extreme form of exploitation than site fidelity used by the Desert ant algorithm, since scouts recruit groups of robots to forage single areas. In site fidelity, the high quality is only foraged by the robot that found it. Considering that the recruitment mechanism is more exploitative than the site fidelity mechanism, one would expect the Honey bee algorithm to be much less scalable than the Desert ant algorithm, but that is not evidential in Table~\ref{table:swarmscalability}. 
+
+The Honey bee algorithm has an extra mechanism that can influence the number of robots active in an environment, namely, the division of labour mechanism, described in Section~\ref{Section~\ref{honeybeeforaging}}. The division of labour mechanism will cause an active forager robot to return to the sink if that robot can't find an item for a maximum amount of time. The inactive forager robot waits at the sink, until the inactive forager robot is recruited by a scout robot. Section~\ref{background:divisionoflabour:robotswarm} discussed that mechanism of division of labour that can adjust the number of robots actively foraging, to an appropriate amount will result in decreased levels of inter-robot interference, thus increasing swarm scalability.
+
+In order to determine whether the slight improvement in scalability on the Honey bee algorithm over the Desert ant algorithm can be attributed to the waiting time, the average time spent by any robot in the waiting state for the Honey bee algorithm is plotted for different values of $c$ in Figure~\ref{doesnotexistyet}. It is clear from Figure~\ref{doesnotexistyet} that the robots spent a significant portion of time in the waiting state, however that time spent in the waiting state, counter-intuitively, decreases as swarm density increases. This result is counter-intuitive, since, if a division of labour mechanism that attempts to regulate active foragers is functioning correctly, then robots would spend more time in the waiting state on average when the swarm size is greater due to the increased inter-robot interference. 
+
 \begin{table}[]
 \centering
-\caption{Swarm scalability, $SS$, for each swarm density, $c$, for each algorithm}
+\caption{Swarm scalability, $SS$, for each swarm density, $c$, for each algorithm.}
 \label{table:swarmscalability}
 \begin{tabular}{@{}lllllll@{}}
 \toprule
@@ -143,7 +156,7 @@ The final $E_P$ for the Honeybee algorithm is 0.9, where as the final $E_P$ for 
 \centering
 \small
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/scalability/swarmscalability.tex}}
-\caption{Swarm Scalability, $SS$, for each swarm density $c$, for each algorithm}
+\caption{Swarm Scalability, $SS$, for each swarm density $c$, for each algorithm, as well as linear scalability as swarm density increases.}
 \label{fig:swarmscalability}
 \end{figure}
 
@@ -153,21 +166,21 @@ The final $E_P$ for the Honeybee algorithm is 0.9, where as the final $E_P$ for 
 
 Figure~\ref{fig:problemscalability} plots the problem scalability performance measure $PS$ (described in Section~\ref{setup:problemscalability}) for each algorithm, with values given in Table~\ref{table:problemscalability}. The plot of Expected scalability runs on the assumption that efficiency would degrade proportionally to the total number of items that can be foraged, and plots the expected value for $PS$ accordingly. All algorithm's outperform the expected scalability and thus problem scalability for all algorithms is super-linear. % Need to motivate
 
-According to Figure~\ref{fig:problemscalability}, the Honeybee algorithm is the most scalable in terms of the problem, followed by the Na\"ive algorithm, with the Desert ant algorithm having the worst scalability. %WHY CAN I SAY THAT?
+According to Figure~\ref{fig:problemscalability}, the Honeybee algorithm is the most scalable in terms of $PS$, followed by the Na\"ive algorithm, with the Desert ant algorithm having the worst scalability. %WHY CAN I SAY THAT?
 
 As stated in Section~\ref{setup:problemscalability}, the inability for an algorithm to scale with regards to the size of the problem, is due to an ineffectiveness of handling the increased environmental interference that occurs in problems of greater complexity.
 
+The Na\"ive algorithm is more scalable than the Desert Ant algorithm. The Desert Ant algorithm is the same as the Na\"ive algorithm, except that the Desert Ant algorithm employs site fidelity, described in Section~\ref{desertantforaging}, to enable a robot to return to a previously foraged site. Rationally, the site fidelity mechanism, directly or indirectly, must be the reason for the decreased scalability of the Desert Ant algorithm. To motivate why the site fidelity mechanism is negatively influencing scalability, consider the following scenario: A robot employs a random walk through a complex environment, as shown in red in Figure~\ref{fig:problem-scalability-desertant}. The random walk leads the robot to a source of prioritized items. The robot stores the PI vector, shown in blue on the figure, which is needed to return back to the site after offloading the current item at the sink. The PI vector is a single vector with heading and distance. The next time the desert ant wants to return to the previous site, the robot will still need to perform the same obstacle avoidance in order to navigate around the obstacles to return to the previously foraged vector. As is evident on the Figure, there may exist an easier to reach site for prioritized items, but the desert ant will continue to attempt to forage the hard to locate source of items. On the other hand the Na\"ive algorithm, due to the fact it can't exploit previously location areas using site fidelity, explores more and is more likely to randomly find the prioritized resource site that is nearer the sink (indicated by the green path). The time spent on relocating hard to access sites, in more complex environments, can slow the Desert ant algorithm down.
 
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.75\textwidth]{chapters/chapter6/figures/problem-scalability-desertant.png}
+\caption{Illustration of the inefficiencies of Desert Ant algorithm's site fidelity in dense environments. Solid areas are non-prioritized items, white areas are free cells and shaded areas are prioritized items. The red path is a hypothetical random walk performed by a robot, the blue path is the PI vector for the red random walk, and the green path is an alternative random walk.}
+\label{fig:desertantsitefidelity}
+\end{figure}
 
-% The below statement does not explain it
-%The line plotting expected scalability , runs on the assumption that efficiency would degrade proportionally to the total number of items that can be foraged, and plots the expected value for $PS$ accordingly. All algorithm's outperform the expected scalability. Rationally, one can motivate why that is the case, by understanding that environments with low density of items would require more time spent on exploration to find the items that can be foraging, which are more sparsely scattered around the environment. An environment with high density of items, despite having more items that require foraging, are more likely to have items closer to the sink and thus initially foraging could be fast. Figure~\ref{doesnotexistyet} supports the prior claim , by comparing the foraging performance of the Na\"ive algorithm, for each 200 time steps on a uniform environment with a sparse density $c=0.05$ compared to a uniform environment with a higher density $c=0.5$. 
+The Honeybee algorithm also uses site-fidelity, and on top of that, communicates those sites to others. Despite the use of similar site-fidelity mechanism to the Desert Ant algorith, the Honey bee algorithm is the most scalable. The reason why the site-fidelity of the Honey bee algorithm does not impact the scalability, can be attributed the ability of the Honey bee algorithm to adapt the swarm specialization ratio, $\tau$, to focus on foraging dense areas of obstacles, rather than having to expensively navigate around the obstacles. The ability of the Honey-bee algorithm to concentrate on clearing obstacles in highly dense environments, will increase overall ease of access to the high quality sites, as was discussed in Section~\ref{results:flexibility:environmentdistribution}, and thus improving efficiency of the Honeybee algorithm in highly dense environments. As a result, the Honeybee algorithm is the most scalable in terms of the problem complexity.
 
-
-
-As discussed in Section~\ref{setup:problemscalability}, 
-
-
-An examination of Figure~\ref{fig:problemscalability} show 
 
 \begin{table}[]
 \centering
