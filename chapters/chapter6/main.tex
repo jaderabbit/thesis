@@ -3,7 +3,7 @@
 \chapter{Results}
 \label{chap:results}
 
-In order to evaluate the the algorithms, the analysis of the performance measures from the experiments were organised around three major characteristics of swarm robotics algorithms, namely flexibility, robustness and scalability. Section~\ref{results:efficiency} addresses general foraging efficiency, while flexibility of the algorithms over different environmental types and configurations is analysed in Section~\ref{results:flexibility}. Section~\ref{results:scability} evaluates of scalability of each algorithm and robustness is analysed in Section~\ref{results:robustness}. Section~\ref{results:summary} summarizes the findings of the analysis.
+In order to evaluate the the algorithms, the analysis of the performance measures from the experiments were organised around three major characteristics of swarm robotics algorithms, namely flexibility, robustness and scalability. Section~\ref{results:efficiency} addresses general foraging efficiency, while flexibility of the algorithms over different environmental types and configurations is analysed in Section~\ref{results:flexibility}. Section~\ref{results:scalability} evaluates of scalability of each algorithm and robustness is analysed in Section~\ref{results:robustness}. Section~\ref{results:summary} summarizes the findings of the analysis.
 
 \section{Foraging Efficiency}
 \label{results:efficiency}
@@ -16,7 +16,7 @@ Table~\ref{summarytable} shows the sum of the wins and losses per algorithm agai
 \begin{table}[]
 \centering
 \caption{Pairwise one-tailed Mann Whitney U wins and losses of $E_p$, for each algorithm, over all environments, parameter value choices }
-\label{my-label}
+\label{summarytable}
 \begin{tabular}{@{}lll@{}}
 \toprule
 \textbf{Algorithms} & \textbf{Wins} & \textbf{Losses} \\ \midrule
@@ -66,7 +66,7 @@ Despite the Desert Ant algorithm outperforming the Na\"ive algorithm in efficien
 \label{results:flexibility:environmentdistribution}
 
 % Refer back to tables
-An examination of $F_{ED}$ in Table~ref{table:flexibility} indicates that the Honey Bee algorithm is the most flexible, followed by the Desert Ant, with the Na\"ive Algorithm being the least flexible.
+An examination of $F_{ED}$ in Table~\ref{table:flexibility} indicates that the Honey Bee algorithm is the most flexible, followed by the Desert Ant, with the Na\"ive Algorithm being the least flexible.
 
 Each environment distribution was chosen for experimentation in order to test whether each algorithm has the ability to overcome specific challenges and complexities that result from the environment distributions, as described in Section~\ref{experimentenvironments}.
 
@@ -187,7 +187,7 @@ According to Figure~\ref{fig:problemscalability}, the Honeybee algorithm is the 
 
 As stated in Section~\ref{setup:problemscalability}, the inability for an algorithm to scale with regards to the size of the problem, is due to an ineffectiveness of handling the increased environmental interference that occurs in problems of greater complexity.
 
-The Na\"ive algorithm is more scalable than the Desert Ant algorithm. The Desert Ant algorithm is the same as the Na\"ive algorithm, except that the Desert Ant algorithm employs site fidelity, described in Section~\ref{desertantforaging}, to enable a robot to return to a previously foraged site. Rationally, the site fidelity mechanism, directly or indirectly, must be the reason for the decreased scalability of the Desert Ant algorithm. To motivate why the site fidelity mechanism is negatively influencing scalability, consider the following scenario: A robot employs a random walk through a complex environment, as shown in red in Figure~\ref{fig:problem-scalability-desertant}. The random walk leads the robot to a source of prioritized items. The robot stores the PI vector, shown in blue on the figure, which is needed to return back to the site after offloading the current item at the sink. The PI vector is a single vector with heading and distance. The next time the desert ant wants to return to the previous site, the robot will still need to perform the same obstacle avoidance in order to navigate around the obstacles to return to the previously foraged vector. As is evident on the Figure, there may exist an easier to reach site for prioritized items, but the desert ant will continue to attempt to forage the hard to locate source of items. On the other hand the Na\"ive algorithm, due to the fact it can't exploit previously location areas using site fidelity, explores more and is more likely to randomly find the prioritized resource site that is nearer the sink (indicated by the green path). The time spent on relocating hard to access sites, in more complex environments, can slow the Desert ant algorithm down.
+The Na\"ive algorithm is more scalable than the Desert Ant algorithm. The Desert Ant algorithm is the same as the Na\"ive algorithm, except that the Desert Ant algorithm employs site fidelity, described in Section~\ref{desertantforaging}, to enable a robot to return to a previously foraged site. Rationally, the site fidelity mechanism, directly or indirectly, must be the reason for the decreased scalability of the Desert Ant algorithm. To motivate why the site fidelity mechanism is negatively influencing scalability, consider the following scenario: A robot employs a random walk through a complex environment, as shown in red in Figure~\ref{fig:desertantsitefidelity}. The random walk leads the robot to a source of prioritized items. The robot stores the PI vector, shown in blue on the figure, which is needed to return back to the site after offloading the current item at the sink. The PI vector is a single vector with heading and distance. The next time the desert ant wants to return to the previous site, the robot will still need to perform the same obstacle avoidance in order to navigate around the obstacles to return to the previously foraged vector. As is evident on the Figure, there may exist an easier to reach site for prioritized items, but the desert ant will continue to attempt to forage the hard to locate source of items. On the other hand the Na\"ive algorithm, due to the fact it can't exploit previously location areas using site fidelity, explores more and is more likely to randomly find the prioritized resource site that is nearer the sink (indicated by the green path). The time spent on relocating hard to access sites, in more complex environments, can slow the Desert ant algorithm down.
 
 \begin{figure}[!htb]
 \centering
