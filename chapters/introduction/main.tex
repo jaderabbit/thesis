@@ -10,13 +10,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{quote}
-	{\it You may place a brief sketch of the scenario that inspired the research here (you may also choose to leave it out). For example, if you are writing about ACOs, you might write something about the simplicity and efficiency of an ant colony. This may be relatively informal (but not colloquial). Avoid references here. Refer to some of the theses on the CIRG website for some ideas on what you might include.}
-\end{quote}
-%Place some very general background information here, setting the scene for where your work fits in tot he broader scheme of things.
-
-%For instance, give a very broad overview of the field of CI-based function optimisation. You should already provide some references (here's an example of a reference \cite{ref:Engelbrecht:2002}).
-
+Section~\ref{sec:introduction:motivation} motivates the purpose of this study, while objectives of this research are highlighted in Section~\ref{sec:introduction:objectives}. The contribution of the thesis are presented in Section~\ref{sec:introduction:contributions}, while Section~\ref{sec:introduction:outline} outlines the the structure of the thesis.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -29,7 +23,9 @@ Swarm robotics is the co-coordination of large numbers of  relatively simple rob
 In times of stress, the collection of one resource may be prioritized over others - such as water during a drought or food before winter. Individuals in a natural swarm often adapt behaviour appropriately to enable greater collection of the prioritized item.
 %TODO: Citations? Or provide later
 
-Item prioritization during foraging exists in real-world robot foraging problems such as search and rescue and gold mining. In the case of a building collapsing, robots need to get to the survivors as quickly as possible; however, it is important that some robots move waste material to reach the trapped survivors. Prioritized foraging can also be applied to the gold mining problem where  gold needs to be foraged as a priority and the waste needs to be moved out of the way. In the mentioned applications, the distribution of objects and ratios of prioritized to non-prioritized types is often unknown.
+Item prioritization during foraging exists in real-world robot foraging problems such as search and rescue and gold mining. In the case of a building collapsing, robots need to get to the survivors as quickly as possible; however, it is important that some robots move waste material quickly in order to reach the trapped survivors. Prioritized foraging is also similar to gold mining, where gold needs to be foraged as a priority, and the waste needs to be moved out of the way. In the mentioned applications, the distribution of objects and ratios of prioritized to non-prioritized types of items is usually unknown. Seeing a search and rescue situation or mining problem as a foraging problem, which contains items of differing priority 
+
+In order to address this, this study selects and develops different nature-based swarm robotics algorithms, and evaluated the algorithms' performance on the prioritized foraging problem. The properties of each algorithm is then addressed in order to further the understanding of the prioritized item foraging problem and identify robot behaviours that are efficient, scalable, flexible and robust.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -44,7 +40,7 @@ The primary objectives of this thesis are as follows:
 	\item Conduct a survey of foraging in social insects and  swarm robotics.
 	\item Define the prioritized foraging problem.
 	\item Selection and implementation of different nature-inspired algorithms in a simulated swarm robotic environment, to be evaluated on the prioritized foraging problem.
-	\item Evaluate and contrast the performance of the nature-inspired algorithms over different types of foraging environments and different swarm configurations.
+	\item Evaluate and contrast the efficiency, flexibility, scalability, and robustness of the nature-inspired algorithms over different environments and different swarm configurations.
 \end{itemize}
 
 
@@ -59,7 +55,7 @@ The primary objectives of this thesis are as follows:
 	\item A novel desert ant prioritized foraging algorithm for robot swarms.
 	\item A novel honey bee inspired prioritized foraging algorithm for robot swarms.
 	\item Methods for generating various types of foraging environments.
-	\item An analysis of the performance of various nature inspired algorithms under a various environmental and swarm configurations.
+	\item An analysis of the efficiency, flexibility, scalability, and robustness of each algorithm  
 \end{itemize}
 
 
