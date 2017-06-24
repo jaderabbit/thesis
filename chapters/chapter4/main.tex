@@ -7,7 +7,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter describes the experimental setup for the simulations that were performed, for the purpose of this study. Section~\ref{chap:robots} describes the robots used in the study, while the simulation environment is described in Section~\ref{simulator}. The environments used in the experiment are discussed in Section~\ref{experimentenvironments}, while Section~\ref{parameters} defines the parameters for the robot swarm. Section~\ref{thri:third:performancemeasures} defines the performance measures used to evaluate the results of the experiments. The chapter is summarized in Section~\ref{third:summary}.
+This chapter describes the experimental setup for the simulations that were performed, for the purpose of this study. Section~\ref{chap:robots} describes the robots used in the study, while the simulation environment is described in Section~\ref{simulator}. The environments used in the experiment are discussed in Section~\ref{experimentenvironments}, and Section~\ref{parameters} defines the parameters for the robot swarm. Section~\ref{thri:third:performancemeasures} presents the performance measures used to evaluate the results of the experiments. The chapter is summarized in Section~\ref{third:summary}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20,12 +20,12 @@ Foraging robots occur in all shapes, sizes and capabilities. Some robots have po
 \subsection{Robot Description}
 \label{robotdescription}
 
-The artificial robots modelled in this study are based on e-puck robots \cite{mondada2009puck}, adapted with grippers. A robot is equipped with a 360 degree camera to identify objects around the robot, as well as eight local distance sensors spaced equally around the circular perimeter of the robot. Both camera and distance sensors have a depth of view of five times the robot's size. Robots use local communication which can occur in a radius of five times the robot's size. On real robots, the local communication could occur via use of light signals or ZigBee communications. The sensor and communication range is sufficiently localized with respect to the size of the environment. A robot can forage a single item at a time. The robots do not have a global positioning system (GPS) capability to locate items to position themselves in the environment. A robot cannot see an item hidden by another item. As a result, robots have to explore the environment to find the prioritized items.
+The artificial robots modelled in this study are based on e-puck robots \cite{mondada2009puck}, which have been modified with grippers. A robot is equipped with a 360 degree camera to identify objects around the robot, as well as eight local distance sensors spaced equally around the circular perimeter of the robot. Both camera and distance sensors have a depth of view of five times the robot's size. Robots use local communication which can occur in a radius of five times the robot's size. The sensor and communication range is sufficiently localized with respect to the size of the environment. A robot can forage a single item at a time. The robots do not have a global positioning system (GPS) capability to locate items to position themselves in the environment. A robot cannot see an item hidden by another item. As a result, robots have to explore the environment to find the prioritized items.
 
 \subsection{Navigation and Obstacle Avoidance}
 \label{navigationandobstacleavoidance}
 
-The environments used in the simulation have a variety of complexities: Some environments are very sparse, while others have large zones of items that must be navigated around. Due to the environmental complexity, an advanced navigation and obstacle avoidance technique is required. 
+The environments used in the simulation have a variety of complexities: Some environments are very sparse, while others have large zones of non-prioritized items that must be navigated around or foraged to clear a route to the prioritized items. Due to the environmental complexity, an advanced navigation and obstacle avoidance technique is required.
 
 The robots in the experiments, in this thesis, use a navigation and obstacle avoidance technique inspired by an approach developed for communication congestion avoidance in wireless sensor networks \cite{antoniou2012congestion}. Antoniou et al. use inspiration from the flocking behaviour of birds, in order to efficiently route messages around communication congestion in wireless sensor networks. In flocking behaviour of birds, birds are attracted by a global magnetic attractor to the birds final destination, while a local attractor pulls flocking birds away from areas of congestion. In the congestion avoidance algorithm, the final destination of the message being sent on the wireless sensor network is the global attractor while a local attractor pulls the message around congested areas.
 
@@ -33,12 +33,12 @@ The described congestion avoidance technique has been adapted to form a simple b
 
 Figure \ref{fig:obstacleavoidance} illustrates the navigation and obstacle avoidance method used by the robots. The navigation and obstacle avoidance algorithm achieves the effect of the global attractor by setting the robots field of view towards the direction to the desired destination. The destination is determined by a homing beacon or by the robot's path integration vector. The direction at the centre of the field of view is the direction to the destination. 
 
-The effect of the local attractor is modelled by  evaluating each direction in the field of view, to select the most desirable direction. Desirability, $d$, of a direction, $i$, is a metric quantifying the how well a direction achieves a balance between clarity of the path and directness of the direction to the destination. The clarity, $\kappa_i$, in a direction $i$, is a normalized reading from the proximity sensor or camera such that $\kappa_i\in[0,1]$. Clarity indicates the distance of next nearest obstacle. If no obstacles exist in the depth of view $v$, then  $\kappa_i=0$ and if there exists an obstacle immediately next to the robot, then $\kappa_i=0=1$. The directness of a direction $i$, $\iota_i\in[0,1]$ is calculated as the angular deviation from the direction of the destination, where $\iota_i=0$ occurs when the direction $i$ is the same as direction to the destination, $dir$, and a $\iota_i=1$ occurs when the direction is at the edge of the field of view, $f$. Desirability $d_i$ of direction $i$ is defined mathematically in Equation \ref{eq:1}.
+The effect of the local attractor is modelled by evaluating each direction in the field of view, to select the most desirable direction. Desirability, $d$, of a direction, $i$, is a metric quantifying the how well a direction achieves a balance between clarity of the path and directness of the direction to the destination. The clarity, $\kappa_i$, in a direction $i$, is a normalized reading from the proximity sensor or camera such that $\kappa_i\in[0,1]$. Clarity indicates the distance of next nearest obstacle. If no obstacles exist in the depth of view $v$, then  $\kappa_i=0$. If there exists an obstacle immediately next to the robot, then $\kappa_i=1$. The directness of a direction $i$, $\iota_i\in[0,1]$ is calculated as the angular deviation from the direction of the destination, where $\iota_i=0$ occurs when the direction $i$ is the same as direction to the destination, $dir$, and a $\iota_i=1$ occurs when the direction is at the edge of the field of view, $f$. Desirability $d_i$ of direction $i$ is defined mathematically in Equation \ref{eq:1}.
 
 \begin{equation}
 	d_i= \lambda \kappa_i + (1 - \lambda)\iota_i \\
 	\label{eq:1}
-\end{equation} where $\lambda$ determines whether clarity, $\kappa_i$ or directness, $\iota_i$ of direction $i$, has more effect on desirability. The described navigation and obstacle avoidance technique is used with all algorithms in the experiment and for algorithms $\lambda$ is set to 0.5.
+\end{equation} where $\lambda$ determines whether clarity, $\kappa_i$, or directness, $\iota_i$, of direction $i$, has more effect on desirability. The described navigation and obstacle avoidance technique is used with all algorithms in the experiment and for all algorithms, $\lambda$ is set to 0.5.
 
 \begin{figure}
 	\centering
@@ -52,15 +52,15 @@ The effect of the local attractor is modelled by  evaluating each direction in t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Simulator}
 \label{simulator}
-A spatially discrete 2-dimensional grid world simulator has been developed and used in this thesis in order to accelerate computation; a technique also used in \cite{sugawara2002swarming, hecker2015beyond}. In real root experiments, algorithm performance is sensitive to the amount of time taken to load items and manoeuvre the robots \cite{ostergaard2001emergent}. The 2-dimensional grid world simulator allows for movement and loading time to be standardized across all algorithms for effective comparison.
+A spatially discrete 2-dimensional grid world simulator has been developed and used in this thesis in order to accelerate computation; a technique also used in \cite{sugawara2002swarming, hecker2015beyond}. In real robot experiments, algorithm performance is sensitive to the amount of time taken to load items and manoeuvre the robots \cite{ostergaard2001emergent}. The 2-dimensional grid world simulator allows for movement and loading time to be standardized across all algorithms for effective comparison.
 
 The simulation robots function as follows:
 \begin{itemize}
 	\item Each robot fits into one grid block and each item takes up one grid block. 
-	\item Only object can occupy a grid block at a time where an object is either a robot or an item. Since only one object can occupy a grid block at a time, collisions and congestion can occur.
+	\item Only a single object can occupy a grid block at a time.  A object is either a robot or an item. Since only one object can occupy a grid block at a time, collisions and congestion can occur.
 	\item Each robot can move to an adjacent cell in any direction.
 	\item Robots can load, transport and offload a single item at a time.
-	\item If a robot does not pick up an item, the item is then an obstacle that a robot may have to navigate around in order to reach it's destination.
+	\item If a robot cannot pick up an item, the item is an obstacle that a robot may have to navigate around in order to reach it's destination.
 \end{itemize}
 
 The prioritized and non-prioritized sinks were placed next to each other, on a single side of the environment. The sinks were marked by light beacons that all robots can detect and navigate towards. The reason the sinks were not placed in the centre of the environment, as is commonly found in swarm robotics research \cite{labella2006division}, is because the original prioritized foraging problem was inspired by the use of robots to forage gold and waste in mining tunnels. A mining tunnel has a single entrance where the gold and waste must be moved to, in order to be transported to the surface \cite{brune2010extracting}. Since there is only a single entrance at the beginning of a tunnel, the sinks need to occur at the beginning of the tunnel so that the items can be easily exported.
@@ -70,7 +70,7 @@ The prioritized and non-prioritized sinks were placed next to each other, on a s
 
 The experiments were run in different environments with different item distributions, sizes, item densities and different ratios of prioritized to non--prioritized items. 
 
-The sizes of the environment grid, $S$, were varied, where $S\in \left\{ 50, 100, 200, 300, 500\right\}$, such that $S$ was the width and length of the grid.  Experiments were run on different environment sizes to test how each algorithm can scale to larger environments.
+The sizes of the environment grid, $S$, were varied, where $S\in \left\{ 50, 100, 200, 300, 500\right\}$, such that $S$ was the width and length of the grid.
 
 Different values for the density of the items on the grid, $p$, were chosen where $p\in \{ 0.05,\allowbreak 0.2,\allowbreak 0.5,\allowbreak 0.7,\allowbreak 0.9\}$. Environments with a higher item density are more complex to forage since there exists a higher probability of an item on the unassigned type blocking the path to items of a robot's assigned type.
 
@@ -78,13 +78,13 @@ The ratio of prioritized to non-prioritized items $r$, was varied, where $r\in \
 
 In environments with a small $r$ value, the abundance of non-prioritized items increases the likelihood of non-prioritized items blocking the access to prioritized items. 
 
-As $r$ is varied over varied, the swarm specialization ratio, $\tau$, is also varied, in order to determine of there exists a relationship between $r$, $\tau$ and the efficiency of the algorithms. The parameter $r$ is also used to determine if the algorithms can adapt to the swarm specialization ratio, $\tau$, to optimally forage an environment of a given $r$. 
+As $r$ is varied over varied, the swarm specialization ratio, $\tau$, is also varied, in order to determine of there exists a relationship between $r$, $\tau$ and the efficiency of the algorithms. The parameter $r$ is also used to determine if the algorithms can adapt the swarm specialization ratio, $\tau$, to optimally forage an environment of a given $r$. 
 
 Different distributions of items over the environment were chosen to examine different characteristics of the algorithms. The item distributions are shown in Figure~\ref{fig:environments}, where each lighter shaded square is a prioritized item and a non-prioritized item is shown by a darker shaded square. Four different classes of environments were generated as follows:
 
 \begin{enumerate}
 
-\item The position of each item in a uniformly distributed environments are selected from a uniform distribution (refer to Figure~\ref{fig:uniformenv}). The uniformly distributed environment has uniform concentrations of prioritized and non-prioritized items across the environment and thus is used as a control environment. Pseudo-code for generation of uniform environment is provided in Algorithm~\ref{algorithm:uniform}.
+\item The position of each item in a uniformly distributed environments is selected from a uniform distribution (refer to Figure~\ref{fig:uniformenv}). The uniformly distributed environment has uniform concentrations of prioritized and non-prioritized items across the environment and thus is used as a control environment. Pseudo-code for generation of uniform environment is provided in Algorithm~\ref{algorithm:uniform}.
 
 \item For the Gaussian environments, the positions of the prioritized items are sampled from a Gaussian distribution, where the mean of the Gaussian function is the centre of the grid, and the distribution of the Gaussian function varies (refer to Figure~\ref{fig:gaussianenv}). Pseudo-code for generation of Gaussian environments is provided in Algorithm~\ref{algorithm:gaussian}.
 
@@ -94,19 +94,19 @@ In Gaussian distributed environments, prioritized items  occur in high concentra
 
 The Gaussian environments were used to examine whether each algorithm will enable the robot swarm to forage or navigate past the non-prioritized items to reach the high concentration of prioritized items in the environment's centre. 
 
-\item Environments with a clustered items distribution have clusters of items of the same type (refer to Figure~\ref{fig:clusterenv}). The clusters were generated by Lumer-Faieta ant cemetery clustering \cite{lumer1994diversity}. After clusters have been generated, each cluster is labelled randomly as a either a cluster of prioritized items or a cluster of non-prioritized items. 
+\item Environments with a clustered item distribution have clusters of items of the same type (refer to Figure~\ref{fig:clusterenv}). After clusters have been generated, each cluster is labelled randomly as a either a cluster of prioritized items or a cluster of non-prioritized items. 
 
-The goal of performing experiments in a clustered environment was to test an algorithms ability to exploit areas which are rich in prioritized items. Clustered environments were also be used to test how each algorithm can navigate around or forage non-prioritized items, as well as remember locations of areas which have a high density of prioritized items, in order to aid more efficient access to prioritized items.  Pseudo-code for generation of clustered environments is provided in Algorithm~\ref{algorithm:clustered} and Algorithm~\ref{algorithm:clustered2}.
+The goal of performing experiments in a clustered environment was to test an algorithms ability to exploit areas which are rich in prioritized items. Clustered environments were also be used to test whether an algorithm can either navigate around or forage non-prioritized items. A clustered environment can also test an algorithm's ability to remember locations of areas which have a high density of prioritized items, in order to aid more efficient access to prioritized items.  Pseudo-code for generation of clustered environments is provided in Algorithm~\ref{algorithm:clustered} and Algorithm~\ref{algorithm:clustered2}.
 
 
 \item Environments with a vein distribution resemble the patterns observed in naturally occurring gold reefs \cite{frimmel2002recent} (refer to Figure~\ref{fig:veinenv}). In a gold reef, molten gold fills planar fractures between rock resulting in a vein of gold. Inspired by the gold reef, vein distributed environments have a long thin vein of prioritized items running from one side of the environment to another. The vein of prioritized items was surrounded by non-prioritized items. The non-prioritized items are similar to the rock surrounding the gold in gold reefs.
 
-The vein environments aimed to test whether a swarm of robots, of each algorithm, could follow and forage the continuous length of the vein of prioritized items. A swarm that is able to detect the location of the vein and return to the vein's location after foraging an item should forage more than one that cannot detect and remember the location of the vein.  Pseudo-code for generation of vein environments is provided in Algorithm~\ref{algorithm:vein}.
+The vein environments aimed to test whether a swarm of robots, of each algorithm, could forage the continuous length of the vein of prioritized items. A swarm that is able to detect the location of the vein and return to the vein's location after foraging an item should forage more than one that cannot detect and remember the location of the vein.  Pseudo-code for generation of vein environments is provided in Algorithm~\ref{algorithm:vein}.
 
 
 \end{enumerate} 
 
-To generalize, the challenges introduced by the more complex distributions (the Gaussian, clustered and vein environment) aim to test a swarm's ability to:
+To summarize, the challenges introduced by the more complex distributions (the Gaussian, clustered and vein environment) aim to test a swarm's ability to:
 
 \begin{itemize}
 \item Navigate past obstacles efficiently or alternatively, forage obstacles efficiently.
@@ -315,32 +315,31 @@ To generalize, the challenges introduced by the more complex distributions (the 
 \label{swarmparameters}
 
 For all algorithms, each robot swarm was initialized with 
-a swarm specialization ratio, $
-$ where $\tau\in\left\{0, 0.2, 0.25, 0.333, 0.5, 0.667, 0.75, 0.8,1\right\}$. The swarm specialization ratio is ratio of robots foraging prioritized items to non-prioritized items. When no robots are set to initially forage prioritized items then $\tau=0$ and when all robots are set to initially forage prioritized items then $\tau=1$.
+a swarm specialization ratio, $\tau\in\left\{0, 0.2, 0.25, 0.333, 0.5, 0.667, 0.75, 0.8,1\right\}$. The swarm specialization ratio is ratio of robots foraging prioritized items to non-prioritized items. When no robots are set to initially forage prioritized items then $\tau=0$ and when all robots are set to initially forage prioritized items then $\tau=1$.
 
-As discussed in Section~\ref{experimentenvironments}, $\tau$ is varied, with a specific $r$, to determine if the ratio of $\tau$ to $r$ has an effect on algorithm efficiency. Also, the ability of an algorithm to adapt the value of $\tau$ appropriately for a given $r$, indicates the flexibility of an algorithm. %Why? How?
+The ability of an algorithm to adapt the value of $\tau$ appropriately for a given $r$, indicates the flexibility of an algorithm.
 
-The swarm size, $c$, is defined as the density of cells, of the grid size $S$ (the length of the side of an environment) that are occupied by robots, where $c\in\left\{0.1, 0.3, 0.5, 0.7, 1\right\}$. The swarm size is varied in order to test the scalability of the algorithm. The density of robots is also varied to test each algorithms' ability to adjust the amount of actively  foraging robots to the density of the items in the environment.
+The swarm size, $c$, is defined as the density of cells, of the grid size $S$ (the length of the side of an environment) that are occupied by robots, where $c\in\left\{0.1, 0.3, 0.5, 0.7, 1\right\}$. The swarm size is varied in order to test the scalability of the algorithm. The swarm size is also varied to test each algorithms' ability to adjust the amount of actively  foraging robots to the density of the items in the environment.
 
 The honey bee algorithm specific parameters were selected based on \cite{seeley2009wisdom}, where
  $t_{wait}=200$ time steps, $f_{max}=100$ time steps, $\Phi=0.8$ and $\rho=0.1$. Testing the effect of each of the honey bee algorithm specific parameters was not in the scope of this thesis.
 
-The initial position of each robot was randomly selected, adjacent to the sink. All robots began in the exploration state, which a state that is shared by all algorithms. For each set of algorithmic, environmental and swarm configurations, each simulation was run for 10000 time steps. An experiment consists of 30 repeated simulations for a specific set of parameters.
+The initial position of each robot was randomly selected, adjacent to the sink. All robots began in the exploration state -- state that is shared by all algorithms. For each set, environmental and swarm configurations, each simulation was run for 10000 time steps. An experiment consists of 30 repeated sam for a specific set of parameters.
 
 \section{Performance Measures}
 \label{thri:third:performancemeasures}
 
-The performance of swarm robotics algorithms can be measured by examining the algorithm's ability to perform a task, in terms of scalability, flexibility, and robustness. The experiments directly evaluate the scalability and flexibility of each of the algorithms, as well as provides rational arguments which discuss the robustness of the algorithms, based on the findings of the experiments. 
+The performance of swarm robotics algorithms can be measured by examining the algorithm's ability to perform a task, in terms of efficiency, scalability, flexibility, and robustness.
 
 \subsection{Foraging Efficiency}
 \label{setup:foragingefficiency}
-The foraging efficiency of a particular algorithm is defined as the total number of prioritized items collected by all robots in a fixed time period on a specific environment $E_P$. This foraging efficiency metric is similar to the efficiency metric used by Hecker et al \cite{hecker2015beyond}. The metrics used in experiments performed by Hecker et al. evaluate the performance of foraging algorithms and are thus appropriate for use in the experiments of this study. The metric has been adapted to only look at the prioritized items, for the purpose of examining efficiency in prioritized foraging.
+The foraging efficiency of a particular algorithm is defined as the total number of prioritized items, collected by all robots in a fixed time period, on a specific environment $E_P$. This foraging efficiency metric is similar to the efficiency metric used by Hecker et al \cite{hecker2015beyond}. The metrics used in experiments performed by Hecker et al. evaluate the performance of foraging algorithms and are thus appropriate for use in the experiments of this study. The metric has been adapted to only look at the prioritized items, for the purpose of examining efficiency in the prioritized foraging problem described in Section~\ref{sec:second:prioritizedforaging}.
 
 \subsection{Flexibility}
 \label{setup:flexibility}
-As stated in Section~\ref{flexibility}, to measure flexibility is to measure of how variations in environments and tasks affect the co-ordination mechanisms of swarm robotics algorithms. An algorithm that is highly flexible, is one that has been optimized for a specific distribution, but us equally efficient on a different distribution \cite{hecker2015beyond}.
+As stated in Section~\ref{flexibility}, to measure flexibility is to measure of how variations in environments and tasks affect the co-ordination mechanisms of swarm robotics algorithms. An algorithm that is highly flexible, is one that has been optimized for a specific distribution, but is equally efficient on a different distribution \cite{hecker2015beyond}.
 
-The flexibility performance measures used in this study are based on the flexibility performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem. The flexibility study addresses at two aspects: (i) Flexibility over the prioritized item ratios, $r_i$, and (ii) flexibility over environment distributions (ED).
+The flexibility performance measures used in this study are based on the flexibility performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem, by only taking into account the prioritized item. The flexibility study addresses at two aspects: (i) Flexibility over the prioritized item ratios, $r_i$, and (ii) flexibility over environment distributions.
 
 \subsubsection{Flexibility over prioritized item ratio}
 \label{setup:flexibility:prioritizeditemratio}
@@ -353,15 +352,15 @@ Flexibility over prioritized item ratio, $F_r$ is defined as:
 	F_r = \sum_{i=1}^{n} \sum_{j=1}^{n} \dfrac{|E_p(\hat{\tau}_{r_i}, {r_i})-E_p(\hat{\tau}_{r_i}, {r_j})|}{E_p(\hat{\tau}_{r_i}, {r_i})}
 \end{equation}
 
-A larger $F_r$ is for an algorithm compared to another, the means the algorithm cannot generalize well over other  environment item ratios, and is thus less flexible.
+The differences are normalized by $E_p(\hat{\tau}_{r_i}, {r_i})$ in order to remove the differences in average efficiencies for each algorithm, so that the algorithms can be compared, purely on flexibility. If $F_r$ of one algorithm is large, then that algorithm cannot generalize well over other environment item ratios, and is thus less flexible.
 
-The differences are normalized by $E_p(\hat{\tau}_{r_i}, {r_i})$ in order to remove the differences in average efficiencies for each algorithm, so that the algorithms can be compared, purely on flexibility.
+
 
 
 \subsubsection{Flexibility over environment distribution types}
 \label{setup:flexibility:environmentdistributions}
 
-This study evaluates flexibility by analysing at how swarm efficiency on various EDs (described in Section~\ref{experimentenvironments}) is affected by swarm specialization ratio, $\tau_i$ (described in Section~\ref{swarmparameters})
+This study evaluates flexibility, by analysing how swarm efficiency on various environment distributions (ED), described in Section~\ref{experimentenvironments}, is affected by swarm specialization ratio, $\tau_i$ (described in Section~\ref{swarmparameters}).
 
 The value for $\tau$, which results in the best average efficiency, $E_p$, for a specific $ED$ is denoted as $\hat{\tau}_{ED}$ and the average efficiency for a specific swarm specialization ratio, $\tau$ with specific ED is denoted $E_p(\tau, ED)$.
 
@@ -385,7 +384,7 @@ Scalability is described in Section~\ref{sr:scalabilty}. The study of scalabilit
 
 \subsubsection{Swarm size Scalability}
 \label{swarmsizescalability}
-Swarm size scalability is that efficiency of a robot swarm should be relatively undisturbed by changes in group sizes. When the efficiency of an algorithm improves linearly (or superlinearly) as swarm size is increased, then an algorithm is considered scalable. However, due to increased inter-robot interference in larger swarm sizes, scalability is often sub-linear \cite{lerman2002mathematical}. Many swarm robotics algorithms focus on the use of division of labour, navigation or communication in order to decrease inter-robot interference \cite{lerman2002mathematical, schneider1998territorial}. The scalability performance measures are based on the scalability performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem.
+The efficiency of a robot swarm should be relatively undisturbed by changes in group sizes. This property is known as swarm size scalability. When the efficiency of an algorithm improves linearly (or superlinearly) as swarm size increases, an algorithm is considered scalable. However, due to increased inter-robot interference in larger swarm sizes, scalability is often sub-linear \cite{lerman2002mathematical}. Many swarm robotics algorithms focus on the use of division of labour, navigation or communication in order to decrease inter-robot interference \cite{lerman2002mathematical, schneider1998territorial}. The scalability performance measures are based on the scalability performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem, by only taking into account the prioritized items.
 
 In order to evaluate the swarm size scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of swarm sizes, $c_i$, as defined in Section~\ref{swarmparameters}. In order to compare scalability of the algorithms, the efficiency $E_p$ at each swarm size $c$ is normalized by the efficiency of each algorithm, at the smallest swarm size ($c_0=0.1$). Swarm size scalability, $SS$, for a specific algorithm is calculated as follows:
 
@@ -401,10 +400,9 @@ where $E_p(c_i)$ is the average efficiency $E_p$ over all environments with swar
 
 The swarm size scalability study will specifically look at large environments ($S=500$) to avoid the possibility of an environment running out of items to forage.
 
-
 \subsubsection{Problem Scalability}
 \label{setup:problemscalability}
-If the efficiency $E_p$ of an algorithm decreases linearly (or super-linearly) as problem complexity increases, then an algorithm can be seen as scalable. Similarly to swarm size scalability, described in Section~\ref{swarmsizescalability}, problem scalability is often sub-linear, due to increased environmental interference.
+If the efficiency, $E_p$, of an algorithm decreases linearly (or super-linearly) as problem complexity increases, then an algorithm can be seen as scalable. Similarly to swarm size scalability, described in Section~\ref{swarmsizescalability}, problem scalability is often sub-linear, due to increased environmental interference.
 
 In order to evaluate the problem scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of environment item densities, $p$, defined in Section~\ref{experimentenvironments}. In order to compare scalability of the algorithms to each other, the efficiency $E_p$ at each item density $p_i$ is normalized by the efficiency of each algorithm, at the smallest item density ($p_0=0.1$). 
 
