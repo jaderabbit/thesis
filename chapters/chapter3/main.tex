@@ -7,7 +7,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter presents a foraging variation known as prioritized foraging as well as three algorithms whose performance is to be evaluated on prioritized foraging problem. The three algorithms are based based upon phenomenon observed in nature. The first model is a simple foraging algorithm, called na\"ive foraging, which will form the benchmark algorithm for the experiments. Two novel swarm robotics foraging algorithms, inspired by the foraging behaviour of desert ants and honey bees, are also presented. Each of these algorithms have different capabilities when it comes to memory, communication, division of labour, and navigation. The na\"ive foraging algorithm is presented in Section~\ref{naiveforaging}. Section~\ref{desertantforaging} introduces the novel foraging algorithm based on desert ants. Section~\ref{honeybeeforaging} presents a novel prioritized foraging algorithm inspired by honey bees. The algorithms are summarized in Section~\ref{prioritized:summary}.
+This chapter presents a foraging variation known as prioritized foraging as well as three algorithms whose performance is to be evaluated on prioritized foraging problem. The three algorithms are based based upon phenomenon observed in nature. The first model is a simple foraging algorithm, called Na\"ive foraging, which will form the benchmark algorithm for the experiments. Two novel swarm robotics foraging algorithms, inspired by the foraging behaviour of desert ants and honey bees, are also presented. Each of these algorithms have different capabilities when it comes to memory, communication, division of labour, and navigation. The Na\"ive foraging algorithm is presented in Section~\ref{naiveforaging}. Section~\ref{desertantforaging} introduces the novel foraging algorithm based on desert ants. Section~\ref{honeybeeforaging} presents a novel prioritized foraging algorithm inspired by honey bees. The algorithms are summarized in Section~\ref{prioritized:summary}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -110,11 +110,11 @@ All robots begin at random positions adjacent to the sink in the exploration sta
 \label{honeybeeforaging}
 %TODO Describe the 3 states referring back to where they were discussed in the previous section.
 
-The honey bee prioritized foraging algorithm presented in this section is based on the foraging behaviour of honey bees as described in Section~\ref{bees:biologicalinspiration}. The algorithm described requires robots to take on three roles, namely, scout robots, unemployed forager robots and employed forager robots. The roles of the robots and the transitions to and from those roles are described in this section. 
+The Honey bee prioritized foraging algorithm presented in this section is based on the foraging behaviour of honey bees as described in Section~\ref{bees:biologicalinspiration}. The algorithm described requires robots to take on three roles, namely, scout robots, unemployed forager robots and employed forager robots. The roles of the robots and the transitions to and from those roles are described in this section. 
 
-Figure~\ref{honeybeestate} provides a simplified diagram for the honey bee prioritized foraging algorithm showing the roles and the transitions between each role and the states within those roles. The dance and explore states of the scout robots are shown separately for clarity and the employed forager states are outlined separately in Figure~\ref{employedforagerstatediagram}.
+Figure~\ref{honeybeestate} provides a simplified diagram for the Honey bee prioritized foraging algorithm showing the roles and the transitions between each role and the states within those roles. The dance and explore states of the scout robots are shown separately for clarity and the employed forager states are outlined separately in Figure~\ref{employedforagerstatediagram}.
 
-To more succinctly define the honey bee prioritized foraging algorithm, the algorithms for each behavioural state, within each role, have been provided. For each algorithm, one should note that the current state of the robot is denoted $state$, and $state$ is gets modified during the behaviour to denote the next state of the robot. The current time step is denoted as $i$. The algorithm for a single state is executed once per time step $i$.
+To more succinctly define the Honey bee prioritized foraging algorithm, the algorithms for each behavioural state, within each role, have been provided. For each algorithm, one should note that the current state of the robot is denoted $state$, and $state$ is gets modified during the behaviour to denote the next state of the robot. The current time step is denoted as $i$. The algorithm for a single state is executed once per time step $i$.
 
 \begin{figure}[h]
 	\centering
@@ -385,7 +385,7 @@ A portion of the robots are initialized as scout robots in the explore state and
 
 \subsection{Division of Labour}
 \label{natureinspired:divisionoflabour}
-The honey bee algorithm has two levels of division of labour. The first level is the division of labour between the scout, unemployed forager and unemployed forager as described in Section~\ref{honeybeeforaging}.
+The Honey bee algorithm has two levels of division of labour. The first level is the division of labour between the scout, unemployed forager and unemployed forager as described in Section~\ref{honeybeeforaging}.
 
 However, another level of division of labour exists to deal with division of labour between foraging items with different priorities. Item-type division of labour is defined in this thesis, as the division of labour between foraging prioritized item types and non-prioritized item types.
 
@@ -397,19 +397,19 @@ In nature, in times of drought, bees prioritize water over nectar or pollen. Hon
 \item A robot foraging a non-prioritized item will not communicate the location of the non-prioritized item site by dancing. 
 \end{enumerate}
 
-For the purpose of this study, each robot of each algorithm is assigned an initial item type to forage. The robots of desert ant foraging algorithm and the na\"ive algorithm do not have item-type level division of labour and thus will continue to forage the same item-type that they were assigned throughout the experiment. The robots in the honey bee algorithm may switch what item-types they forage during the experiment, due to the item-type division of labour. 
+For the purpose of this study, each robot of each algorithm is assigned an initial item type to forage. The robots of desert ant foraging algorithm and the Na\"ive algorithm do not have item-type level division of labour and thus will continue to forage the same item-type that they were assigned throughout the experiment. The robots in the Honey bee algorithm may switch what item-types they forage during the experiment, due to the item-type division of labour. 
 
 \section{Summary}
 \label{prioritized:summary}
 
-This chapter introduced two novel algorithms for foraging robot swarms: a desert ant inspired foraging algorithm, as well as a honey bee inspired foraging algorithm. A benchmark algorithm called na\"ive foraging, is also presented. The desert ant algorithm uses path integration to memorize the location of an item site and return to the site to forage more items. The honey bee algorithm is substantially more complex with three roles for robots: scout, unemployed forager and employed forager. The scout robots in the honey bee algorithm uses path integration to memorize the location of a site as well as evaluate the quality of the site. The location and quality of a site is communicated by the scout to unemployed foragers through direct communication. The unemployed forager are recruited and become employed foragers. The honey bee algorithm also exhibits division of labour between prioritized and non-prioritized items. An overview of the properties of the algorithms are given in Table~\ref{properties}.
+This chapter introduced two novel algorithms for foraging robot swarms: a desert ant inspired foraging algorithm, as well as a Honey bee inspired foraging algorithm. A benchmark algorithm called Na\"ive foraging, is also presented. The desert ant algorithm uses path integration to memorize the location of an item site and return to the site to forage more items. The Honey bee algorithm is substantially more complex with three roles for robots: scout, unemployed forager and employed forager. The scout robots in the Honey bee algorithm uses path integration to memorize the location of a site as well as evaluate the quality of the site. The location and quality of a site is communicated by the scout to unemployed foragers through direct communication. The unemployed forager are recruited and become employed foragers. The Honey bee algorithm also exhibits division of labour between prioritized and non-prioritized items. An overview of the properties of the algorithms are given in Table~\ref{properties}.
 
 \begin{table} [h]
     \caption{Properties of the foraging algorithms used in this study}
     \label{properties}
 	\centering
     \begin{tabular}{|l|c c c|} \hline
-    Property           & Na\"ive  & Desert Ant  & Honey Bee  \\ \hline
+    Property           & Na\"ive  & Desert ant  & Honey bee  \\ \hline
     Memory             & \xmark  & \cmark     & \cmark    \\
     Communication      & \xmark  & \xmark     & \cmark    \\
     Division of Labour & \xmark  & \xmark     & \cmark    \\ \hline

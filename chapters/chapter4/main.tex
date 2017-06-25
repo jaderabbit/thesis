@@ -7,7 +7,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter describes the experimental setup for the simulations that were performed, for the purpose of this study. Section~\ref{chap:robots} describes the robots used in the study, while the simulation environment is described in Section~\ref{simulator}. The environments used in the experiment are discussed in Section~\ref{experimentenvironments}, and Section~\ref{parameters} defines the parameters for the robot swarm. Section~\ref{thri:third:performancemeasures} presents the performance measures used to evaluate the results of the experiments. The chapter is summarized in Section~\ref{third:summary}.
+This chapter describes the experimental setup for the simulations that were performed, for the purpose of this study. Section~\ref{chap:robots} describes the robots used in the study, while the simulation environment is described in Section~\ref{simulator}. The environments used in the experiment are discussed in Section~\ref{experimentenvironments}, and Section~\ref{parameters} defines the parameters for the robot swarm. Section~\ref{thri:third:performancemeasures} proposes performance measures to be used to evaluate the performance of the algorithms on the prioritized foraging problem. The chapter is summarized in Section~\ref{third:summary}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,7 +27,7 @@ The artificial robots modelled in this study are based on e-puck robots \cite{mo
 
 The environments used in the simulation have a variety of complexities: Some environments are very sparse, while others have large zones of non-prioritized items that must be navigated around or foraged to clear a route to the prioritized items. Due to the environmental complexity, an advanced navigation and obstacle avoidance technique is required.
 
-The robots in the experiments, in this thesis, use a navigation and obstacle avoidance technique inspired by an approach developed for communication congestion avoidance in wireless sensor networks \cite{antoniou2012congestion}. Antoniou et al. use inspiration from the flocking behaviour of birds, in order to efficiently route messages around communication congestion in wireless sensor networks. In flocking behaviour of birds, birds are attracted by a global magnetic attractor to the birds final destination, while a local attractor pulls flocking birds away from areas of congestion. In the congestion avoidance algorithm, the final destination of the message being sent on the wireless sensor network is the global attractor while a local attractor pulls the message around congested areas.
+The robots in the experiments for this thesis, use a navigation and obstacle avoidance technique inspired by an congestion avoidance technique developed for communication congestion avoidance in wireless sensor networks \cite{antoniou2012congestion}. Antoniou et al. use inspiration from the flocking behaviour of birds, in order to efficiently route messages around communication congestion in wireless sensor networks. In flocking behaviour of birds, birds are attracted by a global magnetic attractor to the birds final destination, while a local attractor pulls flocking birds away from areas of congestion. In the congestion avoidance algorithm, the final destination of the message being sent on the wireless sensor network is the global attractor while a local attractor pulls the message around congested areas.
 
 The described congestion avoidance technique has been adapted to form a simple but effective navigation and obstacle avoidance technique. Robots are pulled to a global attractor which is the intended destination, while a local attractor directs robots away from local obstacles while maintaining a course to the destination.
 
@@ -63,12 +63,12 @@ The simulation robots function as follows:
 	\item If a robot cannot pick up an item, the item is an obstacle that a robot may have to navigate around in order to reach it's destination.
 \end{itemize}
 
-The prioritized and non-prioritized sinks were placed next to each other, on a single side of the environment. The sinks were marked by light beacons that all robots can detect and navigate towards. The reason the sinks were not placed in the centre of the environment, as is commonly found in swarm robotics research \cite{labella2006division}, is because the original prioritized foraging problem was inspired by the use of robots to forage gold and waste in mining tunnels. A mining tunnel has a single entrance where the gold and waste must be moved to, in order to be transported to the surface \cite{brune2010extracting}. Since there is only a single entrance at the beginning of a tunnel, the sinks need to occur at the beginning of the tunnel so that the items can be easily exported.
+The prioritized and non-prioritized sinks were placed next to each other, on a single side of the environment. The sinks were marked by light beacons that all robots can detect and navigate towards. The reason the sinks were not placed in the centre of the environment, as is commonly found in swarm robotics research \cite{labella2006division}, is because the original prioritized foraging problem was inspired the idea of using a swarm of robots to rescue trapped miners in mining tunnels. A mining tunnel has a single entrance where the gold and waste must be moved to, in order to be transported to the surface \cite{brune2010extracting}. Since there is only a single entrance at the beginning of a tunnel, the sinks need to occur at the beginning of the tunnel so that items can be easily exported.
 
 \section{Environments}
 \label{experimentenvironments}
 
-The experiments were run in different environments with different item distributions, sizes, item densities and different ratios of prioritized to non--prioritized items. 
+The experiments were run on different environments each with different item distributions, sizes, item densities and different ratios of prioritized to non--prioritized items. 
 
 The sizes of the environment grid, $S$, were varied, where $S\in \left\{ 50, 100, 200, 300, 500\right\}$, such that $S$ was the width and length of the grid.
 
@@ -86,7 +86,7 @@ Different distributions of items over the environment were chosen to examine dif
 
 \item The position of each item in a uniformly distributed environments is selected from a uniform distribution (refer to Figure~\ref{fig:uniformenv}). The uniformly distributed environment has uniform concentrations of prioritized and non-prioritized items across the environment and thus is used as a control environment. Pseudo-code for generation of uniform environment is provided in Algorithm~\ref{algorithm:uniform}.
 
-\item For the Gaussian environments, the positions of the prioritized items are sampled from a Gaussian distribution, where the mean of the Gaussian function is the centre of the grid, and the distribution of the Gaussian function varies (refer to Figure~\ref{fig:gaussianenv}). Pseudo-code for generation of Gaussian environments is provided in Algorithm~\ref{algorithm:gaussian}.
+\item For the Gaussian environments, the positions of the prioritized items are sampled from a Gaussian distribution. The mean of the Gaussian function is the centre of the grid, and the distribution of the Gaussian function varies (refer to Figure~\ref{fig:gaussianenv}). Pseudo-code for generation of Gaussian environments is provided in Algorithm~\ref{algorithm:gaussian}.
 
 The positions of the non-prioritized items are selected after placing the prioritized items. The position for the non-prioritized items are selected from a uniform distribution. 
 
@@ -324,7 +324,7 @@ The swarm size, $c$, is defined as the density of cells, of the grid size $S$ (t
 The honey bee algorithm specific parameters were selected based on \cite{seeley2009wisdom}, where
  $t_{wait}=200$ time steps, $f_{max}=100$ time steps, $\Phi=0.8$ and $\rho=0.1$. Testing the effect of each of the honey bee algorithm specific parameters was not in the scope of this thesis.
 
-The initial position of each robot was randomly selected, adjacent to the sink. All robots began in the exploration state -- state that is shared by all algorithms. For each set, environmental and swarm configurations, each simulation was run for 10000 time steps. An experiment consists of 30 repeated sam for a specific set of parameters.
+The initial position of each robot was randomly selected, adjacent to the sink. All robots began in the exploration state -- state that is shared by all algorithms. For each set, environmental and swarm configurations, each simulation was run for 10000 time steps. An experiment consists of 30 repeated samples, for a set of environment and swarm parameters.
 
 \section{Performance Measures}
 \label{thri:third:performancemeasures}
@@ -362,12 +362,12 @@ The differences are normalized by $E_p(\hat{\tau}_{r_i}, {r_i})$ in order to rem
 
 This study evaluates flexibility, by analysing how swarm efficiency on various environment distributions (ED), described in Section~\ref{experimentenvironments}, is affected by swarm specialization ratio, $\tau_i$ (described in Section~\ref{swarmparameters}).
 
-The value for $\tau$, which results in the best average efficiency, $E_p$, for a specific $ED$ is denoted as $\hat{\tau}_{ED}$ and the average efficiency for a specific swarm specialization ratio, $\tau$ with specific ED is denoted $E_p(\tau, ED)$.
+The value for $\tau$, which results in the best average efficiency, $E_P$, for a specific $ED$ is denoted as $\hat{\tau}_{ED}$ and the average efficiency for a specific swarm specialization ratio, $\tau$ with specific ED is denoted $E_P(\tau, ED)$.
 
 Flexibility over a specific environment distribution $ED_i$ is defined as:
 
 \begin{equation}
-F_{ED_i} = \sum_{j=1}^{n} \dfrac{|E_p(\hat{\tau}_{ED_i}, ED_i)-E_p(\hat{\tau}_{ED_i}, ED_j)|}{E_p(\hat{\tau}_{ED_i}, ED_i)}
+F_{ED_i} = \sum_{j=1}^{n} \dfrac{|E_(\hat{\tau}_{ED_i}, ED_i)-E_p(\hat{\tau}_{ED_i}, ED_j)|}{E_p(\hat{\tau}_{ED_i}, ED_i)}
 \end{equation}
 
 Flexibility over all environment distributions $ED$ is defined as:
@@ -375,7 +375,7 @@ Flexibility over all environment distributions $ED$ is defined as:
 	F_{ED} = \sum_{i=1}^{n} F_{ED_i}
 \end{equation}
 
-A larger $F_{ED}$ is for an algorithm compared to another, the means the algorithm cannot generalize well over other  environment item distributions, and is less flexible.
+A larger value for $F_{ED}$ of one algorithm, compared to another algorithm, means that the algorithm cannot generalize as well over other environment item distributions. It follows that an algorithm with a larger value for $F_{ED}$ is less flexible.
 
 \subsection{Scalability}
 \label{setup:scalability}
@@ -386,37 +386,37 @@ Scalability is described in Section~\ref{sr:scalabilty}. The study of scalabilit
 \label{swarmsizescalability}
 The efficiency of a robot swarm should be relatively undisturbed by changes in group sizes. This property is known as swarm size scalability. When the efficiency of an algorithm improves linearly (or superlinearly) as swarm size increases, an algorithm is considered scalable. However, due to increased inter-robot interference in larger swarm sizes, scalability is often sub-linear \cite{lerman2002mathematical}. Many swarm robotics algorithms focus on the use of division of labour, navigation or communication in order to decrease inter-robot interference \cite{lerman2002mathematical, schneider1998territorial}. The scalability performance measures are based on the scalability performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem, by only taking into account the prioritized items.
 
-In order to evaluate the swarm size scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of swarm sizes, $c_i$, as defined in Section~\ref{swarmparameters}. In order to compare scalability of the algorithms, the efficiency $E_p$ at each swarm size $c$ is normalized by the efficiency of each algorithm, at the smallest swarm size ($c_0=0.1$). Swarm size scalability, $SS$, for a specific algorithm is calculated as follows:
+In order to evaluate the swarm size scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of swarm sizes, $c_i$, as defined in Section~\ref{swarmparameters}. In order to compare scalability of the algorithms, the efficiency $E_P$ at each swarm size $c$ is normalized by the efficiency of each algorithm, at the smallest swarm size ($c_0=0.1$). Swarm size scalability, $SS$, for a specific algorithm is calculated as follows:
 
 \begin{equation}
-	SS(c_i) = \dfrac{E_p(c_i)-E_p(c_0)}{E_p(c_0)}
+	SS(c_i) = \dfrac{E_P(c_i)-E_P(c_0)}{E_P(c_0)}
 \end{equation}
 
 \begin{equation}
 	SS = \sum_{i=1}^{n} SS(c_i)
 \end{equation}
 
-where $E_p(c_i)$ is the average efficiency $E_p$ over all environments with swarm density $c_i$, and $E_p(c_0)$ is the average efficiency $E_p$ over all experiments where swarm density is $c_0$. By plotting $SS(c_i)$ for all values of $i\in(0,N)$, one will be able to determine how linear the scalability of each algorithm is. Normalizing each value for $E_p(c_i)$ by $E_p(c_0)$ for each algorithm, removes the specific overall efficiencies of each algorithm, and allows the algorithms to be compared purely on scalability. The total swarm scalability $SS$, provides a single figure, per algorithm, which one can use to compare overall swarm scalability. The larger $SS$ is, the better the swarm size scalability. 
+where $E_P(c_i)$ is the average efficiency $E_P$ over all environments with swarm density $c_i$, and $E_P(c_0)$ is the average efficiency $E_P$ over all experiments where swarm density is $c_0$. By plotting $SS(c_i)$ for all values of $i\in(0,N)$, one will be able to determine how linear the scalability of each algorithm is. Normalizing each value for $E_P(c_i)$ by $E_P(c_0)$ for each algorithm, removes the specific overall efficiencies of each algorithm, and allows the algorithms to be compared purely on scalability. The total swarm scalability $SS$, provides a single figure, per algorithm, which one can use to compare overall swarm scalability. The larger $SS$ is, the better the swarm size scalability. 
 
 The swarm size scalability study will specifically look at large environments ($S=500$) to avoid the possibility of an environment running out of items to forage.
 
 \subsubsection{Problem Scalability}
 \label{setup:problemscalability}
-If the efficiency, $E_p$, of an algorithm decreases linearly (or super-linearly) as problem complexity increases, then an algorithm can be seen as scalable. Similarly to swarm size scalability, described in Section~\ref{swarmsizescalability}, problem scalability is often sub-linear, due to increased environmental interference.
+If the efficiency, $E_P$, of an algorithm decreases linearly (or super-linearly) as problem complexity increases, then an algorithm can be seen as scalable. Similarly to swarm size scalability, described in Section~\ref{swarmsizescalability}, problem scalability is often sub-linear, due to increased environmental interference.
 
-In order to evaluate the problem scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of environment item densities, $p$, defined in Section~\ref{experimentenvironments}. In order to compare scalability of the algorithms to each other, the efficiency $E_p$ at each item density $p_i$ is normalized by the efficiency of each algorithm, at the smallest item density ($p_0=0.1$). 
+In order to evaluate the problem scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of environment item densities, $p$, defined in Section~\ref{experimentenvironments}. In order to compare scalability of the algorithms to each other, the efficiency $E_P$ at each item density $p_i$ is normalized by the efficiency of each algorithm, at the smallest item density ($p_0=0.1$). 
 
 Problem scalability (PS) for an algorithm, for at an item density $p_i$ is defined as follows:
 
 \begin{equation}
-	PS(p_i) = \dfrac{E_p(p_i)-E_p(p_0)}{E_p(p_0)}
+	PS(p_i) = \dfrac{E_P(p_i)-E_P(p_0)}{E_P(p_0)}
 \end{equation}
 
 \begin{equation}
 	PS = \sum_{i=1}^{n} PS(p_i)
 \end{equation}
 
-, where $E_p(p_i)$ is the average efficiency $E_p$ over all environments with environment density $p_i$, and $E_p(p_0)$ is the average efficiency $E_p$ over all experiments where environment density is $p_0$. By plotting $PS(c_i)$ for all values of $i\in(0,N)$, one will be able to determine how linear the problem scalability of each algorithm is. Normalizing each value for $E_p(p_i)$ by $E_p(p_0)$, for each algorithm, removes the specific overall efficiencies of each algorithm, and allows the algorithms to be compared purely on scalability.
+, where $E_P(p_i)$ is the average efficiency $E_P$ over all environments with environment density $p_i$, and $E_P(p_0)$ is the average efficiency $E_P$ over all experiments where environment density is $p_0$. By plotting $PS(c_i)$ for all values of $i\in(0,N)$, one will be able to determine how linear the problem scalability of each algorithm is. Normalizing each value for $E_P(p_i)$ by $E_P(p_0)$, for each algorithm, removes the specific overall efficiencies of each algorithm, and allows the algorithms to be compared purely on scalability.
 
 Similarly to total swarm scalability $SS$, defined in Section~\ref{swarmsizescalability}, the total problem scalability, $PS$, provides a single figure, per algorithm, which one can use to compare overall problem scalability. The larger $PS$ is, the better the problem scalability.
 
@@ -431,19 +431,19 @@ Despite not being one of the more typical performance measures for swarm robotic
 To give incite into the effect of environmental and swarm parameters of overall performance, and characterise the effects of certain behaviours, the following metrics have been recorded:
 
 \begin{itemize}
-\item The total prioritized items foraged over time, $E_pt$. The total prioritized items foraged are recorded every 200 time steps and are normalized with the total prioritized items that exist in the specific environment.
-\item The total non-prioritized items foraged over time, $E_npt$. The total non-prioritized items foraged are recorded every 200 time steps and are normalized with the total non-prioritized items that exist in the specific environment.
+\item The total prioritized items foraged over time, $E^t_P$. The total prioritized items foraged are recorded every 200 time steps and are normalized with the total prioritized items that exist in the specific environment.
+\item The total non-prioritized items foraged over time, $E^t_{NP}$. The total non-prioritized items foraged are recorded every 200 time steps and are normalized with the total non-prioritized items that exist in the specific environment.
 \end{itemize}
 
 \subsubsection{Swarm Specialization Ratio over time}
-Swarm specialization ratio stays constant for DAA and NA, but the swarm specialization ratio changes for HBA, due to the division of labour mechanisms. In order to gain more understanding of how the division of labour mechanism is performing, the swarm specialization ratio over time, $\tau_t$ is a useful measure to track. The swarm specialization ratio is recorded every 200 time steps.
+Swarm specialization ratio stays constant for the Desert ant algorithm and the Na\"ive algorithm, but the swarm specialization ratio changes for the Honey bee algorithm, due to the division of labour mechanisms. In order to gain more understanding of how the division of labour mechanism is performing, the swarm specialization ratio over time, $\tau_t$ is tracked. The swarm specialization ratio is recorded every 200 time steps.
 
 \subsubsection{Time Spent Performing Recruitment}
-Unlike DAA and NA, HBA robots perform behaviours that are not directly involved in retrieving items - in particular, the recruitment activities form part of the division of labout mechanism. In order to better understand the influence of the division of labour mechanisms, the average percentage of each robot in a swarm spent on each division of labour activity is recorded as follows:
+Unlike the Desert ant algorithm and the Na\"ive algorithm, the Honey bee algorithm robots perform behaviours that are not directly involved in retrieving items - in particular, the recruitment activities form part of the division of labour mechanism. In order to better understand the influence of the division of labour mechanisms, the average percentage of each robot in a swarm spent on each division of labour activity is recorded as follows:
 
 \begin{itemize}
 \item $t_{wait}$ - the average percentage of total time steps spent by each robot in the waiting state.
-\item $t_{recruitment}$ - the average percentage of total time steps spent by each robot in the waiting state.
+\item $t_{recruitment}$ - the average percentage of total time steps spent by each robot in the recruitment state.
 \end{itemize}
 
 
