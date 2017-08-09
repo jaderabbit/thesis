@@ -232,13 +232,8 @@ The environment axis is divided into minor axes as follows:
 
 \item \textbf{Item distribution}: Item distributions in the environment can vary. Items can be placed  in the environment, in known locations, uniformly distributed, or in clusters.
 
-\item \textbf{The type of items} in terms of whether they move (active) or not (static) and the quantity of items (single or multiple) and the number of types of items - either foraging homogenous items or heterogenous items which is known as multi-foraging. Multi-foraging is defined as a type of foraging problem where instead multiple object types are required to be foraged. \cite{Balch99rewardand}. The types of objects can have different characteristics and can be collected together or separately.
-
-Jones et al \cite{jones2003adaptive} describe a version of the multi-foraging problem where there exist two types of items and items are consumed instead of transported to the sink. As items are consumed, the same type of item is placed at a random spot in the arena. Robots signal what type of item they are foraging by turning on a coloured light. Other robots use the coloured light to build a local history of the number of robots they have seen allocated to each item type. A history of the number of observed items of each type is also collected. The local observations are used to estimate the current division of labour of the swarm between foraging the two item types. The estimations are used to determine the probability of changing from foraging the current item type to the other type of item. 
-
-Campo \cite{campo2007efficient} identifies characteristics of efficient multi-foraging behaviour by developing and validating a mathematical model to predict optimal foraging behaviour. The proposed foraging decision algorithm uses the amount of other robots encountered as well as the amount of prey encountered to only allocate enough robots foraging  so that remaining robots can spare energy.
-
-Balch \cite{balch1999impact} develops a technique for multi-foraging and determining the impact of robot diversity on multi-foraging performance. This thesis's does not consider robot diversity since robots are homogeneous.
+\item \textbf{Item types}: Items can be classified into types in terms of their activity (active or static), homogeniety (homogenous or heterogenous), and quantity (single or multiple) \cite{Balch99rewardand,
+ campo2007efficient, jones2003adaptive}
 
 \end{itemize}
 
