@@ -7,39 +7,39 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In swarm robotics, robot foraging has become a benchmark problem due to its complex nature involving the coordination of numerous sub-tasks. Robot foraging is also one of the swarm robotics problems that has some very obvious useful applications. This chapter aims to provide an in-depth review of what foraging is, how different social insects forage as well as to provide a review of existing foraging algorithms in swarm robotics. The definition of foraging in swarm robotics is discussed in Section~\ref{sec:second:definition}, while Section~{foraginginnature} describes foraging behaviours observed in nature, specifically in bees and ants. Section~\ref{biological:ants} provides a taxonomy of the types of swarm robotic foraging algorithms, and the challenges that foraging algorithms must address are discussed in Section~\ref{challengesinforaging}. Existing swarm robotics foraging algorithms are outlined in Section~\ref{foraging:foraginginswarmrobotics} , and prioritized foraging is defined and discussed in Section~
-\ref{sec:second:prioritizedforaging}. Lastly, the chapter is summarized in Section~\ref{foraging:summary}. 
+In swarm robotics, robot foraging has become a benchmark problem due to its complex nature involving the coordination of numerous sub-tasks. Robot foraging is also one of the swarm robotics problems that has some very obvious useful applications. This chapter aims to provide an in-depth review of what foraging is, how different social insects forage as well as to provide a review of existing foraging algorithms in swarm robotics. A definition of foraging in swarm robotics is provided in Section~\ref{sec:second:definition}, while Section~\ref{foraginginnature} describes foraging behaviours observed in nature, specifically in bees and ants. Section~\ref{foraging:foraginginswarmrobotics} presents a taxonomy for swarm robot foraging and as well as outlines existing swarm robotics foraging algorithms. Prioritized foraging is defined and discussed in Section~
+\ref{prioritizedforaging}, and chapter is summarized in Section~\ref{foraging:summary}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Definition}
+\section{Definition of Foraging}
 \label{sec:second:definition}
 
-Foraging was initially studied by biologists, particularly the foraging behaviour of ants \cite{holldobler1990ants,bernstein1974seasonal}, bees \cite{seeley2009wisdom} and bacteria \cite{resnick1994turtles}. Foraging has a variety of real-life applications such as search and rescue \cite{jennings1997cooperative,murphy2000biomimetic}, and waste clean-up \cite{balch1995io}. Numerous swarm robotics algorithms have been developed to improve robustness, time and energy efficiency of the foraging process for multiple variations of the foraging problem as outlined in \cite{winfield2009foraging}. 
+Foraging was initially studied by biologists, particularly the foraging behaviour of ants \cite{holldobler1990ants,bernstein1974seasonal}, bees \cite{seeley2009wisdom} and bacteria \cite{resnick1994turtles}. Foraging has a variety of real-life applications such as search and rescue \cite{jennings1997cooperative,murphy2000biomimetic} and waste clean-up \cite{balch1995io}. Numerous swarm robotics algorithms have been developed to improve robustness, time, and energy efficiency of the foraging process for multiple variations of the foraging problem as outlined in \cite{winfield2009foraging}. 
 
 Foraging is the act of searching for and collection (or capturing) food for storage and consumption \cite{winfield2009foraging}. Foraging is an important problem that was first addressed by biologists in the examination of nature, particularly with the foraging behaviour of ants and bacteria. In a robot context, foraging is defined as the search and collection of scattered objects in an environment and returning those objects to a collection point.
 
-The foraging sub-tasks involve the efficient search and collection of food, homing whilst carrying food to the nest site, and then depositing of the food item in the nest before returning to the foraging task. Efficient foraging requires indirect or direct co-operation between individuals, in order to transport food items too large for individual transport. The foraging process has been adapted for numerous foraging problems and for different types of robots.
+Foraging sub-tasks include the efficient search and collection of food, homing whilst carrying food to the nest site, and then depositing of the food item in the nest before returning to the foraging task. Efficient foraging requires indirect or direct co-operation between individuals, in order to transport food items too large for individual transport. The foraging process has been adapted for numerous foraging problems and for different types of robots.
 
 
 \section{Foraging in Nature}
 \label{foraginginnature}
-As with many swarm robotics problems, the inspiration for foraging comes from nature, in particular, social insects such as ants and honey bees. This section describes the biological inspiration for foraging.
+As with many swarm robotics problems, the inspiration for foraging comes from nature, in particular, social insects such as ants and honey bees. This section describes the biological inspiration for foraging. Section~\ref{biological:ants} describes foraging in ants, while foraging activities of bees are discussed in Section~\ref{bees:biologicalinspiration}. Section~\ref{foraging:other} discusses other types of foraging techniques seen in nature.
 
 
-\subsection{Ants}
+\subsection{Ant Foraging Behaviour}
 \label{biological:ants}
 % Intro 
 As with many swarm robotics problems, the inspiration for foraging comes from nature, in particular, social insects such as ants and honey bees. This section describes the biological models that are used in the algorithms derived by this thesis. 
 
 %Ants
-The study of ants has revealed that impressive emergent activities can be achieved with simple interacting agents with only a few simple rules. Ants use a form of communication known as stigmergy \cite{dorigo2000ant}. Ants perform indirect communication between ants by depositing a substance known as pheromone. In foraging, pheromone is deposited on the paths between the nest and the food source. Other ants detect the deposited pheromone and will prefer to follow paths which have a greater amount of pheromone deposit. Ant pheromones have been modelled in numerous swarm intelligence algorithms such as ant colony optimization and ant systems \cite{dorigo2006ant, dorigo2010ant}. 
+The study of ants has revealed that impressive emergent activities can be achieved with simple interacting agents with only a few simple rules. Ants use a form of communication known as stigmergy \cite{dorigo2000ant}. Ants perform indirect communication between ants by depositing a substance known because pheromone. In foraging, pheromone is deposited on the paths between the nest and the food source. Other ants detect the deposited pheromone and will prefer to follow paths which have a greater amount of pheromone deposit. Ant pheromones have been modelled in numerous swarm intelligence algorithms such as ant systems \cite{dorigo2006ant, dorigo2010ant}. 
  
-Although algorithms based on ant foraging behaviour are used to solve optimization problems, the algorithms are often difficult to replicate in a real-life robotic environment since most of the algorithms need to model pheromone dropping and detection. A robotics algorithm that uses pheromone requires robots to be equipped with a substance-distributors, beacon-deployers or complex communication that simulates pheromone deposition and trail-following \cite{hoff2010two}.
+Although algorithms based on ant foraging behaviour are used to solve optimization problems, the algorithms are often difficult to replicate in a real-life robot environment, since most of the algorithms need to model pheromone dropping and detection. A robotics algorithm that uses pheromone requires robots to be equipped with a substance-distributors, beacon-deployers or complex communication that simulates pheromone deposition and trail-following \cite{hoff2010two}.
 
-The desert seed-harvester ant (\textit{Pogonomyrmex ant}) does not make use of stigmergy to forage, as pheromone deposited on desert sand would be blown away by the wind \cite{collett1992visual,hecker2015beyond}. Instead, desert ants use a technique called path integration for navigation to relocate food sources that have already been found by random exploration \cite{collett1998local,wehner2003desert}. Fig~\ref{pathintegration} demonstrates path integration. The black solid lines represent the path of the ant and the blue dotted lines show how the direction to the nest is maintained as the ant explores. The ant is constantly monitoring the change in heading from the original heading such that at the destination the ant has a direction directly back to the sink. As a result, a shortcut back to the nest is calculated in order to minimize heat stress. The shortcut back to the nest is known as the home vector \cite{muller1988path}. Path integration, more commonly known as dead reckoning, is a key evolutionary aspect gained from living in the hot barren desert. When path integration fails, the ant resorts to using landmarks, such as the sun, for navigation \cite{collett1998local}.
+The desert seed-harvester ant (\textit{Pogonomyrmex ant}) does not make use of stigmergy to forage, as pheromone deposited on desert sand would be blown away by the wind \cite{collett1992visual,hecker2015beyond}. Instead, desert ants use a technique called path integration for navigation to relocate food sources that have already been found by random exploration \cite{collett1998local,wehner2003desert}. Fig~\ref{pathintegration} demonstrates path integration. The black solid lines represent the path of the ant and the blue dotted lines show how the direction to the nest is maintained as the ant explores. The ant is constantly monitoring the change in heading from the original heading such that, at the destination, the ant has a direction directly back to the sink. As a result, a shortcut back to the nest is calculated in order to minimize heat stress. The shortcut back to the nest is known as the home vector \cite{muller1988path}. Path integration, more commonly known as dead reckoning, is a key evolutionary aspect gained from living in the hot barren desert. When path integration fails, the ant resorts to using landmarks, such as the sun, for navigation \cite{collett1998local}.
 
 \begin{figure} [h]
 	\centering
@@ -48,40 +48,37 @@ The desert seed-harvester ant (\textit{Pogonomyrmex ant}) does not make use of s
 	\label{pathintegration}
 \end{figure}
 
-Due to the lack of pheromone, the desert seed-harvester ant is thus simpler to model for real-robot interaction. Desert seed-harvester ant foraging has been modelled in \cite{moller1998modeling,hecker2012formica}. Hecker et al \cite{hecker2012formica} performed experiments to compare the performance of two foraging algorithms algorithms: The one algorithm was based on the desert ant foraging which has no pheromone-like communication and the other used including pheromone-like communication. It was shown that communication improved performance; however, the desert ant based algorithm still performed comparatively well. 
+Due to the lack of pheromone, the desert seed-harvester ant is thus simpler to model for real-robot interaction. Desert seed-harvester ant foraging has been modelled in \cite{moller1998modeling,hecker2012formica}. Hecker \textit{et al} \cite{hecker2012formica} performed experiments to compare the performance of two foraging algorithms: The one algorithm was based on desert ant foraging which has no pheromone-like communication and the other algorithm included pheromone-like communication. It was shown that communication improved performance; however, the desert ant based algorithm still performed comparatively well. 
 
-\subsection{Bees}
+\subsection{Bee Foraging Behaviour}
 \label{bees:biologicalinspiration}
 Bees have an impressive set of abilities considering the simplicity of a single individual. They have the ability to remember the colour and shape of flowers \cite{zhang2006honeybee}, and in terms of navigation, they are able to learn local features and routes due to well-developed learning and memorizing capacities \cite{menzel2001cognitive}. Honey-bees are even time aware \cite{moore1989influence}. 
 
 Honey bees have efficient division of labour between different functions in the hive, such as foraging and brood-care. Within the foraging activity itself, honey bees perform foraging-specific division of labours. Honey bee foraging is made up of three different roles namely employed foraging, unemployed foraging and scouting \cite{seeley2009wisdom}. Scouts explore the environment to locate new food sources. Once a source has been found, scouts return to the hive to communicate information about the located food source. To communicate the foraging information, scout bees perform a waggle-dance at the hive. The waggle-dance communicates information about the distance and bearing of the resource. The communication of a good foraging site is known as recruitment \cite{seeley2009wisdom}.
 
-Unemployed foragers wait on the dance floor, and evaluate the dances of the scout bees. An unemployed bee select a location described by the scout bees, and become an employed forager. Employed forager bees use the information about the resource, attempt to locate the source, load themselves with food, and return to the hive where unemployed foragers are ready to offload the food. Jansen \cite{janson2007searching} suggests that unemployed bees become exploring scouts when they do not detect any dancing scout bees. 
+Unemployed foragers wait on the dance floor, and evaluate the dances of the scout bees. An unemployed bee selects a location described by the scout bees, and become an employed forager. Employed forager bees use the information about the resource, attempt to locate the source, load themselves with food, and return to the hive where unemployed foragers are ready to offload the food. Jansen \cite{janson2007searching} suggests that unemployed bees become exploring scouts when they do not detect any dancing scout bees. 
 
-\subsection{Bacteria}
 
-The $E. coli$ bacteria forage for carbohydrates in the human gut. The bacteria have a unique search mechanism whereby they move in the same direction for a period of time (which is called a "run") and then change direction using their complex flagella (known as a "tumble"). The bacteria exhibit the behaviour continuing to move in a direction, if the bacteria are moving up a nutrient gradient. Bacteria stop moving in a direction, if they're moving down a nutrient gradient in order to avoid toxic substances. Under certain conditions, the bacteria secrete an attractant substance which attracts the bacteria to one another for protection.
+\subsection{Other Foraging Behaviours}
+\label{foraging:other}
+Ant and bee foraging behaviours are focused on in this thesis, but there exist other foraging behaviours in nature. This section briefly discusses those other foraging behaviours observed in nature.
 
-The foraging behaviour of $E. coli$ bacteria is used for inspiration for a computational intelligence algorithm \cite{passino2010bacterial} and particle swarm optimization is, for instance based on the flocking behaviour of birds - a flocking behaviour exhibited when finding food, amongst other things \cite{kennedy1995particle}. 
+The $E. coli$ bacteria forage for carbohydrates in the human gut. Bacteria have a unique search mechanism whereby they move in the same direction for a period of time (which is called a ``run") and then change direction using their complex flagella (known as a ``tumble"). Bacteria exhibit the behaviour of continuing to move in a direction if the nutrient gradient is positive in that direction. Bacteria stop moving in a direction, if the nutrient gradient of that direction is negative, in order to avoid toxic substances. Under certain conditions, the bacteria secrete an attractant substance which attracts the bacteria to one another for protection. The foraging behaviour of $E. coli$ bacteria inspired a computational intelligence algorithm \cite{passino2010bacterial}.
 
-\subsection{Predator Prey}
+In nature, a predator animal persues a prey animal in order to forage. Predator-prey foraging behaviour has been extensively studied in the field of optimal foraging theory, which aims to predict the behaviour of an animal searching for food \cite{charnov1976optimal}. Predator-prey models have been used in other swarm intelligence techniques in multi-objective optimization problems \cite{nolfi1998coevolving}.
 
-Predator prey scenarios are foraging problems where the items to be foraged actively avoid capture (known as prey)  and the animals pursuing the prey are known as predators \cite{winfield2009foraging}. Predator prey foraging has been extensively studied in the field of Optimal Foraging Theory, which aims to predict the behaviour of an animal searching for food \cite{charnov1976optimal}. 
-
-% TODO: Quote some of the examples of how certain predators capture certain prey.
-
-Predator-prey  models have been used in other swarm intelligence techniques in multi-objective optimization problems \cite{nolfi1998coevolving}.
+Particle swarm optimization is loosely inspired by the flocking behaviour of birds when foraging for food \cite{kennedy1995particle}.
 
 \section{Foraging in Swarm Robotics}
 \label{foraging:foraginginswarmrobotics}
-The following section addresses foraging in a swarm robotics context. Firstly, a taxonomy of robot foraging is presented and then existing nature-inspired swarm robotics foraging algorithms are discussed.
+This section addresses foraging in a swarm robotics context. Firstly, a taxonomy of robot foraging is presented and then existing nature-inspired swarm robotics foraging algorithms are discussed.
 
 \subsection{Taxonomy of Robot Foraging}
 \label{sec:second:taxonomy}
 
-Foraging is a popular problem due to the vast potential opportunity of foraging for application to a variety of real-world problems from search and rescue \cite{jennings1997cooperative} to toxic waste retrieval to mining. It is beneficial to present a taxonomy of robot foraging that can be used to classify existing research about foraging as well as contextualize the specific foraging problems addressed by this thesis. One should note that the foraging taxonomy presented also includes non-swarm robotic foraging.
+Foraging is a popular problem due to the vast potential opportunities of foraging for application to a variety of real-world problems, from search and rescue \cite{jennings1997cooperative} to toxic waste retrieval to mining. It is beneficial to present a taxonomy of robot foraging that can be used to classify existing research about foraging as well as to contextualize the specific foraging problems addressed by this thesis. One should note that the foraging taxonomy presented also includes non-swarm robotic foraging.
 
-Multiple taxonomies have been developed as robot foraging research has progressed \cite{oster1978caste,ostergaard2001emergent}. However a more recent and complete foraging taxonomy is presented in \cite{winfield2009foraging}. The taxonomy classifies foraging solutions based on four major axes: the foragi ng environment, the capabilities and types of robots used for foraging, performance aspects, and the foraging strategy used in a foraging algorithm. Each of these major axes have a number of minor axes which are outlined in Table~\ref{foragingtaxonomytable_part1} and Table~\ref{foragingtaxonomytable_part2}.  The following sections discuss each of the major and minor axes in more detail
+Multiple taxonomies have been developed as robot foraging research has progressed \cite{oster1978caste,ostergaard2001emergent}. However, a more recent and complete foraging taxonomy is presented in \cite{winfield2009foraging}. The taxonomy classifies foraging solutions based on four major axes: the foraging environment, the capabilities and types of robots used for foraging, performance aspects, and the foraging strategy used in a foraging algorithm. Each of these major axes has a number of minor axes which are outlined in Table~\ref{foragingtaxonomytable_part1} and Table~\ref{foragingtaxonomytable_part2}.  The following sections discuss each of the major and minor axes in more detail.
 
 \begin{table}
 \centering
@@ -180,58 +177,60 @@ Multiple taxonomies have been developed as robot foraging research has progresse
 		&	& Master slave \\\hline
 \end{tabular}
 \end{table}
-
+%% editinghere!
 \subsubsection{Robot Axis}
-The robot axis refers to qualities such as  the number of robots and the sensory, power and actuation capabilities of the robots. 
+
+The robot axis refers to qualities such as the number of robots and the sensory, power, and actuation capabilities of the robots, discussed as follows:
+
 \begin{itemize}
-\item The number of robots used in the foraging problem. If only a single robot or few robots are used to forage, then that would not be considered a swarm robotics.
+\item \textbf{The number of robots used in the foraging problem}: If only a single robot or few robots are used to forage, then that would not be considered swarm robotics.
 
-\item Robots can either be all identical (homogenous) or have different capabilities (heterogenous). Homogenous swarms are the more common type of robots in swarm foraging, but there does exist foraging research using a heterogenous swarm. In particular, the Swarmanoid project uses a heterogenous swarm to forage an item \cite{dorigo2013swarmanoid}. The Swarmanoid swarm consists of three types of robots with three separate responsibilities: The eye-bots locate the item, the foot-bots transport the hand-bot to the item and the hand-bot climbs until it can grab the item. 
+\item \textbf{Type}: Robots can either be all identical (homogenous) or have different capabilities (heterogenous). Homogenous swarms are the more common type of robots in swarm foraging, but research using a heterogenous swarm does exist. In particular, the Swarmanoid project uses a heterogenous swarm to forage an item \cite{dorigo2013swarmanoid}. The Swarmanoid swarm consists of three types of robots with three separate responsibilities: the eye-bots locate the item, the foot-bots transport the hand-bot to the item and the hand-bot climbs until it can grab the item. 
 
-\item The sensors of the robots can be of a limited range or global sensors with unlimited range. Foraging research that uses global sensors is not considered swarm robotics, thus foraging algorithms using global sensors are not addressed in this literature study.
+\item \textbf{Object Sensing}: The sensors of the robots can be of a limited range or global sensors with unlimited range. Foraging research that uses global sensors is not considered swarm robotics. Therefore foraging algorithms using global sensors are not addressed in this literature study.
 
-\item Localization refers to the robots ability to position themselves in the environment. Localization could be non-existent, relative or absolute ( a global positioning system (GPS)). Absolute localization is not considered swarm robotics as then the swarm is dependant on a centralized source of information violating the swarm robotic principle of decentralization. Relative positioning is the use of local information in order for a robot to position itself in an environment, and is suited to swarm robotics foraging problems. Relative localization techniques such as path integration are used in this thesis.
+\item \textbf{Localization} refers to the robot's ability to position themselves in the environment. Localization could be non-existent, relative, or absolute. Absolute localization, such as a global positioning system (GPS), is not considered swarm robotics because the swarm will be dependant on a centralized source of information, violating the swarm robotic principle of decentralization. Relative positioning is the use of local information in order for a robot to position itself in an environment. Relative positioning is suited to swarm robotics foraging problems, since relative positioning is decentralized. Relative localization techniques such as path integration are used in this thesis.
 
-\item Communication capabilities of the robots to each other can have infinite range, near range or not exist at all. Infinite range communication is out of scope for swarm robotics research since local communication is a requirement of swarm robotics. Near range communication can occur via light-based signals\cite{sugawara2002swarming} or local direct communication methods such as Bluetooth. The communication occurs in differing topologies such as broadcast, direct, tree or graph topologies \cite{dudek1993taxonomy}
+\item Communication capabilities of the robots to each other can have an infinite range, a near range, or not exist at all. Infinite range communication is out of scope for swarm robotics research since local communication is a requirement of swarm robotics. Near range communication can occur via light-based signals \cite{sugawara2002swarming} or local direct communication methods such as Bluetooth. The communication occurs in differing topologies such as broadcast, direct, tree, or graph topologies \cite{dudek1993taxonomy}.
 
 \item Robots can have an infinite power source, a limited power source, or an energy source which can be sustained by foraging resources. Studies focused on energy efficiency or automatic-charging have robots with limited energy sources or an energy source that can be sustained by foraging energy resources \cite{liu2006strategies}.
 
 \end{itemize}
 
 \subsubsection{Performance Axis}
-The performance axis characterises robot foraging on the methods used to evaluate the performance of a foraging algorithm, such as energy usage, or time taken to forage each item. Each minor axis described as follows:
+The performance axis characterises robot foraging on the methods used to evaluate the performance of a foraging algorithm, such as energy usage, or the time taken to forage each item. Each minor axis is described as follows:
 
 \begin{itemize}
-\item Performance of a foraging algorithm can be classified in terms of time taken to forage. A foraging experiment can be allowed infinite time to foraged, a fixed time for foraging or is attempting to minimize the time taken to forage.
-\item The energy that a robot can spend on foraging can be a fixed amount of energy, an unlimited amount of energy or a foraging algorithm can attempt to minimize the energy used to forage \cite{liu2006strategies}.
+\item The performance of a foraging algorithm can be classified in terms of the time taken to forage. A foraging experiment can be allowed an infinite time to forage, a fixed time for foraging, or may attempt to minimize the time taken to forage.
+\item The energy that a robot can spend on foraging can be a fixed amount of energy, an unlimited amount of energy, or a foraging algorithm can attempt to minimize the energy used to forage \cite{liu2006strategies}.
 \end{itemize}
 
 \subsubsection{Strategy Axis}
-The strategy axis characterizes algorithms by the techniques that a foraging algorithm implements, such as the type of search used or the type of recruitment technique used in a foraging algorithm. Each type of strategy is discussed as follows:
+The strategy axis characterizes algorithms by the techniques that a foraging algorithm implements, such as the type of search used, or the type of recruitment technique used in a foraging algorithm. Each type of strategy is discussed as follows:
 
 \begin{itemize}
-\item The first stage of most foraging algorithm is the search for items. There are various techniques for searching for items, such as: random search, trail following \cite{schmickl2006trophallaxis}, following other robots \cite{dorigo2013swarmanoid, werger1996robotic}, groups of robots looking for items together \cite{vincent2004framework}, where robots search in geometrical patterns and where search can only occur in a limited range of the sink.
+\item The first stage of most foraging algorithms is the search for items. There are various techniques for searching for items, such as random search, trail following \cite{schmickl2006trophallaxis}, following other robots \cite{dorigo2013swarmanoid, werger1996robotic}, groups of robots looking for items together \cite{vincent2004framework}.
 
-\item Once an item is found it must be picked up. The techniques used by an algorithm for grabbing an item can be used to classify the algorithm. An item can be grabbed by a single robot or a group of robots can attempt to co-operatively grab an item. Closely related to grabbing an item, is the techniqe for transorting an item to the sink. Transport of an item back to the sink can be performed by a single robot or by a a group of co-operating robots. A review of co-operative transport and grabbing techniques is presented in \cite{kube2000cooperative}.
+\item Once an item is found it must be picked up. The techniques used by a robot for grabbing an item can be used to classify the algorithm. An item can be grabbed by a single robot or a group of robots can attempt to co-operatively grab an item. Closely related to grabbing an item is the techniqe for transorting an item to the sink. Transport of an item back to the sink can be performed by a single robot or by a a group of co-operating robots. A review of co-operative transport and grabbing techniques is presented in \cite{kube2000cooperative}.
 
-\item In order to get to the sink, a number of homing techniques can be used such as homing on a beacon whereby the robot first changes their direction to face a beacon at the sink, and then move towards the beacon, following a trail or odometry \cite{winfield2009towards}.
+\item In order to get to the sink, a number of homing techniques exist. An example of a homing technique is beacon homing, where the robot first changes their direction to face a beacon at the sink, and then move towards the beacon, following a trail or odometry \cite{winfield2009towards}.
 
-\item Recruitment has been defined as activities that bring individuals to a location where work is required \cite{holldobler1990ants}. Robots can recruit other robots to forage certain areas. Direct recruitment is where a robot explicitly communicates to another robot to come forage an item source \cite{krieger2000ant,labella2006division}. Indirect recruitment occurs when a robot is recruited to forage by inexplicit markers, such as an increase in the number of foragers waiting by the sink, or an increase in the density of other foragers moving towards a particular source of the environment \cite{arkin1992cooperation}. 
+\item Recruitment has been defined as activities that bring individuals to a location where work is required \cite{holldobler1990ants}. Robots can recruit other robots to forage certain areas. Direct recruitment is where a robot explicitly communicates to another robot to forage an item source \cite{krieger2000ant,labella2006division}. Indirect recruitment occurs when a robot is recruited to forage by inexplicit markers, such as an increase in the number of foragers waiting by the sink, or an increase in the density of other foragers moving towards a particular source of the environment \cite{arkin1992cooperation}. 
 
-\item There exist various techniques for coordination of tasks between the robots in a swarm. A centralized control mechanism can be used for controlling all robots robots. Centralized control is not be considered swarm robotics and thus foraging algorithms that use centralized control are not addressed in this thesis. Master-slave configurations, where one robot leads the others, is another option for coordination of robots. A master-slave configuration with the ability to select a new master in the case that a master is destroyed, is swarm robotics since the swarm is then robust to individual failures \cite{karpov2015leader, hoeing2007auction}. A swarm with master-slave configuration that does not have the ability to select a new master is not swarm robotics. Swarms can have self-organized coordination, which means that each robot is in control of it's own activities and the self-organised coordination is an emergent property of the swarm. %TODO citation
+\item There exist various techniques for coordination of tasks between the robots in a swarm. A centralized control mechanism can be used for controlling all robots. Centralized control is not considered to be swarm robotics, and thus foraging algorithms that use centralized control are not addressed in this thesis. Master-slave configurations, where one robot leads the others, is another option for coordination of robots. A master-slave configuration with the ability to select a new master in the case that a master is destroyed, is considered as swarm robotics, since the swarm is then robust to individual failures \cite{karpov2015leader, hoeing2007auction}. A swarm with a master-slave configuration that does not have the ability to select a new master is not swarm robotics. Swarms can have self-organized coordination, which means that each robot is in control of its own activities and the self-organised coordination is an emergent property of the swarm. %TODO citation
 \end{itemize}
 
 \subsubsection{Environment Axis}
 \label{environmentaxis}
-The environment axis can be divided into minor axes as follows:
+The environment axis is divided into minor axes as follows:
 \begin{itemize}
-\item \textbf{The type of search space} which can be either unbounded or constrained by a boundary wall. Goldberg and Mataric \cite{Goldberg01designand} implement a foraging method for an unbounded environment. Schneider \cite{schneider1998territorial} developed a foraging algorithm which splits a constrained environment where the environments dimensions are known into bounded areas. Each robot is in charge of their own area.
+\item \textbf{The type of search space}: The type of search space can be either unbounded or constrained by a boundary wall. Goldberg and Mataric \cite{Goldberg01designand} implement a foraging method for an unbounded environment. Schneider \cite{schneider1998territorial} develops a foraging algorithm where a known constrained environment is plit into bounded areas. Each robot is assigned an area to forage.
 
-\item \textbf{The types and number of item sources} that exist in the environment. A single limited source denotes that all items come from the same source and the source as a limited capacity for items, such as in \cite{sugawara2002swarming}. A foraging environment with a single unlimited source is where one source exists but an unlimited number of items can be foraged from the source. A foraging environment can also have multiple sources, such as in \cite{Goldberg01designand}. 
+\item \textbf{Item sources}: Item sources can be of different types and quantities. A single limited source is a source where all items come from the same source and the source has a limited capacity for items \cite{sugawara2002swarming}. A foraging environment with a single unlimited source has one source that an unlimited number of items can be foraged from. A foraging environment can also have multiple sources, such as in \cite{Goldberg01designand}. 
 
 \item \textbf{The number of sinks}: The environment can have a single or multiple sinks. 
 
-\item \textbf{Item distribution} in the environment varies. Items can be placed in known locations, in a uniform distribution or in clusters in the environment.
+\item \textbf{Item distribution}: Item distributions in the environment can vary. Items can be placed  in the environment, in known locations, uniformly distributed, or in clusters.
 
 \item \textbf{The type of items} in terms of whether they move (active) or not (static) and the quantity of items (single or multiple) and the number of types of items - either foraging homogenous items or heterogenous items which is known as multi-foraging. Multi-foraging is defined as a type of foraging problem where instead multiple object types are required to be foraged. \cite{Balch99rewardand}. The types of objects can have different characteristics and can be collected together or separately.
 
@@ -255,7 +254,7 @@ Foraging is an animal activity performed in order to retrieve food. Social insec
 \subsubsection{Ant Inspired Foraging Algorithms}
 \label{sec:second:natureinspired:ant}
 
-Vaughan presents a swarm robotic algorithm allowing for robust transportation of items from a single source to a single sink in an environment with spatial constraints \cite{vaughan2000blazing}. The algorithm presented makes use of both ant-like and bee-like foraging techniques. The ants broadcast the landmarks in the area for odometric localization as well as uses a form of the  honey bee "waggle dance" that communicates the direction of the food source from the robot that has found the food source to other robots. The robots use a technique called path integration utilized by both ants and bees in order to maintain position and heading estimate. Using these techniques the robots communicate multi-segment paths. These communications occur globally. This technique suffers from accumulation of localization errors over time due to the use of global communication. Local communication is preferred for the algorithms developed in this study.
+Vaughan presents a swarm robotic algorithm allowing for robust transportation of items from a single source to a single sink in an environment with spatial constraints \cite{vaughan2000blazing}. The algorithm presented makes use of both ant-like and bee-like foraging techniques. The ants broadcast the landmarks in the area for odometric localization as well as uses a form of the  honey bee ``waggle dance" that communicates the direction of the food source from the robot that has found the food source to other robots. The robots use a technique called path integration utilized by both ants and bees in order to maintain position and heading estimate. Using these techniques the robots communicate multi-segment paths. These communications occur globally. This technique suffers from accumulation of localization errors over time due to the use of global communication. Local communication is preferred for the algorithms developed in this study.
 
 %ANTS%
 Hoff \cite{hoff2010two} classifies different types of ant-inspired pheromone-based foraging algorithms by how the pheromones are represented: physical marks \cite{alcoholfromants2012}, use of existing communication channels such as sharing over wireless networks as well as virtual pheromone. %Read further
@@ -321,7 +320,7 @@ Existing swarm robotics foraging algorithms are addressed and discussed under th
 As explained in Section~\ref{flexibility}, division of labour forms part of foraging activities of social insects. This chapter defines division of labour as well as analyses different types of division of labour that occur in social insects. Lastly, division of labour strategies employed by different swarm robotics algorithms are described. 
 
 \section{Definition of Division of Labour}
-\label{sec:second:definition}
+\label{division:definition}
 
 Oster et al. \cite{oster1978caste} defines division of labour as a ``stable pattern of variation" of the repertoire of tasks that individuals perform. Each individual specializes on a subset of the complete repertoire of tasks. The subset of the complete repertoire of tasks is called the specialization of an individual and the specialization of individuals varies across the swarm. 
 
