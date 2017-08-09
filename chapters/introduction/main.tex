@@ -20,15 +20,15 @@ Consider a search and rescue mission after a natural disaster or mining accident
 
 Swarm robotics is the co-coordination of large numbers of  relatively simple robots to perform a single collaborative function. Swarm robotics is inspired from the observation of social insects such as ants, termites, and bees \cite{dorigo2004swarm}. An important activity of all natural swarms is foraging for resources. Foraging is defined as the search and collection of resources from sources in an environment and returning the resources to a collection point \cite{winfield2009foraging}. These resources could be food, water, or building materials. Foraging is an abstraction of the search and rescue problem where the trapped humans are items that robots need to located and remove to a safe location. 
 
-In a search and rescue mission, the location of trapped humans is usually unknown and humans can be potentially blocked by rubble, which needs to be removed before the humans can be safely removed. A swarm of robots would need to search for the humans, as fast as possible, to avoid further danger, injury or loss of life. If robots can't locate the humans, they'll have to begin clearing debris in the hope of locating them, as well as clearing the route between the trapped humans and the safe zone. Locating and removing the humans is prioritized above removal of the debris, but often the debris must be removed, in order to locate the trapped humans, thus there exists a resource prioritization from the perspective of the robot.
+In a search and rescue mission, the location of trapped humans is usually unknown and humans can be potentially blocked by rubble, which needs to be removed before the humans can be safely removed. A swarm of robots would need to search for the humans, as fast as possible, to avoid further danger, injury or loss of life. If robots cannot locate the humans, they will have to begin clearing debris in the hope of locating them, as well as clearing the route between the trapped humans and the safe zone. Locating and removing the humans is prioritized above removal of the debris, but often the debris must be removed, in order to locate the trapped humans, thus there exists a resource prioritization from the perspective of the robot.
 
 Resource prioritization is also relevant in mining problems where the metal ore is prioritized and the waste rock should be cleared to better access the valuable ore. In common gold mining techniques, the ore and waste rock are collected and transported to the surface and chemical techniques are used to separate them. The transport of the waste rock (which forms majority of the load) to the surface is extremely expensive, so there is a cost benefit to separate the ore and the waste rock beneath the surface and transport only the valuable ore to the surface.
 
-The above search and rescue problem and mining problem can be abstracted as a foraging problem where there exist resources with differing priorities. In the case of search and rescue, the humans are the prioritized resource and the debris is the non-prioritized resource. In mining, the ore is the prioritized resource and the waste rock is the non-prioritized resource. 
+The above search and rescue problem and mining problem can be abstracted as a foraging problem where there exists resources with differing priorities. In the case of search and rescue, the humans are the prioritized resource and the debris is the non-prioritized resource. In mining, the ore is the prioritized resource and the waste rock is the non-prioritized resource. 
 
 In nature, in times of stress, the collection of one resource may be prioritized over others - such as water during a drought or food before winter. Individuals in a natural swarm often adapt behaviour appropriately to enable greater collection of the prioritized item.
 
-This study defines the prioritized foraging problem, and proposes three swarm robotics foraging algorithms, to be evaluated on the prioritized foraging problem. The study proposes metrics to evaluate each algorithm's performance on the prioritized foraging problem in terms of foraging efficiency, flexibility, scalability and robustness. The algorithm's are developed in a simulated environment. Each algorithm's performance is evaluated on environments of a variety of complexities, with various swarm configurations.
+This study defines the prioritized foraging problem, and proposes three swarm robotics foraging algorithms, to be evaluated on the prioritized foraging problem. The study proposes metrics to evaluate each algorithm's performance on the prioritized foraging problem in terms of foraging efficiency, flexibility, scalability and robustness. The algorithms are developed in a simulated environment. Each algorithm's performance is evaluated on environments of a variety of complexities, with various swarm configurations.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -36,15 +36,15 @@ This study defines the prioritized foraging problem, and proposes three swarm ro
 \section{Objectives}
 \label{sec:introduction:objectives}
 
-The primary objectives of this thesis are as follows:
+The primary objectives of this thesis are as follows: To
 
 \begin{itemize}
-	\item Conduct a survey of the swarm robotics field.
-	\item Conduct a survey of foraging in social insects and  swarm robotics.
-	\item Define the prioritized foraging problem.
-	\item Propose metrics for evaluating the performance of swarm robotics algorithms on the prioritized foraging problem.
-	\item Propose and develop different nature-inspired algorithms in a simulated swarm robotic environment, to be evaluated on the prioritized foraging problem.
-	\item Evaluate the efficiency, flexibility, scalability, and robustness of the nature-inspired algorithms over different environments and different swarm configurations, on the prioritized foraging problem.
+	\item conduct a survey of the swarm robotics field;
+	\item conduct a survey of foraging in social insects and  swarm robotics;
+	\item define the prioritized foraging problem;
+	\item propose metrics for evaluating the performance of swarm robotics algorithms on the prioritized foraging problem;
+	\item propose and develop different nature-inspired algorithms in a simulated swarm robotic environment, to be evaluated on the prioritized foraging problem; and
+	\item evaluate the efficiency, flexibility, scalability, and robustness of the nature-inspired algorithms over different environments and different swarm configurations, on the prioritized foraging problem.
 \end{itemize}
 
 
@@ -54,12 +54,14 @@ The primary objectives of this thesis are as follows:
 \section{Contributions}
 \label{sec:introduction:contributions}
 
+The thesis makes the following contributions:
+
 \begin{itemize}
-	\item A novel variation of the foraging problem - prioritized foraging, as well as performance measures for the prioritized foraging problem.
-	\item A novel Desert ant inspired foraging algorithm for robot swarms.
-	\item A novel Honey bee inspired foraging algorithm for robot swarms.
-	\item Methods for generating various types of foraging environments in a simulated environments.
-	\item An analysis of the efficiency, flexibility, scalability, and robustness of each algorithm on the prioritized foraging problem.
+	\item A novel variation of the foraging problem i.e. prioritized foraging, as well as performance measures for the prioritized foraging problem are proposed.
+	\item A novel desert ant inspired foraging algorithm for robot swarms is developed.
+	\item A novel honey bee inspired foraging algorithm for robot swarms is developed.
+	\item Methods for generating various types of foraging environments in a simulated environments are proposed.
+	\item An analysis of the efficiency, flexibility, scalability, and robustness of each algorithm on the prioritized foraging problem is conducted.
 \end{itemize}
 
 
@@ -68,7 +70,7 @@ The primary objectives of this thesis are as follows:
 
 \section{Thesis Outline}
 \label{sec:introduction:outline}
-This thesis consists of 8 chapters, each handling a separate topic. The chapters are as follows:
+This thesis consists of eight chapters, each handling a separate topic. The chapters are as follows:
 
 \begin{itemize}
 \item\textbf{Chapter~\ref{chap:first}} introduces the origin, motivation, development and current state of swarm robotics.
@@ -77,7 +79,7 @@ This thesis consists of 8 chapters, each handling a separate topic. The chapters
 
 \item\textbf{Chapter~\ref{chap:divisionoflabour}} defines division of labour and summarizes strategies for division of labour employed by social insects. The chapter reviews where division of labour strategies have been employed by robot swarms.
 
-\item\textbf{Chapter~\ref{chap:third}} proposes a novel foraging variation called prioritized foraging. The chapter also proposes three swarm robotic foraging algorithms, inspired by social insects, to be evaluated on prioritized foraging problem.
+\item\textbf{Chapter~\ref{chap:third}} proposes a novel foraging variation called prioritized foraging. The chapter also proposes three swarm robotic foraging algorithms, inspired by social insects, to be evaluated on a prioritized foraging problem.
 
 \item\textbf{Chapter~\ref{chap:experiment}} presents an experiment designed to evaluate the proposed foraging algorithms in a simplified simulation environment, on the prioritized foraging problem. This chapter describes the environment and swarm parameters that the experiments use. This chapter presents the relevant performance measures to be used to evaluate the proposed algorithms on the prioritized foraging problem.
 
