@@ -78,105 +78,97 @@ This section addresses foraging in a swarm robotics context. Firstly, a taxonomy
 
 Foraging is a popular problem due to the vast potential opportunities of foraging for application to a variety of real-world problems, from search and rescue \cite{jennings1997cooperative} to toxic waste retrieval to mining. It is beneficial to present a taxonomy of robot foraging that can be used to classify existing research about foraging as well as to contextualize the specific foraging problems addressed by this thesis. One should note that the foraging taxonomy presented also includes non-swarm robotic foraging.
 
-Multiple taxonomies have been developed as robot foraging research has progressed \cite{oster1978caste,ostergaard2001emergent}. However, a more recent and complete foraging taxonomy is presented in \cite{winfield2009foraging}. The taxonomy classifies foraging solutions based on four major axes: the foraging environment, the capabilities and types of robots used for foraging, performance aspects, and the foraging strategy used in a foraging algorithm. Each of these major axes has a number of minor axes which are outlined in Table~\ref{foragingtaxonomytable_part1} and Table~\ref{foragingtaxonomytable_part2}.  The following sections discuss each of the major and minor axes in more detail.
+Multiple taxonomies have been developed as robot foraging research has progressed \cite{oster1978caste,ostergaard2001emergent}. However, a more recent and complete foraging taxonomy is presented in \cite{winfield2009foraging}. The taxonomy classifies foraging solutions based on four major axes: the foraging environment, the capabilities and types of robots used for foraging, performance aspects, and the foraging strategy used in a foraging algorithm. Each of these major axes has a number of minor axes which are outlined in Table~\ref{foragingtaxonomytable}.  The following sections discuss each of the major and minor axes in more detail.
 
-\begin{table}
-\centering
-    \caption{Winfield's Robot Foraging Taxonomy \cite{winfield2009foraging}}
-    \label{foragingtaxonomytable_part1}
-    
-\begin{tabular}{ | c | c | c |}
+\begin{longtable}{ | c | c | c |}
+    \caption{Winfield's Robot Foraging Taxonomy}		\label{foragingtaxonomytable} \\
 	\hline
 	Major Axis & Minor Axis & Value  \\ \hline
+	\endfirsthead
+	\hline
+	Major Axis & Minor Axis & Value  \\ \hline
+	\endhead
+	\hline
+	\endfoot
+	\endlastfoot
+
 	\multirow{13}{*}{Environment}
 		& \multirow{2}{*}{Search space} 
-			& Unbounded \\  
+			& Unbounded \\ \nopagebreak
 		& 	& Constrained \\ \cline{2-3}
 		& \multirow{3}{*}{Source Areas} 
-			& Single limited \\ 
-		&	& Single unlimited \\
+			& Single limited \\ \nopagebreak
+		&	& Single unlimited \\ \nopagebreak
 		&	& Multiple \\ \cline{2-3}
 		& \multirow{2}{*}{Sinks} 
-			& Single \\
+			& Single \\ \nopagebreak
 		&	& Multiple \\ \cline{2-3}
 		& \multirow{3}{*}{Object types} 
-			& Single static \\
-		&	& Multiple static \\
+			& Single static \\ \nopagebreak
+		&	& Multiple static \\ \nopagebreak
 		&	& Single active \\ \cline{2-3}
 		& \multirow{3}{*}{Object placement} 
-			& Fixed known locations \\
-		&	& Uniform Distributions \\
+			& Fixed known locations \\ \nopagebreak
+		&	& Uniform Distributions \\ \nopagebreak
 		&	& Clustered \\\hline
 	\multirow{16}{*}{Robot(s)}
 		& \multirow{2}{*}{Number} 
-			& Single \\  
+			& Single \\  \nopagebreak
 		& 	& Multiple \\ \cline{2-3}
 		& \multirow{3}{*}{Type} 
-			& Homogenous \\ 
+			& Homogenous \\ \nopagebreak
 		&	& Heterogenous \\ \cline{2-3}
 		& \multirow{2}{*}{Object Sensing} 
-			& Limited range \\
+			& Limited range \\ \nopagebreak
 		&	& Unlimited range\\ \cline{2-3}
 		& \multirow{3}{*}{Localization} 
 			& None \\
 		&	& Relative \\
 		&	& Absolute \\ \cline{2-3}
 		& \multirow{3}{*}{Communications} 
-			& None \\
-		&	& Near \\
+			& None \\\nopagebreak
+		&	& Near \\\nopagebreak
 		&	& Infinite \\\cline{2-3}
 		& \multirow{3}{*}{Power} 
-			& Limited \\
-		&	& Forage \\
+			& Limited \\\nopagebreak
+		&	& Forage \\\nopagebreak 
 		&	& Unlimited \\\hline
-\end{tabular}
-\end{table}
-
-\begin{table}
-\centering
-    \caption{Winfield's Robot Foraging Taxonomy Part 2 \cite{winfield2009foraging}}
-    \label{foragingtaxonomytable_part2}
-    
-\begin{tabular}{ | c | c | c |}
-\hline
-	Major Axis & Minor Axis & Value  \\ \hline
 	\multirow{6}{*}{Performance}
 		& \multirow{3}{*}{Time} 
-			& Fixed \\  
-		& 	& Minimum \\ 
+			& Fixed \\  \nopagebreak
+		& 	& Minimum \\ \nopagebreak
 		& 	& Unlimited \\ \cline{2-3}
 		& \multirow{3}{*}{Energy} 
-			& Fixed \\ 
-		& 	& Minimum \\ 
+			& Fixed \\ \nopagebreak
+		& 	& Minimum \\ \nopagebreak
 		&	& Unlimited \\ \hline
-	\multirow{6}{*}{Strategy}	
-		& \multirow{5}{*}{Search} 
-			& Limited range \\
-		&	& Geometrical pattern\\
-		&	& Trail following\\
-		&	& Follow other robots\\
-		&	& In teams\\ \cline{2-3}
+	\multirow{18}{*}{Strategy}	
+		& \multirow{5}{*}{Search}
+			& Limited range \\ \nopagebreak
+		&	& Geometrical pattern\\ \nopagebreak
+		&	& Trail following\\ \nopagebreak
+		&	& Follow other robots\\ \nopagebreak
+		&	& In teams\\ \cline{2-3} \nopagebreak
 		& \multirow{2}{*}{Grabbing} 
-			& Single \\
-		&	& Cooperative \\ \cline{2-3}
-		& \multirow{2}{*}{Transport} 
-			& Single \\
-		&	& Cooperative \\ \cline{2-3}
+			& Single \\ \nopagebreak
+		&	& Cooperative \\ \cline{2-3} \nopagebreak
+		& \multirow{2}{*}{Transport}
+			& Single \\ \nopagebreak
+		&	& Cooperative \\ \cline{2-3} \nopagebreak
 		& \multirow{3}{*}{Homing} 
-			& Self navigation \\
-		&	& Home on beacon \\
-		&	& Follow trail \\\cline{2-3}
+			& Self navigation \\ \nopagebreak
+		&	& Home on beacon \\ \nopagebreak
+		&	& Follow trail \\\cline{2-3} \nopagebreak
 		& \multirow{3}{*}{Recruitment} 
-			& None \\
-		&	& Direct \\
-		&	& Indirect \\\cline{2-3}
+			& None \\ \nopagebreak
+		&	& Direct \\ \nopagebreak
+		&	& Indirect \\\cline{2-3} \nopagebreak
 		& \multirow{3}{*}{Coordination} 
-			& None \\
-		&	& Self-organized \\
-		&	&  Central control \\
-		&	& Master slave \\\hline
-\end{tabular}
-\end{table}
+			& None \\ \nopagebreak
+		&	& Self-organized \\ \nopagebreak
+		&	&  Central control \\ \nopagebreak
+		&	& Master slave \\ \hline
+\end{longtable}
 \subsubsection{Robot Axis}
 
 The robot axis refers to qualities such as the number of robots and the sensory, power, and actuation capabilities of the robots, discussed as follows:
@@ -278,7 +270,7 @@ Foraging for humans is a near trivial problem. Most children can walk around and
 \begin{itemize}
 \item \textbf{Mechanically challenging interactions}: Despite how far robotics has come as a field, there are still tasks that are trivial for humans, but still very complex for most robots. For instance, the challenge of picking up items \cite{saxena2008robotic} and moving them to another location requires high quality sensors, sensitive actuators and time-consuming calibration \cite{mondada2005cooperation}. 
 
-\item \textbf{Complex noisy environments|: Although research can be performed in a controlled environment, for robust foraging to be efficiently applied in real-life, environmental factors have to be taken into consideration. Environmental factors, such as light \cite{browning2005real,jungel2003real} and quality of the surface the robots forage on \cite{trianni2006cooperative}, often make a robotic solution complex, non-viable, non-robust, or expensive. To cope with real-life environments, the robots require adaptive algorithms and more complex hardware for their sensors and actuators for basic navigation and object detection in unknown terrains with unknown lighting and weather conditions. 
+\item \textbf{Complex noisy environments}: Although research can be performed in a controlled environment, for robust foraging to be efficiently applied in real-life, environmental factors have to be taken into consideration. Environmental factors, such as light \cite{browning2005real,jungel2003real} and quality of the surface the robots forage on \cite{trianni2006cooperative}, often make a robotic solution complex, non-viable, non-robust, or expensive. To cope with real-life environments, the robots require adaptive algorithms and more complex hardware for their sensors and actuators for basic navigation and object detection in unknown terrains with unknown lighting and weather conditions. 
 
 \item \textbf{Localization, navigation and obstacle avoidance}: Localization is the ability for a robot to depict their position in the environment. In swarm robotics, global knowledge about location (such as GPS) can not be used by a robot to determine their position and where they are going. Non-trivial algorithms must be designed in order for a robot to position itself in the environment as in \cite{zhou2012motion,rothermich2004distributed,arkin1992cooperation}. 
 

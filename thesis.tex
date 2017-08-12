@@ -9,6 +9,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\usepackage{savesym}
 \usepackage{multirow}
+\makeatletter
+\def\@cline#1-#2\@nil{%
+  \omit
+  \@multicnt#1%
+  \advance\@multispan\m@ne
+  \ifnum\@multicnt=\@ne\@firstofone{&\omit}\fi
+  \@multicnt#2%
+  \advance\@multicnt-#1%
+  \advance\@multispan\@ne
+  \leaders\hrule\@height\arrayrulewidth\hfill
+  \cr
+  \noalign{\nobreak\vskip-\arrayrulewidth}}
+\makeatother
 \usepackage{amssymb}
 %\savesymbol{singleletter}								% American Mathematical Society symbols
 \usepackage{float}												% customised float support
@@ -25,7 +38,7 @@
 \usepackage{ifpdf}												% selective setup for PDF compilation
 \usepackage[number=none]{glossary}		
 \usepackage{algorithmicx}
-
+\usepackage{longtable,tabu}
 \usepackage{algcompatible}
 \usepackage{algorithm}% http://ctan.org/pkg/algorithms
 \usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
