@@ -261,13 +261,7 @@ Labella \textit{et al} \cite{labella2006division} proposed a foraging model insp
 \caption{Simplified finite state machine for Labella division of labour algorithm. }
 \end{figure} 
 
-Hoff \cite{hoff2010two} proposed an two ant-based foraging algorithms which do not require marking the physical environment. Instead, robots themselves become pheromone beacons. The algorithms differ in the manner in which the beacon-to-pheromone role is chosen. Each algorithm is described as follows:
-
-\begin{itemize}
-\item The first algorithm is known as the virtual pheromone algorithm. Virtual pheromone is simply a floating point number that pheromone beacon robots broadcast. A pheromone trail is created by robots, where a robot stops exploration to become pheromone beacon. The purpose of pheromone beacon robots broadcast the value of the virtual pheromone. The algorithm attempts to construct two pheromone trails: one trail that leads other robots from the sink to the source, and another that leads from the source to the sink. Local direct communications are used to transmit the virtual pheromone value.
-
-\item The second technique uses cardinality where if a robot can hear 2 or more beacons then the robot stays a walker else the robot becomes a beacon. The advantage of using this technique over the other mentioned pheromone techniques is that robots are simpler due to simpler communication mechanisms as well as the lack of need for complex beacon deployment systems. Experiments are conducted with and without obstacles and a real-world simulator is used. The result show that congestion effects performance the most at high robot density. 
-\end{itemize}
+Hoff \cite{hoff2010two} proposed an two ant-based foraging algorithms which do not require marking the physical environment. Instead, robots themselves become pheromone beacons. The purpose of pheromone beacon robots is to act as pheromone. When many pheromone beacon robots line up, the robots form a pheromone trail, that other robots can follow to reach a destination. The algorithm enabled the creation of pheromone trails from the sink to the item source and back.
 
 \subsubsection{Honey Bee Inspired Foraging Algorithms}
 Bee swarms have been used in swarm robotics for problems such as path planning \cite{lin2009chaotic}, aggregation \cite{kernbach2009re}, collective perception \cite{schmickl2007collective}. Foraging algorithms have been developed that simulate a simplified honey bee recruitment in \cite{alers2014biologically}, which focuses on an actual robot demonstration of the technique using a turtle robot. Prior work focuses on implementing the same algorithm on e-pucks. 
