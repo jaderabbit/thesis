@@ -7,7 +7,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter presents a foraging variation known as prioritized foraging as well as three algorithms whose performance is to be evaluated on prioritized foraging problem. The three algorithms are based based upon phenomenon observed in nature. The first model is a simple foraging algorithm, called Na\"ive foraging, which will form the benchmark algorithm for the experiments. Two novel swarm robotics foraging algorithms, inspired by the foraging behaviour of desert ants and honey bees, are also presented. Each of these algorithms have different capabilities when it comes to memory, communication, division of labour, and navigation. The Na\"ive foraging algorithm is presented in Section~\ref{naiveforaging}. Section~\ref{desertantforaging} introduces the novel foraging algorithm based on desert ants. Section~\ref{honeybeeforaging} presents a novel prioritized foraging algorithm inspired by honey bees. The algorithms are summarized in Section~\ref{prioritized:summary}.
+This chapter presents a foraging variation known as prioritized foraging as well as three algorithms whose performance is to be evaluated on a prioritized foraging problem. The three algorithms are based based upon phenomena observed in nature. The first model is a simple foraging algorithm, called Na\"ive foraging, which will form the benchmark algorithm for the experiments. Two novel swarm robotics foraging algorithms, inspired by the foraging behaviour of desert ants and honey bees, are also presented. Each of these algorithms have different capabilities when it comes to memory, communication, division of labour, and navigation. The Na\"ive foraging algorithm is presented in Section~\ref{naiveforaging}. Section~\ref{desertantforaging} introduces the novel foraging algorithm based on desert ants. Section~\ref{honeybeeforaging} presents a novel prioritized foraging algorithm inspired by honey bees. The algorithms are summarized in Section~\ref{prioritized:summary}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -16,11 +16,11 @@ This chapter presents a foraging variation known as prioritized foraging as well
 
 %Focus on the robots used, the model used and the experiments performed
 
-The prioritized foraging problem, shown in Fig.\ref{prioritizedforaging}, is a modified version of the multi-foraging problem as discussed in Section~\ref{environmentaxis}. In prioritized foraging, an environment has two types of items: prioritized items and non-prioritized items. The goal is to forage all the items of the prioritized type. The possibility exists that prioritized items become trapped among non-prioritized items and thus the non-prioritized items need to be removed from the environment to clear an access route to the prioritized items. 
+The prioritized foraging problem, illustrated in Fig.\ref{prioritizedforaging}, is a modified version of the multi-foraging problem as discussed in Section~\ref{environmentaxis}. In prioritized foraging, an environment has two types of items: prioritized items and non-prioritized items. The goal is to forage all the items of the prioritized type. The possibility exists that prioritized items become trapped among non-prioritized items and thus the non-prioritized items need to be removed from the environment to clear an access route to the prioritized items. 
 
 The prioritized foraging problem has increased difficulty compared to traditional multi-foraging problems, due the fact that foraging the non-prioritized item more than required will result in a waste of time and energy. The goal of research in prioritized foraging is to develop an algorithm to efficiently adapt the number of robots searching for prioritized items to those moving non-prioritized items out the way. 
 
-The prioritized foraging problem has similarities to the problem of search and rescue. For example, in the case of a building collapsing, robots will need to get to the survivors as quickly as possible, however it is important that some robots move waste material in order to reach the priority trapped survivors. Prioritized foraging could be applied to the gold mining problem where the gold needs to be foraged as a priority and the waste needs to be moved out the way.
+The prioritized foraging problem has similarities to the problem of search and rescue. For example, in the case of a building collapsed, robots will need to get to the survivors as quickly as possible. However, it is important that some robots move waste material in order to reach the priority trapped survivors. Prioritized foraging could be applied to the gold mining problem where gold needs to be foraged as a priority, and waste needs to be moved out of the way.
 
 
 \begin{figure} [h]
@@ -36,7 +36,7 @@ As per Winfield's classification discussed in Section~\ref{sec:second:taxonomy},
 \section{Na\"ive Foraging Algorithm}
 \label{naiveforaging}
 
- Na\"\i ve foraging consists of the following tasks: searching for an item, grabbing an item, returning home with the item and storing the item at the sink. The steps performed by the algorithm are illustrated in Figure~\ref{naiveforagingstatediagram}.  
+ Na\"\i ve foraging consists of the following tasks: searching for an item, grabbing an item, returning home with the item, and storing the item at the sink. The steps performed by the algorithm are illustrated in Figure~\ref{naiveforagingstatediagram}, and described below:  
 
 \begin{enumerate}
 	\item Robots perform a random walk until they find an item.
@@ -63,21 +63,21 @@ As per Winfield's classification discussed in Section~\ref{sec:second:taxonomy},
 
 Na\"\i ve foraging includes only the most minimal set of foraging actions and is included as a baseline for comparison to evaluate how novel techniques, such as the desert-ant foraging or honey-bee foraging, compare to a standard model \cite{ostergaard2001emergent,hoff2010two}.
 
-The following random walk is used: A robot chooses a random direction, $\sigma$, and a random distance $m\in(0,M)$ where $M$ is a chosen maximum path length. The robot walks in direction $\sigma$ for distance $m$. The robot then chooses new values for $\sigma$ and $m$. 
+The following random walk is used: A robot chooses a random direction, $\sigma$, and a random distance $m\in(0,M)$ where $M$ is a chosen maximum path length. The robot walks in direction $\sigma$ for distance $m$, or until the robot reaches a boundary. The robot then chooses new values for $\sigma$ and $m$.
 
 
 \section{Desert Ant Foraging}
 \label{desertantforaging}
 
 
-As discussed in Section~\ref{biological:ants}, due to the lack of pheromone usage to foraging, desert ant foraging behaviour is a very suitable model for robot foraging, since no pheromone depositors or pheromone mimickry is required. Pheromone depositors or pheromone mimickry are quite complex to perform in robot environments. Instead of pheromone, desert ants use path integration (PI) to memorize the location of an existing food source and later to return to the memorized source to find more food, as addressed in Section~\ref{biological:ants}. The notion of returning to a previously explored site is known as site fidelity \cite{switzer1993site}. The desert ant algorithm does not require communication between robots or the dispersal of beacons, and is thus simpler than other many swarm robotics foraging algorithms. The desert ant foraging robots can be in the following states:
+As discussed in Section~\ref{biological:ants}, desert ant foraging behaviour is a very suitable model for robot foraging, since no pheromone depositors or pheromone mimickry is required. Pheromone depositors or pheromone mimickry are quite complex to perform in robot environments. Instead of pheromone, desert ants use path integration (PI) to memorize the location of an existing food source and later to return to the memorized source to find more food, as discussed in Section~\ref{biological:ants}. The notion of returning to a previously explored site is known as site fidelity \cite{switzer1993site}. The desert ant algorithm does not require communication between robots or the dispersal of beacons, and is thus simpler than many other swarm robotic foraging algorithms. The desert ant foraging robots can be in the following states:
 
 \begin{enumerate}
-	\item\textbf{Exploration State} -- A robot in the exploration state performs a random walk with PI. The random walk used is the same random walk discussed in Section~\ref{naiveforaging}. The purpose of the exploration state is to explore the environment to locate items. 
-	\item\textbf{Loading State} -- On finding an item, the robot switches into the loading state. In the loading state, the robot loads the item and memorizes the current PI vector. The PI vector is memorized so that the robot can use the it to return to the sink and then later to return the site where the item was found. If loading the item fails (perhaps due to another robot loading the item), then the robot returns to the exploration state; else the robot moves into the homing state.
-	\item\textbf{Homing State} -- In the homing state, the robot uses the PI vector to move to the sink. The use of the PI vector will enable the robot to follow the most direct route back to the sink.
-	\item\textbf{Offloading State} -- When the robot arrives at the sink, the robot switches into the offloading state where the robot simply offloads the item into the sink. 
-	\item\textbf{Locating State} -- Once the robot has offloaded the item, the robot switches to the locating state. In the locating state, the robot follows the memorized PI vector to the location of the previous item. The premise of returning to the site where the previous item was found is that more items may exist where the previous item was located in order to locate more items. If another item is found, the robot moves into the loading state; otherwise the robot returns to the exploration state in the search of new items. 
+	\item\textbf{Exploration State}: A robot in the exploration state performs a random walk with PI. The random walk used is the same random walk as discussed in Section~\ref{naiveforaging}. The purpose of the exploration state is to explore the environment to locate items. 
+	\item\textbf{Loading State}: On finding an item, the robot switches into the loading state. In the loading state, the robot loads the item and memorizes the current PI vector. The PI vector is memorized so that the robot can use it to return to the sink and then later to return to the site where the item was found. If loading of the item fails (perhaps due to another robot loading the item), then the robot returns to the exploration state; otherwise, the robot moves into the homing state.
+	\item\textbf{Homing State}: In the homing state, the robot uses the PI vector to move to the sink. The use of the PI vector will enable the robot to follow the most direct route back to the sink.
+	\item\textbf{Offloading State}: When the robot arrives at the sink, the robot switches into the offloading state, where the robot simply offloads the item into the sink. 
+	\item\textbf{Locating State}: Once the robot has offloaded the item, the robot switches to the locating state. In the locating state, the robot follows the memorized PI vector to the location of the previous item. The premise of returning to the site where the previous item was found is that more items may exist where the previous item was located in order to locate more items. If another item is found, the robot moves into the loading state; otherwise, the robot returns to the exploration state in the search of new items. 
 \end{enumerate}
 
 All robots begin at random positions adjacent to the sink in the exploration state. The desert ant foraging states and transitions are illustrated in Figure~\ref{fig:desertantstate}.
@@ -110,11 +110,11 @@ All robots begin at random positions adjacent to the sink in the exploration sta
 \label{honeybeeforaging}
 %TODO Describe the 3 states referring back to where they were discussed in the previous section.
 
-The Honey bee prioritized foraging algorithm presented in this section is based on the foraging behaviour of honey bees as described in Section~\ref{bees:biologicalinspiration}. The algorithm described requires robots to take on three roles, namely, scout robots, unemployed forager robots and employed forager robots. The roles of the robots and the transitions to and from those roles are described in this section. 
+Honey bee prioritized foraging algorithm presented in this section is based on the foraging behaviour of honey bees as described in Section~\ref{bees:biologicalinspiration}. The algorithm described requires robots to take on one of three roles, namely, scout robots, unemployed forager robots or employed forager robots. The roles of the robots and the transitions to and from these roles are described in this section. 
 
-Figure~\ref{honeybeestate} provides a simplified diagram for the Honey bee prioritized foraging algorithm showing the roles and the transitions between each role and the states within those roles. The dance and explore states of the scout robots are shown separately for clarity and the employed forager states are outlined separately in Figure~\ref{employedforagerstatediagram}.
+Figure~\ref{honeybeestate} provides a simplified diagram for the honey bee prioritized foraging algorithm showing the roles and the transitions between each role and the states within these roles. The dance and explore states of the scout robots are shown separately for clarity and the employed forager states are outlined separately in Figure~\ref{employedforagerstatediagram}.
 
-To more succinctly define the Honey bee prioritized foraging algorithm, the algorithms for each behavioural state, within each role, have been provided. For each algorithm, one should note that the current state of the robot is denoted $state$, and $state$ is gets modified during the behaviour to denote the next state of the robot. The current time step is denoted as $i$. The algorithm for a single state is executed once per time step $i$.
+To more succinctly define the honey bee prioritized foraging algorithm, the algorithms for each behavioural state, within each role, are provided below. For each algorithm, note that the current state of the robot is denoted $state$, and the $state$ is modified during the behaviour to denote the next state of the robot. The current time step is denoted as $t$. The algorithm for a single state is executed once per time step $t$.
 
 \begin{figure}[h]
 	\centering
@@ -141,10 +141,13 @@ To more succinctly define the Honey bee prioritized foraging algorithm, the algo
 	\label{honeybeestate}
 \end{figure}
 
+Section~\ref{scoutrobots} presents the behaviour of scout robots, while the behaviour of forager robots is described in Section~\ref{foragerrobots}. The initial state of the swarm is described in Section~\ref{initialstates}, while Section~\ref{honeybeedivisionoflabour} describes .
+
 \subsection{Scout Robots}
+\label{scoutrobots}
 Scout robots mimic the scouting behaviour of the scout honeys bees as discussed in Section~\ref{bees:biologicalinspiration}. The purpose of the scout robot is to locate sites of items. If the discovered site is of a high enough quality, then the scout will broadcast the location of the site to the unemployed forager robots at the sink. 
 
-Each scout robot begins in the explore state where the scout robot performs a random walk. Algorithm~\ref{algorithm:explore} provides a step-by-step explanation of the explore state of the scout root. Variable $\varsigma$ saves the robot's item specialization. The random walk performed is the same random walk discussed in Section~\ref{naiveforaging}. As the scout robot moves, the robot maintains a PI vector $v$ as explained in Section~\ref{biological:ants}. Upon finding an item $\vartheta$ of type $\varsigma$ at site $\xi$, the robot loads the item and then performs an evaluation of the quality, $mu_\varsigma$, of the site $\xi$ for the item type $\varsigma$. 
+Each scout robot begins in the explore state where the scout robot performs a random walk. Algorithm~\ref{algorithm:explore} provides a step-by-step explanation of the explore state of the scout root. Variable $\varsigma$ saves the robot's item specialization. The random walk performed is the same random walk as discussed in Section~\ref{naiveforaging}. As the scout robot moves, the robot maintains a PI vector $v$ as explained in Section~\ref{biological:ants}. Upon finding an item $\vartheta$ of type $\varsigma$ at site $\xi$, the robot loads the item and then performs an evaluation of the quality, $mu_\varsigma$, of the site $\xi$ for the item type $\varsigma$. 
 
 
 % Scout algorithms
@@ -257,6 +260,7 @@ In the dance state, the scout robot communicates the location, $\omega$, and qua
 After the scout robot has completed broadcasting site details to the unemployed foragers, the scout robot must decide to either stay a scout robot and switch back to the explore state or become an employed forager robot and begin foraging the previous site. The scout robot becomes an employed forager robot with the probability of $\rho$. If random number $\varrho\in{0,1}$ is selected such that $\varrho$ is less than $\rho$, then the scout robot remains a scout and begins to explore the environment. If $\varrho$ is greater than or equal to $\rho$ then the scout becomes an employed forager. Increasing the site quality threshold $\rho$ will make the scout robots more selective about the sites they broadcast. Decreasing $\rho$ will result in scout robots being less selective about the sites they broadcast.
 
 \subsection{Forager Robots}
+\label{foragerrobots}
 
 There are two types of forager robots: The unemployed foragers and employed foragers. The unemployed forager robots take on the role of unemployed foragers from foraging honey bees discussed in Section~\ref{bees:biologicalinspiration}. Unemployed forager robots remain at the sink and await dance behaviour from a scout robot. This wait state is described in Algorithm~\ref{algorithm:unemployedforager:locating}.
 
