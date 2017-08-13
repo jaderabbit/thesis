@@ -141,7 +141,7 @@ To more succinctly define the honey bee prioritized foraging algorithm, the algo
 	\label{honeybeestate}
 \end{figure}
 
-Section~\ref{scoutrobots} presents the behaviour of scout robots, while the behaviour of forager robots is described in Section~\ref{foragerrobots}. The initial state of the swarm is described in Section~\ref{initialstates}, while Section~\ref{honeybeedivisionoflabour} describes the division of labour mechanism used by the honey bee algorithm.
+Section~\ref{scoutrobots} presents the behaviour of scout robots, while the behaviour of forager robots is described in Section~\ref{foragerrobots}. The initial state of the swarm is described in Section~\ref{initialstates}, while Section~\ref{natureinspired:divisionoflabour} describes the division of labour mechanism used by the honey bee algorithm.
 
 \subsection{Scout Robots}
 \label{scoutrobots}
@@ -209,7 +209,7 @@ Before returning to the sink with the item, the scout memorizes the PI vector $v
 \Else
 	\State{\text{calculate direction $\sigma$ to sink $S_\varsigma$ from current location}}
 	\If{\text{robot can move in direction $\sigma$}}
-		\State \text{robot moves in direction $\sigma$}
+		\State \text{robot moves a step in direction $\sigma$}
 	\EndIf
 \EndIf
 \State $i =i + 1$
@@ -246,7 +246,7 @@ Before returning to the sink with the item, the scout memorizes the PI vector $v
 \begin{algorithmic}[1]
 \Function{forage}{$role, state, v, \varsigma, i, \omega, \mu_\varsigma$}
 	\State \text{get direction $\sigma$ using path integration vector $\omega$}
-	\State \text{robot moves in direction $\sigma$}
+	\State \text{robot moves a step in direction $\sigma$}
 	\If {\text{(robot has finished path integration) OR (robot can see item of type $\varsigma$)}}
 		\State $state \gets load$
 	\EndIf
@@ -302,7 +302,7 @@ The employed forager robots are modelled based on the employed forager bees as d
 \end{algorithmic}
 \end{algorithm}
 
-The local search is performed for a limited number of time steps $t_{ls}$. At each time step, $i_{ls}$, the robot checks if an item of priority $\varsigma$ is nearby and if the item can be loaded. If an item $\varsigma$ can be loaded, then the robot loads the item and switches to the homing state. If the employed forager robot can see an item $\varsigma$, but it is not close enough to be loaded, then the robot moves in the direction of the item $\varsigma$. If the employed forager can not see an item in the vicinity, then the robot moves in a random direction $d$. The local search state is summarized in Algorithm~\ref{algorithm:employedforager:localclustersearch}. If $i_{ls}$ is greater than $t_{ls}$, then the foraging site is depleted and so the employed forager robot must return to the sink without an item.
+The local search is performed for a limited number of time steps $t_{ls}$. At each time step, $i_{ls}$, the robot checks if an item of priority $\varsigma$ is nearby and if the item can be loaded. If an item $\varsigma$ can be loaded, then the robot loads the item and switches to the homing state. If the employed forager robot can see an item $\varsigma$, but it is not close enough to be loaded, then the robot moves in the direction of the item $\varsigma$. If the employed forager can not see an item in the vicinity, then the robot moves in a random direction $\sigma$. The local search state is summarized in Algorithm~\ref{algorithm:employedforager:localclustersearch}. If $i_{ls}$ is greater than $t_{ls}$, then the foraging site is depleted and so the employed forager robot must return to the sink without an item.
 
 \begin{algorithm}
 \caption{Local Search State of Employed Forager}
@@ -315,7 +315,7 @@ The local search is performed for a limited number of time steps $t_{ls}$. At ea
 			\State{$state \gets homing$}	
 		\ElsIf {\text{item $\vartheta$ of priority $\varsigma$ can be seen but is not close enough}}
 			\State \text{select direction $\sigma$ to move towards item $\vartheta$}
-			\State \text{robot moves a step in direction $d$}
+			\State \text{robot moves a step in direction $\sigma$}
 		\Else
 			\State \text{select a random direction $\sigma$}
 			\State \text{robot moves a step in direction $\sigma$}	
@@ -344,9 +344,9 @@ When in the homing state, the employed forager robot moves towards the appropria
 		\State {\text{$state \gets wait$}}
 	\EndIf
 \Else
-	\State{\text{calculate direction $d$ to sink $S_\varsigma$ from current location}}
-	\If{\text{robot can move in direction $d$}}
-		\State{\text{robot moves in direction $d$}}
+	\State{\text{calculate direction $\sigma$ to sink $S_\varsigma$ from current location}}
+	\If{\text{robot can move in direction $\sigma$}}
+		\State{\text{robot moves a step in direction $\sigma$}}
 	\EndIf
 \EndIf
 
@@ -384,6 +384,7 @@ The unemployed forager robot role allows the number of active robots in the envi
 Unemployed forager robots become scout robots if no scout robot broadcasts are detected for $t_{wait}$ time steps. The control parameter $t_{wait}$ is the maximum waiting time an unemployed forager can spend in the waiting state before switching to a scout robot, and $i_{wait}$ is the time spent by a robot in the waiting state. Decreasing $t_{wait}$ results in more scout robots exploring the environment and less unemployed foragers that a scout robot, who may have found quality sites, can recruit. Increasing $t_{wait}$ results in a greater number of unemployed forager robots waiting to be recruited. The greater quantity of unemployed foragers can form a large work force for a recruiting scout. However, too many unemployed foragers result in a smaller workforce in the foraging environment.
 
 \subsection{Initial States}
+\label{initialstates}
 
 A portion of the robots are initialized as scout robots in the explore state and the rest as unemployed forager robots. All robots are initialized adjacent to the sink. The ratio of robots initialized as scout robots is $X\in(0,100)$. Unemployed forager robots require a scout robot to recruit them to become employed forager robots. At initialization, the scout robots do not have site location details available, and therefore robots can not be initialized as employed forager robots. 
 
