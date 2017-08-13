@@ -110,7 +110,7 @@ All robots begin at random positions adjacent to the sink in the exploration sta
 \label{honeybeeforaging}
 %TODO Describe the 3 states referring back to where they were discussed in the previous section.
 
-Honey bee prioritized foraging algorithm presented in this section is based on the foraging behaviour of honey bees as described in Section~\ref{bees:biologicalinspiration}. The algorithm described requires robots to take on one of three roles, namely, scout robots, unemployed forager robots or employed forager robots. The roles of the robots and the transitions to and from these roles are described in this section. 
+Honey bee prioritized foraging algorithm presented in this section is based on the foraging behaviour of honey bees as described in Section~\ref{bees:biologicalinspiration}. The algorithm described requires robots to take on one of three roles, namely, scout robots, unemployed forager robots, or employed forager robots. The roles of the robots and the transitions to and from these roles are described in this section. 
 
 Figure~\ref{honeybeestate} provides a simplified diagram for the honey bee prioritized foraging algorithm showing the roles and the transitions between each role and the states within these roles. The dance and explore states of the scout robots are shown separately for clarity and the employed forager states are outlined separately in Figure~\ref{employedforagerstatediagram}.
 
@@ -314,11 +314,11 @@ The local search is performed for a limited number of time steps $t_{ls}$. At ea
 			\State \Call{load}{$\vartheta$}
 			\State{$state \gets homing$}	
 		\ElsIf {\text{item $\vartheta$ of priority $\varsigma$ can be seen but is not close enough}}
-			\State \text{select direction $d$ to move towards item $\vartheta$}
-			\State \text{robot moves in direction $d$}
+			\State \text{select direction $\sigma$ to move towards item $\vartheta$}
+			\State \text{robot moves a step in direction $d$}
 		\Else
-			\State \text{select a random direction $d$}
-			\State \text{robot moves in direction $d$}	
+			\State \text{select a random direction $\sigma$}
+			\State \text{robot moves a step in direction $\sigma$}	
 		\EndIf
 \Else
 	\State{$state \gets homing$}
@@ -381,32 +381,32 @@ The states and transitions of the employed forager are shown in more detail in F
 
 The unemployed forager robot role allows the number of active robots in the environment to be regulated so that there are not too many robots attempting to forage or explore at once. An environment with too many employed foragers would result in more collisions between robots, which would mean that the employed foragers take longer to forage items. Also, if there are too many employed foragers in a environment which is sparse in items, then the employed foragers are not only causing collisions but they are also wasting energy by exploring areas unnecessarily.
 
-Unemployed forager robots become scout robots if no scout robot broadcasts are detected for $t_{wait}$ time steps. The control parameter $t_{wait}$ is the maximum waiting time an unemployed forager can spend in the waiting state, before switching to a scout robot and $i_{wait}$ is the time spent by a robot in the waiting state. Decreasing $t_{wait}$ results in more scout robots exploring the environment and less unemployed foragers that a scout robot, who may have found quality sites, can recruit. Increasing $t_{wait}$ results in a greater amount of unemployed forager robots waiting to be recruited. The greater quantity of unemployed foragers can form a large work force for a recruiting scout, however too many unemployed foragers results in a smaller workforce in the foraging environment.
+Unemployed forager robots become scout robots if no scout robot broadcasts are detected for $t_{wait}$ time steps. The control parameter $t_{wait}$ is the maximum waiting time an unemployed forager can spend in the waiting state before switching to a scout robot, and $i_{wait}$ is the time spent by a robot in the waiting state. Decreasing $t_{wait}$ results in more scout robots exploring the environment and less unemployed foragers that a scout robot, who may have found quality sites, can recruit. Increasing $t_{wait}$ results in a greater number of unemployed forager robots waiting to be recruited. The greater quantity of unemployed foragers can form a large work force for a recruiting scout. However, too many unemployed foragers result in a smaller workforce in the foraging environment.
 
 \subsection{Initial States}
 
-A portion of the robots are initialized as scout robots in the explore state and the rest as unemployed forager robots. All robots are initialized adjacent to the sink. The percentage of robots initialized as scout robots is $X$. One should note that robots can't be initialized as employed forager robots since unemployed forager require a scout robot to recruit them to learn the location of the sites and become employed foragers and at initialization, the scouts do not yet have site location details available.
+A portion of the robots are initialized as scout robots in the explore state and the rest as unemployed forager robots. All robots are initialized adjacent to the sink. The ratio of robots initialized as scout robots is $X\in(0,100)$. Unemployed forager robots require a scout robot to recruit them to become employed forager robots. At initialization, the scout robots do not have site location details available, and therefore robots can not be initialized as employed forager robots. 
 
 \subsection{Division of Labour}
 \label{natureinspired:divisionoflabour}
-The Honey bee algorithm has two levels of division of labour. The first level is the division of labour between the scout, unemployed forager and unemployed forager as described in Section~\ref{honeybeeforaging}.
+The honey bee algorithm has two levels of division of labour. The first level is the division of labour between the scout, unemployed forager, and unemployed forager.
 
-However, another level of division of labour exists to deal with division of labour between foraging items with different priorities. Item-type division of labour is defined in this thesis, as the division of labour between foraging prioritized item types and non-prioritized item types.
+Another level of division of labour exists to deal with division of labour between foraging items with different priorities. Item-type division of labour is defined in this thesis as the division of labour between foraging prioritized item types and non-prioritized item types.
 
-In nature, in times of drought, bees prioritize water over nectar or pollen. Honey bees would be sent out to forage for water but may encounter pollen while searching for water. If the foraging honey bee happens to encounter pollen, they will forage the pollen but will not communicate the discovery of the pollen site to the unemployed foragers \cite{seeley2009wisdom}. Using the bee's prioritization of resources as inspiration, the following rules for division of labour are defined as follows:
+In nature, in times of drought, bees prioritize water over nectar or pollen. Honey bees would be sent out to forage for water but may encounter pollen while searching for water. If the foraging honey bee happens to encounter pollen, they will forage the pollen but will not communicate the discovery of the pollen site to the unemployed foragers \cite{seeley2009wisdom}. Using the bee's prioritization of resources as inspiration, the following rules for item-type division of labour are defined as follows:
 
 \begin{enumerate}
-\item An scout robot that is set to search for the prioritized type $\varsigma=P$ will only forage a non-prioritized type only if a prioritized item can not be located for the maximum time period, $f_{max}$. If $i_{explore} > f_{max}$ then $\varsigma$ will switch to foraging the non-prioritized type $\varsigma=N$. The described rule is shown explicitly in Algorithm~\ref{algorithm:explore}.
-\item An employed robot foraging the non-prioritized item type will forage the non-prioritized item type until the robot fails to relocate a previously located non-prioritized item type site, or until the robot locates a prioritized item. In both of these cases, the robot will switch to foraging the prioritized item type $\varsigma=N$.
+\item An scout robot that is set to search for the prioritized type, $\varsigma=\text{prioritized}$, will forage a non-prioritized type only if a prioritized item can not be located for the maximum time period, $f_{max}$. If $i_{explore} > f_{max}$ then $\varsigma$ will switch to foraging the non-prioritized type $\varsigma=\text{non-prioritized}$. The described rule is given explicitly in Algorithm~\ref{algorithm:explore}.
+\item An employed robot foraging the non-prioritized item type will forage the non-prioritized item type until the robot fails to relocate a previously located non-prioritized item type site, or until the robot locates a prioritized item. For both of these cases, the robot will switch to foraging the prioritized item type $\varsigma=\text{non-prioritized}$.
 \item A robot foraging a non-prioritized item will not communicate the location of the non-prioritized item site by dancing. 
 \end{enumerate}
 
-For the purpose of this study, each robot of each algorithm is assigned an initial item type to forage. The robots of desert ant foraging algorithm and the Na\"ive algorithm do not have item-type level division of labour and thus will continue to forage the same item-type that they were assigned throughout the experiment. The robots in the Honey bee algorithm may switch what item-types they forage during the experiment, due to the item-type division of labour. 
+For the purposes of this study, each robot of each algorithm is assigned an initial item type to forage. The robots of the desert ant foraging algorithm and the na\"ive algorithm do not have item-type level division of labour and thus will continue to forage the same item-type that they were assigned throughout the experiment. The robots in the honey bee algorithm may switch what item-types they forage during the experiment, due to the item-type division of labour. 
 
 \section{Summary}
 \label{prioritized:summary}
 
-This chapter introduced two novel algorithms for foraging robot swarms: a desert ant inspired foraging algorithm, as well as a Honey bee inspired foraging algorithm. A benchmark algorithm called Na\"ive foraging, is also presented. The desert ant algorithm uses path integration to memorize the location of an item site and return to the site to forage more items. The Honey bee algorithm is substantially more complex with three roles for robots: scout, unemployed forager and employed forager. The scout robots in the Honey bee algorithm uses path integration to memorize the location of a site as well as evaluate the quality of the site. The location and quality of a site is communicated by the scout to unemployed foragers through direct communication. The unemployed forager are recruited and become employed foragers. The Honey bee algorithm also exhibits division of labour between prioritized and non-prioritized items. An overview of the properties of the algorithms are given in Table~\ref{properties}.
+This chapter introduced two novel algorithms for foraging robot swarms: a desert ant inspired foraging algorithm, as well as a honey bee inspired foraging algorithm. A benchmark algorithm, called na\"ive foraging, is also presented. The desert ant algorithm uses path integration to memorize the location of an item site and return robots to the site to forage more items. The honey bee algorithm is substantially more complex with three roles for robots: scout, unemployed forager, and employed forager. The scout robots in the honey bee algorithm uses path integration to memorize the location of a site as well as evaluate the quality of the site. The location and quality of a site is communicated by the scout to unemployed foragers through direct communication. The unemployed foragers are recruited and become employed foragers. The honey bee algorithm also exhibits division of labour between prioritized and non-prioritized items. An overview of the properties of the algorithms are given in Table~\ref{properties}.
 
 \begin{table} [h]
     \caption{Properties of the foraging algorithms used in this study}
