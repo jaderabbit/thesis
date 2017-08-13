@@ -190,7 +190,7 @@ The site quality of type $\varsigma$, $\mu_\varsigma$, is calculated using
 \mu_\varsigma = \frac{1}{n}\sum\limits_{x=1}^n k_{x_\varsigma}
 \end{equation}
  
-Before returning to the sink with the item, the scout memorizes the PI vector $v$ in site location variable $\omega$. The scout robot then switches to the homing state given in Algorithm~\ref{algorithm:scout:homing}. Using PI vector $\omega$, the scout returns the item $\vartheta$ to the sink. When the scout robot has returned to the sink, $S_\varsigma$, the scout robot offloads the item $\vartheta$. If the quality $\mu_\varsigma$ of the visited site $\xi$ is larger than threshold $\Phi$, the scout robot switches into the dance state, which is summarized in Algorithm~\ref{algorithm:recruit}. If the quality, $\mu_\varsigma$, of the visited site $\xi$ is less than threshold $\Phi$, the robot takes on the role of an employed forager and switches into the locate state, outlined in Algorithm~\ref{algorithm:employedforager:locating}.
+Before returning to the sink with the item, the scout memorizes the PI vector $v$ in site location variable $\omega$. The scout robot then switches to the homing state given in Algorithm~\ref{algorithm:scout:homing}. Using PI vector $\omega$, the scout returns the item $\vartheta$ to the sink. When the scout robot has returned to the sink, $S_\varsigma$, the scout robot offloads the item $\vartheta$. If the quality $\mu_\varsigma$ of the visited site $\xi$ is larger than site quality threshold, $\Phi$, the scout robot switches into the dance state, which is summarized in Algorithm~\ref{algorithm:recruit}. If the quality, $\mu_\varsigma$, of the visited site $\xi$ is less than site quality threshold, $\Phi$, the robot takes on the role of an employed forager and switches into the locate state, outlined in Algorithm~\ref{algorithm:employedforager:locating}.
 
 
 \begin{algorithm}
@@ -386,7 +386,7 @@ Unemployed forager robots become scout robots if no scout robot broadcasts are d
 \subsection{Initial States}
 \label{initialstates}
 
-A portion of the robots are initialized as scout robots in the explore state and the rest as unemployed forager robots. All robots are initialized adjacent to the sink. The ratio of robots initialized as scout robots is $X\in(0,100)$. Unemployed forager robots require a scout robot to recruit them to become employed forager robots. At initialization, the scout robots do not have site location details available, and therefore robots can not be initialized as employed forager robots. 
+A portion of the robots are initialized as scout robots in the explore state and the rest as unemployed forager robots. All robots are initialized adjacent to the sink. The percentage of robots initialized as scout robots is $X\in(0,100)$. Unemployed forager robots require a scout robot to recruit them to become employed forager robots. At initialization, the scout robots do not have site location details available, and therefore robots can not be initialized as employed forager robots. 
 
 \subsection{Division of Labour}
 \label{natureinspired:divisionoflabour}
