@@ -106,12 +106,40 @@ Different distributions of items over the environment were chosen to examine dif
         \caption{Environment Classes}\label{fig:environments}
 \end{figure}
 
+\begin{algorithm}
+
+\caption{Uniform Distributed Environments}
+\label{algorithm:uniform}
+\begin{algorithmic}[1]
+\Function{uniform}{$numberItems, r, S$}
+	\State \text{nonPrioritizedItemsLeft = floor((1-$r$)*numberItems)}
+	\State \text{prioritizedItemsLeft = floor( $r$*numberItems)}
+	\While{\text{$prioritizedItemsLeft > 0$}}
+		\State \text{x $\gets$ uniform(0, S)}
+		\State \text{y $\gets$ uniform(0, S)}
+		\If{\text{gridCell (x,y) is empty}}
+			\State \text{Place prioritized item at (x,y)}
+			\State \text{Decrement $prioritizedItemsLeft$}
+		\EndIf
+	\EndWhile
+
+	\While{\text{$nonPrioritizedItemsLeft > 0$}}
+		\State \text{x $\gets$ uniform(0, S)}
+		\State \text{y $\gets$ uniform(0, S)}
+		\If{\text{gridCell (x,y) is empty}}
+			\State \text{Place prioritized item at (x,y)}
+			\State \text{Decrement $nonPrioritizedItemsLeft$}
+		\EndIf
+	\EndWhile
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
 
 \begin{enumerate}
 
 \item The position of each item in a uniformly distributed environment is selected from a uniform distribution (refer to Figure~\ref{fig:uniformenv}). The uniformly distributed environment has uniform concentrations of prioritized and non-prioritized items across the environment and thus is used as a control environment. Pseudo-code for generation of uniform environment is provided in Algorithm~\ref{algorithm:uniform}.
 
-\item For the Gaussian environments, the positions of the prioritized items are sampled from a Gaussian distribution. The mean of the Gaussian disitribution is the centre of the grid, with a deviation that varies (refer to Figure~\ref{fig:gaussianenv}). Pseudo-code for generation of Gaussian environments is provided in Algorithm~\ref{algorithm:gaussian}. The positions of the non-prioritized items are selected from a uniform distribution, after placing the prioritized items. 
+\item For the Gaussian environments, the positions of the prioritized items are sampled from a Gaussian distribution. The mean of the Gaussian disitribution is the centre of the grid. The deviation of the Gaussian distribution was selected as $deviation = S*E_p/2$, to ensure that generation took a reasonable amount of time (that the same positions are not reselected regularly), but that the non-prioritized items were densely concentrated  (refer to Figure~\ref{fig:gaussianenv}). Pseudo-code for generation of Gaussian environments is provided in Algorithm~\ref{algorithm:gaussian}. The positions of the non-prioritized items are selected from a uniform distribution, after placing the prioritized items. 
 
 In Gaussian distributed environments, prioritized items  occur in high concentration towards the center of the environment. More non-prioritized items occur on the outskirts of the environment, surrounding the prioritized items in the centre.
 
@@ -120,7 +148,7 @@ The Gaussian environments were used to examine whether each algorithm will enabl
 
 \item Environments with a vein distribution resemble the patterns observed in naturally occurring gold reefs \cite{frimmel2002recent} (refer to Figure~\ref{fig:veinenv}). In a gold reef, molten gold fills planar fractures between rock resulting in a vein of gold. Inspired by gold reefs, vein distributed environments have a long thin vein of prioritized items running from one side of the environment to another. The vein of prioritized items was surrounded by non-prioritized items. 
 
-The vein environments aimed to test whether a swarm of robots could forage the continuous length of the vein of prioritized items, before foraging non-prioritized items. A swarm that is able to detect the location of the vein and return to the vein's location after foraging an item should forage more prioritized items initially, than one that cannot detect and remember the location of the vein.  Pseudo-code for generation of vein environments is provided in Algorithm~\ref{algorithm:vein}.
+The vein environments aimed to test whether a swarm of robots could forage the continuous length of the vein of prioritized items, before foraging non-prioritized items. A swarm that is able to detect the location of the vein and return to the vein's location after foraging an item should forage more prioritized items initially, than an algorithm that cannot detect and remember the location of the vein.  Pseudo-code for generation of vein environments is provided in Algorithm~\ref{algorithm:vein}.
 
 
 \item Environments with a clustered item distribution have a random number of clusters of items of the same type (refer to Figure~\ref{fig:clusterenv}). After clusters have been generated, each cluster is labelled randomly (with a Bernoulli disitribution with probability equal to the item ratio required for that environment, $r$), as either a cluster of prioritized items or a cluster of non-prioritized items, 
@@ -140,59 +168,29 @@ To summarize, the challenges introduced by the more complex distributions (the G
 
 
 \begin{algorithm}
-
-\caption{Uniform Distributed Environments}
-\label{algorithm:uniform}
-\begin{algorithmic}[1]
-\Function{uniform}{$numberitems, \sigma, environmentsize$}
-	\State \text{nonprioritizeditemsleft = floor((1-$E_p$)*numberitems)}
-	\State \text{prioritizeditemsleft = floor( $E_p$*numberitems)}
-	\While{\text{$prioritizeditemsleft > 0$}}
-		\State \text{x $\gets$ uniform(0, environmentsize)}
-		\State \text{y $\gets$ uniform(0, environmentsize)}
-		\If{\text{position (x,y) is empty}}
-			\State \text{Place prioritized item at (x,y)}
-			\State \text{Decrement $prioritizeditemsleft$}
-		\EndIf
-	\EndWhile
-
-	\While{\text{$nonprioritizeditemsleft > 0$}}
-		\State \text{x $\gets$ uniform(0, environmentsize)}
-		\State \text{y $\gets$ uniform(0, environmentsize)}
-		\If{\text{position (x,y) is empty}}
-			\State \text{Place prioritized item at (x,y)}
-			\State \text{Decrement $nonprioritizeditemsleft$}
-		\EndIf
-	\EndWhile
-\EndFunction
-\end{algorithmic}
-\end{algorithm}
-
-
-\begin{algorithm}
 \caption{Gaussian Distributed Environments}
 \label{algorithm:gaussian}
 \begin{algorithmic}[1]
-\Function{gaussian}{$numberitems, \sigma, environmentsize$}
-	\State \text{Calculate environment centre point $(center_x, center_y)$}
-	\State \text{prioritizeditemsleft = floor($E_p$*numberitems)}
-	\State \text{nonprioritizeditemsleft = floor((1-$E_p$)*numberitems)}
-	\State \text{deviation = environmentsize*$E_p$/2}
-	\While{\text{$prioritizeditemsleft > 0$}}
-		\State \text{$x \gets floor(gaussian(center_x, deviation))$}
-		\State \text{$y \gets floor(gaussian(center_y, deviation))$}
-		\If{\text{position (x,y) is empty and is valid}}
+\Function{gaussian}{$numberItems, r, S$}
+	\State \text{Calculate environment centre point $(x_c, y_c)$}
+	\State \text{prioritizedItemsLeft = floor($r$*numberItems)}
+	\State \text{nonPrioritizedItemsLeft = floor((1-$r$)*numberItems)}
+	\State \text{deviation = S*$r$/2}
+	\While{\text{$prioritizedItemsLeft > 0$}}
+		\State \text{$x \gets floor(gaussian(x_c, deviation))$}
+		\State \text{$y \gets floor(gaussian(y_c, deviation))$}
+		\If{\text{gridCell (x,y) is empty and is valid}}
 			\State \text{Place prioritized item at (x,y)}
-			\State \text{Decrement $prioritizeditemsleft$}
+			\State \text{Decrement $prioritizedItemsLeft$}
 		\EndIf
 	\EndWhile
 
-	\While{\text{$nonprioritizeditemsleft > 0$}}
-		\State \text{x $\gets$ uniform(0, environmentsize)}
-		\State \text{y $\gets$ uniform(0, environmentsize)}
-		\If{\text{position (x,y) is empty}}
-			\State \text{Place prioritized item at (x,y)}
-			\State \text{Decrement $nonprioritizeditemsleft$}
+	\While{\text{$nonPrioritizedItemsLeft > 0$}}
+		\State \text{x $\gets$ uniform(0, S)}
+		\State \text{y $\gets$ uniform(0, S)}
+		\If{\text{gridCell (x,y) is empty}}
+			\State \text{Place non prioritized item at (x,y)}
+			\State \text{Decrement $nonPrioritizedItemsLeft$}
 		\EndIf
 	\EndWhile
 \EndFunction
@@ -204,31 +202,31 @@ To summarize, the challenges introduced by the more complex distributions (the G
 \caption{Vein Distributed Environments}
 \label{algorithm:vein}
 \begin{algorithmic}[1]
-\Function{vein}{$numberitems, \sigma, environmentsize$}
-	\State \text{Select 2 random sides from the grid}
+\Function{vein}{$numberItems, r, S$}
+	\State \text{Select two random sides from the grid}
 	\State \text{Select a random points on each sides, $(x_0,y_0)$ and $(x_1,y_1)$}
-	\State \text{calculate gradient of vein, $m = (y_0 - y_1)/(x_0 - x_1)$}
-	\State \text{calculate $c$ of equation for line vein, $c = (y_0 - m*x_0)$
+	\State \text{Calculate gradient of vein, $m = (y_0 - y_1)/(x_0 - x_1)$}
+	\State \text{Calculate $c$ of equation for line vein, $c = (y_0 - m*x_0)$
 }
 
-	\State \text{prioritizeditemsleft = floor($E_p$*numberitems)}
-	\State \text{nonprioritizeditemsleft = floor((1-$E_p$)*numberitems)}
+	\State \text{prioritizedItemsLeft = floor($r$*numberItems)}
+	\State \text{nonPrioritizedItemsLeft = floor((1-$r$)*numberItems)}
 
-	\While{\text{$prioritizeditemsleft > 0$}}
+	\While{\text{$prioritizedItemsLeft > 0$}}
 		\State \text{$x \gets uniform(min(x_0,x_1), max(x_0, x_1))$}
 		\State \text{$y \gets m*x + c$}
-		\If{\text{position (x,y) is valid and position (x,y) is empty}}
+		\If{\text{gridCell (x,y) is valid and gridCell (x,y) is empty}}
 			\State \text{Place prioritized item at (x,y)}
-			\State \text{Decrement $prioritizeditemsleft$}
+			\State \text{Decrement $prioritizedItemsLeft$}
 		\EndIf
 	\EndWhile
 
-	\While{\text{$nonprioritizeditemsleft > 0$}}
-		\State \text{x $\gets$ uniform(0, environmentsize)}
-		\State \text{y $\gets$ uniform(0, environmentsize)}
-		\If{\text{position (x,y) is empty}}
+	\While{\text{$nonPrioritizedItemsLeft > 0$}}
+		\State \text{x $\gets$ uniform(0, S)}
+		\State \text{y $\gets$ uniform(0, S)}
+		\If{\text{gridCell (x,y) is empty}}
 			\State \text{Place nonprioritized item at (x,y)}
-			\State \text{Decrement $nonprioritizeditemsleft$}
+			\State \text{Decrement $nonPrioritizedItemsLeft$}
 		\EndIf
 	\EndWhile
 \EndFunction
@@ -242,14 +240,14 @@ To summarize, the challenges introduced by the more complex distributions (the G
 \caption{Clustered Distributed Environments (Part 1)}
 \label{algorithm:clustered}
 \begin{algorithmic}[1]
-\Function{clustered}{$numitems, \sigma, environmentsize$}
+\Function{clustered}{$numitems, r, S$}
   \State \text{Generate number of clusters, $total = uniform(3,15)$}
-  \State \text{Calculate number of prioritized clusters, $clusters_p = floor(\sigma*total)$}    
-  \State \text{Calculate number of non-prioritized clusters, $clusters_{np} = floor((1-\sigma)*total)$}
+  \State \text{Calculate number of prioritized clusters, $clusters_p = floor(r*total)$}    
+  \State \text{Calculate number of non-prioritized clusters, $clusters_{np} = floor((1-r)*total)$}
   
-  \State \text{Calculate number of prioritized items, $total_p = floor(\sigma*numitems)$}
+  \State \text{Calculate number of prioritized items, $total_p = floor(r*numitems)$}
   
-  \State \text{Calculate number of non-prioritized items, $total_{np} = floor((1-\sigma)*numitems)$}
+  \State \text{Calculate number of non-prioritized items, $total_{np} = floor((1-r)*numitems)$}
   
   \State \text{$ave_p = total_p/clusters_{p}$}
   \State \text{$ave_np = total_{np}/clusters_{np}$}
@@ -258,7 +256,7 @@ To summarize, the challenges introduced by the more complex distributions (the G
 
   \While{\text{$clusterstogenerate_p > 0$}}
     \State \text{sample centroid for cluster $C$ (x,y) uniformly from grid}
-    \State \text{$num_p = uniform(ave_p/2$, $2ave_p$)}
+    \State \text{$num_p = uniform(ave_p/2$, $2*ave_p$)}
     \State \text{Calculus radius, $r$, of cluster $C$ as $r = \sqrt{num_p/\pi}$}
     \If{\text{cluster $C$ does not collide with existing clusters}}
       \State \text{Save centroid and radius of cluster $C$ to list}
@@ -315,7 +313,7 @@ To summarize, the challenges introduced by the more complex distributions (the G
 \label{swarmparameters}
 
 For all algorithms, each robot swarm was initialized with 
-a swarm specialization ratio, $\tau\in\left\{0, 0.2, 0.25, 0.333, 0.5, 0.667, 0.75, 0.8,1\right\}$. The swarm specialization ratio is ratio of robots foraging prioritized items to non-prioritized items. When no robots are set to initially forage prioritized items then $\tau=0$ and when all robots are set to initially forage prioritized items then $\tau=1$.
+a swarm specialization ratio, $\tau\in\left\{0, 0.2, 0.25, 0.333, 0.5, 0.667, 0.75, 0.8,1\right\}$. The swarm specialization ratio is the ratio of robots foraging prioritized items to non-prioritized items. When no robots are set to initially forage prioritized items then $\tau=0$ and when all robots are set to initially forage prioritized items then $\tau=1$.
 
 The ability of an algorithm to adapt the value of $\tau$ appropriately for a given $r$, indicates the flexibility of an algorithm.
 
