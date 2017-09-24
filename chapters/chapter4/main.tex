@@ -80,35 +80,6 @@ The ratio, $r$, of prioritized to non-prioritized items was varied, with $r\in \
 
 Different distributions of items over the environment were chosen to examine different characteristics of the algorithms. The item distributions are illustrated in Figure~\ref{fig:environments}, where each lighter shaded square is a prioritized item and a non-prioritized item is shown by a darker shaded square. Four different classes of environments were generated as follows:
 
-\begin{enumerate}
-
-\item The position of each item in a uniformly distributed environment is selected from a uniform distribution (refer to Figure~\ref{fig:uniformenv}). The uniformly distributed environment has uniform concentrations of prioritized and non-prioritized items across the environment and thus is used as a control environment. Pseudo-code for generation of uniform environment is provided in Algorithm~\ref{algorithm:uniform}.
-
-\item For the Gaussian environments, the positions of the prioritized items are sampled from a Gaussian distribution. The mean of the Gaussian disitribution is the centre of the grid, with a deviation that varies  (refer to Figure~\ref{fig:gaussianenv}). Pseudo-code for generation of Gaussian environments is provided in Algorithm~\ref{algorithm:gaussian}. The positions of the non-prioritized items are selected from a uniform distribution, after placing the prioritized items. 
-
-In Gaussian distributed environments, prioritized items  occur in high concentration towards the center of the environment. More non-prioritized items occur on the outskirts of the environment, surrounding the prioritized items in the centre.
-
-The Gaussian environments were used to examine whether each algorithm will enable the robot swarm to forage or navigate past the non-prioritized items to reach the high concentration of prioritized items in the environment's centre. 
-
-\item Environments with a clustered item distribution have a random number of clusters of items of the same type (refer to Figure~\ref{fig:clusterenv}). After clusters have been generated, each cluster is labelled randomly as either a cluster of prioritized items or a cluster of non-prioritized items. 
-
-The goal of performing experiments in a clustered environment was to test an algorithms ability to exploit areas which are rich in prioritized items. Clustered environments were also be used to test whether an algorithm can either navigate around or forage non-prioritized items. A clustered environment can also test an algorithm's ability to remember locations of areas which have a high density of prioritized items, in order to aid more efficient access to prioritized items.  Pseudo-code for generation of clustered environments is provided in Algorithm~\ref{algorithm:clustered} and Algorithm~\ref{algorithm:clustered2}.
-
-
-\item Environments with a vein distribution resemble the patterns observed in naturally occurring gold reefs \cite{frimmel2002recent} (refer to Figure~\ref{fig:veinenv}). In a gold reef, molten gold fills planar fractures between rock resulting in a vein of gold. Inspired by the gold reef, vein distributed environments have a long thin vein of prioritized items running from one side of the environment to another. The vein of prioritized items was surrounded by non-prioritized items. The non-prioritized items are similar to the rock surrounding the gold in gold reefs.
-
-The vein environments aimed to test whether a swarm of robots, of each algorithm, could forage the continuous length of the vein of prioritized items. A swarm that is able to detect the location of the vein and return to the vein's location after foraging an item should forage more than one that cannot detect and remember the location of the vein.  Pseudo-code for generation of vein environments is provided in Algorithm~\ref{algorithm:vein}.
-
-
-\end{enumerate} 
-
-To summarize, the challenges introduced by the more complex distributions (the Gaussian, clustered and vein environment) aim to test a swarm's ability to:
-
-\begin{itemize}
-\item Navigate past obstacles efficiently or alternatively, forage obstacles efficiently.
-\item Return to high quality areas to forage them.
-\end{itemize}
-
 \begin{figure} [h]
         \centering
         \begin{subfigure}[b]{0.21\textwidth}
@@ -116,6 +87,11 @@ To summarize, the challenges introduced by the more complex distributions (the G
                 \caption{Uniform}
                 \label{fig:uniformenv}
         \end{subfigure}%
+		\begin{subfigure}[b]{0.2\textwidth}
+                        \includegraphics[width=\textwidth]{chapters/chapter4/figures/gaussianenv}
+                        \caption{Gaussian}
+                        \label{fig:gaussianenv}
+       \end{subfigure}
         \begin{subfigure}[b]{0.205\textwidth}
                 \includegraphics[width=\textwidth]{chapters/chapter4/figures/clusterenv.pdf}
                 \caption{Clustered}
@@ -126,13 +102,41 @@ To summarize, the challenges introduced by the more complex distributions (the G
                 \caption{Vein}
                 \label{fig:veinenv}
         \end{subfigure}  
-        \begin{subfigure}[b]{0.2\textwidth}
-                        \includegraphics[width=\textwidth]{chapters/chapter4/figures/gaussianenv}
-                        \caption{Gaussian}
-                        \label{fig:gaussianenv}
-       \end{subfigure}
+
         \caption{Environment Classes}\label{fig:environments}
 \end{figure}
+
+
+\begin{enumerate}
+
+\item The position of each item in a uniformly distributed environment is selected from a uniform distribution (refer to Figure~\ref{fig:uniformenv}). The uniformly distributed environment has uniform concentrations of prioritized and non-prioritized items across the environment and thus is used as a control environment. Pseudo-code for generation of uniform environment is provided in Algorithm~\ref{algorithm:uniform}.
+
+\item For the Gaussian environments, the positions of the prioritized items are sampled from a Gaussian distribution. The mean of the Gaussian disitribution is the centre of the grid, with a deviation that varies (refer to Figure~\ref{fig:gaussianenv}). Pseudo-code for generation of Gaussian environments is provided in Algorithm~\ref{algorithm:gaussian}. The positions of the non-prioritized items are selected from a uniform distribution, after placing the prioritized items. 
+
+In Gaussian distributed environments, prioritized items  occur in high concentration towards the center of the environment. More non-prioritized items occur on the outskirts of the environment, surrounding the prioritized items in the centre.
+
+The Gaussian environments were used to examine whether each algorithm will enable the robot swarm to forage or navigate past the non-prioritized items to reach the high concentration of prioritized items in the environment's centre. 
+
+
+\item Environments with a vein distribution resemble the patterns observed in naturally occurring gold reefs \cite{frimmel2002recent} (refer to Figure~\ref{fig:veinenv}). In a gold reef, molten gold fills planar fractures between rock resulting in a vein of gold. Inspired by gold reefs, vein distributed environments have a long thin vein of prioritized items running from one side of the environment to another. The vein of prioritized items was surrounded by non-prioritized items. 
+
+The vein environments aimed to test whether a swarm of robots could forage the continuous length of the vein of prioritized items, before foraging non-prioritized items. A swarm that is able to detect the location of the vein and return to the vein's location after foraging an item should forage more prioritized items initially, than one that cannot detect and remember the location of the vein.  Pseudo-code for generation of vein environments is provided in Algorithm~\ref{algorithm:vein}.
+
+
+\item Environments with a clustered item distribution have a random number of clusters of items of the same type (refer to Figure~\ref{fig:clusterenv}). After clusters have been generated, each cluster is labelled randomly (with a Bernoulli disitribution with probability equal to the item ratio required for that environment, $r$), as either a cluster of prioritized items or a cluster of non-prioritized items, 
+
+The goal of performing experiments in a clustered environment was to test an algorithm's ability to exploit areas which are rich in prioritized items. Clustered environments are also used to test whether an algorithm can either navigate around or forage non-prioritized items. A clustered environment can also test an algorithm's ability to remember locations of areas which have a high density of prioritized items, in order to aid more efficient access to prioritized items.  Pseudo-code for generation of clustered environments is provided in Algorithm~\ref{algorithm:clustered} and Algorithm~\ref{algorithm:clustered2}.
+
+
+\end{enumerate} 
+
+To summarize, the challenges introduced by the more complex distributions (the Gaussian, clustered and vein environment) aim to test a swarm's ability to:
+
+\begin{itemize}
+\item navigate past obstacles efficiently, or alternatively, to forage obstacles efficiently and to
+\item return to areas rich in prioritized items to forage these areas.
+\end{itemize}
+
 
 
 \begin{algorithm}
