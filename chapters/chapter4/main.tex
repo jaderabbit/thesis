@@ -339,23 +339,23 @@ The foraging efficiency, $E_P$, of a particular algorithm is defined as the tota
 
 \subsection{Flexibility}
 \label{setup:flexibility}
-As stated in Section~\ref{flexibility}, to measure flexibility is to measure of how variations in environments and tasks affect the co-ordination mechanisms of swarm robotics algorithms. An algorithm that is highly flexible, is one that has been optimized for a specific distribution, but is equally efficient on a different distribution \cite{hecker2015beyond}.
 
-The flexibility performance measures used in this study are based on the flexibility performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem, by only taking into account the prioritized item. The flexibility study addresses at two aspects: (i) Flexibility over the prioritized item ratios, $r_i$, and (ii) flexibility over environment distributions.
+As stated in Section~\ref{flexibility}, flexibility refers to the effect of variations in environment and tasks on the co-ordination mechanisms of swarm robotics algorithms. An algorithm that is highly flexible, is one that has been optimized for a specific environment, but is equally efficient on a different environment \cite{hecker2015beyond}.
+
+The flexibility performance measures used in this study are based on the flexibility performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem, by only taking into account the prioritized item. The flexibility study addresses two aspects: (i) Flexibility with respect to prioritized item ratios, $r$, and (ii) flexibility with respect to different environment distributions.
 
 \subsubsection{Flexibility over prioritized item ratio}
 \label{setup:flexibility:prioritizeditemratio}
 
-This study evaluates flexibility by looking at how swarm efficiency is effected by different environment item ratio $r_i$, as described in Section~\ref{experimentenvironments} and swarm specialization ratio, $\tau_i$, as described in Section~\ref{swarmparameters}. The value for $\tau$, which results in the best average efficiency, $E_p$, for a specific $r_i$ is denoted as $\hat{\tau}_{r_i}$ and the average efficiency for a specific swarm specialization ratio, $\tau$ over specific environment item ratio, $r$ is denoted $E_p(\tau, r)$.
+This study evaluates flexibility by looking at how swarm efficiency is effected by different environment item ratios $r$ (described in Section~\ref{experimentenvironments}) and swarm specialization ratios, $\tau$ (described in Section~\ref{swarmparameters}). The value for $\tau$, which results in the best average efficiency, $E_p$, for a specific $r$ is denoted as $\hat{\tau}_{r}$, and the average efficiency for a specific swarm specialization ratio $\tau$ over a specific environment item ratio, $r$ is denoted $E_p(\tau, r)$.
 
-Flexibility over prioritized item ratio, $F_r$ is defined as:
+The flexibility over prioritized item ratio is defined as
 
 \begin{equation}
 	F_r = \sum_{i=1}^{n} \sum_{j=1}^{n} \dfrac{|E_p(\hat{\tau}_{r_i}, {r_i})-E_p(\hat{\tau}_{r_i}, {r_j})|}{E_p(\hat{\tau}_{r_i}, {r_i})}
 \end{equation}
 
-The differences are normalized by $E_p(\hat{\tau}_{r_i}, {r_i})$ in order to remove the differences in average efficiencies for each algorithm, so that the algorithms can be compared, purely on flexibility. If $F_r$ of one algorithm is large, then that algorithm cannot generalize well over other environment item ratios, and is thus less flexible.
-
+The differences are normalized by $E_p(\hat{\tau}_{r_i}, {r_i})$ in order eliminate the average efficiencies for each algorithm, so that the algorithms can be compared purely on flexibility. If $F_r$ of one algorithm is large, then that algorithm can not generalize well over other environment item ratios, and is thus less flexible.
 
 
 
