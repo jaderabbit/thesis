@@ -313,11 +313,15 @@ To summarize, the challenges introduced by the more complex distributions (the G
 \label{swarmparameters}
 
 For all algorithms, each robot swarm was initialized with 
-a swarm specialization ratio, $\tau\in\left\{0, 0.2, 0.25, 0.333, 0.5, 0.667, 0.75, 0.8,1\right\}$. The swarm specialization ratio is the ratio of robots foraging prioritized items to non-prioritized items. When no robots are set to initially forage prioritized items then $\tau=0$ and when all robots are set to initially forage prioritized items then $\tau=1$.
+a swarm specialization ratio, $\tau\in\left\{0, 0.2, 0.25, 0.333, 0.5, 0.667, 0.75, 0.8,1\right\}$. The swarm specialization ratio is the ratio of robots foraging prioritized items to non-prioritized items. When no robots are set to initially forage prioritized items, then $\tau=0$ and when all robots are set to initially forage prioritized items, then $\tau=1$.
 
-The ability of an algorithm to adapt the value of $\tau$ appropriately for a given $r$, indicates the flexibility of an algorithm.
+The ability of an algorithm to adapt the value of $\tau$ appropriately for a given $r$ indicates the flexibility of the algorithm.
 
-The swarm size, $c$, is defined as the density of cells, of the grid size $S$ (the length of the side of an environment) that are occupied by robots, where $c\in\left\{0.1, 0.3, 0.5, 0.7, 1\right\}$. The swarm size is varied in order to test the scalability of the algorithm. The swarm size is also varied to test each algorithms' ability to adjust the amount of actively  foraging robots to the density of the items in the environment.
+
+The swarm size, $c$, is defined as the number of grid cells occupied by a robot, as a percentage of the total number of grid cells, i.e S x S. Values of c\in{...} where evaluated
+
+
+The swarm size, $c$, is defined as the number of cells occupied by a robot, as a percentage of the grid size $S$ (the length of the side of an environment), where values of $c\in\left\{0.1, 0.3, 0.5, 0.7, 1\right\}$ where evaluated. The swarm size is varied in order to test the scalability of the algorithm. The swarm size is also varied to test each algorithms' ability to adjust the number of actively foraging robots to the density of the items in the environment, $c$, as well as adjust the number of robots actively foraging an item type, $\tau$, to the item type density, $r$.
 
 The honey bee algorithm specific parameters were selected based on \cite{seeley2009wisdom}, where
  $t_{wait}=200$ time steps, $f_{max}=100$ time steps, $\Phi=0.8$ and $\rho=0.1$. Testing the effect of each of the honey bee algorithm specific parameters was not in the scope of this thesis.
