@@ -362,6 +362,7 @@ The differences are normalized by $E_p(\hat{\tau}_{r_i}, {r_i})$ in order elimin
 \subsubsection{Flexibility over environment distribution types}
 \label{setup:flexibility:environmentdistributions}
 
+
 This study evaluates flexibility, by analysing how swarm efficiency on various environment distributions (ED), described in Section~\ref{experimentenvironments}, is affected by swarm specialization ratio, $\tau_i$ (described in Section~\ref{swarmparameters}).
 
 The value for $\tau$, which results in the best average efficiency, $E_P$, for a specific $ED$ is denoted as $\hat{\tau}_{ED}$ and the average efficiency for a specific swarm specialization ratio, $\tau$ with specific ED is denoted $E_P(\tau, ED)$.
@@ -384,7 +385,7 @@ A larger value for $F_{ED}$ of one algorithm, compared to another algorithm, mea
 
 Scalability is described in Section~\ref{sr:scalabilty}. The study of scalability can be separated into two types: (i) Swarm size scalability and (ii) problem size scalability.
 
-\subsubsection{Swarm size Scalability}
+\subsubsection{Swarm size scalability}
 \label{swarmsizescalability}
 The efficiency of a robot swarm should be relatively undisturbed by changes in group sizes. This property is known as swarm size scalability. When the efficiency of an algorithm improves linearly (or superlinearly) as swarm size increases, an algorithm is considered scalable. However, due to increased inter-robot interference in larger swarm sizes, scalability is often sub-linear \cite{lerman2002mathematical}. Many swarm robotics algorithms focus on the use of division of labour, navigation or communication in order to decrease inter-robot interference \cite{lerman2002mathematical, schneider1998territorial}. The scalability performance measures are based on the scalability performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem, by only taking into account the prioritized items.
 
@@ -402,7 +403,7 @@ where $E_P(c_i)$ is the average efficiency $E_P$ over all environments with swar
 
 The swarm size scalability study will specifically look at large environments ($S=500$) to avoid the possibility of an environment running out of items to forage.
 
-\subsubsection{Problem Scalability}
+\subsubsection{Problem scalability}
 \label{setup:problemscalability}
 If the efficiency, $E_P$, of an algorithm decreases linearly (or super-linearly) as problem complexity increases, then an algorithm can be seen as scalable. Similarly to swarm size scalability, described in Section~\ref{swarmsizescalability}, problem scalability is often sub-linear, due to increased environmental interference.
 
@@ -427,25 +428,25 @@ The problem scalability study will specifically look at large environments ($S=5
 \subsection{Behavioural Performance Measures}
 \label{behaviouralperformancemeasures}
 
-Despite not being one of the more typical performance measures for swarm robotics, a number of measures are included to enable further understanding of why the scalability, flexibility and efficiency metrics were observed.
+Despite not being one of the more typical performance measures for swarm robotics, a number of measures are included to enable further understanding of the obtained quantitive performance measures.
 
 \subsubsection{Items foraged over time}
-To give incite into the effect of environmental and swarm parameters of overall performance, and characterise the effects of certain behaviours, the following metrics have been recorded:
+To give insight into the effects of environmental and swarm parameters on overall performance, and to characterise the effects of certain behaviours, the following metrics have been recorded:
 
 \begin{itemize}
-\item The total prioritized items foraged over time, $E^t_P$. The total prioritized items foraged are recorded every 200 time steps and are normalized with the total prioritized items that exist in the specific environment.
-\item The total non-prioritized items foraged over time, $E^t_{NP}$. The total non-prioritized items foraged are recorded every 200 time steps and are normalized with the total non-prioritized items that exist in the specific environment.
+\item The total number of prioritized items foraged over time, $E^t_P$. The total number of prioritized items foraged are recorded every 200 time steps and are normalized with the total number of prioritized items that exist in the specific environment.
+\item The total number of non-prioritized items foraged over time, $E^t_{NP}$. The total number of non-prioritized items foraged are recorded every 200 time steps and are normalized with the total number of non-prioritized items that exist in the specific environment.
 \end{itemize}
 
-\subsubsection{Swarm Specialization Ratio over time}
-Swarm specialization ratio stays constant for the Desert ant algorithm and the Na\"ive algorithm, but the swarm specialization ratio changes for the Honey bee algorithm, due to the division of labour mechanisms. In order to gain more understanding of how the division of labour mechanism is performing, the swarm specialization ratio over time, $\tau_t$ is tracked. The swarm specialization ratio is recorded every 200 time steps.
+\subsubsection{Swarm specialization ratio over time}
+Swarm specialization ratio stays constant for the desert ant algorithm and the na\"ive algorithm, but the swarm specialization ratio changes for the honey bee algorithm, due to the division of labour mechanisms. In order to gain a better understanding of how the division of labour mechanism performs, the swarm specialization ratio over time, $\tau_t$, is tracked. The swarm specialization ratio is recorded every 200 time steps.
 
-\subsubsection{Time Spent Performing Recruitment}
-Unlike the Desert ant algorithm and the Na\"ive algorithm, the Honey bee algorithm robots perform behaviours that are not directly involved in retrieving items - in particular, the recruitment activities form part of the division of labour mechanism. In order to better understand the influence of the division of labour mechanisms, the average percentage of each robot in a swarm spent on each division of labour activity is recorded as follows:
+\subsubsection{Time spent performing recruitment}
+Unlike the Desert ant algorithm and the Na\"ive algorithm, the honey bee algorithm robots perform behaviours that are not directly involved in retrieving items - in particular, the recruitment activities form part of the division of labour mechanism. In order to better understand the influence of the division of labour mechanisms, the average percentage of each robot in a swarm spent on each division of labour activity is recorded as follows:
 
 \begin{itemize}
-\item $t_{wait}$ - the average percentage of total time steps spent by each robot in the waiting state.
-\item $t_{recruitment}$ - the average percentage of total time steps spent by each robot in the recruitment state.
+\item $t_{wait}$, the average percentage of the total number of time steps spent by each robot in the waiting state.
+\item $t_{recruitment}$, the average percentage of the total time number of steps spent by each robot in the recruitment state.
 \end{itemize}
 
 
@@ -457,11 +458,11 @@ Unlike the Desert ant algorithm and the Na\"ive algorithm, the Honey bee algorit
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
 \label{third:summary}
-The robots used in this study are based on the e-puck robots, but with gripper capabilities. The robots used a navigation and obstacle avoidance technique based on the flocking behaviour of birds where a global attractor force attracts the robot in a specific direction, while the local attractor force guides a robot around localized obstacles. A simple 2-dimensional grid-based simulator is used. Only a single robot or item occupy a single grid cell at any time point.
+The robots used in this study are based on the e-puck robots, but with gripper capabilities. The robots used a navigation and obstacle avoidance technique based on the flocking behaviour of birds where a global attractor force attracts the robot in a specific direction, while the local attractor force guides a robot around localized obstacles. A simple 2-dimensional grid-based simulator is used. Only a single robot or item occupies a single grid cell at any time point.
 
-Different types of environment distributions were generated for experimentation. The environment types defined have the four following distributions: uniform distribution, Gaussian distribution, clustered distribution and vein distribution. The following environmental parameters were varied: item density, environment size and item type ratio. The following swarm parameters chosen for each of the algorithms were presented: initial swarm specialization ratio, swarm density, and honey bee specific parameters.
+Different types of environment distributions were generated for experimentation. The environment types have been created based only: uniform, Gaussian, clustered and vein distributions. The following environmental parameters were varied: item density, environment size, and item type ratio. The following swarm parameters chosen for each of the algorithms were presented: initial swarm specialization ratio, swarm density, and honey bee specific parameters.
 
-Performance measures were selected to evaluate the efficiency of the algorithms, as well as the scalability and flexibility of the algorithms. Lastly, a set of behavioural performance measures are presented in order to gain insight into individual behaviours of the algorithms, namely (i) Items foraged over time (ii) Swarm specialization ratio over time and (iii) the time spent performing recruitment activities.
+Performance measures were selected to evaluate the efficiency of the algorithms, as well as the scalability and flexibility of the algorithms. Lastly, a set of behavioural performance measures are presented in order to gain insight into individual behaviours of the algorithms, namely, the items foraged over time, the swarm specialization ratio over time, and the time spent performing recruitment activities.
 
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
