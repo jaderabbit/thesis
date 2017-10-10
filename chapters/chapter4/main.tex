@@ -20,7 +20,7 @@ Foraging robots occur in all shapes, sizes and capabilities. Some robots have po
 \subsection{Robot Description}
 \label{robotdescription}
 
-The artificial robots modelled in this study are based on e-puck robots \cite{mondada2009puck}, which have been modified with grippers. A robot is equipped with a 360 degree camera to identify objects around the robot, as well as eight local distance sensors equally spaced around the circular perimeter of the robot. Both camera and distance sensors have a depth of view of five times the robot's size. Robots use local communication which can occur in a radius of five times the robot's size. The sensor and communication range is sufficiently localized with respect to the size of the environment. A robot can forage a single item at a time. The robots do not have a global positioning system (GPS) capability to locate items to position themselves in the environment. A robot can not see occluded items. As a result, robots have to explore the environment to find the prioritized items.
+The artificial robots mode vlled in this study are based on e-puck robots \cite{mondada2009puck}, which have been modified with grippers. A robot is equipped with a 360 degree camera to identify objects around the robot, as well as eight local distance sensors equally spaced around the circular perimeter of the robot. Both camera and distance sensors have a depth of view of five times the robot's size. Robots use local communication which can occur in a radius of five times the robot's size. The sensor and communication range is sufficiently localized with respect to the size of the environment. A robot can forage a single item at a time. The robots do not have a global positioning system (GPS) capability to locate items to position themselves in the environment. A robot can not see occluded items. As a result, robots have to explore the environment to find the prioritized items.
 
 \subsection{Navigation and Obstacle Avoidance}
 \label{navigationandobstacleavoidance}
@@ -318,7 +318,7 @@ a swarm specialization ratio, $\tau\in\left\{0, 0.2, 0.25, 0.333, 0.5, 0.667, 0.
 The ability of an algorithm to adapt the value of $\tau$ appropriately for a given $r$ indicates the flexibility of the algorithm.
 
 
-The swarm size, $c$, is defined as the number of grid cells occupied by a robot, as a percentage of the total number of grid cells, i.e S x S. Values of c\in{...} where evaluated
+The swarm size, $c$, is defined as the number of grid cells occupied by a robot, as a percentage of the total number of grid cells, i.e S x S. Values of $c\in{...}$ were evaluated.
 
 
 The swarm size, $c$, is defined as the number of cells occupied by a robot, as a percentage of the grid size $S$ (the length of the side of an environment), where values of $c\in\left\{0.1, 0.3, 0.5, 0.7, 1\right\}$ where evaluated. The swarm size is varied in order to test the scalability of the algorithm. The swarm size is also varied to test each algorithms' ability to adjust the number of actively foraging robots to the density of the items in the environment, $c$, as well as adjust the number of robots actively foraging an item type, $\tau$, to the item type density, $r$.
@@ -337,6 +337,12 @@ The performance of swarm robotics algorithms can be measured by examining the al
 \label{setup:foragingefficiency}
 The foraging efficiency, $E_P$, of a particular algorithm is defined as the total number of prioritized items collected by all robots in a fixed time period on a specific environment. This foraging efficiency metric is similar to the efficiency metric used by Hecker \textit{et al} \cite{hecker2015beyond}. The metrics used in experiments performed by Hecker \textit{et al} evaluate the performance of foraging algorithms and are thus appropriate for use in the experiments of this study. The metric only looks at the prioritized items for the prioritized foraging problem.
 
+\subsection{Notation}
+
+Let $R$ be the vector containing all considered elements for environment item type ratio, $r$, and let $n_r$ be the length of  $R$. Let $T$ be the vector containing all considered elements for initial swarm specialization ratio, $\tau(0)$, and let $n_t$ be the length of $T$.
+
+Let $Z$ be a matrix of dimensions $(n_t, n_r)$. Let each entry of the matrix $Z_{ij}$ be the average foraging efficiency, $E_P$, over all experiments, for a specific environment ratio $r_j$, where $r_j$ is the $j$th element of $R$, and for a specific initial swarm specialization ratio $\tau_i$, such that $\tau_i$ is the $i$th element of $T$.
+
 \subsection{Flexibility}
 \label{setup:flexibility}
 
@@ -347,16 +353,24 @@ The flexibility performance measures used in this study are based on the flexibi
 \subsubsection{Flexibility over prioritized item ratio}
 \label{setup:flexibility:prioritizeditemratio}
 
-This study evaluates flexibility by looking at how swarm efficiency is effected by different environment item ratios $r$ (described in Section~\ref{experimentenvironments}) and swarm specialization ratios, $\tau$ (described in Section~\ref{swarmparameters}). The value for $\tau$, which results in the best average efficiency, $E_p$, for a specific $r$ is denoted as $\hat{\tau}_{r}$, and the average efficiency for a specific swarm specialization ratio $\tau$ over a specific environment item ratio, $r$ is denoted $E_p(\tau, r)$.
+We need to determine how well the best value for swarm specialization ratio (where the best value is one that yields the greatest efficiency) for a specific environment item ratio, $r_u$, generalizes across all other environment item ratios, $r_v$, such that $u,v = 1,...,n_r$,$u \neq v$.
 
-The flexibility over prioritized item ratio is defined as
+To do so, we first define $I$ as a vector of length $n_r$, where each entry $I_j$ is the index $k$ that yields the maximum value for $Z_{ij}$, for $i = 1,..., n_\tau$, for a specific environment type ratio $j$. More succinctly:
 
 \begin{equation}
-	F_r = \sum_{i=1}^{n} \sum_{j=1}^{n} \dfrac{|E_p(\hat{\tau}_{r_i}, {r_i})-E_p(\hat{\tau}_{r_i}, {r_j})|}{E_p(\hat{\tau}_{r_i}, {r_i})}
+I_j = \{ k | Z_{kj} = max(Z_{ij}) \text{ for } i = 1,...,n_\tau\}
 \end{equation}
 
-The differences are normalized by $E_p(\hat{\tau}_{r_i}, {r_i})$ in order eliminate the average efficiencies for each algorithm, so that the algorithms can be compared purely on flexibility. If $F_r$ of one algorithm is large, then that algorithm can not generalize well over other environment item ratios, and is thus less flexible.
+We define a normalized moment around the max foraging efficiency for a specific environment item type ratio $r_u$, as follows: 
+\begin{equation}
+F_u = \sum_{v=1}^{n_r}(\dfrac{|Z_{I_uu}- Z_{I_uv}|}{Z_{I_uu}})
+\end{equation}
 
+And the final performance measure is the sum of the above normalized moments around the maximum foraging efficiency for every environment item type ratio:
+
+\begin{equation}
+F = \sum_{u=1}^{n_r}(F_u)
+\end{equation}
 
 
 \subsubsection{Flexibility over environment distribution types}
