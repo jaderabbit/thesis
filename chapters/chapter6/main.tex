@@ -90,7 +90,7 @@ The above suggests the following hypothesis:
 
 The honey bees ability to adapt $\tau$ (described in Section~\ref{honeybeeforaging}) enables the honey bee algorithm to adapt the swarm specialization ratio, $\tau$, to more efficiently forage the differing environment ratios of the accessible environment (refer to Section~\ref{accessibleenvironment}) as the accessible environment changes throughout foraging.
 
-To provide evidence for this hypothesis, consider a Gaussian environment, of high density or items, which has a low ratio of prioritized items and a swarm which has a high initial swarm specialization ratio (i.e. most robots are initially set to forage prioritized items). Since the non-prioritized items surround the prioritized items in such an environment, the swarm should first forage the non-prioritized items in order to get access to the prioritized items. Once the swarm can reach the prioritized items, the swarm should switch to foraging the prioritized items. The example Gaussian environment is illustrated in Figure~\ref{fig:gaussianhighdensityenv}. The white cells represent an empty cell, the dark cells represent the cells containing a non-prioritized item and the shaded cells represent the cells containing a prioritized item. The environment in Figure~\ref{fig:gaussianhighdensityenv} has the following properties:
+To provide evidence for this hypothesis, an in-depth examination of each algorithm is performed, on a Gaussian environment, of high density or items, which has a low ratio of prioritized items and a swarm which has a high initial swarm specialization ratio (i.e. most robots are initially set to forage prioritized items). Since the non-prioritized items surround the prioritized items, the swarm should first forage the non-prioritized items in order to get access to the prioritized items. Once the swarm can reach the prioritized items, the swarm should switch to foraging the prioritized items. The example Gaussian environment is illustrated in Figure~\ref{fig:gaussianhighdensityenv}. The white cells represent an empty cell, the dark cells represent the cells containing a non-prioritized item and the shaded cells represent the cells containing a prioritized item. The environment in Figure~\ref{fig:gaussianhighdensityenv} has the following properties:
 
 \begin{itemize}
 \item A Gaussian environment item distribution,
@@ -116,7 +116,7 @@ So, figure~\ref{fig:gaussianhighdensityperformancehoneybee} shows the efficiency
 \centering
 \small
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/flexibility/flexibility-ED-gaussian-honeybee.tex}}
-\caption{Efficiency of prioritized item foraging, $E_P$, efficiency of non-prioritized item foraging, $E_{NP}$, and specialization ratio over time, $\tau_t$, for the honey bee algorithm on an example Gaussian environment, averaged over 30 independant runs}
+\caption{Efficiency of prioritized item foraging, $E_P$, efficiency of non-prioritized item foraging, $E_{NP}$, and specialization ratio over time, $\tau(t)$, for the honey bee algorithm on an example Gaussian environment, averaged over 30 independant runs}
 \label{fig:gaussianhighdensityperformancehoneybee}
 \end{figure}
 
@@ -124,15 +124,19 @@ In the first 200 timesteps, the efficiency of foraging nonprioritized items, $E_
 
 In constrast, the na\"ive algorithm's performance suffered because it lacks the ability to adapt swarm specialization. Figure~\ref{fig:gaussianhighdensityperformancenaive} illustrates the same performance measures, on the same Gaussian environment and swarm parameters. 
 
-Because the na\"ive algorithm does not enable robots to switch their item specialization, the swarm specialization ratio, $\tau$ remains constant. Because so few robots could clear non-prioritized items, due to the large initial swarm specialization ratio, $E_{NP}$ increased slowly throughout the experiment. Because the swarm was slow to clear the non-prioritized items, the $E_P$ also remained small throughout the experiment, since the swarm struggled to make the prioritized items easily accessible. This suggests that prioritized foraging robots experienced environmental interference while attempting to navigate around the unforaged non-prioritized items. The rate of increase of $E_P$ increased over the duration of the experiment, as the swarm cleared more of the non-prioritized items. The behaviour for the desert ant algorithm was similar to that of the na\"ive algorithm, except final efficiency was greater for the desert ant algorithm.
+Because the na\"ive algorithm does not enable robots to switch their item specialization, the swarm specialization ratio, $\tau$ remains constant. Because so few robots could clear non-prioritized items, due to the large initial swarm specialization ratio, $E_{NP}$ increased slowly throughout the experiment. Because the swarm was slow to clear the non-prioritized items, the $E_P$ also remained small throughout the experiment, since the swarm struggled to make the prioritized items easily accessible. This suggests that prioritized foraging robots experienced environmental interference while attempting to navigate around the unforaged non-prioritized items. The rate of increase of $E_P$ increased over the duration of the experiment, as the swarm cleared more of the non-prioritized items. The behaviour for the desert ant algorithm was similar to that of the na\"ive algorithm, except that the final efficiency was greater for the desert ant algorithm.
 
-The above analysis provides evidence for the hypothesis that suggests that the honey bee algorithm is capable of adapting the swarm to forage the accessible environment which results in improved flexibility over environment distributions, compared to the other items. 
+
+Figure~\ref{fig:gaussianhighdensityperformancehoneybee} shows that final $E_P$ for the honey bee algorithm, averaged over 30 independant runs, was 0.9, while Figure~\ref{fig:gaussianhighdensityperformancenaive} shows that the final $E_P$ for the na\"ive algorithm was only 0.3. Since the honey bee algorithm adapts $\tau$, the honey bee algorithm shows an increased ability to forage obstacles (the non-prioritized items), in order to more easily access hard to reach prioritized items. As a result, the honey bee algorithm is more flexible too different environment distributions, than the na\"ive or desert ant algorithms.
+
+
+
 
 \begin{figure}[!htb]
 \centering
 \small
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/flexibility/flexibility-ED-gaussian-naive.tex}}
-\caption{Efficiency of prioritized item foraging $E_P$, efficiency of non-prioritized item foraging $E_{NP}$, and the specialization ratio over time $\tau$, for the na\"ive algorithm on a Gaussian evironment}
+\caption{Efficiency of prioritized item foraging $E_P$, efficiency of non-prioritized item foraging $E_{NP}$, and the specialization ratio over time $\tau$, for the na\"ive algorithm on a Gaussian evironment, averaged over 30 independant runs}
 \label{fig:gaussianhighdensityperformancenaive}
 \end{figure}
 
@@ -140,18 +144,24 @@ The above analysis provides evidence for the hypothesis that suggests that the h
 \centering
 \small
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/flexibility/flexibility-ED-uniform-honeybee.tex}}
-\caption{Efficiency of prioritized item foraging $E_P$, efficiency of non-prioritized item foraging $E_{NP}$, specialization ratio $\tau$ over time, for the honey bee algorithm on a Uniform environment}
+\caption{Efficiency of prioritized item foraging $E_P$, efficiency of non-prioritized item foraging $E_{NP}$, specialization ratio $\tau$ over time, for the honey bee algorithm on a Uniform environment, averaged over 30 independant runs}
 \label{fig:uniformhighdensityperformancehoneybee}
 \end{figure}
 
-Figure~\ref{fig:gaussianhighdensityperformancehoneybee} shows that final $E_P$ for the honey bee algorithm was 0.9, while Figure~\ref{fig:gaussianhighdensityperformancenaive} shows that the final $E_P$ for the na\"ive algorithm was only 0.3. Since the honey bee algorithm adapts $\tau$, the honey bee algorithm shows an increased ability to forage obstacles (the non-prioritized items), in order to more easily access hard to reach prioritized items. As a result, the honey bee algorithm is more flexible too different environment distributions, than the na\"ive algorithm.
+
+To provide further evidence for the above hypothesis, one must consider other environment distributions, to show that honey bee algorithm can adapt the swarm's $\tau$ appropriately, for different distributions. Thus, consider a uniform environment with the same environment parameters as above. Because the environment distribution is uniform, environment ratio of the accessible environment will fluctuate erratically as the swarm forages the environment.  
+
+Figure~\ref{fig:uniformhighdensityperformancehoneybee} shows the same performance measures, for an experiment with the same swarm parameters as above on the uniform environment, for the honey bee algorithm. The specialization ratio has a downward erratic trend, from over 0.9 to approximately 0.4. The erratic fluctuation of $\tau$ is due to minor and short-lived erratic differences in the environment ratio of the accessible environment which would feature in uniform environments. The rate of foraging efficiency $E_P$ and $E_{NP}$  increase constantly throughout the experiment. 
+
+The above analysis provides evidence for the hypothesis that suggests that the honey bee algorithm is capable of adapting the swarm to forage the accessible environment which results in improved flexibility on different environment distributions, where as the desert ant and na\"ive algorithms have more difficulty foraging certain distributions as they cannot adapt $
+tau$ to more effectively forage the accessible environment.
 
 
-%FLOW
 
-Figure~\ref{fig:uniformhighdensityperformancehoneybee} shows the efficiency of foraging prioritized items $E_P$, the efficiency of foraging non-prioritized items $E_{NP}$, as well as the specialization ratio, $\tau$, for the honey bee algorithm, for each 200 time steps, on a Uniform environment, with the same configuration as the prior Gaussian environment in Figure~\ref{fig:gaussianhighdensityenv}. The specialization ratio fluctuates randomly between 0.4 and 0.7, while the rate of foraging efficiency, $E_P$ and $E_{NP}$ remains constant throughout the experiment. The random fluctuation of $\tau$ seems reasonable, given that the environment distribution was also random.
-
+%TODO Make this bitch flow
 The desert ant algorithm outperforms the na\"ive algorithm in terms of flexibility over environment distributions, since the desert ant algorithm uses site fidelity, as discussed in Section~\ref{desertantforaging}, enabling the desert ant to more efficiently return to the high concentrations of prioritized items.
+
+
 
 \section{Scalability}
 \label{results:scalability}
