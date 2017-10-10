@@ -70,6 +70,7 @@ The prioritized and non-prioritized sinks were placed next to each other, on a s
 \section{Environments}
 \label{experimentenvironments}
 
+\subsection{Environmental Parameters}
 The experiments were run on different environments each with different item distributions, environment sizes, item densities and different ratios of prioritized to non--prioritized items. 
 
 The sizes, $S$, of the environment grid were varied, where $S\in \left\{ 50, 100, 200, 300, 500\right\}$, where $S$ was the width and length of the grid.
@@ -77,6 +78,8 @@ The sizes, $S$, of the environment grid were varied, where $S\in \left\{ 50, 100
 Different values for the density, $p$, of the items on the grid were chosen, such that if $p=0.9$, then 90\% of the grid cells are occupied by items, with $p\in \{ 0.05,\allowbreak 0.2,\allowbreak 0.5,\allowbreak 0.7,\allowbreak 0.9\}$. Environments with a higher item density are more complex to forage, since there exists a higher probability that an item of the type that the robot is not foraging will block the path to items of the type that the robot is foraging.
 
 The ratio, $r$, of prioritized to non-prioritized items was varied, with $r\in \{0,\allowbreak 0.2,\allowbreak 0.25,\allowbreak 0.33,\allowbreak 0.5,\allowbreak 0.67,\allowbreak 0.75,\allowbreak 0.8, 1\}$. For $r=0$, there are no prioritized items on the grid, and when $r=1$, there exist only prioritized items on the grid. Environments with a small $r$ value have an abundance of non-prioritized items which increases the likelihood of non-prioritized items blocking access to prioritized items. 
+
+\subsection{Environment Distributions}
 
 Different distributions of items over the environment were chosen to examine different characteristics of the algorithms. The item distributions are illustrated in Figure~\ref{fig:environments}, where each lighter shaded square is a prioritized item and a non-prioritized item is shown by a darker shaded square. Four different classes of environments were generated as follows:
 
@@ -309,11 +312,16 @@ To summarize, the challenges introduced by the more complex distributions (the G
 \end{algorithm}
 
 
+\subsection{Accessible Environment}
+\label{accessibleenvironment}
+
+To aid discussions about the algorithms' performance on different types of environments, the concept of an \textbf{accessible environment} should be introduced. For the purposes of this thesis, an accessible environment is the parts of the environment that can be foraged by the swarm and are not blocked by other items. Items that are hidden behind other items are not accessible to the robot swarm and are thus not part of the accessible environment. The accessible environment is much larger in a less densely populated environment. This also introduces the concept of the environment ratio of a given accessible environment. For example, an environment may have a high ratio of prioritized items overall, but if the prioritized items are surrounded completely by non-prioritized items, then the accessible environment consists only of non-prioritized items and has an environmental item type ratio of 0. The environment ratio of the accessible environment changes differently per environment disitribution type. In high density Gaussian environments, the accessible environment will initially consist of mostly non-prioritized items, but as robots forage towards the centre, the accessible environment will consist largely of prioritized items. For uniform environments, all accessible environments would have a similar or same environment item ratio as the entire environment. In clustered environments, depending on the configuration of the clusters, the environment ratio of the accessible environments would vary. For vein environments, at the beginning of foraging, the accessible environment ratio would be low in high density environments if the vein is perpendicular to the sink since only the "entrance" of the prioritized vein would be exposed to the robots and the rest of the prioritized items would be stacked behind those items. 
+
+
 \section{Swarm Parameters}
 \label{swarmparameters}
 
-For all algorithms, each robot swarm was initialized with 
-a swarm specialization ratio, $\tau\in\left\{0, 0.2, 0.25, 0.333, 0.5, 0.667, 0.75, 0.8,1\right\}$. The swarm specialization ratio is the ratio of robots foraging prioritized items to non-prioritized items. When no robots are set to initially forage prioritized items, then $\tau=0$ and when all robots are set to initially forage prioritized items, then $\tau=1$.
+For all algorithms, each robot swarm was initialized with a swarm specialization ratio, $\tau\in\left\{0, 0.2, 0.25, 0.333, 0.5, 0.667, 0.75, 0.8,1\right\}$. The swarm specialization ratio is the ratio of robots foraging prioritized items to non-prioritized items. When no robots are set to initially forage prioritized items, then $\tau=0$ and when all robots are set to initially forage prioritized items, then $\tau=1$.
 
 The ability of an algorithm to adapt the value of $\tau$ appropriately for a given $r$ indicates the flexibility of the algorithm.
 
@@ -332,6 +340,9 @@ The initial position of each robot was randomly selected, adjacent to the sink. 
 \label{thri:third:performancemeasures}
 
 The performance of swarm robotics algorithms can be measured by examining the algorithm's ability to perform a task in terms of efficiency, scalability, flexibility, and robustness.
+
+\subsection{Terminology}
+A single \textbf{experiment} consists of 30 independant runs of an algorithm with a specific set of swarm parameters defined above, and on an environment which has a specific set of environmental parameters, defined above.
 
 \subsection{Foraging Efficiency}
 \label{setup:foragingefficiency}
