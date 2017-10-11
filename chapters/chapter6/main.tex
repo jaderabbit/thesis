@@ -269,31 +269,32 @@ If a portion of robots in a swarm malfunction or are destroyed, then the swarm s
 
 Suppose all the robots which were foraging for prioritized items (for some $\tau > 0$) are destroyed or malfunction (thus $\tau=0$). Foraging efficiency would drop to 0, because no robots exist to forage prioritized items. Similarly, consider an environment where all prioritized items are blocked by non-prioritized items and that $\tau < 1$ . If all non-prioritized robots suffer a malfunction or are destroyed, then $\tau=1$ and no robots will be available to forage non-prioritized items. Foraging efficiency, $E_P$, will then drop to 0. 
 
-As shown in Section~\ref{results:flexibility}, the honey bee algorithm experiences little change to efficiency when $\tau(0)$ is varied. The honey bee algorithm adapts the swarm specialization ratio, $\tau$, over time. It follows that, for the above scenarios, the honey bee algorithm will be able to re-adapt the swarm specialization ratio, in order to replenish the robots that were destroyed. 
+As shown in Section~\ref{results:flexibility}, the honey bee algorithm experiences little change to efficiency when $\tau(0)$ is varied. The honey bee algorithm adapts the swarm specialization ratio, $\tau$, over time. It follows that, for the above scenarios, the honey bee algorithm will be able to re-adapt the swarm specialization ratio in order to replenish the robots that were destroyed. 
 
 The robots controlled by the honey bee algorithm are homogeneous, in that every robot in the swarm has the ability to take on any of the roles required for the algorithm to function ( i.e. scout, unemployed forager, employed forager), as well as to adapt to forage either prioritized or non-prioritized items. It follows that the swarms running the honey bee algorithm are more redundant than swarms running the the desert ant algorithm and the na\"ive algorithm.
 
-\subsection{Decentralized Co-ordination}
+\subsection{Decentralized Coordination}
 \label{results:decentralizedcoordination}
 
-%Some sort of intro
+Decentralized coordination can be attained by creating algorithms that do not depend on decisions, actions or sensor readings of any single individual or a few individuals of the swarm. 
 
-The desert ant and na\"ive algorithm do not have an explicit coordination mechanism between individuals of a swarm. Any co-ordination that could emerges would be entirely decentralized. 
+The robots of the desert ant and na\"ive algorithm do not depend on each other and there is no centralized coordination. Despite no explicit coordination mechanism between individuals, robots coordinate implicitly by using obstacles avoidance to avoid obstructing each other. In that way, the robots in the swarm avoid hitting each other. The mechanism for obstacle avoidance is entirely decentralized, because each robot only depends on it's own internal sensors. All other operations of the robots in the desert and and na\"ive algorithm are decentralized as they do not depend on any other individual.
 
-On the other hand, the honey bee algorithm uses communication as a coordination mechanism, in order to recruit foragers to areas with a high density of prioritized items, as described in Section~\ref{honeybeeforaging}. If the scout robots experiences a fault in evaluating the quality of a site (for instance, detecting that a site is of high quality, when it is actually site of poor quality), then foragers would be recruited to forage sites of low quality, incorrectly. Only a few individuals (the scouts), can coordinate the swarm and therefore any faults in the scout robots, can negatively influence effect the efficiency of the entire swarm. The co-ordination mechanisms of the honey bee algorithm are not entirely decentralized.
+On the other hand, the honey bee algorithm uses communication as a coordination mechanism in order to recruit foragers to areas with a high density of prioritized items, as described in Section~\ref{honeybeeforaging}. If the scout robots experience a fault in evaluating the quality of a site (for example, detecting that a site is of high quality when it is actually a site of poor quality), then foragers will be incorrectly recruited to forage sites of low quality. Only a few individuals (the scouts) can coordinate the swarm and therefore any faults in the scout robots, may negatively influence effect the efficiency of the entire swarm. The coordination mechanism of the honey bee algorithm is not entirely decentralized.
 
-Table~\ref{averagetimerecruitment} shows the average time steps, per robot, per item foraged, that were spent performing recruitment, for the honey bee algorithm, in each environment distribution, for each environment item type ratio. 
 
-In a uniformly distributed environment, with a low ratio of prioritized items, sites with a high quality do not exist, as the prioritized items would be scarce and scattered. However, Table~\ref{averagetimerecruitment} shows that each robot spent, on average, more than a 10th of the total duration of the experiment broadcasting site quality to other robots in uniform environments, when $r$ was between 0 and 0.25. This means that the scouts were recruiting other robots to forage areas that were not of a high quality. The fact that scouts can mislead the swarm to foraging sites with low quality, shows that the honey bee algorithm is less robust.
+To provide further evidence that the scout robots can mislead the swarm to incorrectly foraging areas that have low quality resources, an examination of the average time spent, per item foraged, per robot, in the recruitment state is provided as follows: 
+
+Table~\ref{averagetimerecruitment} and Figure~\ref{fig:recruitmenttime} illustrate the average timesteps spent performing recruitment, $t_{recruitment}$, per robot, per (both prioritized and non-prioritized) item foraged, for the honey bee algorithm, for each environment distribution. The results were averaged over each environment item type ratio, $r$. 
 
 \begin{table}[]
 \centering
-\caption{Average time steps, per robot, that were spent performing recruitment, for the honey bee algorithm, in each environment distribution, for each environment item type ratio $r$.}
+\caption{Average time steps, per robot, per prioritized item foraged, that were spent performing recruitment for the honey bee algorithm, in each environment distribution, for each environment item type ratio $r$.}
 \label{averagetimerecruitment}
 \begin{tabular}{@{}lllll@{}}
 \toprule
 $r$            & \textbf{clustered} & \textbf{gaussian} & \textbf{uniform} & \textbf{vein} \\ \midrule
-\textbf{0}        & 0.163853094        & 0.162636914       & 0.159305395      & 0.163353443   \\
+\textbf{0}        & 0        & 0       & 0      & 0   \\
 \textbf{0.2}      & 0.119486333        & 0.152139262       & 0.11962912       & 0.160737113   \\
 \textbf{0.25}     & 0.126752914        & 0.144484389       & 0.127568794      & 0.158813789   \\
 \textbf{0.333333} & 0.140492087        & 0.135243974       & 0.139460537      & 0.151803907   \\
@@ -304,6 +305,17 @@ $r$            & \textbf{clustered} & \textbf{gaussian} & \textbf{uniform} & \te
 \textbf{1}        & 0.167397088        & 0.172990294       & 0.163048904      & 0.219223401   \\ \bottomrule
 \end{tabular}
 \end{table}
+
+
+\begin{figure}[!htb]
+\centering
+\resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/robustness/robustness-recruitment-type-honeybee.tex}}
+\caption{Average timesteps spent performing recruitment activities by robots of the swarm for each item foraged, $t_{recruitment}$, for the honey bee algorithm, per item distribution, for each environment item type ratio, $r$.}
+\label{fig:recruitmenttime}
+\end{figure}
+
+Table~\ref{averagetimerecruitment} illustrate that on average each robot spent at least 11.96\% of it's the total foraging time recruiting other robots to forage higher quality areas, for all values of $r > 0$. This is particularly relevant for uniformly distributed environments, with a low ratio of prioritized items ($r = 0.2$), because it is unlikely that sites of high quality do not exist, because the prioritized items will be scarce and scattered. Table~\ref{averagetimerecruitment} shows that average each robot spent at least 11.96\% of it's the total foraging time recruiting other robots to forage higher quality areas, that don't exist. This means that the scouts were recruiting other robots to forage areas that were not of a high quality. The fact that scouts can mislead the swarm to foraging sites with low quality, shows that the honey bee algorithm is less robust.
+
 
 \section{Summary}
 \label{results:summary}
@@ -323,7 +335,7 @@ Section~\ref{results:scalability} evaluated scalability in terms of swarm scalab
 
 Section~\ref{results:problemscalability} determined that the honey bee algorithm is the most scalable in terms of problem scalability, followed by the na\"ive algorithm, and lastly the desert ant algorithm. The discussion showed that the desert ant's performed comparatively worse than the na\"ive algorithm in terms of problem scalability, due to the desert ant algorithm's use of site fidelity to exploit good search areas. The section determined the na\"ive algorithm's ability to explore more than the desert ant algorithm, resulted in better problem scalability. The honey bee algorithm was the most scalable in terms of problem scalability. The problem scalability of the honey bee algorithm can be attributed to the ability of the honey bee algorithm to adapt $\tau$ to help clear non-prioritized items, which resulted in lower inter-robot and environmental interference.
 
-Section~\ref{results:robustness} addressed robustness of each of the algorithms, in terms of redundancy and decentralized co-ordination. Section \ref{results:redundancy} showed that the honey bee algorithm has the highest redundancy, since the swarm is homogeneous. The honey bee swarm is homogeneous as the robots can switch specialization, rather than being set to forage only a specific item type. The desert ant algorithm and na\"ive algorithm robots can only forage a single item type, which is pre-configured and thus their swarms are heterogeneous, and thus the swarms are less redundant.
+Section~\ref{results:robustness} addressed robustness of each of the algorithms, in terms of redundancy and decentralized coordination. Section \ref{results:redundancy} showed that the honey bee algorithm has the highest redundancy, since the swarm is homogeneous. The honey bee swarm is homogeneous as the robots can switch specialization, rather than being set to forage only a specific item type. The desert ant algorithm and na\"ive algorithm robots can only forage a single item type, which is pre-configured and thus their swarms are heterogeneous, and thus the swarms are less redundant.
 
 Section~\ref{results:decentralizedcoordination} determined that the desert ant and na\"ive algorithm are the most robust in terms of decentralized coordination, since neither algorithm employ a coordination mechanism between robots of the swarm. The honey bee algorithm was determined to be the least robust in terms of decentralized coordination. The honey bee algorithm's coordination mechanism was sensitive to faults in certain individuals where invalid information was communicated to the swarm and the invalid information impacted efficiency.
 
