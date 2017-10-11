@@ -60,7 +60,7 @@ Table~\ref{table:flexibility} shows the flexibility of each foraging algorithm, 
 
 
 
-Figure~\ref{fig:specializationratioovertime} shows the specialization ratio, $\tau$, over time, for the honey bee algorithm on a particular environment. The initial swarm specialization ratio, $\tau$, is set to 0, so that no robots are initially set to forage prioritized items. The environment, on the other hand, consists of mostly prioritized items ($r=0.75$). 
+Figure~\ref{fig:specializationratioovertime} shows the specialization ratio, $\tau$, over time, for the honey bee algorithm on a particular environment. The initial swarm specialization ratio, $\tau(0)$, is set to 0, so that no robots are initially set to forage prioritized items. The environment, on the other hand, consists of mostly prioritized items ($r=0.75$). 
 
 An examination of Figure~\ref{fig:specializationratioovertime} shows that $\tau$ increased from 0 to 1 in 200 iterations, which suggests that when no honey bee scout robots could find any non-prioritized items, the honey bee scouts switched to looking for prioritized items. After 200 iterations, the specialization ratio, $\tau$, steadily declines throughout the experiment from 1 till 0.73, suggesting that the honey bee algorithm eventually adapts the specialization ratio, $\tau$, to effectively forage the environment item type ratio $r$ of any given environment.
 
@@ -68,7 +68,7 @@ The above analysis suggests that honey bee algorithm's flexibility, $F_r$, can b
 
 Despite the desert ant algorithm outperforming the na\"ive algorithm in efficiency, as shown in Section~\ref{results:efficiency}, the na\"ive algorithm is more flexible, according to Table~\ref{table:flexibility}. Rationally, since the na\"ive algorithm does not have high efficiency on any environment, foraging efficiency was not affected very much by any specialization ratio, unable to take advantage of any value for $r$ of $\tau_0$ and thus, will always be equally bad.
 
-%The flexibility of the desert ant algorithm is the worst out of the considered algorithms. Table~\ref{doesnotexistyet shows that the desert ant algorithm's performance is very dependant on the value of $\tau_0$.
+%The flexibility of the desert ant algorithm is the worst out of the considered algorithms. Table~\ref{doesnotexistyet} shows that the desert ant algorithm's performance is very dependant on the value of $\tau_0$.
 
 \begin{figure}[!htb]
 \centering
@@ -234,7 +234,7 @@ The honey bee algorithm uses site fidelity, and also communicates those sites to
 
 \begin{table}[]
 \centering
-\caption{Problem Scalability, $PS$, for each environment density $p$, for each algorithm}
+\caption{Problem scalability for each environment density, $p$, for each algorithm}
 \label{table:problemscalability}
 \begin{tabular}{@{}llllll@{}}
 \toprule
@@ -256,19 +256,22 @@ The honey bee algorithm uses site fidelity, and also communicates those sites to
 \section{Robustness}
 \label{results:robustness}
 % describe fault tolerance, and provide rational arguments as to why it would be more or less 
-As discussed in Section~\ref{robustness}, robot swarms achieve robustness by exhibiting the properties of redundancy, multiplicity of sensing and decentralized coordination. This study does not perform an empirical robustness study to specifically address how fault tolerant each algorithm is, instead this section provides rational arguments supported by empirical evidence to discuss each  algorithm's capability for robustness. Section~\ref{results:redundancy} discusses robustness in terms of redundancy of each algorithm, and Section~\ref{results:decentralizedcoordination} discusses robustness in terms of decentralized coordination.
+As discussed in Section~\ref{robustness}, robot swarms achieve robustness by exhibiting the properties of redundancy, multiplicity of sensing and decentralized coordination. This study does not perform an empirical robustness study to specifically address how fault tolerant each algorithm is. Instead, this section provides rational arguments supported by empirical evidence to discuss each algorithm's robustness. Section~\ref{results:redundancy} discusses robustness in terms of the resulting redundancy of the swarms running each algorithm , and Section~\ref{results:decentralizedcoordination} discusses robustness in terms of decentralized coordination.
 
 \subsection{Redundancy}
 \label{results:redundancy}
-For each of our experiments, each swarm is configured with an initial swarm specialization ratio, as discussed in Chapter~\ref{chap:experiment} to enable a portion of robots to forage prioritized items and the another portion to forage non-prioritized items. 
 
-If a portion of robots in a swarm malfunction or are destroyed, then the swarm specialization ratio could be affected. As shown in Section~\ref{results:flexibility}, the foraging efficiency of the na\"ive and desert ant algorithms were effected by the initial swarm specialization ratio $\tau$. It follows that if the swarm specialization ratio is unexpectedly changed, during the swarm experiment, one would expect changes to foraging efficiency that would persist for the swarm's lifetime. In particular, consider the following extreme scenarios: 
+As discussed in Section~\ref{robustness}, redundancy in a swarm is achieved by by giving all, or a portion of the robots in the swarm the same capabilities. In this way, if a percentage of the swarm malfunctions, the other robots have the capability to take the malfunctioning robots' place. A swarm demonstrates the highest level of redundancy when any robot can take on the role of any other robot that malfunctions in a swarm. 
 
-Suppose all the robots which were foraging for prioritized items (for some $\tau > 0$) are destroyed or malfunction (thus $\tau=0$). Foraging efficiency would drop to 0 since there do not exist any robots to forage prioritized items. Similarly, consider an environment where all prioritized items are blocked by non-prioritized items, and $\tau < 1$ . If all non-prioritized robots suffer a malfunction or are destroyed, then $\tau=1$ and there would exist no robots to forage non-prioritized items, and foraging efficiency, $E_P$, would drop to 0. 
+For each of our experiments, each swarm is configured with an initial swarm specialization ratio (as discussed in Chapter~\ref{chap:experiment}) to enable a portion of robots to forage prioritized items and the another portion to forage non-prioritized items. 
 
-As shown in Section~\ref{results:flexibility}, the honey bee algorithm experiences little change to efficiency, when $\tau_0$ is varied. The honey bee algorithm adapted the swarm specialization ratio, $\tau$, over time. It follows that, in the above scenarios, the honey bee algorithm would be able to re-adapt the swarm specialization ratio, in order to replenish the robots that were destroyed. 
+If a portion of robots in a swarm malfunction or are destroyed, then the swarm specialization ratio will be affected. As shown in Section~\ref{results:flexibility}, the foraging efficiency of the na\"ive and desert ant algorithms were effected by the initial swarm specialization ratio $\tau$. It follows that if the swarm specialization ratio is unexpectedly changed during the swarm experiment, a change in the foraging efficiency of the swarm would persist for the experiment. In particular, consider the following extreme scenarios: 
 
-The robots in the honey bee algorithm are homogeneous, in that every robot in the swarm has the ability to take on any of the roles required for the algorithm to function (scout, unemployed forager, employed forager), as well as adapt to forage either prioritized and non-prioritized items. It follows that the honey bee algorithm is more redundant than the desert ant and na\"ive algorithms.
+Suppose all the robots which were foraging for prioritized items (for some $\tau > 0$) are destroyed or malfunction (thus $\tau=0$). Foraging efficiency would drop to 0, because no robots exist to forage prioritized items. Similarly, consider an environment where all prioritized items are blocked by non-prioritized items and that $\tau < 1$ . If all non-prioritized robots suffer a malfunction or are destroyed, then $\tau=1$ and no robots will be available to forage non-prioritized items. Foraging efficiency, $E_P$, will then drop to 0. 
+
+As shown in Section~\ref{results:flexibility}, the honey bee algorithm experiences little change to efficiency when $\tau(0)$ is varied. The honey bee algorithm adapts the swarm specialization ratio, $\tau$, over time. It follows that, for the above scenarios, the honey bee algorithm will be able to re-adapt the swarm specialization ratio, in order to replenish the robots that were destroyed. 
+
+The robots controlled by the honey bee algorithm are homogeneous, in that every robot in the swarm has the ability to take on any of the roles required for the algorithm to function ( i.e. scout, unemployed forager, employed forager), as well as to adapt to forage either prioritized or non-prioritized items. It follows that the swarms running the honey bee algorithm are more redundant than swarms running the the desert ant algorithm and the na\"ive algorithm.
 
 \subsection{Decentralized Co-ordination}
 \label{results:decentralizedcoordination}
