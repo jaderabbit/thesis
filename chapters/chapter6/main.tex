@@ -77,9 +77,7 @@ The above analysis of the behaviour of the honey bee algorithm supports the hypo
 
 Both the na\"ive algorithm and desert ant algorithm do not have the ability to adapt the initial swarm specialization to forage any environment ratio, which means that both algorithms are  less flexible than the honey bee algorithm. 
 
-Despite the desert ant algorithm outperforming the na\"ive algorithm in efficiency (refer to Section~\ref{results:efficiency}), the na\"ive algorithm is slightly more flexible than the desert ant algorithm. Rationally, since the na\"ive algorithm does not have high efficiency on any environment, foraging efficiency was not affected very much by any specialization ratio, unable to take advantage of any value for $r$ of $\tau_0$ and thus, will always be equally bad.
-
-%The flexibility of the desert ant algorithm is the worst out of the considered algorithms. Table~\ref{doesnotexistyet} shows that the desert ant algorithm's performance is very dependant on the value of $\tau_0$.
+The desert ant algorithm is the least flexible, which indicates that the algorithm is sensitive to the choice in $\tau(0)$ for each environment type ratio $r$. Unlike the na\"ive algorithm, which has the worst efficiency over all experiments, a good choice of $\tau$ will allow the algorithm to forage the environment significantly better for a specific environment item ratio. Despite the desert ant algorithm outperforming the na\"ive algorithm in efficiency (refer to Section~\ref{results:efficiency}), the na\"ive algorithm is substantially more flexible than the desert ant algorithm. $F_r$ reveals that the na\"ive algorithm's performance is invariant under the variation of $\tau(0)$ on different environment item type ratios, resulting in a high level of flexibility. However, the na\"ive algorithm's flexibility is practically irrelevant given how poorly the algorithm performs on all environments. 
 
 
 \subsection{Flexibility in terms of environment distributions}
