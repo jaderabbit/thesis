@@ -34,12 +34,11 @@ honey bee           & 45490         & 15179           \\ \bottomrule
 \section{Flexibility}
 \label{results:flexibility}
 
-This section analyses the flexibility of each of the considered algorthms, in terms of the prioritized item ratio and the environment distribution types, over all experiments. Section~\ref{results:prioritizeditemratio} analyses the flexibility of each algorithm, in terms of the prioritized item ratio of the environment (refer to Section~\ref{setup:flexibility:prioritizeditemratio}). Section~\ref{results:flexibility:environmentdistribution} discusses the flexibility of each algorithm, in terms of environment distribution types, (refer to Section~\ref{setup:flexibility:environmentdistributions}).
-
+This section analyses the flexibility of each of the considered algorthms, in terms of the prioritized item ratio and the environment distribution types, over all experiments. Section~\ref{results:prioritizeditemratio} analyses the flexibility of each algorithm, in terms of the prioritized item ratio of the environment. Section~\ref{results:flexibility:environmentdistribution} discusses the flexibility of each algorithm, in terms of environment distribution types.
 \subsection{Flexibility in terms of prioritized item ratio}
 \label{results:prioritizeditemratio}
 
-The performance measure, $F$, measures how well swarm parameters, yielding the best efficiency for environments with a specific prioritized item ratio, generalize across environments with different prioritized item ratios. The less the foraging efficiency varies, when an algorithm that is configured with swarm parameters optimized for a specific environment ratio, is run on all other environment ratios, the smaller $F$ will be. Therefore, the smaller $F$ is, the more flexible an algorithm is considered to be. $F$ is a macro performance indicator which is run on the results of all experiments. 
+The performance measure, $F_r$ (defined in Section~\ref{setup:flexibility:prioritizeditemratio}) measures how well swarm parameters, yielding the best efficiency for environments with a specific prioritized item ratio, generalize across environments with different prioritized item ratios. The less the foraging efficiency varies, when an algorithm that is configured with swarm parameters optimized for a specific environment ratio, is run on all other environment ratios, the smaller $F$ will be. Therefore, the smaller $F$ is, the more flexible an algorithm is considered to be. $F$ is a macro performance indicator which is run on the results of all experiments. 
 
 Table~\ref{table:flexibility} summarizes the flexibility of each foraging algorithm in terms of environment type ratio, $F_r$. According to Table~\ref{table:flexibility}, the honey bee algorithm is the most flexible in terms of $F_r$, followed by the na\"ive algorithm, with the desert ant algorithm being the worst. 
 
@@ -70,7 +69,7 @@ To provide evidence for the above hypothesis, an examination of the average swar
 \label{fig:specializationratioovertime}
 \end{figure}
 
-Figure~\ref{fig:specializationratioovertime} shows that $\tau$ increased from 0 to 1 in 200 iterations, which suggests that, when the honey bee scout robots could not find any non-prioritized items, the honey bee scout robots switched their specializations to search for prioritized items instead. After 200 iterations, the specialization ratio, steadily declined from 1 to 0.73. The final swarm specialization ratio $\tau(10000)=0.73$ is nearly the same as the environment ratio, $r=0.75$, suggesting that the honey bee algorithm eventually adapted the specialization ratio to effectively forage the environment item type ratio of the given environment.
+Figure~\ref{fig:specializationratioovertime} shows that $\tau$ increased from 0 to 1 in 200 iterations, which suggests that, when the honey bee scout robots could not find any non-prioritized items, the honey bee scout robots switched their specializations to search for prioritized items instead. After 200 iterations, the specialization ratio, steadily declined from 1 to 0.73. The final swarm specialization ratio, $\tau(10000)=0.73$, is nearly the same as the environment ratio, $r=0.75$, suggesting that the honey bee algorithm eventually adapted the specialization ratio to effectively forage the environment item type ratio of the given environment.
 
 The above analysis of the behaviour of the honey bee algorithm supports the hypothesis that the honey bee algorithm's superior flexibility can be attributed to the algorithm's ability to adapt the swarm's specialization ratio (via the division of labour mechanism described in Section~\ref{natureinspired:divisionoflabour}) to more efficiently forage an environment of a given environment item ratio.
 
@@ -82,16 +81,15 @@ The desert ant algorithm is the least flexible, which indicates that the algorit
 \subsection{Flexibility in terms of environment distributions}
 \label{results:flexibility:environmentdistribution}
 
+ (refer to Section~\ref{setup:flexibility:environmentdistributions}).
 
-An algorithm whose efficiency is the least affected by changes in environment distribution is considered to be the most flexible. The performance measure, $F_{ED}$ captures how efficiency is affected by changes in environment distributions. The lower the value of $F_{ED}$ is, the more flexible an algorithm is. The results presented in Table~\ref{table:flexibility} indicate that the honey bee algorithm was the most flexible, followed by the desert ant algorithm, in terms of environment distributions. The na\"ive algorithm was the least flexible.
+Similarly to $F_r$, the performance measure, $F_{ED}$, (defined in flexibility:environmentdistributions) measures how well the swarm parameters, that yield the best efficiency for environments with a environment distribution, generalize across environments with different environment distributions, for a specific algorithm. Similarly to $F_r$, the smaller $F_{ED}$ is, the more flexible an algorithm is considered to be and $F_{ED}$ is also calculated based on the results of all experiments. The results summarized in Table~\ref{table:flexibility} indicate that the honey bee algorithm was the most flexible in terms of environment distribution, followed by the desert ant algorithm. The na\"ive algorithm was the least flexible.
 
-%TODO: Hypothesis
-
-The above suggests the following hypothesis:
+The honey bee's superior flexibility suggests the following hypothesis:
 
 The honey bees ability to adapt $\tau$ (described in Section~\ref{honeybeeforaging}) enables the honey bee algorithm to adapt the swarm specialization ratio, $\tau$, to more efficiently forage the differing environment ratios of the accessible environment (refer to Section~\ref{accessibleenvironment}) as the accessible environment changes throughout foraging.
 
-To provide evidence for this hypothesis, an in-depth examination of each algorithm is performed, on a Gaussian environment, of high density or items, which has a low ratio of prioritized items and a swarm which has a high initial swarm specialization ratio (i.e. most robots are initially set to forage prioritized items). Since the non-prioritized items surround the prioritized items, the swarm should first forage the non-prioritized items in order to get access to the prioritized items. Once the swarm can reach the prioritized items, the swarm should switch to foraging the prioritized items. The example Gaussian environment is illustrated in Figure~\ref{fig:gaussianhighdensityenv}. The white cells represent an empty cell, the dark cells represent the cells containing a non-prioritized item and the shaded cells represent the cells containing a prioritized item. The environment in Figure~\ref{fig:gaussianhighdensityenv} has the following properties:
+To provide evidence for this hypothesis, an in-depth examination of the honey bee algorithm is performed, on a Gaussian environment, of high density or items, which has a low ratio of prioritized items and a swarm which has a high initial swarm specialization ratio (i.e. most robots are initially set to forage prioritized items). Since the non-prioritized items surround the prioritized items, the swarm should first forage the non-prioritized items in order to get access to the prioritized items. Once the swarm can reach the prioritized items, the swarm should switch to foraging the prioritized items. The example Gaussian environment is illustrated in Figure~\ref{fig:gaussianhighdensityenv}. The white cells represent an empty cell, the dark cells represent the cells containing a non-prioritized item and the shaded cells represent the cells containing a prioritized item. The environment in Figure~\ref{fig:gaussianhighdensityenv} has the following properties:
 
 \begin{itemize}
 \item A Gaussian environment item distribution,
