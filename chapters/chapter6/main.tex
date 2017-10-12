@@ -9,18 +9,18 @@ The analysis of the results of the experiments is organised around four major ch
 \label{results:efficiency}
 
 
-Despite the fact that determining the most efficient algorithm is not a main focus of this study, this section does a brief comparison of the foraging efficiency, as defined in Section~\ref{setup:foragingefficiency}, of each algorithm. 
+Despite the fact that determining the most efficient algorithm is not a main focus of this study, this section does a brief comparison of the foraging efficiency, $E_P$, (defined in Section~\ref{setup:foragingefficiency}) of each algorithm. 
 
-This is done by comparing the performance of the three algorithms over all environments and experimental parameters. A wilcoxin test, of a confidence level of 0.05, was applied to each pair of algorithms to determine if a statistically significant difference in performance of a pair of algorithms exists. If a statistically significant difference is indicated, then two one-tailed Mann-Whitney U tests were performed with a confidence level of 0.05, to determine which algorithm was more efficient on a particular experiment. TODO: explain wins and losses somehow
+This is done by comparing the performance of the three algorithms over all environments and all swarm parameters. A wilcoxin test, at a confidence level of 0.05, was applied the 30 independant samples, from each pair of algorithms, for each experiment, to determine if a statistically significant difference in foraging efficiency of the pair of algorithms exists. If no statistically significant difference is indicated between the two algorithm experiment samples, then nothing is done. If a statistically significant difference is indicated between the two algorithm experiment samples, then two one-tailed Mann-Whitney U tests were performed at a confidence level of 0.05, to determine which algorithm had a greater foraging efficiency on a particular experiment. If the first one-tailed Mann-Whitney U test indicates that the $E_P$ for one algorithm is significantly more efficient than that of another algorithm, then a "win" is counted for that algorithm. If the second one-tailed Mann-Whitney U test indicates that the $E_P$ for one algorithm is significantly less efficient than the other algorithm, then a "loss" is counted for that algorithm. %CANT GET THIS RIGHT
 
-To determine an algorithm's foraging efficiency in comparison to all other algorithms, the wins and losses per each experiment performed for each algorithm, are summed. This statistical analysis approach has been used in \cite{helbig2013performance}.
+To determine an algorithm's foraging efficiency in comparison to each other algorithm, the wins and losses per experiment, for each algorithm are summed. This statistical analysis approach has been used in \cite{helbig2013performance}. 
 
-Table~\ref{summarytable} shows the total wins and losses for each algorithm. The desert ant foraging performed better than the na\"ive algorithm. The honey bee algorithm out-performed both the na\"ive algorithm and the desert ant algorithm. The following sections analyse the swarm robotic properties of each algorithm, and explain why the foraging efficiency of the algorithms is as shown in Table\ref{summarytable}.
+Table~\ref{summarytable} summarizes the total wins and losses for each algorithm. The desert ant foraging performed better than the na\"ive algorithm. The honey bee algorithm out-performed both the na\"ive algorithm and the desert ant algorithm. The following sections analyse the swarm robotic properties of each algorithm, and explain why the foraging efficiency of the algorithms is as shown in Table~\ref{summarytable}.
 
 
 \begin{table}[]
 \centering
-\caption{Pairwise one-tailed Mann Whitney U wins and losses of $E_p$, for each algorithm, over all environments, parameter value choices }
+\caption{Pairwise one-tailed Mann Whitney U wins and loss counts, for the foraging efficiency, $E_P$, for each algorithm, over all environments and swarm parameter values }
 \label{summarytable}
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -69,7 +69,6 @@ To provide evidence for the above hypothesis, an examination of the average swar
 \caption{Specialization ratio over time, $\tau_(t)$, of the honey bee algorithm, on a uniform environment, with environment item type ratio, $r=0.75$, and initial swarm specialization ratio, $\tau(0)=0$}
 \label{fig:specializationratioovertime}
 \end{figure}
-
 
 Figure~\ref{fig:specializationratioovertime} shows that $\tau$ increased from 0 to 1 in 200 iterations, which suggests that, when the honey bee scout robots could not find any non-prioritized items, the honey bee scout robots switched their specializations to search for prioritized items instead. After 200 iterations, the specialization ratio, steadily declined from 1 to 0.73. The final swarm specialization ratio $\tau(10000)=0.73$ is nearly the same as the environment ratio, $r=0.75$, suggesting that the honey bee algorithm eventually adapted the specialization ratio to effectively forage the environment item type ratio of the given environment.
 
