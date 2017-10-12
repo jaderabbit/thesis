@@ -352,7 +352,7 @@ The foraging efficiency, $E_P$, of a particular algorithm is defined as the tota
 
 Let $R$ be the list containing all considered elements for environment item type ratio, $r$, and let $n_r$ be number of elements in the list. Let $T$ be the list containing all considered elements for initial swarm specialization ratio, $\tau(0)$, and let the number of elements in the list be $n_t$.
 
-Let $Z$ be a matrix of dimensions $n_t\timesn_r$. Let each entry of the matrix $Z_{ij}$ be the average foraging efficiency, $E_P$, over all experiments, for a specific environment ratio $r_j$, where $r_j$ is the $j$th element of $R$, and for a specific initial swarm specialization ratio $\tau_i$, such that $\tau_i(0)$ is the $i$th element of $T$.
+Let $Z$ be a matrix of dimensions $n_t \times n_r$. Let each entry of the matrix $Z_{ij}$ be the average foraging efficiency, $E_P$, over all experiments, for a specific environment ratio $r_j$, where $r_j$ is the $j$th element of $R$, and for a specific initial swarm specialization ratio $\tau_i$, such that $\tau_i(0)$ is the $i$th element of $T$.
 
 \subsection{Flexibility}
 \label{setup:flexibility}
@@ -369,7 +369,7 @@ The goal is to determine how well the best value for swarm specialization ratio 
 To do so, $I$ is defined as a list of size $n_r$, where each entry $I_j$ is the index $k$ that yields the maximum value for $Z_{ij}$, for $i = 1,..., n_\tau$, for a specific environment type ratio $j$. More succinctly:
 
 \begin{equation}
-I_j = \( k | Z_{kj} = max(Z_{ij}) \text{ for } i = 1,...,n_\tau\)
+I_j = ( k | Z_{kj} = max(Z_{ij}) \text{ for } i = 1,...,n_\tau)
 \end{equation}
 
 The normalized moment around the max foraging efficiency for a specific environment item type ratio $r_u$, is defined as follows: 
