@@ -95,13 +95,13 @@ To provide evidence for this hypothesis, an in-depth examination of the honey be
 \item A Gaussian environment item distribution,
 \item a low environmental item ratio of $r=0.2$.
 \item a high density of items $p=90$, and
-\item an environment size $S=100$.
+\item an environment size $\Lambda=100$.
 \end{itemize}
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=0.75\textwidth]{chapters/chapter6/figures/flexibility-gaussian-obj90-ratio.PNG}
-\caption{Gaussian environment with environment item type ratio, $r=0.2$, environment item density of $p=0.9$, and environment size $S=100$}
+\caption{Gaussian environment with environment item type ratio, $r=0.2$, environment item density of $p=0.9$, and environment size $\Lambda=100$}
 \label{fig:gaussianhighdensityenv}
 \end{figure}
 
@@ -161,11 +161,11 @@ This section discusses the scalability of each algorithm in terms of the macro p
 
 \subsection{Swarm scalability}
 \label{results:swarmscalability}
-Table~\ref{table:swarmscalability} present the swarm density scalability results, $SS$. Figure~\ref{fig:swarmscalability}, show the swarm density scalability for each density, $SS_c$, for each algorithm (as defined Section~\ref{swarmsizescalability}). The na\"ive algorithm was the most scalable while the desert ant and the honey bee algorithms show similar scalability. The honey bee algorithm is scalable than the desert ant algorithm for $c < 0.9$, but at $c \geq 0.9$, the swarm scalability, $SS_c$, of the desert ant algorithm was greater than the honey bee algorithm.
+Table~\ref{table:swarmscalability} present the swarm density scalability results, $S_c$. Figure~\ref{fig:swarmscalability}, show the swarm density scalability for each density, $S_{c_i}$, for each algorithm (as defined Section~\ref{swarmsizescalability}). The na\"ive algorithm was the most scalable while the desert ant and the honey bee algorithms show similar scalability. The honey bee algorithm is scalable than the desert ant algorithm for $c < 0.9$, but at $c \geq 0.9$, the swarm scalability, $S_{c_i}$, of the desert ant algorithm was greater than the honey bee algorithm.
 
 \begin{table}[]
 \centering
-\caption{Swarm scalability, $SS$, for each swarm density, $c$, for each algorithm.}
+\caption{Swarm scalability, $S_{c_i}$, for each swarm density in $\overline{c}$, for each algorithm.}
 \label{table:swarmscalability}
 \begin{tabular}{@{}lllllll@{}}
 \toprule
@@ -180,11 +180,11 @@ Table~\ref{table:swarmscalability} present the swarm density scalability results
 \centering
 \small
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/scalability/swarmscalability.tex}}
-\caption{Swarm scalability, $SS$, for each swarm density $c$, for each algorithm.}
+\caption{Swarm scalability, $S_c$, for each swarm density $c_i$ in $\overline{c}$ for each algorithm.}
 \label{fig:swarmscalability}
 \end{figure}
 
-Figure~\ref{fig:swarmscalability} also plots the ideal scalability. Ideal scalability is when the increase in swarm density is directly proportional to the increase in efficiency. Based on that, the ideal values for $SS_c$ were calculated and plotted. All algorithms fall below the ideal scalability line and thus have sublinear (logarithmic) scalability. Section~\ref{swarmsizescalability} highlighted that increased inter-robot interference is a major factor that impacts swarm scalability. It can be concluded that the reason for sub-linear performance in all algorithms was because all algorithms suffer from increased inter-robot interference as swarm size increases.
+Figure~\ref{fig:swarmscalability} also plots the ideal scalability. Ideal scalability is when the increase in swarm density is directly proportional to the increase in efficiency. Based on that, the ideal values for $S_{c_i}$ were calculated and plotted. All algorithms fall below the ideal scalability line and thus have sublinear (logarithmic) scalability. Section~\ref{swarmsizescalability} highlighted that increased inter-robot interference is a major factor that impacts swarm scalability. It can be concluded that the reason for sub-linear performance in all algorithms was because all algorithms suffer from increased inter-robot interference as swarm size increases.
 
 To understand why the desert ant and the honey bee algorithms were less scalable than the na\"ive algorithm, consider the following:
 
@@ -211,7 +211,7 @@ However the time spent by honey bee robots in the waiting state, decreases as sw
 \subsection{Problem scalability}
 \label{results:problemscalability}
 
-Figure~\ref{fig:problemscalability} plots the problem scalability performance measure, $PS$ (described in Section~\ref{setup:problemscalability}), for each algorithm, using the values given in Table~\ref{table:problemscalability}. The results present the macro performance measure $PS$, which is calculated over all experiments, for each value of $p$. The figure includes a plot of ``Expected scalability". The values for ``Expected scalability" were calculated based on the assumption that  that foraging efficiency would degrade directly proportionally to the increase in the problem size. The expected values for foraging efficiency at each problem size, were used to calculate $PS$ for ``Expected scalability". All algorithms outperformed the expected scalability and thus problem scalability for all algorithms is better than the expected scalability which is good. 
+Figure~\ref{fig:problemscalability} plots the problem scalability performance measure, $S_p$ (described in Section~\ref{setup:problemscalability}), for each algorithm, using the values given in Table~\ref{table:problemscalability}. The results present the macro performance measure $S_p$, which is calculated over all experiments, for each value of $p$. The figure includes a plot of ``Expected scalability". The values for ``Expected scalability" were calculated based on the assumption that  that foraging efficiency would degrade directly proportionally to the increase in the problem size. The expected values for foraging efficiency at each problem size, were used to calculate $S_p$ for ``Expected scalability". All algorithms outperformed the expected scalability and thus problem scalability for all algorithms is better than the expected scalability which is good. 
 
 According to Figure~\ref{fig:problemscalability}, the honey bee algorithm is the most scalable in terms of problem scalability, followed by the na\"ive algorithm, with the desert ant algorithm exhibiting the worst scalability. %WHY CAN I SAY THAT?
 
@@ -233,7 +233,7 @@ The honey bee algorithm uses site fidelity, and also communicates those sites to
 
 \begin{table}[]
 \centering
-\caption{Problem scalability for each environment density, $p$, for each algorithm}
+\caption{Problem scalability $S_{p_i}$ for each environment density, $p_i$, for each algorithm}
 \label{table:problemscalability}
 \begin{tabular}{@{}llllll@{}}
 \toprule
@@ -248,7 +248,7 @@ The honey bee algorithm uses site fidelity, and also communicates those sites to
 \begin{figure}[!htb]
 \centering
 \resizebox{\textwidth}{!}{\input{chapters/chapter6/graphs/scalability/problemscalability.tex}}
-\caption{Problem Scalability, $PS$, for each environment density $p$, for each algorithm}
+\caption{Problem Scalability, $S_p$, for each environment density $p_i$, for each algorithm}
 \label{fig:problemscalability}
 \end{figure}
 
@@ -328,7 +328,7 @@ Section~\ref{results:prioritizeditemratio} concluded that the honey bee algorith
 Section~\ref{results:flexibility:environmentdistribution} concluded that the honey bee algorithm is the most flexible, in terms of environmental distribution, followed by the desert ant algorithm and lastly the na\"ive algorithm. The honey bee algorithm was determined to be more flexible, due to it's ability to adapt the specialization ratio to better suit the types of items that are reachable by the swarm. The adaptation of specialization ratio allowed the honey bee swarm to focus on foraging non-prioritized when only non-prioritized items were reachable, and then adjust the ratio to focus on foraging prioritized items when prioritized items were reachable. The desert ant and na\"ive algorithms, without the ability to adjust $\tau$ to more effectively forage the ratio of reachable objects, are less flexible than the honey bee algorithm.
   The na\"ive algorithm's perceived flexibility over environment distribution, compared to the desert ant algorithm, was attributed to the same reasons as determined by Section~\ref{results:prioritizeditemratio}. 
   
-Section~\ref{results:scalability} evaluated scalability in terms of swarm scalability, $SS$ and $PS$. Section~\ref{results:swarmscalability} determined that the scalability of all algorithms, in terms of swarm scalability, was sub-linear. More specifically, the na\"ive algorithm was the most scalable in terms of swarm density, and then the desert ant and honey bee algorithms which exhibited similar scalability. The desert ant algorithm's poor performance, compared to the na\"ive algorithm was attributed the desert ant algorithm's use of site fidelity. A rational argument was presented that argued the desert ant algorithm's site fidelity increased inter-robot interference, which resulted in poor efficiency when swarm density was high. The honey bee algorithm was shown to be slightly more scalable than the desert ant algorithm, due to the honey bee algorithm's attempt to regulate the number of active foragers by division of labour. The difference in swarm scalability between the desert ant algorithm and the honey bee algorithm was very small, suggesting that the regulation of active foragers was not functioning very well. The honey bee algorithm's ability to regulate the number of active foragers as swarm densities increase, was shown to be ineffective. 
+Section~\ref{results:scalability} evaluated scalability in terms of swarm scalability, $S_c$ and $S_p$. Section~\ref{results:swarmscalability} determined that the scalability of all algorithms, in terms of swarm scalability, was sub-linear. More specifically, the na\"ive algorithm was the most scalable in terms of swarm density, and then the desert ant and honey bee algorithms which exhibited similar scalability. The desert ant algorithm's poor performance, compared to the na\"ive algorithm was attributed the desert ant algorithm's use of site fidelity. A rational argument was presented that argued the desert ant algorithm's site fidelity increased inter-robot interference, which resulted in poor efficiency when swarm density was high. The honey bee algorithm was shown to be slightly more scalable than the desert ant algorithm, due to the honey bee algorithm's attempt to regulate the number of active foragers by division of labour. The difference in swarm scalability between the desert ant algorithm and the honey bee algorithm was very small, suggesting that the regulation of active foragers was not functioning very well. The honey bee algorithm's ability to regulate the number of active foragers as swarm densities increase, was shown to be ineffective. 
 
 Section~\ref{results:problemscalability} determined that the honey bee algorithm is the most scalable in terms of problem scalability, followed by the na\"ive algorithm, and lastly the desert ant algorithm. The discussion showed that the desert ant's performed comparatively worse than the na\"ive algorithm in terms of problem scalability, due to the desert ant algorithm's use of site fidelity to exploit good search areas. The section determined the na\"ive algorithm's ability to explore more than the desert ant algorithm, resulted in better problem scalability. The honey bee algorithm was the most scalable in terms of problem scalability. The problem scalability of the honey bee algorithm can be attributed to the ability of the honey bee algorithm to adapt $\tau$ to help clear non-prioritized items, which resulted in lower inter-robot and environmental interference.
 
