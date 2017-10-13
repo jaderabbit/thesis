@@ -407,6 +407,20 @@ F_\epsilon = \dfrac{1}{n_\epsilon}\sum_{u=1}^{n_\epsilon} \sum_{v=1}^{n_\epsilon
 
 $F_\epsilon$ can be interpreted in a similar manner to $F_r$, where the smaller the value for $F_\epsilon$ is, the more flexible over environment distributions an algorithm is considered to be. 
 
+\subsection{Scalability}
+\label{setup:scalability}
+
+Scalability is described in Section~\ref{sr:scalabilty}. The scalability performance measures used in this thesis are based on the measures used in \cite{hecker2015beyond}. This study analyses the scalability of each of the algorithms with two performance measures, namely, swarm size scalability and problem complexity scalability. Swarm size scalability and problem complexity scalability are defined in the following sections. Both swarm size scalability and problem complexity scalability are evaluated on the largest environment size (i.e $S=500$), in order to prevent the possibility that an environment runs out of items to forage.
+
+\subsubsection{Notation}
+
+To simplify the explanation of the scalability performance measures, the following notation is defined:
+
+Let $\overline{c}$ be the list of all considered values for swarm size, $c$, with length $n_c$. Let $c_{min}$ be the minimum value considered for $c$ and $c_i$ be the $i$th value of $\overline{c}$. Let $E_{c_i}$ be the average foraging efficiency, $E_P$, over all experiments, with swarm size $c_i$.
+
+Similarly, define the list of all considered values for problem size, $p$, as $\overline{p}$ with length $n_p$. The smallest problem size is $p_{min}$ and $E_{p_i}$ is the average foraging efficiency over all experiments, with problem size $p_i$.
+
+
 \subsubsection{Swarm size scalability}
 \label{swarmsizescalability}
 
@@ -427,29 +441,23 @@ The total swarm scalability, $S_c$, provides a single value per algorithm, which
 	S_c = \sum_{i=1}^{n_c} S_{c_i}
 \end{equation}
 
-The swarm size scalability study will only consider large environments (.i.e. $S=500$) to avoid the possibility that an environment runs out of items to forage.
 
-\subsubsection{Problem scalability}
+\subsubsection{Problem complexity scalability}
 \label{setup:problemscalability}
-If the efficiency, $E_P$, of an algorithm decreases linearly (or super-linearly) as problem complexity increases, then an algorithm can be seen as scalable. Similarly to swarm size scalability, described in Section~\ref{swarmsizescalability}, problem scalability is often sub-linear, due to increased environmental interference.
 
-In order to evaluate the problem scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of environment item densities, $p$, defined in Section~\ref{experimentenvironments}. In order to compare scalability of the algorithms to each other, the efficiency $E_P$ at each item density $p_i$ is normalized by the efficiency of each algorithm, at the smallest item density ($p_0=0.1$). 
+Ideally, foraging efficiency should be directly indirectly proportional to problem complexity. As the problem complexity increases, the foraging efficiency should decrease linearly. An algorithm is scalable when performance decreases linearly or sublinearly as efficiency increases. Similarly to swarm size scalability (described in Section~\ref{swarmsizescalability}) problem complexity scalability is often sub-linear, due to increased environmental interference. 
 
-Problem scalability (PS) for an algorithm, for at an item density $p_i$ is defined as follows:
+In order to evaluate the problem scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of environment item densities, $p$, defined in Section~\ref{experimentenvironments}. Similarly to swarm size scalability performance measure $S_{c_i}$ and $S_c$, problem complexity scalability measures, $S_{p_i}$ and $S_p$ are defined as follows:
+
 
 \begin{equation}
-	PS(p_i) = \dfrac{E_P(p_i)-E_P(p_0)}{E_P(p_0)}
+	S_{p_i} = \dfrac{E_{p_{i}} - E_{p_{min}}}{E_{p_{min}}}
 \end{equation}
 
 \begin{equation}
-	PS = \sum_{i=1}^{n} PS(p_i)
+	S_p = \sum_{i=1}^{n_p} S_{p_i}
 \end{equation}
 
-, where $E_P(p_i)$ is the average efficiency $E_P$ over all environments with environment density $p_i$, and $E_P(p_0)$ is the average efficiency $E_P$ over all experiments where environment density is $p_0$. By plotting $PS(c_i)$ for all values of $i\in(0,N)$, it will be possible able to determine how linear the problem scalability of each algorithm is. Normalizing each value for $E_P(p_i)$ by $E_P(p_0)$, for each algorithm, removes the specific overall efficiencies of each algorithm, and allows the algorithms to be compared purely on scalability.
-
-Similarly to total swarm scalability $SS$, defined in Section~\ref{swarmsizescalability}, the total problem scalability, $PS$, provides a single figure, per algorithm, which one can use to compare overall problem scalability. The larger $PS$ is, the better the problem scalability.
-
-The problem scalability study will specifically look at large environments ($S=500$) to avoid the possibility of an environment running out of items to forage.
 
 \subsection{Behavioural Performance Measures}
 \label{behaviouralperformancemeasures}
