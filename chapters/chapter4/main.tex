@@ -414,9 +414,11 @@ Scalability is described in Section~\ref{sr:scalabilty}. This study analyses the
 
 \subsubsection{Notation}
 
-Define $\overline{c}$ as the list of all considered values for swarm size, $c$. Let $c_{min}$ be the minimum value considered for $c$ and $c_i$ be the $i$th value of $\overline{c}$. Let $E_{c_i}$ be the average foraging efficiency, $E_P$, over all experiments, with swarm size $c_i$.
+To simplify the explanation of the scalability performance measures, the following notation is defined. 
 
-Similarly, define the list of all considered values for problem size, $p$, as $\overline{p}$, $p_min$ as the minimum value considered for $p$ and $E_{p_i}$ as the average foraging efficiency over all experiments, with problem size $p_i$.
+Let $\overline{c}$ be the list of all considered values for swarm size, $c$, with length $n_c$. Let $c_{min}$ be the minimum value considered for $c$ and $c_i$ be the $i$th value of $\overline{c}$. Let $E_{c_i}$ be the average foraging efficiency, $E_P$, over all experiments, with swarm size $c_i$.
+
+Similarly, define the list of all considered values for problem size, $p$, as $\overline{p}$ with length $n_p$. The smallest probem size is $p_{min}$ and $E_{p_i}$ is the average foraging efficiency over all experiments, with problem size $p_i$.
 
 \subsubsection{Swarm size scalability}
 \label{swarmsizescalability}
@@ -425,15 +427,14 @@ The efficiency of a robot swarm should be relatively undisturbed by changes in g
 
 However, due to increased inter-robot interference in larger swarm sizes, scalability is often sub-linear \cite{lerman2002mathematical}. Many swarm robotics algorithms focus on the use of division of labour, navigation or communication in order to decrease inter-robot interference \cite{lerman2002mathematical, schneider1998territorial}. The scalability performance measures used in this thesis are based on the measures used in \cite{hecker2015beyond}. which have been adapted for the prioritized foraging problem, by only taking into account the prioritized items.
 
-In order to analyse the swarm scalability, one can examine the average efficiency of each algorithm, over all experiments  
-In order to evaluate the swarm size scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of swarm sizes, $c_i$, as defined in Section~\ref{swarmparameters}. In order to compare scalability of the algorithms, the efficiency $E_P$ at each swarm size $c$ is normalized by the efficiency of each algorithm, at the smallest swarm size ($c_0=0.1$). Swarm size scalability, $SS$, for a specific algorithm is calculated as follows:
+In order to analyse the swarm scalability, one can examine the average efficiency of each algorithm, over all experiments, at each swarm size. However, to ensure that each algorithm is compared on scalability alone, the individual efficiencies of each algorithm must be eliminated. To eliminate the individual efficiencies of each algorithm, the average efficiency  ,$E_{c_i}$, for each swarm size $c_i$ is normalized and shifted by the efficiency on the smallest swarm size, $E_{c_{min}}$ as follows: 
 
 \begin{equation}
-	SS(c_i) = \dfrac{E_P(c_i)-E_P(c_0)}{E_P(c_0)}
+S_{c_i} = \dfrac{E_{c_{i}} - E_{c_{min}}}{E_{c_{min}}}
 \end{equation}
 
 \begin{equation}
-	SS = \sum_{i=1}^{n} SS(c_i)
+	SS = \sum_{i=1}^{n_c} S_{c_i}
 \end{equation}
 
 where $E_P(c_i)$ is the average efficiency $E_P$ over all environments with swarm density $c_i$, and $E_P(c_0)$ is the average efficiency $E_P$ over all experiments where swarm density is $c_0$. By plotting $SS(c_i)$ for all values of $i\in(0,N)$, one will be able to determine how linear the scalability of each algorithm is. Normalizing each value for $E_P(c_i)$ by $E_P(c_0)$ for each algorithm, removes the specific overall efficiencies of each algorithm, and allows the algorithms to be compared purely on scalability. The total swarm scalability $SS$, provides a single figure, per algorithm, which one can use to compare overall swarm scalability. The larger $SS$ is, the better the swarm size scalability. 
