@@ -80,7 +80,7 @@ The environment type ratio, $r$, is defined as the ratio of prioritized to non-p
 
 \subsection{Environment Distributions}
 \label{environmentdistributions}
-Different distributions of items over the environment were chosen to examine different characteristics of the algorithms. The item distributions are illustrated in Figure~\ref{fig:environments}, where each lighter shaded square is a prioritized item and a non-prioritized item is shown by a darker shaded square. Four different classes of environments were generated as follows:
+The environment distribution, $\epsilon$, is defined the distribution of prioritized and non-prioritized items in an environment, such that $\epsilon\in\{uniform, clustered, gaussian, vein\}$. Each environment distributions was chosen in order to examine different characteristics of the algorithms. The item distributions are illustrated in Figure~\ref{fig:environments}, where each lighter shaded square is a prioritized item and a non-prioritized item is shown by a darker shaded square. The four environment distributions were generated as follows:
 
 \begin{figure} [h]
         \centering
@@ -328,7 +328,7 @@ The swarm size, $c$, is defined as the number of grid cells occupied by a robot,
 
 The swarm size, $c$, is defined as the number of cells occupied by a robot, as a percentage of the grid size $S$ (the length of the side of an environment), where values of $c\in\left\{0.1, 0.3, 0.5, 0.7, 1\right\}$ where evaluated. The swarm size is varied in order to test the scalability of the algorithm. The swarm size is also varied to test each algorithms' ability to adjust the number of actively foraging robots to the density of the items in the environment, $c$, as well as adjust the number of robots actively foraging an item type, $\tau$, to the item type density, $r$.
 
-The honey bee algorithm specific parameters were selected based on \cite{seeley2009wisdom}, where $t_{wait}=200$ time steps, $f_{max}=100$ time steps, $\Phi=0.8$ and $\rho=0.1$. Testing the effect of each of the honey bee algorithm specific parameters was not in the scope of this thesis.
+The honey bee algorithm specific parameters were selected based on \cite{seeley2009wisdom}, where $t_{wait}=200$ time steps, $f_{max}=100$ time steps, $\Phi=0.8$ and $\rho=0.1$. Testing the effect of each of the parameters specific to the honey bee algorithm was not in the scope of this thesis.
 
 \section{Experimentation}
 \label{experimentation}
@@ -343,19 +343,23 @@ The performance of swarm robotics algorithms can be measured by examining the al
 
 \subsection{Foraging Efficiency}
 \label{setup:foragingefficiency}
-The foraging efficiency, $E_P$, of a particular algorithm is defined as the total number of prioritized items collected by all robots in a fixed time period on a specific environment. This foraging efficiency metric is similar to the efficiency metric used by Hecker \textit{et al} \cite{hecker2015beyond}. The metrics used in experiments performed by Hecker \textit{et al} evaluate the performance of foraging algorithms and are thus appropriate for use in the experiments of this study. The metric only looks at the prioritized items for the prioritized foraging problem.
+The foraging efficiency, $E_P$, of an algorithm is defined as the ratio of the number of prioritized items collected by all robots in a fixed time period on a specific environment to the total number of prioritized items that exist in the environment. The foraging efficiency metric is similar to the efficiency metric used by Hecker \textit{et al} \cite{hecker2015beyond}. The metrics used in experiments performed by Hecker \textit{et al} evaluate the performance of foraging algorithms and are thus appropriate for use in the experiments of this study. The foraging efficiency measure, $E_P$, only looks at the prioritized items for the prioritized foraging problem.
 
-\subsection{Notation} %TODO: Perhaps move this into flexibility.
 
-Let $\overline{r}$ be the list containing all considered elements for environment item type ratio, $r$, and let $n_r$ be number of elements in the list. Let $\overline{\tau}$ be the list containing all considered elements for initial swarm specialization ratio, $\tau(0)$, and let the number of elements in the list be $n_t$.
-
-Let $Z$ be a matrix of dimensions $n_t \times n_r$. Define each entry of the matrix $Z_{ij}$ as the average foraging efficiency, $E_P$, over all experiments, for a specific environment ratio $r_j$, where $r_j$ is the $j$th element of $\overline{r}$, and for a specific initial swarm specialization ratio $\tau_i(0)$, such that $\tau_i(0)$ is the $i$th element of $\overline{\tau}$.
 \subsection{Flexibility}
 \label{setup:flexibility}
 
 As stated in Section~\ref{flexibility}, flexibility refers to the effect of variations in environment and tasks on the co-ordination mechanisms of swarm robotics algorithms. An algorithm that is highly flexible, is one that has been optimized for a specific environment, but is equally efficient on a different environment \cite{hecker2015beyond}.
 
-The flexibility performance measures used in this study are based on the flexibility performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem, by only taking into account the prioritized item. The flexibility study addresses two aspects: (i) Flexibility with respect to prioritized item ratios, $r$, and (ii) flexibility with respect to different environment distributions.
+The flexibility performance measures used in this study are based on the flexibility performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem, by only taking into account the prioritized item. The flexibility study addresses two aspects: Flexibility with respect to prioritized item ratios, $r$, and flexibility with respect to different environment distributions.
+
+\subsubsection{Notation}
+
+In order to more succintly define the flexibility performance measures, the following notation is defined:
+
+Let $\overline{r}$ be the list containing all considered elements for environment item type ratio, $r$, and let $n_r$ be number of elements in the list. Let $\overline{\tau}$ be the list containing all considered elements for initial swarm specialization ratio, $\tau(0)$, and let the number of elements in the list be $n_t$.
+
+Let $Z$ be a matrix of dimensions $n_t \times n_r$. Define each entry of the matrix $Z_{ij}$ as the average foraging efficiency, $E_P$, over all experiments, for a specific environment ratio $r_j$, where $r_j$ is the $j$th element of $\overline{r}$, and for a specific initial swarm specialization ratio $\tau_i(0)$, such that $\tau_i(0)$ is the $i$th element of $\overline{\tau}$.
 
 \subsubsection{Flexibility over prioritized item ratio}
 \label{setup:flexibility:prioritizeditemratio}
