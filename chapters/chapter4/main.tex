@@ -407,39 +407,27 @@ F_\epsilon = \dfrac{1}{n_\epsilon}\sum_{u=1}^{n_\epsilon} \sum_{v=1}^{n_\epsilon
 
 $F_\epsilon$ can be interpreted in a similar manner to $F_r$, where the smaller the value for $F_\epsilon$ is, the more flexible over environment distributions an algorithm is considered to be. 
 
-\subsection{Scalability}
-\label{setup:scalability}
-
-Scalability is described in Section~\ref{sr:scalabilty}. This study analyses the scalability of each of the algorithms with two performance measures, namely, swarm size scalability and problem complexity scalability. Swarm size scalability and problem complexity scalability are defined in the following sections.
-
-\subsubsection{Notation}
-
-To simplify the explanation of the scalability performance measures, the following notation is defined. 
-
-Let $\overline{c}$ be the list of all considered values for swarm size, $c$, with length $n_c$. Let $c_{min}$ be the minimum value considered for $c$ and $c_i$ be the $i$th value of $\overline{c}$. Let $E_{c_i}$ be the average foraging efficiency, $E_P$, over all experiments, with swarm size $c_i$.
-
-Similarly, define the list of all considered values for problem size, $p$, as $\overline{p}$ with length $n_p$. The smallest probem size is $p_{min}$ and $E_{p_i}$ is the average foraging efficiency over all experiments, with problem size $p_i$.
-
 \subsubsection{Swarm size scalability}
 \label{swarmsizescalability}
 
-The efficiency of a robot swarm should be relatively undisturbed by changes in group sizes. This property is known as swarm size scalability. When the efficiency of an algorithm improves linearly (or superlinearly) as swarm size increases, an algorithm is considered scalable. 
+The efficiency of a robot swarm should be relatively undisturbed by changes in group sizes. This property is known as swarm size scalability. Ideally, foraging efficiency should increase linearly as swarm size increases, which is known as linear scalability. However, due to increased inter-robot interference in larger swarm sizes, scalability is often sub-linear (or logarithmic) \cite{lerman2002mathematical}. Many swarm robotics algorithms focus on the use of division of labour, navigation or communication in order to decrease inter-robot interference \cite{lerman2002mathematical, schneider1998territorial}.
 
-However, due to increased inter-robot interference in larger swarm sizes, scalability is often sub-linear \cite{lerman2002mathematical}. Many swarm robotics algorithms focus on the use of division of labour, navigation or communication in order to decrease inter-robot interference \cite{lerman2002mathematical, schneider1998territorial}. The scalability performance measures used in this thesis are based on the measures used in \cite{hecker2015beyond}. which have been adapted for the prioritized foraging problem, by only taking into account the prioritized items.
-
-In order to analyse the swarm scalability, one can examine the average efficiency of each algorithm, over all experiments, at each swarm size. However, to ensure that each algorithm is compared on scalability alone, the individual efficiencies of each algorithm must be eliminated. To eliminate the individual efficiencies of each algorithm, the average efficiency  ,$E_{c_i}$, for each swarm size $c_i$ is normalized and shifted by the efficiency on the smallest swarm size, $E_{c_{min}}$ as follows: 
+In order to analyse the swarm scalability, one could simply examine the average efficiency of each algorithm, over all experiments, at each swarm size. However, to ensure that each algorithm is compared on scalability alone, the individual efficiencies of each algorithm must be eliminated. To eliminate the individual efficiencies of each algorithm, the average efficiency  ,$E_{c_i}$, for each swarm size $c_i$ is normalized and shifted by the average efficiency of that algorithm, with the smallest sized swarm, $E_{c_{min}}$, as follows: 
 
 \begin{equation}
 S_{c_i} = \dfrac{E_{c_{i}} - E_{c_{min}}}{E_{c_{min}}}
 \end{equation}
 
+
+To analyse how each algorithm scales the normalized average foraging efficiency, $S_{c_i}$, for each value in $\overline{c}$, for each algorithm can be plotted to determine whether an algorithm scales linearly, sublinearly or superlinearly. 
+
+The total swarm scalability $S_c$, provides a single value, per algorithm, which can be used to compare overall swarm scalability. The larger the value of $S_c$, the better foraging efficiency scales with respect to swarm size. 
+
 \begin{equation}
-	SS = \sum_{i=1}^{n_c} S_{c_i}
+	S_c = \sum_{i=1}^{n_c} S_{c_i}
 \end{equation}
 
-where $E_P(c_i)$ is the average efficiency $E_P$ over all environments with swarm density $c_i$, and $E_P(c_0)$ is the average efficiency $E_P$ over all experiments where swarm density is $c_0$. By plotting $SS(c_i)$ for all values of $i\in(0,N)$, one will be able to determine how linear the scalability of each algorithm is. Normalizing each value for $E_P(c_i)$ by $E_P(c_0)$ for each algorithm, removes the specific overall efficiencies of each algorithm, and allows the algorithms to be compared purely on scalability. The total swarm scalability $SS$, provides a single figure, per algorithm, which one can use to compare overall swarm scalability. The larger $SS$ is, the better the swarm size scalability. 
-
-The swarm size scalability study will specifically look at large environments ($S=500$) to avoid the possibility of an environment running out of items to forage.
+The swarm size scalability study will only consider large environments (.i.e. $S=500$) to avoid the possibility that an environment runs out of items to forage.
 
 \subsubsection{Problem scalability}
 \label{setup:problemscalability}
