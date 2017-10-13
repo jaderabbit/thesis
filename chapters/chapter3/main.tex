@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Nature Inspired Algorithms for Prioritized Foraging}
+\chapter{Nature inspired algorithms for prioritized foraging}
 \label{chap:third}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -11,7 +11,7 @@ This chapter presents a foraging variation known as prioritized foraging as well
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Prioritized Foraging}
+\section{Prioritized foraging}
 \label{sec:second:prioritizedforaging}
 
 %Focus on the robots used, the model used and the experiments performed
@@ -33,7 +33,7 @@ The prioritized foraging problem has similarities to the problem of search and r
 As per Winfield's classification discussed in Section~\ref{sec:second:taxonomy}, the prioritized foraging problem has the following characteristics: The environment has a bounded search space, with multiple source areas for items which can be placed in multiple sinks. Multiple object types exist in the environment - the prioritized items and the non-prioritized items. The primary  performance measure for the prioritized foraging problem is time, in terms optimizing the time taken to forage each type of item. 
 
 
-\section{Na\"ive Foraging Algorithm}
+\section{Na\"ive foraging algorithm}
 \label{naiveforaging}
 
 Na\"ive foraging consists of the following tasks: searching for an item, grabbing an item, returning home with the item, and storing the item at the sink. The steps performed by the algorithm are illustrated in Figure~\ref{naiveforagingstatediagram}, and described below:  
@@ -66,7 +66,7 @@ Na\"\i ve foraging includes only the most minimal set of foraging actions and is
 The following random walk is used: A robot chooses a random direction, $\sigma$, and a random distance $m\in(0,M)$ where $M$ is a chosen maximum path length. The robot walks in direction $\sigma$ for distance $m$, or until the robot reaches a boundary. The robot then chooses new values for $\sigma$ and $m$.
 
 
-\section{Desert Ant Foraging}
+\section{Desert ant foraging}
 \label{desertantforaging}
 
 
@@ -106,11 +106,11 @@ All robots begin at random positions adjacent to the sink in the exploration sta
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Honey Bee Foraging}
+\section{Honey bee foraging}
 \label{honeybeeforaging}
 %TODO Describe the 3 states referring back to where they were discussed in the previous section.
 
-Honey bee prioritized foraging algorithm presented in this section is based on the foraging behaviour of honey bees as described in Section~\ref{bees:biologicalinspiration}. The algorithm described requires robots to take on one of three roles, namely, scout robots, unemployed forager robots, or employed forager robots. The roles of the robots and the transitions to and from these roles are described in this section. 
+Honeybee prioritized foraging algorithm presented in this section is based on the foraging behaviour of honey bees as described in Section~\ref{bees:biologicalinspiration}. The algorithm described requires robots to take on one of three roles, namely, scout robots, unemployed forager robots, or employed forager robots. The roles of the robots and the transitions to and from these roles are described in this section. 
 
 Figure~\ref{honeybeestate} provides a simplified diagram for the honey bee prioritized foraging algorithm showing the roles and the transitions between each role and the states within these roles. The dance and explore states of the scout robots are shown separately for clarity and the employed forager states are outlined separately in Figure~\ref{employedforagerstatediagram}.
 
