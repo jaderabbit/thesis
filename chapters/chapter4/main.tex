@@ -351,7 +351,7 @@ The foraging efficiency, $E_P$, of an algorithm is defined as the ratio of the n
 
 As stated in Section~\ref{flexibility}, flexibility refers to the effect of variations in environment and tasks on the co-ordination mechanisms of swarm robotics algorithms. An algorithm that is highly flexible, is one that has been optimized for a specific environment, but is equally efficient on a different environment \cite{hecker2015beyond}.
 
-The flexibility performance measures used in this study are based on the flexibility performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem, by only taking into account the prioritized item. The flexibility study addresses two aspects: Flexibility with respect to prioritized item ratios, $r$, and flexibility with respect to different environment distributions.
+The flexibility performance measures used in this study are based on the flexibility performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem, by only taking into account the prioritized item. The flexibility study addresses two aspects: Flexibility with respect to different prioritized item ratios, $r$, and flexibility with respect to different environment distributions.
 
 \subsubsection{Notation}
 
@@ -364,10 +364,10 @@ Let $Z$ be a matrix of dimensions $n_t \times n_r$. Define each entry of the mat
 Similarly, define matrix $D$ with dimensions $n_t \times n_\epsilon$, such that each entry of the matrix $D_{ij}$ is the average foraging efficiency, over all experiments with environment distribution, $\epsilon_j$, with the initial swarm initialization ratio $\tau_i(0)$.
 
 
-\subsubsection{Flexibility over prioritized item ratio}
+\subsubsection{Flexibility with respect to different prioritized item ratios}
 \label{setup:flexibility:prioritizeditemratio}
 
-The goal is to determine how well the optimum value for initial swarm specialization ratio, $\tau(0)$, for a specific environment item ratio, $r_u$, generalizes across all other environment item ratios, $r_v$, where $u,v = 1,...,n_r$ and $u \neq v$. The optimum value for $\tau(0)$, on environments of a specific environment item ratio, is the value that yields the greatest average efficiency for those environments.
+The goal of examining flexibility over different prioritized item ratios is to determine how well the optimum value for initial swarm specialization ratio, $\tau(0)$, for a specific environment item ratio, $r_u$, generalizes across all other environment item ratios, $r_v$, where $u,v = 1,...,n_r$ and $u \neq v$. The optimum value for $\tau(0)$, on environments of a specific environment item ratio, is the value that yields the greatest average efficiency for those environments.
 
 To do so, a list $I$ of size $n_r$ is defined, where each entry $I_j$ is set to the index $k$ that yields the maximum value for $Z_{ij}$, for $i = 1,..., n_\tau$, for environments with a specific environment type ratio $r_j$. More succinctly:
 
@@ -389,7 +389,7 @@ F_r = \dfrac{1}{n_r}\sum_{u=1}^{n_r} F_{r_u}
 The performance measure, $F_r$ measures how well swarm parameters, which are optimized to yield the best efficiency for environments with a specific prioritized item ratio, generalize across environments with different prioritized item ratios. The less the foraging efficiency varies when an algorithm that is configured with swarm parameters optimized for a specific environment ratio, is run on all other environment ratios, the smaller $F_r$ will be. Therefore, the smaller $F_r$ is, the more flexible an algorithm is considered to be. $F_r$ is a macro performance indicator which is run on the results of all experiments. 
 
 
-\subsubsection{Flexibility over environment distributions}
+\subsubsection{Flexibility with respect to different environment distributions}
 \label{setup:flexibility:environmentdistributions}
 
 
@@ -410,7 +410,7 @@ $F_\epsilon$ can be interpreted in a similar manner to $F_r$, where the smaller 
 \subsection{Scalability}
 \label{setup:scalability}
 
-Scalability is described in Section~\ref{sr:scalabilty}. The study of scalability can be separated into two types: (i) Swarm size scalability and (ii) problem size scalability.
+Scalability is described in Section~\ref{sr:scalabilty}. This study analyses the scalability of each of the algorithms with two performance measures, namely, swarm size scalability and problem complexity scalability. Swarm size scalability and problem complexity scalability are defined in the following sections.
 
 \subsubsection{Swarm size scalability}
 \label{swarmsizescalability}
