@@ -345,12 +345,11 @@ The performance of swarm robotics algorithms can be measured by examining the al
 \label{setup:foragingefficiency}
 The foraging efficiency, $E_P$, of a particular algorithm is defined as the total number of prioritized items collected by all robots in a fixed time period on a specific environment. This foraging efficiency metric is similar to the efficiency metric used by Hecker \textit{et al} \cite{hecker2015beyond}. The metrics used in experiments performed by Hecker \textit{et al} evaluate the performance of foraging algorithms and are thus appropriate for use in the experiments of this study. The metric only looks at the prioritized items for the prioritized foraging problem.
 
-\subsection{Notation}
+\subsection{Notation} %TODO: Perhaps move this into flexibility.
 
-Let $R$ be the list containing all considered elements for environment item type ratio, $r$, and let $n_r$ be number of elements in the list. Let $T$ be the list containing all considered elements for initial swarm specialization ratio, $\tau(0)$, and let the number of elements in the list be $n_t$.
+Let $\overline{r}$ be the list containing all considered elements for environment item type ratio, $r$, and let $n_r$ be number of elements in the list. Let $\overline{\tau}$ be the list containing all considered elements for initial swarm specialization ratio, $\tau(0)$, and let the number of elements in the list be $n_t$.
 
-Let $Z$ be a matrix of dimensions $n_t \times n_r$. Let each entry of the matrix $Z_{ij}$ be the average foraging efficiency, $E_P$, over all experiments, for a specific environment ratio $r_j$, where $r_j$ is the $j$th element of $R$, and for a specific initial swarm specialization ratio $\tau_i$, such that $\tau_i(0)$ is the $i$th element of $T$.
-
+Let $Z$ be a matrix of dimensions $n_t \times n_r$. Define each entry of the matrix $Z_{ij}$ as the average foraging efficiency, $E_P$, over all experiments, for a specific environment ratio $r_j$, where $r_j$ is the $j$th element of $\overline{r}$, and for a specific initial swarm specialization ratio $\tau_i(0)$, such that $\tau_i(0)$ is the $i$th element of $\overline{\tau}$.
 \subsection{Flexibility}
 \label{setup:flexibility}
 
@@ -361,24 +360,26 @@ The flexibility performance measures used in this study are based on the flexibi
 \subsubsection{Flexibility over prioritized item ratio}
 \label{setup:flexibility:prioritizeditemratio}
 
-The goal is to determine how well the best value for swarm specialization ratio (where the best value is one that yields the greatest efficiency) for a specific environment item ratio, $r_u$, generalizes across all other environment item ratios, $r_v$, such that $u,v = 1,...,n_r$,$u \neq v$.
+The goal is to determine how well the optimum value for initial swarm specialization ratio, $\tau(0)$, for a specific environment item ratio, $r_u$, generalizes across all other environment item ratios, $r_v$, where $u,v = 1,...,n_r$ and $u \neq v$. The optimum value for $\tau(0)$, on environments of a specific environment item ratio, is the value that yields the greatest average efficiency for those environments.
 
-To do so, $I$ is defined as a list of size $n_r$, where each entry $I_j$ is the index $k$ that yields the maximum value for $Z_{ij}$, for $i = 1,..., n_\tau$, for a specific environment type ratio $j$. More succinctly:
+To do so, a list $I$ of size $n_r$ is defined, where each entry $I_j$ is set to the index $k$ that yields the maximum value for $Z_{ij}$, for $i = 1,..., n_\tau$, for environments with a specific environment type ratio $r_j$. More succinctly:
 
 \begin{equation}
 I_j = ( k | Z_{kj} = max(Z_{ij}) \text{ for } i = 1,...,n_\tau)
 \end{equation}
 
-The normalized moment around the maximum foraging efficiency for a specific environment item type ratio $r_u$, is defined as follows: 
+The moment, $F_{r_u}$ around the maximum foraging efficiency for a specific environment item type ratio $r_u$, is defined as follows: 
 \begin{equation}
-Fr_u = \sum_{v=1}^{n_r}(\dfrac{|Z_{I_uu}- Z_{I_uv}|}{Z_{I_uu}})
+F_{r_u} = \sum_{v=1}^{n_r}\dfrac{|Z_{I_uu}- Z_{I_uv}|}{Z_{I_uu}}
 \end{equation}
 
-And the final performance measure is the sum of the above normalized moments around the maximum foraging efficiency for every environment item type ratio:
+And the final performance measure is the normalized sum of the above moments around the maximum foraging efficiency for every environment item type ratio in $\overline{r}$:
 
 \begin{equation}
-Fr = \sum_{u=1}^{n_r} F_u
+F_r = \dfrac{1}{n_r}\sum_{u=1}^{n_r} F_{r_u}
 \end{equation}
+
+The performance measure, $F_r$ measures how well swarm parameters, which are optimized to yield the best efficiency for environments with a specific prioritized item ratio, generalize across environments with different prioritized item ratios. The less the foraging efficiency varies when an algorithm that is configured with swarm parameters optimized for a specific environment ratio, is run on all other environment ratios, the smaller $F_r$ will be. Therefore, the smaller $F_r$ is, the more flexible an algorithm is considered to be. $F_r$ is a macro performance indicator which is run on the results of all experiments. 
 
 
 \subsubsection{Flexibility over environment distribution types}
