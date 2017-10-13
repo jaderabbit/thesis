@@ -447,8 +447,7 @@ The total swarm scalability, $S_c$, provides a single value per algorithm, which
 
 Ideally, foraging efficiency should be directly indirectly proportional to problem complexity. As the problem complexity increases, the foraging efficiency should decrease linearly. An algorithm is scalable when performance decreases linearly or sublinearly as efficiency increases. Similarly to swarm size scalability (described in Section~\ref{swarmsizescalability}) problem complexity scalability is often sub-linear, due to increased environmental interference. 
 
-In order to evaluate the problem scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of environment item densities, $p$, defined in Section~\ref{experimentenvironments}. Similarly to swarm size scalability performance measure $S_{c_i}$ and $S_c$, problem complexity scalability measures, $S_{p_i}$ and $S_p$ are defined as follows:
-
+In order to evaluate the problem scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of environment item densities, $p$, defined in Section~\ref{experimentenvironments}. Similarly to swarm size scalability performance measures $S_{c_i}$ and $S_c$, the problem complexity scalability measures, $S_{p_i}$ and $S_p$ are defined as follows:
 
 \begin{equation}
 	S_{p_i} = \dfrac{E_{p_{i}} - E_{p_{min}}}{E_{p_{min}}}
@@ -457,7 +456,6 @@ In order to evaluate the problem scalability of each of the algorithms presented
 \begin{equation}
 	S_p = \sum_{i=1}^{n_p} S_{p_i}
 \end{equation}
-
 
 \subsection{Behavioural Performance Measures}
 \label{behaviouralperformancemeasures}
