@@ -421,7 +421,7 @@ S_{c_i} = \dfrac{E_{c_{i}} - E_{c_{min}}}{E_{c_{min}}}
 
 To analyse how each algorithm scales the normalized average foraging efficiency, $S_{c_i}$, for each value in $\overline{c}$, for each algorithm can be plotted to determine whether an algorithm scales linearly, sublinearly or superlinearly. 
 
-The total swarm scalability $S_c$, provides a single value, per algorithm, which can be used to compare overall swarm scalability. The larger the value of $S_c$, the better foraging efficiency scales with respect to swarm size. 
+The total swarm scalability, $S_c$, provides a single value per algorithm, which can be used to compare overall swarm scalability. The larger the value of $S_c$, the better foraging efficiency scales with respect to swarm size. 
 
 \begin{equation}
 	S_c = \sum_{i=1}^{n_c} S_{c_i}
@@ -445,7 +445,7 @@ Problem scalability (PS) for an algorithm, for at an item density $p_i$ is defin
 	PS = \sum_{i=1}^{n} PS(p_i)
 \end{equation}
 
-, where $E_P(p_i)$ is the average efficiency $E_P$ over all environments with environment density $p_i$, and $E_P(p_0)$ is the average efficiency $E_P$ over all experiments where environment density is $p_0$. By plotting $PS(c_i)$ for all values of $i\in(0,N)$, one will be able to determine how linear the problem scalability of each algorithm is. Normalizing each value for $E_P(p_i)$ by $E_P(p_0)$, for each algorithm, removes the specific overall efficiencies of each algorithm, and allows the algorithms to be compared purely on scalability.
+, where $E_P(p_i)$ is the average efficiency $E_P$ over all environments with environment density $p_i$, and $E_P(p_0)$ is the average efficiency $E_P$ over all experiments where environment density is $p_0$. By plotting $PS(c_i)$ for all values of $i\in(0,N)$, it will be possible able to determine how linear the problem scalability of each algorithm is. Normalizing each value for $E_P(p_i)$ by $E_P(p_0)$, for each algorithm, removes the specific overall efficiencies of each algorithm, and allows the algorithms to be compared purely on scalability.
 
 Similarly to total swarm scalability $SS$, defined in Section~\ref{swarmsizescalability}, the total problem scalability, $PS$, provides a single figure, per algorithm, which one can use to compare overall problem scalability. The larger $PS$ is, the better the problem scalability.
 
