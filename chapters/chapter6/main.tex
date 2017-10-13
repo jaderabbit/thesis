@@ -11,12 +11,9 @@ The analysis of the results of the experiments is organised around four major ch
 
 Despite the fact that determining the most efficient algorithm is not a main focus of this study, this section does a brief comparison of the foraging efficiency, $E_P$, (defined in Section~\ref{setup:foragingefficiency}) of each algorithm. 
 
-This is done by comparing the performance of the three algorithms over all environments and all swarm parameters. A wilcoxin test, at a confidence level of 0.05, was applied the 30 independant samples, from each pair of algorithms, for each experiment, to determine if a statistically significant difference in foraging efficiency of the pair of algorithms exists. If no statistically significant difference is indicated between the two algorithm experiment samples, then nothing is done. If a statistically significant difference is indicated between the two algorithm experiment samples, then two one-tailed Mann-Whitney U tests were performed at a confidence level of 0.05, to determine which algorithm had a greater foraging efficiency on a particular experiment. If the first one-tailed Mann-Whitney U test indicates that the $E_P$ for one algorithm is significantly more efficient than that of another algorithm, then a ``win" is counted for that algorithm. If the second one-tailed Mann-Whitney U test indicates that the $E_P$ for one algorithm is significantly less efficient than the other algorithm, then a ``loss" is counted for that algorithm. %CANT GET THIS RIGHT
+This is done by comparing the performance of the three algorithms over all environments and all swarm parameters. A wilcoxin test, at a confidence level of 0.05, was applied the 30 independant samples, from each pair of algorithms, for each experiment, to determine if a statistically significant difference in foraging efficiency of the pair of algorithms exists. If no statistically significant difference is indicated between the two algorithm experiment samples, then nothing is done. If a statistically significant difference is indicated between the two algorithm experiment samples, then two one-tailed Mann-Whitney U tests were performed at a confidence level of 0.05, to determine which algorithm had a greater foraging efficiency on a particular experiment. If the first one-tailed Mann-Whitney U test indicates that the $E_P$ for one algorithm is significantly more efficient than that of another algorithm, then a ``win" is counted for that algorithm. If the second one-tailed Mann-Whitney U test indicates that the $E_P$ for one algorithm is significantly less efficient than the other algorithm, then a ``loss" is counted for that algorithm. 
 
-To determine an algorithm's foraging efficiency in comparison to each other algorithm, the wins and losses per experiment, for each algorithm are summed. This statistical analysis approach has been used in \cite{helbig2013performance}. 
-
-Table~\ref{summarytable} summarizes the total wins and losses for each algorithm. The desert ant foraging performed better than the na\"ive algorithm. The honey bee algorithm out-performed both the na\"ive algorithm and the desert ant algorithm. The following sections analyse the swarm robotic properties of each algorithm, and explain why the foraging efficiency of the algorithms is as shown in Table~\ref{summarytable}.
-
+To determine an algorithm's foraging efficiency in comparison to each other algorithm, the wins and losses per experiment, for each algorithm are summed. This statistical analysis approach has been used in \cite{helbig2013performance}. The percentage of wins per algorithm and the percentage of losses per algorithm is calculated, because percentages are more informative than counts, which are summarized in Table~\ref{summarytable}. The desert ant foraging performed better than the na\"ive algorithm. The honey bee algorithm out-performed both the na\"ive algorithm and the desert ant algorithm. The following sections analyse the swarm robot properties of each algorithm, and explain why the foraging efficiency of the algorithms is as shown in Table~\ref{summarytable}.
 
 \begin{table}[]
 \centering
@@ -25,9 +22,9 @@ Table~\ref{summarytable} summarizes the total wins and losses for each algorithm
 \begin{tabular}{@{}lll@{}}
 \toprule
 \textbf{Algorithms} & \textbf{Wins} & \textbf{Losses} \\ \midrule
-na\"ive               & 1168          & 59042           \\
-desert ant          & 42120         & 14557           \\
-honey bee           & 45490         & 15179           \\ \bottomrule
+na\"ive               & $1.3\%$          & $66.5\%$           \\
+desert ant          & $47.4\%$         & $16.4\%$           \\
+honey bee           & $51.2\%$         & $17.1\%$          \\ \bottomrule
 \end{tabular}
 \end{table}
 
