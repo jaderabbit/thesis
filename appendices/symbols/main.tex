@@ -117,12 +117,17 @@ The following appendix defines the symbols used in each chapter.
 	\item[\parbox{\namewidth}{$\overline{p}$}] A list of all considered values for $p$.
 
 	\item[\parbox{\namewidth}{$p_i$}] The $i$th item of $\overline{p}$.
+
+	\item[\parbox{\namewidth}{$p_{min}$}] The smallest considered value for $p$.
+	
 	
 	\item[\parbox{\namewidth}{$r$}] The ratio of prioritized to non-prioritized items.
 
 	\item[\parbox{\namewidth}{$\overline{r}$}] A list of all considered values for $r$.
 
 	\item[\parbox{\namewidth}{$r_i$}] The $i$th item in $\overline{r}$.
+
+	\item[\parbox{\namewidth}{$n_r$}] The number of items in $\overline{r}$	
 
 	\item[\parbox{\namewidth}{$t$}] The time step of an experiment.	
 
@@ -132,8 +137,19 @@ The following appendix defines the symbols used in each chapter.
 
 	\item[\parbox{\namewidth}{$\overline{\tau}$}] A list of all considered values for $\tau(0)$.
 
+	\item[\parbox{\namewidth}{$n_\tau$}] The number of items in $\overline{\tau}$
+
 	\item[\parbox{\namewidth}{$\tau_i(0)$}] The $i$th item in $\overline{\tau}$.
+
+	\item[\parbox{\namewidth}{$Z_{ij}$}] The average efficiency $E_P$, over all experiments with swarm specialization ratio $\tau_i$ and environment item ratio $r_j$.
 	
+	\item[\parbox{\namewidth}{$Z$}] The matrix of the values $Z_{ij}$ of size $n_\tau \times n_r$, where $i=1,..,n_\tau$ and $j=1,...,n_r$.
+
+	\item[\parbox{\namewidth}{$D_{ij}$}] The average efficiency $E_P$, over all experiments with swarm specialization ratio $\tau_i$ and environment distribution $\epsilon_j$.
+	
+	\item[\parbox{\namewidth}{$D$}] The matrix of the values $D_{ij}$ of size $n_\tau \times n_\epsilon$, where $i=1,..,n_\tau$ and $j=1,...,n_\epsilon$.
+	
+
 	\item[\parbox{\namewidth}{$\epsilon$}] The distribution of prioritized and non-prioritized items on an environment.
 
 	\item[\parbox{\namewidth}{$\overline{\epsilon}$}] A list of all considered environment distributions $\epsilon$.
@@ -146,13 +162,23 @@ The following appendix defines the symbols used in each chapter.
 	
 	\item[\parbox{\namewidth}{$c_i$}] The $i$th item in $\overline{c}$.
 
+	\item[\parbox{\namewidth}{$c_{min}$}] The smallest value considered value for $c$.
+	
 	\item[\parbox{\namewidth}{$E_P$}] The percentage of prioritized items foraged over time.
 
 	\item[\parbox{\namewidth}{$E_{NP}$}] The percentage of non-prioritized items foraged over time.
 
+	\item[\parbox{\namewidth}{$I$}] A list of size $n_r$ where entry $I_j$ is the index yielding the maximum value for $Z_{ij}$, for $i = 1,..., n_\tau$, for environments with a specific environment type ratio $r_j$.
+
+	\item[\parbox{\namewidth}{$Y$}] A list of size $n_r$ where entry $Y_j$ is the index yielding the maximum value for $D_{ij}$, for $i = 1,..., n_\tau$, for environments with a specific environment distribution $\epsilon_j$.
+
 	\item[\parbox{\namewidth}{$F_r$}] The flexibility of a robot swarm in terms of prioritized item ratio.
 	
 	\item[\parbox{\namewidth}{$F_\epsilon$}] The flexibility of a robot swarm in terms of environment type.
+
+	\item[\parbox{\namewidth}{$E_{c_i}$}] The average foraging efficiency, $E_P$, over all experiments, with swarm density $c_i$.
+
+	\item[\parbox{\namewidth}{$E_{p_i}$}] The average foraging efficiency, $E_P$, over all experiments, with problem complexity $p_i$.
 
 	\item[\parbox{\namewidth}{$S_c$}] The scalability of a robot swarm in terms of swarm density.	
 	
@@ -162,11 +188,10 @@ The following appendix defines the symbols used in each chapter.
 
 	\item[\parbox{\namewidth}{$E^t_{NP}$}] Total non-prioritized items foraged over time $t$.	
 	
-	\item[\parbox{\namewidth}{$\tau_t$}] Swarm specialization ratio $\tau$, over time $t$.	
-
 	\item[\parbox{\namewidth}{$t_{wait}$}] The average percentage of total time steps spent by each robot in the waiting state.
 
 	\item[\parbox{\namewidth}{$t_{recruitment}$}] The average percentage of total time steps spent by each robot in the recruitment state. 
 	
-	\item[\parbox{\namewidth}{$E_P$} The percentage of the total number of prioritized]
+	
+
 \end{description}
