@@ -44,13 +44,13 @@ Table~\ref{table:flexibility} summarizes the flexibility of each foraging algori
 % \usepackage{booktabs}
 \begin{table}[]
 \centering
-\caption{Flexibility in terms of prioritized item ratio, $F_r$, and flexibility in terms of environment distribution, $F_{ED}$, for each algorithm}
+\caption{Flexibility in terms of prioritized item ratio, $F_r$, and flexibility in terms of environment distribution, $F_\epsilon$, for each algorithm}
 \label{table:flexibility}
 \begin{tabular}{@{}llll@{}}
 \toprule
 \textbf{}         & Na\"ive         & Desert ant        & Honey bee         \\ \midrule
 \textbf{$F_r$}    & 1.18580054603 & 3.12400224646     & 0.827991739287    \\ \midrule
-\textbf{$F_{ED}$} & 1.11160672365 & 0.507371308759 & 0.458295680454 
+\textbf{$F_\epsilon$} & 1.11160672365 & 0.507371308759 & 0.458295680454 
 \end{tabular}
 \end{table}
 
@@ -80,7 +80,7 @@ The desert ant algorithm is the least flexible, which indicates that the algorit
 
  (refer to Section~\ref{setup:flexibility:environmentdistributions}).
 
-Similarly to $F_r$, the performance measure, $F_{ED}$, (defined in flexibility:environmentdistributions) measures how well the swarm parameters, that yield the best efficiency for environments with a environment distribution, generalize across environments with different environment distributions, for a specific algorithm. Similarly to $F_r$, the smaller $F_{ED}$ is, the more flexible an algorithm is considered to be and $F_{ED}$ is also calculated based on the results of all experiments. The results summarized in Table~\ref{table:flexibility} indicate that the honey bee algorithm was the most flexible in terms of environment distribution, followed by the desert ant algorithm. The na\"ive algorithm was the least flexible.
+Similarly to $F_r$, the performance measure, $F_\epsilon$, (defined in flexibility:environmentdistributions) measures how well the swarm parameters, that yield the best efficiency for environments with a environment distribution, generalize across environments with different environment distributions, for a specific algorithm. Similarly to $F_r$, the smaller $F_\epsilon$ is, the more flexible an algorithm is considered to be and $F_\epsilon$ is also calculated based on the results of all experiments. The results summarized in Table~\ref{table:flexibility} indicate that the honey bee algorithm was the most flexible in terms of environment distribution, followed by the desert ant algorithm. The na\"ive algorithm was the least flexible.
 
 The honey bee's superior flexibility suggests the following hypothesis:
 
@@ -317,7 +317,7 @@ This chapter presented the results of the experiments and performed analysis of 
 
 Section~\ref{results:efficiency} presented an overview of foraging efficiency of each algorithm. The results showed that the honey bee algorithm was the most efficient over all environments and swarm configurations, while the desert ant was the next most efficient and the na\"ive algorithm was the least efficient.
 
-Section~\ref{results:flexibility} analysed the flexibility of each algorithm. Flexibility was analysed in terms of flexibility over environments prioritized item ratio, $F_r$, and flexibility over environment distribution type, $F_{ED}$. 
+Section~\ref{results:flexibility} analysed the flexibility of each algorithm. Flexibility was analysed in terms of flexibility over environments prioritized item ratio, $F_r$, and flexibility over environment distribution type, $F_\epsilon$. 
 
 Section~\ref{results:prioritizeditemratio} concluded that the honey bee algorithm was the most flexible in terms of prioritized item ratio. It was shown that the honey bee algorithm's flexibility is a result of honey bee algorithm's ability to adapt the specialization ratio $\tau$, via the honey bee algorithm's division of labour mechanism. The division of labour mechanism allowed the honey bee robots to more efficiently forage an environment for any given environment item ratio $r$. The na\"ive algorithm was more flexible than the desert ant algorithm, in terms of environment item distribution. The na\"ive algorithm's perceived flexibility is attributed to the fact that the na\"ive algorithm suffers far lower efficiency across all environment item ratios, suggesting that it appears flexible since it performs equally bad across all values of $r$, unable to exploit any differences between the environments. 
 
