@@ -22,9 +22,9 @@ To determine an algorithm's foraging efficiency in comparison to each other algo
 \begin{tabular}{@{}lll@{}}
 \toprule
 \textbf{Algorithms} & \textbf{Wins} & \textbf{Losses} \\ \midrule
-na\"ive               & $1.3\%$          & $66.5\%$           \\
-desert ant          & $47.4\%$         & $16.4\%$           \\
-honey bee           & $51.2\%$         & $17.1\%$          \\ \bottomrule
+Na\"ive               & $1.3\%$          & $66.5\%$           \\
+Desert ant          & $47.4\%$         & $16.4\%$           \\
+Honey bee           & $51.2\%$         & $17.1\%$          \\ \bottomrule
 \end{tabular}
 \end{table}
 
@@ -48,7 +48,7 @@ Table~\ref{table:flexibility} summarizes the flexibility of each foraging algori
 \label{table:flexibility}
 \begin{tabular}{@{}llll@{}}
 \toprule
-\textbf{}         & na\"ive         & desert ant        & honey bee         \\ \midrule
+\textbf{}         & Na\"ive         & Desert ant        & Honey bee         \\ \midrule
 \textbf{$F_r$}    & 1.18580054603 & 3.12400224646     & 0.827991739287    \\ \midrule
 \textbf{$F_{ED}$} & 1.11160672365 & 0.507371308759 & 0.458295680454 
 \end{tabular}
@@ -207,7 +207,7 @@ However the time spent by honey bee robots in the waiting state, decreases as sw
 \subsection{Problem scalability}
 \label{results:problemscalability}
 
-Figure~\ref{fig:problemscalability} plots the problem scalability performance measure, $S_p$ (described in Section~\ref{setup:problemscalability}), for each algorithm, using the values given in Table~\ref{table:problemscalability}. The results present the macro performance measure $S_p$, which is calculated over all experiments, for each value of $p$. The figure includes a plot of ``Expected scalability". The values for ``Expected scalability" were calculated based on the assumption that  that foraging efficiency would degrade directly proportionally to the increase in the problem size. The expected values for foraging efficiency at each problem size, were used to calculate $S_p$ for ``Expected scalability". All algorithms outperformed the expected scalability and thus problem scalability for all algorithms is better than the expected scalability which is good. 
+Figure~\ref{fig:problemscalability} plots the problem scalability performance measure, $S_p$ (described in Section~\ref{setup:problemscalability}), for each algorithm, using the values given in Table~\ref{table:problemscalability}. The results present the macro performance measure $S_p$, which is calculated over all experiments, for each value of $p$. The figure includes a plot of ``Expected scalability". The values for ``Expected scalability" were calculated based on the assumption that  that foraging efficiency would degrade directly proportionally to the increase in the problem complexity. The expected values for foraging efficiency at each problem complexity, were used to calculate $S_p$ for ``Expected scalability". All algorithms outperformed the expected scalability and thus problem scalability for all algorithms is better than the expected scalability which is good. 
 
 According to Figure~\ref{fig:problemscalability}, the honey bee algorithm is the most scalable in terms of problem scalability, followed by the na\"ive algorithm, with the desert ant algorithm exhibiting the worst scalability. %WHY CAN I SAY THAT?
 
@@ -225,7 +225,7 @@ Additionally, in environments that are more dense, all desert ant robots, are mo
 \label{fig:desertantsitefidelity}
 \end{figure}
 
-The honey bee algorithm uses site fidelity, and also communicates those sites to others. Despite the use of site fidelity mechanism similar to the desert ant algorithm, the honey bee algorithm is the most scalable. The reason why the site fidelity of the honey bee algorithm does not impact the scalability can be attributed the ability of the honey bee algorithm to adapt the swarm specialization ratio, $\tau$, to focus on foraging dense areas of obstacles, rather than having to expensively navigate around the obstacles. The ability of the honey bee algorithm to concentrate on clearing obstacles in highly dense environments will increase overall ease of access to the high quality sites, as discovered in Section~\ref{results:flexibility:environmentdistribution}. Thus efficiency of the honey bee algorithm in highly dense environments is improved. Therefore, the honey bee algorithm is the most scalable in terms of the problem size and complexity.
+The honey bee algorithm uses site fidelity, and also communicates those sites to others. Despite the use of site fidelity mechanism similar to the desert ant algorithm, the honey bee algorithm is the most scalable. The reason why the site fidelity of the honey bee algorithm does not impact the scalability can be attributed the ability of the honey bee algorithm to adapt the swarm specialization ratio, $\tau$, to focus on foraging dense areas of obstacles, rather than having to expensively navigate around the obstacles. The ability of the honey bee algorithm to concentrate on clearing obstacles in highly dense environments will increase overall ease of access to the high quality sites, as discovered in Section~\ref{results:flexibility:environmentdistribution}. Thus efficiency of the honey bee algorithm in highly dense environments is improved. Therefore, the honey bee algorithm is the most scalable in terms of the problem complexity and complexity.
 
 \begin{table}[]
 \centering
@@ -287,7 +287,7 @@ Table~\ref{averagetimerecruitment} and Figure~\ref{fig:recruitmenttime} illustra
 \label{averagetimerecruitment}
 \begin{tabular}{@{}lllll@{}}
 \toprule
-$r$            & \textbf{clustered} & \textbf{gaussian} & \textbf{uniform} & \textbf{vein} \\ \midrule
+$r$            & \textbf{Clustered} & \textbf{Gaussian} & \textbf{Uniform} & \textbf{Vein} \\ \midrule
 \textbf{0}        & 0        & 0       & 0      & 0   \\
 \textbf{0.2}      & 0.119486333        & 0.152139262       & 0.11962912       & 0.160737113   \\
 \textbf{0.25}     & 0.126752914        & 0.144484389       & 0.127568794      & 0.158813789   \\
