@@ -20,7 +20,7 @@ Foraging robots occur in all shapes, sizes and capabilities. Some robots have po
 \subsection{Robot Description}
 \label{robotdescription}
 
-The artificial robots mode vlled in this study are based on e-puck robots \cite{mondada2009puck}, which have been modified with grippers. A robot is equipped with a 360 degree camera to identify objects around the robot, as well as eight local distance sensors equally spaced around the circular perimeter of the robot. Both camera and distance sensors have a depth of view of five times the robot's size. Robots use local communication which can occur in a radius of five times the robot's size. The sensor and communication range is sufficiently localized with respect to the size of the environment. A robot can forage a single item at a time. The robots do not have a global positioning system (GPS) capability to locate items to position themselves in the environment. A robot can not see occluded items. As a result, robots have to explore the environment to find the prioritized items.
+The artificial robots modelled in this study are based on e-puck robots \cite{mondada2009puck}, with additional grippers. Each simulated robot is equipped with a 360 degree camera to identify objects around the robot, as well as eight local distance sensors equally spaced around the circular perimeter of the robot. Both camera and distance sensors have a depth of view of five times the robot's size. Robots use local communication which can occur in a radius of five times the robot's size. The sensor and communication range is sufficiently localized with respect to the size of the environment. Each simulated robot can forage a single item at a time. The robots do not have a global positioning system (GPS) capability to locate items to position themselves in the environment. A robot can not see occluded items. As a result, the simulated robots have to explore the environment to find the prioritized items.
 
 \subsection{Navigation and Obstacle Avoidance}
 \label{navigationandobstacleavoidance}
@@ -341,15 +341,15 @@ The performance of swarm robotics algorithms can be measured by examining the al
 
 \subsection{Foraging Efficiency}
 \label{setup:foragingefficiency}
-The foraging efficiency, $E_P$, of an algorithm is defined as the ratio of the number of prioritized items collected by all robots in a fixed time period on a specific environment to the total number of prioritized items that exist in the environment. The foraging efficiency metric is similar to the efficiency metric used by Hecker \textit{et al} \cite{hecker2015beyond}. The metrics used in experiments performed by Hecker \textit{et al} evaluate the performance of foraging algorithms and are thus appropriate for use in the experiments of this study. The foraging efficiency measure, $E_P$, only looks at the prioritized items for the prioritized foraging problem.
+The foraging efficiency, $E_P$, of an algorithm is defined as the ratio of the number of prioritized items collected by all robots in a fixed time period on a specific environment to the total number of prioritized items that exist in the environment. The foraging efficiency metric is similar to the efficiency metric used by Hecker \textit{et al} \cite{hecker2015beyond}. The metrics used in experiments performed by Hecker \textit{et al} evaluate the performance of foraging algorithms and are thus appropriate for use in the experiments of this study. The foraging efficiency measure, $E_P$, only considers the prioritized items for the prioritized foraging problem.
 
 
 \subsection{Flexibility}
 \label{setup:flexibility}
 
-As stated in Section~\ref{flexibility}, flexibility refers to the effect of variations in environment and tasks on the co-ordination mechanisms of swarm robotics algorithms. An algorithm that is highly flexible, is one that has been optimized for a specific environment, but is equally efficient on a different environment \cite{hecker2015beyond}.
+As stated in Section~\ref{flexibility}, flexibility refers to the effect of variations in the environment and tasks on the co-ordination mechanisms of swarm robotics algorithms. An algorithm that is highly flexible, is one that has been optimized for a specific environment, but is equally efficient on a different environment \cite{hecker2015beyond}.
 
-The flexibility performance measures used in this study are based on the flexibility performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem, by only taking into account the prioritized item. The flexibility study addresses two aspects: Flexibility with respect to different prioritized item ratios, $r$, and flexibility with respect to different environment distributions.
+The flexibility performance measures used in this study are based on the flexibility performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem by only taking into account the prioritized item. The flexibility study addresses two aspects: Flexibility with respect to different prioritized item ratios, $r$, and flexibility with respect to different environment distributions.
 
 \subsubsection{Notation}
 
@@ -359,21 +359,22 @@ Let $\overline{r}$ be the list containing all considered elements for environmen
 
 Let $Z$ be a matrix of dimensions $n_t \times n_r$. Define each entry of the matrix $Z_{ij}$ as the average foraging efficiency, $E_P$, over all experiments, for a specific environment ratio $r_j$, where $r_j$ is the $j$th element of $\overline{r}$, and for a specific initial swarm specialization ratio $\tau_i(0)$, such that $\tau_i(0)$ is the $i$th element of $\overline{\tau}$.
 
-Similarly, define matrix $D$ with dimensions $n_t \times n_\epsilon$, such that each entry of the matrix $D_{ij}$ is the average foraging efficiency, over all experiments with environment distribution, $\epsilon_j$, with the initial swarm initialization ratio $\tau_i(0)$.
+Similarly, define matrix $D$ with dimensions $n_t \times n_\epsilon$, such that each entry of the matrix $D_{ij}$ is the average foraging efficiency, over all experiments with environment distribution, $\epsilon_j$, and with the initial swarm initialization ratio, $\tau_i(0)$.
 
 
 \subsubsection{Flexibility with respect to different prioritized item ratios}
 \label{setup:flexibility:prioritizeditemratio}
 
-The goal of examining flexibility over different prioritized item ratios is to determine how well the optimum value for initial swarm specialization ratio, $\tau(0)$, for a specific environment item ratio, $r_u$, generalizes across all other environment item ratios, $r_v$, where $u,v = 1,...,n_r$ and $u \neq v$. The optimum value for $\tau(0)$, on environments of a specific environment item ratio, is the value that yields the greatest average efficiency for those environments.
+The goal of examining flexibility over different prioritized item ratios is to determine how well the optimum value for initial swarm specialization ratio, $\tau(0)$, for a specific environment item ratio, $r_u$, generalizes across all other environment item ratios, $r_v$, where $u,v = 1,...,n_r$ and $u \neq v$. The optimum value for $\tau(0)$ on environments of a specific environment item ratio is the value that yields the greatest average efficiency for those environments.
 
 To do so, a list $I$ of size $n_r$ is defined, where each entry $I_j$ is set to the index $k$ that yields the maximum value for $Z_{ij}$, for $i = 1,..., n_\tau$, for environments with a specific environment type ratio $r_j$. More succinctly:
 
 \begin{equation}
-I_j = ( k | Z_{kj} = max(Z_{ij}) \text{ for } i = 1,...,n_\tau)
+I_j = ( k | Z_{kj} = \max_{i=1,...,n_\tau}\{Z_{ij}\} )
 \end{equation}
 
-The moment, $F_{r_u}$ around the maximum foraging efficiency for a specific environment item type ratio $r_u$, is defined as follows: 
+The moment, $F_{r_u}$, around the maximum foraging efficiency for a specific environment item type ratio $r_u$, is defined as follows: 
+
 \begin{equation}
 F_{r_u} = \sum_{v=1}^{n_r}\dfrac{|Z_{I_uu}- Z_{I_uv}|}{Z_{I_uu}}
 \end{equation}
@@ -391,19 +392,19 @@ The performance measure, $F_r$ measures how well swarm parameters, which are opt
 \label{setup:flexibility:environmentdistributions}
 
 
-This performance measure evaluates flexibility by analysing how well swarm parameters, which are optimized to yield the best efficiency for environments with a specific environment distribution, generalize across environments with different environment distributions. The performance measure $F_{\epsilon}$ is defined similarly to $F_r$, except over environment distributions, rather than environmental item ratios. A list $Y$ of size $n_\epsilon$ is defined as follows:
+This performance measure evaluates flexibility by analysing how well swarm parameters, which are optimized to yield the best efficiency for environments with a specific environment distribution, generalize across environments with different environment distributions. The performance measure $F_{\epsilon}$ is defined similar to $F_r$, except over environment distributions, rather than environmental item ratios. A list $Y$ of size $n_\epsilon$ is defined as follows:
 
 \begin{equation}
-Y_j = ( k | D_{kj} = max(D_{ij}) \text{ for } i = 1,...,n_\tau)
+Y_j = ( k | D_{kj} = \max_{i=1,...,n_\tau}\{D_{ij}\} )
 \end{equation}
 
-The performance measure $F_\epsilon$ is defined as follows:
+The performance measure, $F_\epsilon$, is defined as follows:
 
 \begin{equation}
 F_\epsilon = \dfrac{1}{n_\epsilon}\sum_{u=1}^{n_\epsilon} \sum_{v=1}^{n_\epsilon}\dfrac{|D_{Y_uu}- D_{Y_uv}|}{D_{Y_uu}}
 \end{equation}
 
-$F_\epsilon$ can be interpreted in a similar manner to $F_r$, where the smaller the value for $F_\epsilon$ is, the more flexible over environment distributions an algorithm is considered to be. 
+$F_\epsilon$ is interpreted in a similar manner to $F_r$, where the smaller the value for $F_\epsilon$ is, the more flexible over environment distributions an algorithm is considered to be. 
 
 \subsection{Scalability}
 \label{setup:scalability}
@@ -422,30 +423,34 @@ Similarly, define the list of all considered values for problem complexity, $p$,
 \subsubsection{Swarm density scalability}
 \label{swarmsizescalability}
 
-The efficiency of a robot swarm should be relatively undisturbed by changes in group sizes. This property is known as swarm density scalability. Ideally, foraging efficiency should increase linearly as swarm density increases, which is known as linear scalability. However, due to increased inter-robot interference in larger swarm densitys, scalability is often sub-linear (i.e. logarithmic) \cite{lerman2002mathematical}. Many swarm robotics algorithms focus on the use of division of labour, navigation or communication in order to decrease inter-robot interference \cite{lerman2002mathematical, schneider1998territorial}.
+The efficiency of a robot swarm should be relatively undisturbed by changes in group sizes. This property is known as swarm density scalability. Ideally, foraging efficiency should increase linearly as swarm density increases, which is known as linear scalability. However, due to increased inter-robot interference in larger swarm densities, scalability is often sub-linear (i.e. logarithmic) \cite{lerman2002mathematical}. Many swarm robotics algorithms focus on the use of division of labour, navigation or communication in order to decrease inter-robot interference \cite{lerman2002mathematical, schneider1998territorial}.
 
-In order to analyse the swarm scalability, one could simply examine the average efficiency of each algorithm, over all experiments, at each swarm density. However, to ensure that each algorithm is compared on scalability alone, the individual efficiencies of each algorithm must be eliminated. To eliminate the individual efficiencies of each algorithm, the average efficiency  ,$E_{c_i}$, for each swarm density $c_i$ is normalized and shifted by the average efficiency of that algorithm, with the smallest sized swarm, $E_{c_{min}}$, as follows: 
+In order to analyse swarm scalability, one could simply examine the average efficiency of each algorithm, over all experiments, at each swarm density. However, to ensure that each algorithm is compared on scalability alone, the individual efficiencies of each algorithm must be eliminated. To eliminate the individual efficiencies of each algorithm, the average efficiency, $E_{c_i}$, for each swarm density $c_i$ is normalized and shifted by the average efficiency of that algorithm, with the smallest sized swarm, $E_{c_{min}}$, as follows: 
 
 \begin{equation}
 S_{c_i} = \dfrac{E_{c_{i}} - E_{c_{min}}}{E_{c_{min}}}
 \end{equation}
 
 
-To analyse how each algorithm scales the normalized average foraging efficiency, $S_{c_i}$, for each value in $\overline{c}$, for each algorithm can be plotted to determine whether an algorithm scales linearly, sublinearly or superlinearly. 
+To analyse how each algorithm scales, the normalized average foraging efficiency, $S_{c_i}$, for each value in $\overline{c}$ can be plotted for each algorithm to determine whether an algorithm scales linearly, sublinearly or superlinearly. 
 
-The total swarm scalability, $S_c$, provides a single value per algorithm, which can be used to compare overall swarm scalability. The larger the value of $S_c$, the better foraging efficiency scales with respect to swarm density. 
+The total swarm scalability, $S_c$, provides a single value per algorithm, which can be used to compare overall swarm scalability:
 
 \begin{equation}
 	S_c = \sum_{i=1}^{n_c} S_{c_i}
 \end{equation}
 
 
+The larger the value of $S_c$, the better foraging efficiency scales with respect to swarm density. 
+
+
+
 \subsubsection{Problem complexity scalability}
 \label{setup:problemscalability}
 
-Ideally, foraging efficiency should be directly indirectly proportional to problem complexity. As the problem complexity increases, the foraging efficiency should decrease linearly. An algorithm is scalable when performance decreases linearly or sublinearly as efficiency increases. Similarly to swarm density scalability (described in Section~\ref{swarmsizescalability}) problem complexity scalability is often sub-linear, due to increased environmental interference. 
+Ideally, foraging efficiency should be indirectly proportional to problem complexity. As the problem complexity increases, the foraging efficiency should decrease linearly. An algorithm is scalable when performance decreases linearly or sublinearly as efficiency increases. Similar to swarm density scalability (described in Section~\ref{swarmsizescalability}) problem complexity scalability is often sub-linear, due to increased environmental interference. 
 
-In order to evaluate the problem scalability of each of the algorithms presented, efficiency of each algorithm is examined over a variety of environment item densities, $p$, defined in Section~\ref{experimentenvironments}. Similarly to swarm density scalability performance measures $S_{c_i}$ and $S_c$, the problem complexity scalability measures, $S_{p_i}$ and $S_p$ are defined as follows:
+In order to evaluate the problem scalability of each of the algorithms presented, the efficiency of each algorithm is examined over a variety of environment item densities, $p$, defined in Section~\ref{experimentenvironments}. Similar to swarm density scalability performance measures $S_{c_i}$ and $S_c$, the problem complexity scalability measures, $S_{p_i}$ and $S_p$, are defined as follows:
 
 \begin{equation}
 	S_{p_i} = \dfrac{E_{p_{i}} - E_{p_{min}}}{E_{p_{min}}}
@@ -464,7 +469,7 @@ Despite not being one of the more typical performance measures for swarm robotic
 To give insight into the effects of environmental and swarm parameters on overall performance, and to characterise the effects of certain behaviours, the following metrics have been recorded:
 
 \begin{itemize}
-\item The total number of prioritized items foraged over time, $E^t_P$. The total number of prioritized items foraged are recorded every 200 time steps and are normalized with the total number of prioritized items that exist in the specific environment.
+\item The total number of prioritized items foraged over time, $E^t_P$. The total number of prioritized items foraged are recorded every 200 time steps and are normalized with the total number of prioritized items that exists in the specific environment.
 \item The total number of non-prioritized items foraged over time, $E^t_{NP}$. The total number of non-prioritized items foraged are recorded every 200 time steps and are normalized with the total number of non-prioritized items that exist in the specific environment.
 \end{itemize}
 
@@ -472,7 +477,7 @@ To give insight into the effects of environmental and swarm parameters on overal
 Swarm specialization ratio stays constant for the desert ant algorithm and the na\"ive algorithm, but the swarm specialization ratio changes for the honey bee algorithm, due to the division of labour mechanisms. In order to gain a better understanding of how the division of labour mechanism performs, the swarm specialization ratio over time, $\tau(t)$, is tracked. The swarm specialization ratio is recorded every 200 time steps.
 
 \subsubsection{Time spent performing recruitment}
-Unlike the Desert ant algorithm and the Na\"ive algorithm, the honey bee algorithm robots perform behaviours that are not directly involved in retrieving items - in particular, the recruitment activities form part of the division of labour mechanism. In order to better understand the influence of the division of labour mechanisms, the average percentage of each robot in a swarm spent on each division of labour activity is recorded as follows:
+Unlike the desert ant algorithm and the na\"ive algorithm, the honey bee algorithm robots perform behaviours that are not directly involved in retrieving items - in particular, the recruitment activities form part of the division of labour mechanism. In order to better understand the influence of the division of labour mechanisms, the average percentage of the time that each robot spents on each division of labour activity is recorded as follows:
 
 \begin{itemize}
 \item $t_{wait}$, the average percentage of the total number of time steps spent by each robot in the waiting state.
@@ -488,9 +493,9 @@ Unlike the Desert ant algorithm and the Na\"ive algorithm, the honey bee algorit
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
 \label{third:summary}
-The robots used in this study are based on the e-puck robots, but with gripper capabilities. The robots used a navigation and obstacle avoidance technique based on the flocking behaviour of birds where a global attractor force attracts the robot in a specific direction, while the local attractor force guides a robot around localized obstacles. A simple 2-dimensional grid-based simulator is used. Only a single robot or item occupies a single grid cell at any time point.
+The robots used in this study are based on the e-puck robots, but with gripper capabilities. The robots used a navigation and obstacle avoidance technique based on the flocking behaviour of birds where a global attractor force attracts the robot in a specific direction, while the local attractor force guides a robot around localized obstacles. A simple 2-dimensional grid-based simulator is used. Only a single robot or item occupies a single grid cell at any point in time.
 
-Different types of environment distributions were generated for experimentation. The environment types have been created based only: uniform, Gaussian, clustered and vein distributions. The following environmental parameters were varied: item density, environment size, and item type ratio. The following swarm parameters chosen for each of the algorithms were presented: initial swarm specialization ratio, swarm density, and honey bee specific parameters.
+Different types of environment distributions were generated for experimentation. The environment types that have been created are uniform, Gaussian, clustered and vein distributions. The following environmental parameters were varied: item density, environment size, and item type ratio. The following swarm parameters chosen for each of the algorithms were presented: initial swarm specialization ratio, swarm density, and honey bee specific parameters.
 
 Performance measures were selected to evaluate the efficiency of the algorithms, as well as the scalability and flexibility of the algorithms. Lastly, a set of behavioural performance measures are presented in order to gain insight into individual behaviours of the algorithms, namely, the items foraged over time, the swarm specialization ratio over time, and the time spent performing recruitment activities.
 
