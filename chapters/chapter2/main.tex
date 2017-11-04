@@ -286,19 +286,19 @@ Winfield's foraging taxonomy was presented and discussed so that research can be
 \label{chap:divisionoflabour}
 
 
-As explained in Section~\ref{flexibility}, division of labour forms part of foraging activities of social insects. This chapter defines division of labour as well as analyses different types of division of labour that occur in social insects. Lastly, division of labour strategies employed by different swarm robotics algorithms are described. 
+As explained in Section~\ref{flexibility}, division of labour is a strategy that is used by social insects. This chapter defines division of labour as well as analyses different types of division of labour that occur in social insects. Lastly, division of labour strategies employed by different swarm robotics algorithms are described. 
 
 \section{Definition of Division of Labour}
 \label{division:definition}
 
-Oster et al. \cite{oster1978caste} defines division of labour as a ``stable pattern of variation" of the repertoire of tasks that individuals perform. Each individual specializes on a subset of the complete repertoire of tasks. The subset of the complete repertoire of tasks is called the specialization of an individual and the specialization of individuals varies across the swarm. 
+Oster \textit{et al} \cite{oster1978caste} defined division of labour as a ``stable pattern of variation" of the repertoire of tasks that individuals perform. Each individual specializes on a subset of the complete repertoire of tasks. The subset of the complete repertoire of tasks is called the specialization of an individual and the specialization of individuals varies across the swarm. 
 
-Robinson et al. \cite{robinson1992regulation}, more simply, defines division of labour as the adjustment of ratios of workers engaged in different tasks based on external and internal stimuli.
+Robinson \textit{et al} \cite{robinson1992regulation}, more simply, defined division of labour as the adjustment of ratios of workers engaged in different tasks based on external and internal stimuli.
 
 There are two types of division of labour in social insects \cite{beshers2001models}: 
 \begin{itemize}
-	\item \textbf{Temporal polyethism} where the pattern of tasks being performed by a worker correlate to the age of the worker. In nature, the younger workers may perform tasks within the nest while the older workers perform tasks outside of the nest.
-	\item \textbf{Morphological polyethism} where a worker with extreme physical features in terms of size or shape, will specialize more in particular tasks. The more extreme a particular physical feature is, the narrower the repertoire of the worker. For example, soldier ants are larger in order to defend the nest, while the smaller workers are involved with foraging.
+	\item \textbf{Temporal polyethism}, where the pattern of tasks being performed by a worker correlate to the age of the worker. In nature, the younger workers may perform tasks within the nest while the older workers perform tasks outside of the nest.
+	\item \textbf{Morphological polyethism}, where a worker with extreme physical features in terms of size or shape, will specialize more in particular tasks. The more extreme a particular physical feature is, the narrower the repertoire of the worker. For example, soldier ants are larger in order to defend the nest, while the smaller workers are involved with foraging.
 \end{itemize}
 
 %NEED SOMETHING HERE
@@ -316,16 +316,16 @@ There are two types of division of labour in social insects \cite{beshers2001mod
 
 \section{Models of Division of Labour from Biology}
 
-An overview of existing models from entomology is provided in this section, since insect-like division of labour is used by the algorithms developed in this thesis. The section focuses on common models and models used by the algorithms described in this thesis.
+An overview of existing division of labour models from entomology is provided in this section, since insect-like division of labour is used by the algorithms developed in this thesis. The section focuses on common models and models used by the algorithms described in this thesis.
 
 \subsection{Response Threshold Model}
 \label{responsethresholdmodel}
 
-The response threshold model is where individuals each have a response threshold for each specific tasks that individuals in the swarm can perform.  The task-specific thresholds vary across individuals in the swarm \cite{robinson1989genetic}.
+The response threshold model gives each individual of a swarm a response threshold for each task that can be performed. The task-specific thresholds vary across the swarm \cite{robinson1989genetic}.
 
-Suppose $R$ is the set of tasks that can be performed by individuals of the swarm. An individual $\gamma$ will only perform task $\nu \in R$ when the environmental stimuli for task $\nu$, $S_\nu$, exceeds the response threshold, $r_{\gamma,\nu}$, for task $\nu$, for an individual $\gamma$. Each response threshold for a task, for an individual is constant. If an individual has a lower threshold for a specific task, compared to other individuals in the swarm, then it is likely that the individual will become a specialist in that task \cite{robinson1989genetic}
+Suppose $R$ is the set of tasks that can be performed by individuals of the swarm. An individual $\gamma$ will only perform task $\nu \in R$ when the environmental stimuli for task $\nu$, $S_\nu$, exceeds the response threshold, $r_{\gamma,\nu}$, for task $\nu$, for an individual $\gamma$. Each response threshold for a task, for an individual is constant. If an individual has a lower threshold for a specific task, compared to other individuals in the swarm, then it is likely that the individual will become a specialist in that task \cite{robinson1989genetic}.
 
-Response threshold models have been modelled formally by Page et al. \cite{page1990self} and Bonabeau et al. \cite{bonabeau1999role}. Response thresholds have been used to explain temporal polyethism in honey bees where the response thresholds of the honey bees would change as the honey bees age \cite{robinson1987regulation}.
+Response threshold models have been modelled formally by Page \textit{et al} \cite{page1990self} and Bonabeau \textit{et al} \cite{bonabeau1999role}. Response thresholds have explained temporal polyethism in honey bees where the response thresholds of the honey bees changed as the honey bees aged \cite{robinson1987regulation}.
 
 \subsection{Foraging for Work}
 
@@ -339,71 +339,66 @@ Foraging for work has two main principles:
 
 %This forms the basic model of foraging and also is used in MY honey bee algorithm.
 
-Foraging for work also assumes that tasks are radially spatially localized within the nest. This means that  tasks further away from the nest are performed by older individuals and the younger individuals perform the tasks that are closer the nest \cite{tofts1993algorithms}.
+Foraging for work also assumes that tasks are radially spatially localized within the nest. Thus, tasks further away from the nest are performed by older individuals and the younger individuals perform the tasks that are closer to the nest \cite{tofts1993algorithms}.
 
-Foraging for work shows that temporal polyethism does not require age-related differences in the mechanism of task choice and can simply stem from an individual's proximity to the nest. Foraging for work is controversial since it shows that task organization might occur within a social group in absence of selection efforts or intrinsic mechanism of task performance \cite{franks1994foraging}. 
+Foraging for work shows that temporal polyethism does not require age-related differences in the mechanism of task choice and can simply stem from an individual's proximity to the nest. Foraging for work is controversial since it shows that task organization might occur within a social group in absence of selection efforts or an intrinsic mechanism of task performance \cite{franks1994foraging}. 
 
-Foraging for work can be seen as a special case of the threshold model where all individuals have identical thresholds. In foraging for work, temporal polyethism is generated by spatial organisation, where as response threshold model generate temporal polyethism by differences in internal thresholds. Unlike response threshold models, foraging for work does not suffer from inactive individuals as all workers are either performing or seeking tasks \cite{beshers2001models}.
+Foraging for work can be seen as a special case of the threshold model where all individuals have identical thresholds. In foraging for work, temporal polyethism is generated by spatial organisation, where as response threshold model generate temporal polyethism by differences in internal thresholds. Unlike threshold models, foraging for work does not suffer from inactive individuals as all workers are either performing or seeking tasks \cite{beshers2001models}.
 
 Foraging for work is controversial in the fact that it induces division of labour without any explicit mechanism, but instead as a natural result of the environment \cite{beshers2001models}. However, it has been shown that in insect colonies, there is intrinsic variation in each individuals' response to environmental  stimuli, rather than from opportunity alone \cite{julian1999undertaking}.
 
-\subsection{Self Reinforcement Models}
+\subsection{Self-Reinforcement Models}
 \label{selfreinforcement}
 
 % What are self reinforceme models citation
-Self reinforcement models adjust an individual's probability of performing a task, based on prior success or failure to perform that task. Initially, the probability of performing all tasks are equal. If a task is performed successfully or there is  no opportunity to perform a task, then the probability of performing that task again is reduced. Individuals that continuously successfully perform a specific task become specialists in that task. Task success is directly proportional of the probability of doing the task again \cite{theraulaz1998response, pasteels1987individual}. Self reinforcement has been attributed for division of labour in many systems in nature \cite{spencer1998dynamics}%citations
-
-% More details?
-    
-%NB: ABOVE is what happens in my own things
-% IS IT?! Will have to check
+Self-reinforcement models adjust an individual's probability of performing a task, based on prior success or failure to perform that task. Initially, the probability of performing all tasks are equal. If a task is performed successfully or there is  no opportunity to perform a task, then the probability of performing that task again is reduced. Individuals that continuously successfully perform a specific task become specialists in that task. Task success is directly proportional to the probability of doing the task again \cite{theraulaz1998response, pasteels1987individual}. Self-reinforcement has been attributed to division of labour in many systems in nature, such as ants and bees \cite{spencer1998dynamics}.
 
 \subsection{Social Inhibition Models}
-With social inhibition models, individuals change tasks as they age, however the process of aging is inhibited by social environments \cite{huang1992honeybee}. The model is based on the activator-inhibitor behaviour present in bee swarms. 
+With social inhibition models, individuals change tasks as they age. However, the process of aging is inhibited by social environments \cite{huang1992honeybee}. The model is based on the activator-inhibitor behaviour present in bee swarms. 
 
-In honey bee swarm, juvenile bees work in the hive while an older bee forages. When a juvenile bee develops, it becomes a forager bee. The activator hormone motivates growth of a juvenile bee into a forager bee \cite{robinson1989genetic}. An inhibitor hormone is released by the forager bees which is transferred to the juvenile worker bees. The inhibitor hormone inhibits the development of a juvenile bee into a forager bee \cite{huang1992honeybee}.
+In honey bee swarms, juvenile bees work in the hive while older bees forage. When a juvenile bee ages, it transitions from a worker bee into a forager bee. The rate of growth of the juvenile bee is determined by two hormones: the activator hormone and the inhibitor hormone. The activator hormone promotes the growth of the juvenile bee into a forager bee. The activator hormone is released by the juvenile bee. The inhibitor hormone inhibits the growth of a juvenile bee into a forager bee \cite{huang1992honeybee}. The inhibitor hormone is released by forager bees. The inhibitor hormone counteracts the effect of the activator hormone.
 
-The existence of forager bees in the hive slows the development process of the juvenile bees and thus the juvenile bees remain workers. If forager bees are destroyed, then less inhibitor hormone is released and more worker bees become forager bees, replenishing the number of foragers. 
+The existence of many forager bees in the hive means that inhibitor hormine would be released. Thus, the growth of the juvenile bees would be slowed, and therefore juvenile bees remain worker bees. If forager bees are destroyed, then less inhibitor hormone would be released and more juvenile bees would becomes forager bees, until the number of forager bees have been replenished.
 
                                 
 \subsection{Network Models of Task Allocation}
 
-Network models assume that swarm individuals are identical and that division of labour is induced by effective communication of the number of individuals required per task, between individuals of the swarm \cite{gordon1992parallel}. A number of network models exist \cite{gordon1992parallel,pacala1996effects}.
+Network models assume that swarm individuals are identical, and that division of labour is induced by effective communication between individuals of the swarm, about the number of individuals that are required per task \cite{gordon1992parallel}. A number of network models exist \cite{gordon1992parallel,pacala1996effects}.
 
 Network models are similar to foraging for work models in that division of labour is generated by changes in local information encountered by each individual, rather than by intrinsic differences in individuals. 
 
 
 \section{Division of Labour in Robot Swarms}
 \label{background:divisionoflabour:robotswarm}
-Division of labour has been used in swarm robotics. This section provides an overview of the use of division of labour in swarm robotics.
+Division of labour has been used extensively in swarm robotics. This section provides an overview of the use of division of labour in swarm robotics.
 
 Agassounon \textit{et al} \cite{agassounon2002efficiency} designed and demonstrated three response threshold-based methods for division of labour. The robots had to perform a clustering task with multiple object sites. Division of labour techniques were employed to avoid inter-robot interference that occur more often when too many robots attempt to cluster the same site. 
 
-The experiment determined that the robot swarm benefited from threshold division of labour since the robot swams that employed division of labour performed similarly or better than robot swarms that set a fixed task group size per site. The experiment also determined that local communication improved swarm performance.
+The experiment determined that the robot swarm benefited from threshold division of labour since the robot swarms that employed division of labour performed similarly or better than robot swarms that set a fixed task group size per site. The experiment also determined that local communication improved swarm performance.
 
-Labella \textit{et al} \cite{labella2006division} developed a division of labour strategy for prey retrieval based on Deneubourg's ant self reinforcement model, discussed in Section~\ref{selfreinforcement}. Experimentation was performed on simulated and real robots. The robots switched from search behaviour to rest behaviour with probability $z$. This probability was incremented by a fixed value when a robot successfully returned to the nest with an item and decremented by the same fixed value when a robot returns to the nest without an item. Labella \textit{et al} classified the foragers into different types, namely, loafers, foragers, or undecided, based on the final value of $z$. Experiments showed that the values of $z$ tended towards extreme values, showing that robots tended to become either loafers or foragers, while only a few became undecided. It was shown that a simple self-reinforcement division of labour model can improve the performance of a swarm of robots at a task, without the need for communication. However, scalability was still a concern, since the swarm experienced negative performance as swarm size increased. 
+Labella \textit{et al} \cite{labella2006division} developed a division of labour strategy for prey retrieval based on Deneubourg's ant self-reinforcement model, discussed in Section~\ref{selfreinforcement}. Experimentation was performed on simulated and real robots. The robots switched from search behaviour to rest behaviour with probability $z$. This probability was incremented by a fixed value when a robot successfully returned to the nest with an item and decremented by the same fixed value when a robot returns to the nest without an item. Labella \textit{et al} classified the foragers into different types, namely, loafers, foragers, or undecided, based on the final value of $z$. Experiments showed that the values of $z$ tended towards extreme values, showing that robots tended to become either loafers or foragers, while only a few became undecided. It was shown that a simple self-reinforcement division of labour model can improve the performance of a swarm of robots at a task, without the need for communication. However, scalability was still a concern, since the swarm experienced negative performance as swarm size increased. 
 
-Liu \textit{et al} \cite{liu2007towards} introduce three mechanisms for adapting the number of resting robots to foraging robots in a simple foraging problem. The mechanisms consist of variations on how one perceives the worker demand. The mechanisms are used to adjust time specific thresholds related to the length of time to wait before returning to work and how long work should be performed for. The mechanisms were as follows:
+Liu \textit{et al} \cite{liu2007towards} introduced three mechanisms for adapting the number of resting robots to foraging robots in a simple foraging problem. The mechanisms consisted of variations on how a robot perceives the worker demand. The mechanisms were used to adjust time specific thresholds related to the length of time to wait before returning to work and how long work should be performed for. The mechanisms were as follows:
 
 \begin{itemize}
 	\item The internal success of an individual at a specific task.
 	\item The collective success of the swarm at a specific task. 
-	\item  The amount of environmental interference experienced by an individual while performing a task, most importantly the amount of collisions with other robots. This technique is a social inhibition model.
+	\item The amount of environmental interference experienced by an individual while performing a task, most importantly the number of collisions with other robots. This technique is a social inhibition model.
 \end{itemize}
 
-Four combinations of these mechanism are evaluated as well as compared to a nai\"ve foraging approach. The performance of the swarm is measured as the total energy spent by the robot swarm. The efficiency is evaluated over different robot quantities and food densities.
+Four combinations of these mechanism were evaluated as well as compared to a nai\"ve foraging approach. The performance of the swarm was measured as the total energy spent by the robot swarm. The efficiency was evaluated over different robot quantities and food densities.
 
-The experiments discovered that the use of the mechanisms improved performance significantly compared to swarms without such mechanisms. It was also shown that the mechanisms resulted in emergent division of labour, regulating the number of foraging and resting robots. The experiments resulted in robustness in environmental changes related to the density of items. The experiments using collective success of the swarm achieved the highest net energy income to the swarm and also had the fastest adaptation of the ratio of foragers to resting robots when food density changes. Liu \textit{et al} \cite{liu2007towards} notes that scalability was not tested in the experiments.
+The experiments discovered that the use of the mechanisms improved performance significantly compared to swarms without such mechanisms. It was also shown that the mechanisms resulted in emergent division of labour, regulating the number of foraging and resting robots. The experiments resulted in robustness in environmental changes related to the density of items. The experiments using collective success of the swarm achieved the highest net energy income to the swarm and also had the fastest adaptation of the ratio of foragers to resting robots when food density changes. Liu \textit{et al} \cite{liu2007towards} noted that scalability was not tested in the experiments.
 
-By examining the existing swarm robot division of labour literature, one can conclude that the majority of research in division of labour for swarm robotics, is concerned with regulating the number of active robots in a swarm. The existing research shows that the ability of a swarm to adjust the amount of number actively participating in a task with the number of robots at rest, enables the swarm to adapt to changes in the environment. Existing research also concluded that division of labour improved swarm robustness to destruction of robots, by replenishing the number of active robots when active robots had been removed. There exists scope to investigate division of labour between multiple different active tasks. This thesis addresses division of labour between two active tasks, contrasting the most division of labour research.
+The majority of research in division of labour for swarm robotics was concerned with regulating the number of active robots in a swarm. The ability of a swarm to adjust the number of individuals actively participating in a task with the number of robots at rest enabled robot swarms to adapt to changes in the environment. Existing research also concluded that division of labour improved swarm robustness, by replenishing the number of active robots when active robots are destroyed. 
 
-Existing research did not test scalability of the division of labour techniques, since the maximum swarm size was usually 10 or less. This thesis will evaluate the scalability of the division of labour techniques used. There exists scope for investigating other types of division of labour in swarm robotics, such as network models, but this is not the scope of this thesis.
+Existing research did not test scalability of the division of labour techniques, since the maximum swarm size was usually ten or less individuals. This thesis will evaluate the scalability of the division of labour techniques used. There exists scope for investigating other types of division of labour in swarm robotics, such as network models, but this is not the scope of this thesis. 
 
 
 \section{Summary}
 \label{sec:second:summary}
 Division of labour is the adjustment of ratios of workers engaged in different tasks, based on external or internal stimuli. Division of labour is used in social insect societies such as bees and ants. Multiple models for division of labour have been explored by biologists. Extensive research has been performed about response threshold models, foraging for work, network models and self-reinforcement models. Despite the large number of models, little verification of these models have been performed in real or simulated environments. 
 
-The use of division of labour in swarm robotics was reviewed. Most of the reviewed research focused around the problem of using division of labour to regulate the number of active robots to the number of inactive robots. The techniques used in swarm robotics employ a variety of division of labour models such as response threshold models, self reinforcement, and social inhibition models. 
+The use of division of labour in swarm robotics was reviewed. Most of the reviewed research focused around the problem of using division of labour to regulate the number of active robots to the number of inactive robots. The techniques used in swarm robotics employ a variety of division of labour models such as response threshold models, self-reinforcement, and social inhibition models. 
 
-The author notes that the reviewed research did not adequately address the scalability of the techniques.
+The author notes that the reviewed research did not adequately address the scalability of the division of labour techniques.
