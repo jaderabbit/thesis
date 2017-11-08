@@ -7,7 +7,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter presents a foraging variation known as prioritized foraging as well as three algorithms whose performance is to be evaluated on a prioritized foraging problem. The three algorithms are based based upon phenomena observed in nature. The first model is a simple foraging algorithm, called na\"ive foraging, which will form the benchmark algorithm for the experiments. Two novel swarm robotics foraging algorithms, inspired by the foraging behaviour of desert ants and honey bees, are also presented. Each of these algorithms have different capabilities when it comes to memory, communication, division of labour, and navigation. The na\"ive foraging algorithm is presented in Section~\ref{naiveforaging}. Section~\ref{desertantforaging} introduces the novel foraging algorithm based on desert ants. Section~\ref{honeybeeforaging} presents a novel prioritized foraging algorithm inspired by honey bees. The algorithms are summarized in Section~\ref{prioritized:summary}.
+This chapter presents a foraging variation known as prioritized foraging as well as three algorithms whose performance is to be evaluated on a prioritized foraging problem. The three algorithms are based upon phenomena observed in nature. The first model is a simple foraging algorithm, called na\"ive foraging, which will form the benchmark algorithm for the experiments. Two novel swarm robotics foraging algorithms, inspired by the foraging behaviour of desert ants and honey bees, are also presented. Each of these algorithms have different capabilities when it comes to memory, communication, division of labour, and navigation. The na\"ive foraging algorithm is presented in Section~\ref{naiveforaging}. Section~\ref{desertantforaging} introduces the novel foraging algorithm based on desert ants. Section~\ref{honeybeeforaging} presents a novel prioritized foraging algorithm inspired by honey bees. The algorithms are summarized in Section~\ref{prioritized:summary}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -157,7 +157,7 @@ Each scout robot begins in the explore state where the scout robot performs a ra
 \begin{algorithmic}[1]
 \Function{explore}{$role, state, v, \varsigma, i$}
 %move random direction from location l
-\State \text{perform a single random walk step from current location}
+\State \text{perform a single random walk step from the current location}
 \State \text{update path integration vector $v$}
 
 \If {\text{item $\vartheta$ of priority $\varsigma$ is detected in vicinity}}
@@ -190,7 +190,7 @@ The site quality of type $\varsigma$, $\mu_\varsigma$, is calculated using
 \mu_\varsigma = \frac{1}{n}\sum\limits_{x=1}^n k_{x_\varsigma}
 \end{equation}
  
-Before returning to the sink with the item, the scout memorizes the PI vector $v$ in site location variable $\omega$. The scout robot then switches to the homing state given in Algorithm~\ref{algorithm:scout:homing}. Using PI vector $\omega$, the scout returns the item $\vartheta$ to the sink. When the scout robot has returned to the sink, $S_\varsigma$, the scout robot offloads the item $\vartheta$. If the quality $\mu_\varsigma$ of the visited site $\xi$ is larger than site quality threshold, $\Phi$, the scout robot switches into the dance state, which is summarized in Algorithm~\ref{algorithm:recruit}. If the quality, $\mu_\varsigma$, of the visited site $\xi$ is less than site quality threshold, $\Phi$, the robot takes on the role of an employed forager and switches into the locate state, outlined in Algorithm~\ref{algorithm:employedforager:locating}.
+Before returning to the sink with the item, the scout memorizes the PI vector $v$ in site location variable $\omega$. The scout robot then switches to the homing state given in Algorithm~\ref{algorithm:scout:homing}. Using PI vector $\omega$, the scout returns the item $\vartheta$ to the sink. When the scout robot has returned to the sink, $S_\varsigma$, the scout robot offloads the item $\vartheta$. If the quality $\mu_\varsigma$ of the visited site $\xi$ is larger than site quality threshold, $\Phi$, the scout robot switches into the dance state, which is summarized in Algorithm~\ref{algorithm:recruit}. If the quality, $\mu_\varsigma$, of the visited site $\xi$ is less than site quality threshold, $\Phi$, the robot takes on the role of an employed forager and switches into the locate state, as outlined in Algorithm~\ref{algorithm:employedforager:locating}.
 
 
 \begin{algorithm}
@@ -397,7 +397,7 @@ Another level of division of labour exists to deal with division of labour betwe
 In nature, in times of drought, bees prioritize water over nectar or pollen. Honey bees would be sent out to forage for water but may encounter pollen while searching for water. If the foraging honey bee happens to encounter pollen, it will forage the pollen but will not communicate the discovery of the pollen site to the unemployed foragers \cite{seeley2009wisdom}. Using the bee's prioritization of resources as inspiration, the following rules for item-type division of labour are defined:
 
 \begin{enumerate}
-\item A scout robot that is set to search for the prioritized type (i.e. $\varsigma$ is set tp{prioritized}) will forage a non-prioritized type only if a prioritized item can not be located for the maximum time period, $f_{max}$. If $i_{explore} > f_{max}$ then $\varsigma$ will switch to foraging the non-prioritized type $\varsigma=\text{non-prioritized}$. The described rule is given explicitly in Algorithm~\ref{algorithm:explore}.
+\item A scout robot that is set to search for the prioritized type (i.e. $\varsigma$ is set to prioritized items) will forage a non-prioritized type only if a prioritized item can not be located for the maximum time period, $f_{max}$. If $i_{explore} > f_{max}$ then $\varsigma$ will switch to foraging the non-prioritized type $\varsigma=\text{non-prioritized}$. The described rule is given explicitly in Algorithm~\ref{algorithm:explore}.
 \item An employed robot foraging the non-prioritized item type will forage the non-prioritized item type until the robot fails to relocate a previously located non-prioritized item type site, or until the robot locates a prioritized item. For both of these cases, the robot will switch to foraging the prioritized item type $\varsigma=\text{non-prioritized}$.
 \item A robot foraging a non-prioritized item will not communicate the location of the non-prioritized item site by dancing. 
 \end{enumerate}
@@ -407,7 +407,7 @@ For the purposes of this study, each robot of each algorithm is assigned an init
 \section{Summary}
 \label{prioritized:summary}
 
-This chapter introduced two novel algorithms for foraging robot swarms. A desert ant inspired foraging algorithm and a honey bee inspired foraging algorithm are defined. A benchmark algorithm, called na\"ive foraging, is also presented. The desert ant algorithm uses path integration to memorize the location of an item site and return robots to the site to forage more items. The honey bee algorithm is substantially more complex with three roles for robots: scout, unemployed forager, and employed forager. The scout robots in the honey bee algorithm uses path integration to memorize the location of a site and to evaluate the quality of the site. The location and quality of a site is communicated by the scout to unemployed foragers through direct communication. The unemployed foragers are recruited and become employed foragers. The honey bee algorithm also exhibits division of labour between prioritized and non-prioritized items. An overview of the properties of the algorithms are given in Table~\ref{properties}.
+This chapter introduced two novel algorithms for foraging robot swarms. A desert ant inspired foraging algorithm and a honey bee inspired foraging algorithm are defined. A benchmark algorithm, called na\"ive foraging, is also presented. The desert ant algorithm uses path integration to memorize the location of an item site and returns robots to the site to forage more items. The honey bee algorithm is substantially more complex with three roles for robots: scout, unemployed forager, and employed forager. The scout robots in the honey bee algorithm uses path integration to memorize the location of a site and to evaluate the quality of the site. The location and quality of a site is communicated by the scout to unemployed foragers through direct communication. The unemployed foragers are recruited and become employed foragers. The honey bee algorithm also exhibits division of labour between prioritized and non-prioritized items. An overview of the properties of the algorithms are given in Table~\ref{properties}.
 
 \begin{table} [h]
     \caption{Properties of the foraging algorithms used in this study}
