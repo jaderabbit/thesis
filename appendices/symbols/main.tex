@@ -39,25 +39,25 @@ they are re-defined under the relevant chapters.
 
 \item[\parbox{\namewidth}{$role$}] The role of a particular robot in the honey bee algorithm.
 
-	\item[\parbox{\namewidth}{$i_{state}$}] The current time step of being in consecutive state $state$, where $state$ is any valid state for the robot.
+	\item[\parbox{\namewidth}{$i_{state}$}] The current time step of being in consecutive state $state$.
 	
-	\item[\parbox{\namewidth}{$t_{wait}$}] The maximum time a robot can spend consecutively in wait state.
+	\item[\parbox{\namewidth}{$t_{wait}$}] Maximum time a robot can spend consecutively in wait state.
 	
-	\item[\parbox{\namewidth}{$t_{ls}$}] The maximum time a robot can spend consecutively in the local search state.
+	\item[\parbox{\namewidth}{$t_{ls}$}] Maximum time a robot can spend consecutively in the local search state.
 	
-	\item[\parbox{\namewidth}{$t_{forage}$}] The maximum time a robot can spend consecutively in the forage state.
+	\item[\parbox{\namewidth}{$t_{forage}$}] Maximum time a robot can spend consecutively in the forage state.
 
-	\item[\parbox{\namewidth}{$t_{explore}$}] The maximum time a robot can spend consecutively in the explore state
+	\item[\parbox{\namewidth}{$t_{explore}$}] Maximum time a robot can spend consecutively in the explore state
 
 
-	\item[\parbox{\namewidth}{$t_{dance}$}] The maximum time a robot can spend consecutively in the recruitment state.
+	\item[\parbox{\namewidth}{$t_{dance}$}] Maximum time a robot can spend consecutively in the recruitment state.
 	
 	
 	\item[\parbox{\namewidth}{$\varsigma$}] The type of an item which can either be prioritized or non-prioritized.
 
 	\item[\parbox{\namewidth}{$\mu_\varsigma$}] The evaluation of the quality of a site of type $\varsigma$.
 	
-	\item[\parbox{\namewidth}{$\Phi$}] site quality threshold determining whether a the scout robot switches into the dance state. 
+	\item[\parbox{\namewidth}{$\Phi$}] Site quality threshold.
 	
 	\item[\parbox{\namewidth}{$v$}] A robot's path integration vector
 
@@ -78,7 +78,7 @@ they are re-defined under the relevant chapters.
 
 \item[\parbox{\namewidth}{$\alpha$}] The probability of listening to the details communicated by the scout robot.		
 
-\item[\parbox{\namewidth}{$f_{max}$}] The maximum time a robot will forage for prioritized items, without finding any before switching to foraging a non-prioritized type.
+\item[\parbox{\namewidth}{$f_{max}$}] Maximum time a robot will forage for prioritized items unsuccessfully.
 
 \item[\parbox{\namewidth}{$X$}] The percentage of robots initialized as scout robots.
 \end{description}
@@ -94,15 +94,14 @@ they are re-defined under the relevant chapters.
 	\item[\parbox{\namewidth}{$d$}] Desirability of a direction $q$.
 	\item[\parbox{\namewidth}{$q$}] A direction a robot can perceive.
 	
-	\item[\parbox{\namewidth}{$\kappa_q$}] The clarity which indicates the distance of next nearest obstacle in direction $q$.
-	 
+	\item[\parbox{\namewidth}{$\kappa_q$}] The clarity of a direction.
 	\item[\parbox{\namewidth}{$\eta$}] The depth of view of a robot's perception.
 
-	\item[\parbox{\namewidth}{$\iota_q$}] The directness of a direction $q$, calculated as the angular deviation from the direction of the destination
+	\item[\parbox{\namewidth}{$\iota_q$}] The directness of a direction $q$.
 
 	\item[\parbox{\namewidth}{$f$}] The	field of view of a robot's perception.
 		
-	\item[\parbox{\namewidth}{$\lambda$}] A ratio which determines whether clarity, $\kappa_q$ or directness, $\iota_q$ of direction $q$, has more effect on desirability $d$.
+	\item[\parbox{\namewidth}{$\lambda$}] A ratio between the effect of $\kappa_q$ or $\iota_q$ on $d$.
 	
 	\item[\parbox{\namewidth}{$\Lambda$}] The height and width of the environment grid.
 
@@ -125,7 +124,7 @@ they are re-defined under the relevant chapters.
 
 	\item[\parbox{\namewidth}{$t$}] The time step of an experiment.	
 
-	\item[\parbox{\namewidth}{$\tau$}] The ratio of robots foraging prioritized items to the ratio of robots foraging non-prioritized items.
+	\item[\parbox{\namewidth}{$\tau$}] The specialization ratio of the robot swarm.
 
 	\item[\parbox{\namewidth}{$\tau(t)$}] The value of $\tau$ at time step $t$.
 
@@ -135,13 +134,13 @@ they are re-defined under the relevant chapters.
 
 	\item[\parbox{\namewidth}{$\tau_i(0)$}] The $i$th item in $\overline{\tau}$.
 
-	\item[\parbox{\namewidth}{$Z_{ij}$}] The average efficiency $E_P$, over all experiments with swarm specialization ratio $\tau_i$ and environment item ratio $r_j$.
+	\item[\parbox{\namewidth}{$Z_{ij}$}] The average efficiency $E_P$ over all experiments with $\tau_i$ and $r_j$.
 	
-	\item[\parbox{\namewidth}{$Z$}] The matrix of the values $Z_{ij}$ of size $n_\tau \times n_r$, where $i=1,..,n_\tau$ and $j=1,...,n_r$.
+	\item[\parbox{\namewidth}{$Z$}] The matrix of the values $Z_{ij}$ where $i=1,..,n_\tau$ and $j=1,...,n_r$.
 
-	\item[\parbox{\namewidth}{$D_{ij}$}] The average efficiency $E_P$, over all experiments with swarm specialization ratio $\tau_i$ and environment distribution $\epsilon_j$.
+	\item[\parbox{\namewidth}{$D_{ij}$}] The average efficiency $E_P$ over all experiments with $\tau_i$ and $\epsilon_j$.
 	
-	\item[\parbox{\namewidth}{$D$}] The matrix of the values $D_{ij}$ of size $n_\tau \times n_\epsilon$, where $i=1,..,n_\tau$ and $j=1,...,n_\epsilon$.
+	\item[\parbox{\namewidth}{$D$}] The matrix of the values $D_{ij}$ where $i=1,..,n_\tau$ and $j=1,...,n_\epsilon$.
 	
 
 	\item[\parbox{\namewidth}{$\epsilon$}] The distribution of prioritized and non-prioritized items on an environment.
@@ -150,7 +149,7 @@ they are re-defined under the relevant chapters.
 
 	\item[\parbox{\namewidth}{$\epsilon_i$}] The $i$th item of $\overline{\epsilon}$.
 
-	\item[\parbox{\namewidth}{$c$}] The density of robots in an environment with respect to the environment size, $\Lambda$.
+	\item[\parbox{\namewidth}{$c$}] Density of robots in an environment.
 
 	\item[\parbox{\namewidth}{$\overline{c}$}] A list of all considered values for $c$.
 	
