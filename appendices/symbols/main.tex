@@ -17,11 +17,12 @@ they are re-defined under the relevant chapters.
 
 
 \begin{description}
+	\item[\parbox{\namewidth}{$r_{\gamma,\nu}$}] A response threshold for of robot $\gamma$ for task $\nu$.
 	\item[\parbox{\namewidth}{$R$}] The set of tasks that can be performed by individuals of the swarm.
+	\item[\parbox{\namewidth}{$z$}] The probability of a robot to switch from search behaviour to rest behaviour.
 	\item[\parbox{\namewidth}{$\gamma$}] An individual robot in a swarm.
 	\item[\parbox{\namewidth}{$\nu$}] A task such that $\nu \in R$
-	\item[\parbox{\namewidth}{$r_{\gamma,\nu}$}] A response threshold for of robot $\gamma$ for task $\nu$.
-	\item[\parbox{\namewidth}{$z$}] The probability of a robot to switch from search behaviour to rest behaviour.
+
 \end{description}
 
 
@@ -33,56 +34,68 @@ they are re-defined under the relevant chapters.
 
 \begin{description}
 \setlength{\itemsep}{-1mm}
-	\item[\parbox{\namewidth}{$i$}] The current time step in a swarm robot experiment
-	
-\item[\parbox{\namewidth}{$state$}] The state a particular robot is in.
 
-\item[\parbox{\namewidth}{$role$}] The role of a particular robot in the honey bee algorithm.
+	
+	\item[\parbox{\namewidth}{$f_{max}$}] Maximum time a robot will forage for prioritized items unsuccessfully.
+
+	\item[\parbox{\namewidth}{$i$}] The current time step in a swarm robot experiment
 
 	\item[\parbox{\namewidth}{$i_{state}$}] The current time step of being in consecutive state $state$.
-	
-	\item[\parbox{\namewidth}{$t_{wait}$}] Maximum time a robot can spend consecutively in wait state.
-	
-	\item[\parbox{\namewidth}{$t_{ls}$}] Maximum time a robot can spend consecutively in the local search state.
-	
-	\item[\parbox{\namewidth}{$t_{forage}$}] Maximum time a robot can spend consecutively in the forage state.
 
-	\item[\parbox{\namewidth}{$t_{explore}$}] Maximum time a robot can spend consecutively in the explore state
+	\item[\parbox{\namewidth}{$k_j$}] is the value captured on the $j-$th distance sensor of a robot.
+	
+	\item[\parbox{\namewidth}{$n$}] The number of distance sensors.
+	
+	\item[\parbox{\namewidth}{$role$}] The role of a particular robot in the honey bee algorithm.
+	
+	\item[\parbox{\namewidth}{$state$}] The state a particular robot is in.
 
 
 	\item[\parbox{\namewidth}{$t_{dance}$}] Maximum time a robot can spend consecutively in the recruitment state.
-	
-	
-	\item[\parbox{\namewidth}{$\varsigma$}] The type of an item which can either be prioritized or non-prioritized.
 
-	\item[\parbox{\namewidth}{$\mu_\varsigma$}] The evaluation of the quality of a site of type $\varsigma$.
 	
-	\item[\parbox{\namewidth}{$\Phi$}] Site quality threshold.
+	\item[\parbox{\namewidth}{$t_{explore}$}] Maximum time a robot can spend consecutively in the explore state
+
+	\item[\parbox{\namewidth}{$t_{forage}$}] Maximum time a robot can spend consecutively in the forage state.
+	
+	\item[\parbox{\namewidth}{$t_{ls}$}] Maximum time a robot can spend consecutively in the local search state.
+		
+	
+	\item[\parbox{\namewidth}{$t_{wait}$}] Maximum time a robot can spend consecutively in wait state.
 	
 	\item[\parbox{\namewidth}{$v$}] A robot's path integration vector
+	
+
+	\item[\parbox{\namewidth}{$X$}] The percentage of robots initialized as scout robots.
+
+	
+	\item[\parbox{\namewidth}{$\alpha$}] The probability of listening to the details communicated by the scout robot.	
+
+
+	\item[\parbox{\namewidth}{$\mu_\varsigma$}] The evaluation of the quality of a site of type $\varsigma$.
+
+	
+	\item[\parbox{\namewidth}{$\xi$}] The site where an item is found.
 
 	\item[\parbox{\namewidth}{$\omega$}] A memorized path integration vector representing the location of a site.
+
+	\item[\parbox{\namewidth}{$\Phi$}] Site quality threshold.
+
 	
 	\item[\parbox{\namewidth}{$\vartheta$}] An item found by a robot.
-	\item[\parbox{\namewidth}{$\xi$}] The site where an item is found.
 
 	\item[\parbox{\namewidth}{$\varrho$}] A random number selected from a uniform distribution such that $\varrho\in(0,1)$.
 	
 	\item[\parbox{\namewidth}{$\rho$}] The probability that a scout robot becomes a forager robot.
 	
-\item[\parbox{\namewidth}{$k_j$}] is the value captured on the $j-$th distance sensor of a robot.
 
-\item[\parbox{\namewidth}{$n$}] The number of distance sensors.
+	\item[\parbox{\namewidth}{$\varsigma$}] The type of an item which can either be prioritized or non-prioritized.
 
 \item[\parbox{\namewidth}{$\sigma$}] The direction a robot must take to get to the sink.
 
-\item[\parbox{\namewidth}{$\alpha$}] The probability of listening to the details communicated by the scout robot.		
+	
 
-\item[\parbox{\namewidth}{$f_{max}$}] Maximum time a robot will forage for prioritized items unsuccessfully.
-
-\item[\parbox{\namewidth}{$X$}] The percentage of robots initialized as scout robots.
 \end{description}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -91,38 +104,107 @@ they are re-defined under the relevant chapters.
 
 
 \begin{description}
-	\item[\parbox{\namewidth}{$d$}] Desirability of a direction $q$.
-	\item[\parbox{\namewidth}{$q$}] A direction a robot can perceive.
-	
-	\item[\parbox{\namewidth}{$\kappa_q$}] The clarity of a direction.
-	\item[\parbox{\namewidth}{$\eta$}] The depth of view of a robot's perception.
 
-	\item[\parbox{\namewidth}{$\iota_q$}] The directness of a direction $q$.
+
+	\item[\parbox{\namewidth}{$c$}] Density of robots in an environment.
+	
+	\item[\parbox{\namewidth}{$\overline{c}$}] A list of all considered values for $c$.
+		
+	\item[\parbox{\namewidth}{$c_i$}] The $i$th item in $\overline{c}$.
+	
+	\item[\parbox{\namewidth}{$c_{min}$}] The smallest value considered value for $c$.
+		
+	\item[\parbox{\namewidth}{$d$}] Desirability of a direction $q$.
+
+	\item[\parbox{\namewidth}{$D_{ij}$}] The average efficiency $E_P$ over all experiments with $\tau_i$ and $\epsilon_j$.
+	
+	\item[\parbox{\namewidth}{$D$}] The matrix of the values $D_{ij}$ where $i=1,..,n_\tau$ and $j=1,...,n_\epsilon$.
+
+	\item[\parbox{\namewidth}{$E_P$}] The percentage of prioritized items foraged over time.
+	
+	\item[\parbox{\namewidth}{$E_{NP}$}] The percentage of non-prioritized items foraged over time.
+
+
+	\item[\parbox{\namewidth}{$E_{c_i}$}] The average foraging efficiency, $E_P$, with swarm density $c_i$.
+	
+	\item[\parbox{\namewidth}{$E_{p_i}$}] The average foraging efficiency, $E_P$, with problem complexity $p_i$.
+
+			
+	\item[\parbox{\namewidth}{$E^t_P$}] Total prioritized items foraged over time $t$.	
+	
+	\item[\parbox{\namewidth}{$E^t_{NP}$}] Total non-prioritized items foraged over time $t$.	
 
 	\item[\parbox{\namewidth}{$f$}] The	field of view of a robot's perception.
-		
-	\item[\parbox{\namewidth}{$\lambda$}] A ratio between the effect of $\kappa_q$ or $\iota_q$ on $d$.
+
+	\item[\parbox{\namewidth}{$F_{r_i}$}] The flexibility of a robot swarm in terms of prioritized item ratio $r_i$.
 	
-	\item[\parbox{\namewidth}{$\Lambda$}] The height and width of the environment grid.
-
+	\item[\parbox{\namewidth}{$F_r$}] The flexibility of a robot swarm in terms of prioritized item ratio.
+	
+		
+	\item[\parbox{\namewidth}{$F_{\epsilon_i}$}] The flexibility of a robot swarm in terms of environment distribution $\epsilon_i$.
+	
+	\item[\parbox{\namewidth}{$F_\epsilon$}] The flexibility of a robot swarm in terms of environment distribution.
+	
+	
+	\item[\parbox{\namewidth}{$I$}] A list where entry $I_j$ is the index yielding the maximum value for $Z_{ij}$.
+	
+			
+	\item[\parbox{\namewidth}{$n_r$}] The number of items in $\overline{r}$	
+	
+	\item[\parbox{\namewidth}{$n_\tau$}] The number of items in $\overline{\tau}$
+	
 	\item[\parbox{\namewidth}{$p$}] The density of the items on the grid, also referred to as problem complexity.
-
-	\item[\parbox{\namewidth}{$\overline{p}$}] A list of all considered values for $p$.
 
 	\item[\parbox{\namewidth}{$p_i$}] The $i$th item of $\overline{p}$.
 
+	\item[\parbox{\namewidth}{$\overline{p}$}] A list of all considered values for $p$.
+	
 	\item[\parbox{\namewidth}{$p_{min}$}] The smallest considered value for $p$.
+
 	
-	
+	\item[\parbox{\namewidth}{$q$}] A direction a robot can perceive.
+		
 	\item[\parbox{\namewidth}{$r$}] The ratio of prioritized to non-prioritized items.
 
 	\item[\parbox{\namewidth}{$\overline{r}$}] A list of all considered values for $r$.
 
 	\item[\parbox{\namewidth}{$r_i$}] The $i$th item in $\overline{r}$.
-
-	\item[\parbox{\namewidth}{$n_r$}] The number of items in $\overline{r}$	
-
+	
+	
+	\item[\parbox{\namewidth}{$S_c$}] The scalability of a robot swarm in terms of swarm density.	
+		
+	\item[\parbox{\namewidth}{$S_p$}] The scalability of a robot swarm in terms of problem size.	
+	
 	\item[\parbox{\namewidth}{$t$}] The time step of an experiment.	
+
+			
+	\item[\parbox{\namewidth}{$t_{wait}$}] The average time steps spent by each robot in the waiting state.
+	
+	\item[\parbox{\namewidth}{$t_{recruitment}$}] The average time steps spent by each robot in the recruitment state. 
+
+	\item[\parbox{\namewidth}{$Y$}] A list where entry $Y_j$ is the index yielding the maximum value for $D_{ij}$.
+
+	\item[\parbox{\namewidth}{$Z_{ij}$}] The average efficiency $E_P$ over all experiments with $\tau_i$ and $r_j$.
+	
+	\item[\parbox{\namewidth}{$Z$}] The matrix of the values $Z_{ij}$ where $i=1,..,n_\tau$ and $j=1,...,n_r$.
+	
+
+	\item[\parbox{\namewidth}{$\epsilon$}] The distribution of prioritized and non-prioritized items on an environment.
+	
+	\item[\parbox{\namewidth}{$\overline{\epsilon}$}] A list of all considered environment distributions $\epsilon$.
+	
+	\item[\parbox{\namewidth}{$\epsilon_i$}] The $i$th item of $\overline{\epsilon}$.
+	
+	\item[\parbox{\namewidth}{$\eta$}] The depth of view of a robot's perception.
+
+	\item[\parbox{\namewidth}{$\iota_q$}] The directness of a direction $q$.
+
+	\item[\parbox{\namewidth}{$\kappa_q$}] The clarity of a direction.
+
+	\item[\parbox{\namewidth}{$\lambda$}] A ratio between the effect of $\kappa_q$ or $\iota_q$ on $d$.
+	
+	\item[\parbox{\namewidth}{$\Lambda$}] The height and width of the environment grid.
+
 
 	\item[\parbox{\namewidth}{$\tau$}] The specialization ratio of the robot swarm.
 
@@ -130,65 +212,6 @@ they are re-defined under the relevant chapters.
 
 	\item[\parbox{\namewidth}{$\overline{\tau}$}] A list of all considered values for $\tau(0)$.
 
-	\item[\parbox{\namewidth}{$n_\tau$}] The number of items in $\overline{\tau}$
-
 	\item[\parbox{\namewidth}{$\tau_i(0)$}] The $i$th item in $\overline{\tau}$.
-
-	\item[\parbox{\namewidth}{$Z_{ij}$}] The average efficiency $E_P$ over all experiments with $\tau_i$ and $r_j$.
-	
-	\item[\parbox{\namewidth}{$Z$}] The matrix of the values $Z_{ij}$ where $i=1,..,n_\tau$ and $j=1,...,n_r$.
-
-	\item[\parbox{\namewidth}{$D_{ij}$}] The average efficiency $E_P$ over all experiments with $\tau_i$ and $\epsilon_j$.
-	
-	\item[\parbox{\namewidth}{$D$}] The matrix of the values $D_{ij}$ where $i=1,..,n_\tau$ and $j=1,...,n_\epsilon$.
-	
-
-	\item[\parbox{\namewidth}{$\epsilon$}] The distribution of prioritized and non-prioritized items on an environment.
-
-	\item[\parbox{\namewidth}{$\overline{\epsilon}$}] A list of all considered environment distributions $\epsilon$.
-
-	\item[\parbox{\namewidth}{$\epsilon_i$}] The $i$th item of $\overline{\epsilon}$.
-
-	\item[\parbox{\namewidth}{$c$}] Density of robots in an environment.
-
-	\item[\parbox{\namewidth}{$\overline{c}$}] A list of all considered values for $c$.
-	
-	\item[\parbox{\namewidth}{$c_i$}] The $i$th item in $\overline{c}$.
-
-	\item[\parbox{\namewidth}{$c_{min}$}] The smallest value considered value for $c$.
-	
-	\item[\parbox{\namewidth}{$E_P$}] The percentage of prioritized items foraged over time.
-
-	\item[\parbox{\namewidth}{$E_{NP}$}] The percentage of non-prioritized items foraged over time.
-
-	\item[\parbox{\namewidth}{$I$}] A list where entry $I_j$ is the index yielding the maximum value for $Z_{ij}$.
-
-	\item[\parbox{\namewidth}{$Y$}] A list where entry $Y_j$ is the index yielding the maximum value for $D_{ij}$.
-
-	\item[\parbox{\namewidth}{$F_{r_i}$}] The flexibility of a robot swarm in terms of prioritized item ratio $r_i$.
-
-	\item[\parbox{\namewidth}{$F_r$}] The flexibility of a robot swarm in terms of prioritized item ratio.
-
-	\item[\parbox{\namewidth}{$F_{\epsilon_i}$}] The flexibility of a robot swarm in terms of environment distribution $\epsilon_i$.
-
-	\item[\parbox{\namewidth}{$F_\epsilon$}] The flexibility of a robot swarm in terms of environment distribution.
-
-	\item[\parbox{\namewidth}{$E_{c_i}$}] The average foraging efficiency, $E_P$, with swarm density $c_i$.
-
-	\item[\parbox{\namewidth}{$E_{p_i}$}] The average foraging efficiency, $E_P$, with problem complexity $p_i$.
-
-	\item[\parbox{\namewidth}{$S_c$}] The scalability of a robot swarm in terms of swarm density.	
-	
-	\item[\parbox{\namewidth}{$S_p$}] The scalability of a robot swarm in terms of problem size.	
-	
-	\item[\parbox{\namewidth}{$E^t_P$}] Total prioritized items foraged over time $t$.	
-
-	\item[\parbox{\namewidth}{$E^t_{NP}$}] Total non-prioritized items foraged over time $t$.	
-	
-	\item[\parbox{\namewidth}{$t_{wait}$}] The average time steps spent by each robot in the waiting state.
-
-	\item[\parbox{\namewidth}{$t_{recruitment}$}] The average time steps spent by each robot in the recruitment state. 
-	
-	
 
 \end{description}
