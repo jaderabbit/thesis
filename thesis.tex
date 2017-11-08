@@ -44,10 +44,10 @@
 \usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
 \usepackage{breqn}
 \usepackage{tikz}
-\usepackage[%
-    style=numeric-comp,sorting=none,
-    sortcites=true,doi=false,url=false,
-    giveninits=true,hyperref,backend=bibtex]{biblatex}
+% \usepackage[%
+%    style=ieee,sorting=none,
+%    sortcites=true,doi=false,url=false,
+%    giveninits=true,hyperref,backend=biber,]{biblatex}
 
 \usetikzlibrary{shapes.geometric, arrows, decorations.text, fit}
 				% glossary file environments
@@ -216,26 +216,9 @@
 \setlength{\abovesubfiglabelskip}{0.5\abovecaptionskip}
 
 
-\addbibresource{thesis.bib}
+%\addbibresource{thesis.bib}
 
 \begin{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%             Glossary Acronyms             %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newacronym{AI}{Artificial Intelligence}{name=AI, description=Artificial Intelligence}
-\newacronym{ANN}{Artificial Neural Network}{name=ANN, description=Artificial Neural Network}
-\newacronym{CI}{Computational Intelligence}{name=CI, description=Computational Intelligence}
-
-% and any other acronyms you want to use...
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%           Index Sub-References            %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\index{AI|see{Artificial Intelligence}}
-\index{ANN|see{Artificial Neural Network}}
-\index{CI|see{Computational Intelligence}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -271,34 +254,29 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \cleardoublepage
 \ifpdf
 \phantomsection
 \fi
 \label{bibliography}
-\printbibliography
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{unsrt}
+\bibliography{thesis}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \appendix
 % any further appendices you decide to write (create appropriate directory structure, as with chapters)
-\include{appendices/acronyms/main}
 \include{appendices/symbols/main}
+\include{appendices/derived_publications/main}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\cleardoublepage
-\ifpdf
-\phantomsection
-\fi
-\label{index}
-\addcontentsline{toc}{chapter}{Index}
-\printindex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
