@@ -117,7 +117,7 @@ The environment distribution, $\epsilon$, is defined as the distribution of prio
 \label{algorithm:uniform}
 \begin{algorithmic}[1]
 \Function{uniform}{$numberItems, r, S$}
-	\State \text{nonPrioritizedItemsLeft = floor((1-$r$)*numberItems)}
+	\State \text{nonPrioritizedItemsLeft = ceil((1-$r$)*numberItems)}
 	\State \text{prioritizedItemsLeft = floor( $r$*numberItems)}
 	\While{\text{$prioritizedItemsLeft > 0$}}
 		\State \text{x $\gets$ uniform(0, S)}
@@ -163,7 +163,7 @@ The goal of performing experiments in a clustered environment was to test an alg
 
 \end{enumerate} 
 
-To summarize, the challenges introduced by the more complex distributions (the Gaussian, clustered and vein environment) aim to test a swarm's ability to:
+To summarize, the challenges introduced by the more complex distributions (the Gaussian, clustered, and vein environment) aim to test a swarm's ability to:
 
 \begin{itemize}
 \item navigate past obstacles efficiently, or alternatively, to forage obstacles efficiently, and to
@@ -178,7 +178,7 @@ To summarize, the challenges introduced by the more complex distributions (the G
 \begin{algorithmic}[1]
 \Function{gaussian}{$numberItems, r, S$}
 	\State \text{Calculate environment centre point $(x_c, y_c)$}
-	\State \text{prioritizedItemsLeft = floor($r$*numberItems)}
+	\State \text{prioritizedItemsLeft = ceil($r$*numberItems)}
 	\State \text{nonPrioritizedItemsLeft = floor((1-$r$)*numberItems)}
 	\State \text{deviation = S*$r$/2}
 	\While{\text{$prioritizedItemsLeft > 0$}}
@@ -214,7 +214,7 @@ To summarize, the challenges introduced by the more complex distributions (the G
 	\State \text{Calculate $c$ of equation for line vein, $c = (y_0 - m*x_0)$
 }
 
-	\State \text{prioritizedItemsLeft = floor($r$*numberItems)}
+	\State \text{prioritizedItemsLeft = ceil($r$*numberItems)}
 	\State \text{nonPrioritizedItemsLeft = floor((1-$r$)*numberItems)}
 
 	\While{\text{$prioritizedItemsLeft > 0$}}
@@ -247,10 +247,10 @@ To summarize, the challenges introduced by the more complex distributions (the G
 \begin{algorithmic}[1]
 \Function{clustered}{$numitems, r, S$}
   \State \text{Generate number of clusters, $total = uniform(3,15)$}
-  \State \text{Calculate number of prioritized clusters, $clusters_p = floor(r*total)$}    
+  \State \text{Calculate number of prioritized clusters, $clusters_p = ceil(r*total)$}    
   \State \text{Calculate number of non-prioritized clusters, $clusters_{np} = floor((1-r)*total)$}
   
-  \State \text{Calculate number of prioritized items, $total_p = floor(r*numitems)$}
+  \State \text{Calculate number of prioritized items, $total_p = ceil(r*numitems)$}
   
   \State \text{Calculate number of non-prioritized items, $total_{np} = floor((1-r)*numitems)$}
   
@@ -357,11 +357,11 @@ The flexibility performance measures used in this study are based on the flexibi
 
 In order to more succinctly define the flexibility performance measures, the following notation is defined:
 
-Let $\overline{r}$ be the list containing all considered elements for environment item type ratio, $r$, and let $n_r$ be the number of elements in the list. Let $\overline{\tau}$ be the list containing all considered elements for initial swarm specialization ratio, $\tau(0)$, and let the number of elements in the list be $n_t$. Similarly, let $\overline{\epsilon}$ be a list of each environment distribution and let $n_\epsilon$ be the number of elements in the list.
+Let $\overline{r}$ be the list containing all considered elements for environment item type ratio, $r$, and let $n_r$ be the number of elements in the list. Let $\overline{\tau}$ be the list containing all considered elements for initial swarm specialization ratio, $\tau(0)$, and let the number of elements in the list be $n_\tau$. Similarly, let $\overline{\epsilon}$ be a list of each environment distribution and let $n_\epsilon$ be the number of elements in the list.
 
-Let $Z$ be a matrix of dimensions $n_t \times n_r$. Define each entry of the matrix $Z_{ij}$ as the average foraging efficiency, $E_P$, over all experiments, for a specific environment ratio $r_j$, where $r_j$ is the $j$th element of $\overline{r}$, and for a specific initial swarm specialization ratio $\tau_i(0)$, such that $\tau_i(0)$ is the $i$th element of $\overline{\tau}$.
+Let $Z$ be a matrix of dimensions $n_{\tau} \times n_r$. Define each entry of the matrix $Z_{ij}$ as the average foraging efficiency, $E_P$, over all experiments, for a specific environment ratio $r_j$, where $r_j$ is the $j$th element of $\overline{r}$, and for a specific initial swarm specialization ratio $\tau_i(0)$, such that $\tau_i(0)$ is the $i$th element of $\overline{\tau}$.
 
-Similarly, define matrix $D$ with dimensions $n_t \times n_\epsilon$, such that each entry of the matrix $D_{ij}$ is the average foraging efficiency, over all experiments with environment distribution, $\epsilon_j$, and with the initial swarm initialization ratio, $\tau_i(0)$.
+Similarly, define matrix $D$ with dimensions $n_\tau \times n_\epsilon$, such that each entry of the matrix $D_{ij}$ is the average foraging efficiency, over all experiments with environment distribution, $\epsilon_j$, and with the initial swarm initialization ratio, $\tau_i(0)$.
 
 
 \subsubsection{Flexibility with respect to different prioritized item ratios}
@@ -450,7 +450,7 @@ The larger the value of $S_c$, the better foraging efficiency scales with respec
 \subsubsection{Problem complexity scalability}
 \label{setup:problemscalability}
 
-Ideally, foraging efficiency should be indirectly proportional to problem complexity. As the problem complexity increases, the foraging efficiency should decrease linearly. An algorithm is scalable when performance decreases linearly or sublinearly as efficiency increases. Similar to swarm density scalability (described in Section~\ref{swarmsizescalability}) problem complexity scalability is often sub-linear, due to increased environmental interference. 
+Ideally, foraging efficiency should be indirectly proportional to problem complexity. As the problem complexity increases, the foraging efficiency should decrease linearly or super-linearly. An algorithm is scalable when performance decreases linearly or super-linearly as problem complexity increases. Similar to swarm density scalability (described in Section~\ref{swarmsizescalability}) problem complexity scalability is often sub-linear, due to increased environmental interference. 
 
 In order to evaluate the problem scalability of each of the algorithms presented, the efficiency of each algorithm is examined over a variety of environment item densities, $p$, defined in Section~\ref{experimentenvironments}. Similar to swarm density scalability performance measures $S_{c_i}$ and $S_c$, the problem complexity scalability measures, $S_{p_i}$ and $S_p$, are defined as follows:
 
@@ -497,7 +497,7 @@ Unlike the desert ant algorithm and the na\"ive algorithm, the honey bee algorit
 \label{third:summary}
 The robots used in this study are based on the e-puck robots, but with gripper capabilities. The robots used a navigation and obstacle avoidance technique based on the flocking behaviour of birds where a global attractor force attracts the robot in a specific direction, while the local attractor force guides a robot around localized obstacles. A simple 2-dimensional grid-based simulator is used. Only a single robot or item occupies a single grid cell at any point in time.
 
-Different types of environment distributions were generated for experimentation. The environment types that have been created are uniform, Gaussian, clustered and vein distributions. The following environmental parameters were varied: item density, environment size, and item type ratio. The following swarm parameters chosen for each of the algorithms were presented: initial swarm specialization ratio, swarm density, and honey bee specific parameters.
+Different types of environment distributions were generated for experimentation. The environment types that have been created are uniform, Gaussian, clustered, and vein distributions. The following environmental parameters were varied: item density, environment size, and item type ratio. The following swarm parameters chosen for each of the algorithms were presented: initial swarm specialization ratio, swarm density, and honey bee specific parameters.
 
 Performance measures were selected to evaluate the efficiency of the algorithms, as well as the scalability and flexibility of the algorithms. Lastly, a set of behavioural performance measures are presented in order to gain insight into individual behaviours of the algorithms, namely, the items foraged over time, the swarm specialization ratio over time, and the time spent performing recruitment activities.
 

@@ -11,7 +11,7 @@ The analysis of the results of the experiments is organised with respect to four
 
 Despite the fact that determining the most efficient algorithm is not a main focus of this study, this section does a brief comparison of the foraging efficiency, $E_P$ (defined in Section~\ref{setup:foragingefficiency}), of each algorithm. 
 
-This is done by comparing the performance of the three algorithms over all environments and all swarm parameters. A Wilcoxin test, at a confidence level of 0.05, was applied over the 30 independant samples, for each pair of algorithms, for each experiment, to determine if a statistically significant difference in foraging efficiency of the pair of algorithms exists. If no statistically significant difference is indicated between the two algorithm experiment samples, then nothing is done. If a statistically significant difference is indicated between the two algorithm experiment samples, then two one-tailed Mann-Whitney U tests were performed at a confidence level of 0.05 to determine which algorithm had a greater foraging efficiency on a particular experiment. Suppose $A$ and $B$ are two of the selected algorithms. If the first one-tailed Mann-Whitney U test indicates that $A$ is significantly more efficient than $B$, then a ``win" is counted for algorithm $A$. If the second one-tailed Mann-Whitney U test indicates that the $E_P$ for $A$ is significantly less efficient than $B$, then a ``loss" is counted for algorithm $A$. 
+This is done by comparing the performance of the three algorithms over all environments and all swarm parameters giving a total at 121500 unique experiment configurations each run for 30 independant samples. A Wilcoxin test, at a confidence level of 0.05, was applied over the 30 independant samples, for each pair of algorithms, for each experiment, to determine if a statistically significant difference in foraging efficiency of the pair of algorithms exists. If no statistically significant difference is indicated between the two algorithm experiment samples, then nothing is done. If a statistically significant difference is indicated between the two algorithm experiment samples, then two one-tailed Mann-Whitney U tests were performed at a significance level of 0.05 to determine which algorithm had a greater foraging efficiency on a particular experiment. Suppose $A$ and $B$ are two of the selected algorithms. If the first one-tailed Mann-Whitney U test indicates that $A$ is significantly more efficient than $B$, then a ``win" is counted for algorithm $A$. If the second one-tailed Mann-Whitney U test indicates that the $E_P$ for $A$ is significantly less efficient than $B$, then a ``loss" is counted for algorithm $A$. 
 
 To determine an algorithm's foraging efficiency in comparison to each other algorithm, the wins and losses for each algorithm are summed per experiment. This statistical analysis approach has been used in \cite{helbig2013performance}. The percentage of wins per algorithm and the percentage of losses per algorithm is calculated, because percentages are more informative than counts. The percentage of wins per algorithm and the percentage of losses per algorithm are summarized in Table~\ref{summarytable}. The desert ant foraging performed better than the na\"ive algorithm. The honey bee algorithm out-performed both the na\"ive algorithm and the desert ant algorithm. The following sections analyse the swarm robot properties of each algorithm, and explain why the foraging efficiency of the algorithms is as shown in Table~\ref{summarytable}.
 
@@ -78,7 +78,7 @@ The desert ant algorithm is the least flexible, which indicates that the algorit
 
 
 \subsection{Flexibility in terms of environment distributions}
-\label{results:flexibility:environmentdistribution}
+\label{setup:flexibility:environmentdistributions}
 
 Similar to $F_r$, the performance measure, $F_\epsilon$ (defined in Section~\ref{flexibility:environmentdistributions}), measures how well the swarm parameters yielding the best efficiency for environments with a specific environment distribution generalize across environments with different environment distributions, for a specific algorithm. Similar to $F_r$, the smaller $F_\epsilon$ is, the more flexible an algorithm is considered to be, and $F_\epsilon$ is also calculated based on the results of all experiments. The results summarized in Table~\ref{table:flexibility} indicate that the honey bee algorithm was the most flexible in terms of environment distribution, followed by the desert ant algorithm. The na\"ive algorithm was the least flexible.
 
@@ -226,7 +226,7 @@ Figure~\ref{fig:problemscalability} plots the problem scalability performance me
     \end{tabular}
 \end{table}
 
-According to Figure~\ref{fig:problemscalability}, the honey bee algorithm is the most scalable in terms of problem scalability, followed by the na\"ive algorithm, with the desert ant algorithm exhibiting the worst scalability. The na\"ive algorithm is more scalable than the desert ant algorithm. 
+According to Figure~\ref{fig:problemscalability}, the honey bee algorithm is the most scalable in terms of problem scalability, followed by the na\"ive algorithm, with the desert ant algorithm exhibiting the worst scalability.
 
 
 \begin{figure}[!htbp]
@@ -256,7 +256,7 @@ The honey bee algorithm uses site fidelity, and also communicates those sites to
 \section{Robustness}
 \label{results:robustness}
 % describe fault tolerance, and provide rational arguments as to why it would be more or less 
-As discussed in Section~\ref{robustness}, robot swarms achieve robustness by exhibiting the properties of redundancy, multiplicity of sensing and decentralized coordination. This study does not perform an empirical robustness study to specifically address how fault tolerant each algorithm is. Instead, this section provides rational arguments supported by empirical evidence to discuss each algorithm's robustness. Section~\ref{results:redundancy} discusses robustness in terms of the resulting redundancy of each of the algorithms, and Section~\ref{results:decentralizedcoordination} discusses robustness in terms of decentralized coordination.
+As discussed in Section~\ref{robustness}, robot swarms achieve robustness by exhibiting the properties of redundancy, multiplicity of sensing, and decentralized coordination. This study does not perform an empirical robustness study to specifically address how fault tolerant each algorithm is. Instead, this section provides rational arguments supported by empirical evidence to discuss each algorithm's robustness. Section~\ref{results:redundancy} discusses robustness in terms of the resulting redundancy of each of the algorithms, and Section~\ref{results:decentralizedcoordination} discusses robustness in terms of decentralized coordination.
 
 \subsection{Redundancy}
 \label{results:redundancy}
