@@ -36,11 +36,11 @@ Figure \ref{fig:obstacleavoidance} illustrates the navigation and obstacle avoid
 \begin{figure}
 	\centering
 	\includegraphics[width=0.75\textwidth]{chapters/chapter5/figures/ObstacleAvoidance.pdf}
-	\caption{Navigation and obstacle avoidance, where $\eta$ is depth of view, $f$ is the field of view, $R$ is the robot, $dir$ is the direction of the destination and $L$ is a possible value of local attractor}
+	\caption{Navigation and obstacle avoidance, where $v$ is depth of view, $f$ is the field of view, $R$ is the robot, $dir$ is the direction of the destination and $L$ is a possible value of local attractor}
 	\label{fig:obstacleavoidance}
 \end{figure}
 
-The effect of the local attractor is modelled by evaluating each direction in the field of view to select the most desirable direction. Desirability, $d$, of a direction, $q$, is a metric quantifying the how well a direction achieves a balance between clarity of the path and directness of the direction to the destination. The clarity, $\kappa_a$, in a direction $i$, is a normalized reading from the proximity sensor or camera such that $\kappa_q\in[0,1]$. Clarity indicates the distance to the next nearest obstacle. If no obstacles exist in the depth of view $\eta$, then  $\kappa_q=0$. If there exists an obstacle immediately next to the robot, then $\kappa_q=1$. The directness of a direction $q$, $\iota_q\in[0,1]$ is calculated as the angular deviation from the direction of the destination, where $\iota_q=0$ occurs when the direction $i$ is the same as direction to the destination, $dir$, and a $\iota_q=1$ occurs when the direction is at the edge of the field of view, $f$. Desirability $d_q$ of direction $q$ is defined as
+The effect of the local attractor is modelled by evaluating each direction in the field of view to select the most desirable direction. Desirability, $d$, of a direction, $q$, is a metric quantifying the how well a direction achieves a balance between clarity of the path and directness of the direction to the destination. The clarity, $\kappa_q$, in a direction $q$, is a normalized reading from the proximity sensor or camera such that $\kappa_q\in[0,1]$. Clarity indicates the distance to the next nearest obstacle. If no obstacles exist in the depth of view $v$, then  $\kappa_q=0$. If there exists an obstacle immediately next to the robot, then $\kappa_q=1$. The directness of a direction $q$, $\iota_q\in[0,1]$ is calculated as the angular deviation from the direction of the destination, where $\iota_q=0$ occurs when the direction $i$ is the same as direction to the destination, $dir$, and a $\iota_q=1$ occurs when the direction is at the edge of the field of view, $f$. Desirability $d_q$ of direction $q$ is defined as
 
 \begin{equation}
 	d_i= \lambda \kappa_q + (1 - \lambda)\iota_q \\
@@ -73,8 +73,8 @@ The prioritized and non-prioritized sinks were placed next to each other, on a s
 In order to test flexiblity on different environment types, many types of environments should be examined. This section defines the various environments and presents how they were generated. Section~\ref{environmentalparameters} discusses the parameters for the environments, while different environment distributions, and the algorithms to generate those distributions are presented in Section~\ref{environmentdistributions}. Finally, the accessible environment is defined in Section~\ref{accessibleenvironment}.
 
 \subsection{Environmental Parameters}
-\subsection{environmentalparameters}
-The experiments were run on different environments where each environment has different item distributions, environment sizes, item densities and different ratios of prioritized to non--prioritized items. All the environments are square. The length and width of the square environment grid is denoted as $\Lambda$, where $\Lambda\in \left\{ 50, 100, 200, 300, 500\right\}$.
+\label{environmentalparameters}
+The experiments were run on different environments where each environment has different item distributions, environment sizes, item densities, and different ratios of prioritized to non--prioritized items. All the environments are square. The length and width of the square environment grid is denoted as $\Lambda$, where $\Lambda\in \left\{ 50, 100, 200, 300, 500\right\}$.
 
 Different values for the density, $p$, of the items on the grid were chosen, such that if $p=0.9$, then 90\% of the grid cells are occupied by items, where $p\in \{ 0.05,\allowbreak 0.2,\allowbreak 0.5,\allowbreak 0.7,\allowbreak 0.9\}$. Environments with a larger item density are more complex to forage, because there exists a higher probability that items will occlude each other. Thus, a robot may not be able to access items of the type that it is specialized to forage, since its access to those items is occluded by items of a different type. For this reason, we refer to the density of items on the grid as the problem complexity.
 

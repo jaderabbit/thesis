@@ -39,7 +39,7 @@ The study of ants has revealed that impressive emergent activities can be achiev
  
 Although algorithms based on ant foraging behaviour are used to solve optimization problems, the algorithms are often difficult to replicate in a real-life robot environment, since most of the algorithms need to model pheromone dropping and detection. A robotics algorithm that uses pheromone requires robots to be equipped with a substance-distributors, beacon-deployers or complex communication that simulates pheromone deposition and trail-following \cite{hoff2010two}.
 
-The desert seed-harvester ant (\textit{Pogonomyrmex ant}) does not make use of stigmergy to forage, because pheromone deposited on desert sand would be blown away by the wind \cite{collett1992visual,hecker2015beyond}. Instead, desert ants use a technique called path integration for navigation to relocate food sources that have already been found by random exploration \cite{collett1998local,wehner2003desert}. Fig~\ref{pathintegration} demonstrates path integration. The black solid lines represent the path of the ant and the blue dotted lines show how the direction to the nest is maintained as the ant explores. The ant is constantly monitoring the change in heading from the original heading such that, at the destination, the ant has a direction directly back to the sink. As a result, a shortcut back to the nest is calculated in order to minimize the heat stress caused by walking through the hot desert. The shortcut back to the nest is known as the home vector \cite{muller1988path}. Path integration, more commonly known as dead reckoning, is a key evolutionary aspect gained from living in the hot barren desert. When path integration fails, the ant resorts to using landmarks, such as the sun, for navigation \cite{collett1998local}.
+The desert seed-harvester ant (\textit{Pogonomyrmex ant}) does not make use of stigmergy to forage, because pheromone deposited on desert sand would be blown away by the wind \cite{collett1992visual,hecker2015beyond}. Instead, desert ants use a technique called path integration (PI) for navigation to relocate food sources that have already been found by random exploration \cite{collett1998local,wehner2003desert}. Fig~\ref{pathintegration} demonstrates path integration. The black solid lines represent the path of the ant and the blue dotted lines show how the direction to the nest is maintained as the ant explores. The ant is constantly monitoring the change in heading from the original heading such that, at the destination, the ant has a direction directly back to the sink. As a result, a shortcut back to the nest is calculated in order to minimize the heat stress caused by walking through the hot desert. The shortcut back to the nest is known as the home vector \cite{muller1988path}. Path integration, more commonly known as dead reckoning, is a key evolutionary aspect gained from living in the hot barren desert. When path integration fails, the ant resorts to using landmarks, such as the sun, for navigation \cite{collett1998local}.
 
 \begin{figure} [h]
 	\centering
@@ -170,6 +170,24 @@ Multiple taxonomies have been developed as robot foraging research has progresse
 		&	&  Central control \\ \nopagebreak
 		&	& Master slave \\ \hline
 \end{longtable}
+
+\subsubsection{Environment Axis}
+\label{environmentaxis}
+The environment axis is divided into minor axes as follows:
+\begin{itemize}
+\item \textbf{The type of search space}: The type of search space can be either unbounded or constrained by a boundary wall. Goldberg and Mataric \cite{Goldberg01designand} implement a foraging method for an unbounded environment. Schneider \cite{schneider1998territorial} develops a foraging algorithm where a known constrained environment is split into bounded areas. Each robot is assigned an area to forage.
+
+\item \textbf{Item sources}: Item sources can be of different types and quantities. A single limited source is a source where all items come from the same source and the source has a limited capacity for items \cite{sugawara2002swarming}. A foraging environment with a single unlimited source has one source that an unlimited number of items can be foraged from. A foraging environment can also have multiple sources, such as in \cite{Goldberg01designand}. 
+
+\item \textbf{The number of sinks}: The environment can have a single or multiple sinks. 
+
+\item \textbf{Item distribution}: Item distributions in the environment can vary. Items can be placed  in the environment, in known locations, uniformly distributed, or in clusters.
+
+\item \textbf{Item types}: Items can be classified into types in terms of their activity (active or static), homogeniety (homogenous or heterogenous), and quantity (single or multiple) \cite{Balch99rewardand,
+ campo2007efficient, jones2003adaptive}.
+
+\end{itemize}
+
 \subsubsection{Robot Axis}
 
 The robot axis refers to qualities such as the number of robots and the sensory, power, and actuation capabilities of the robots, discussed as follows:
@@ -185,7 +203,7 @@ The robot axis refers to qualities such as the number of robots and the sensory,
 
 \item \textbf{Communication capabilities} of the robots to each other can have an infinite range, a near range, or not exist at all. Infinite range communication is out of scope for swarm robotics research since local communication is a requirement of swarm robotics. Near range communication can occur via light-based signals \cite{sugawara2002swarming} or local direct communication methods such as Bluetooth. The communication occurs in differing topologies such as broadcast, direct, tree, or graph topologies \cite{dudek1993taxonomy}.
 
-\item Robots can have an infinite power source, a limited power source, or an energy source which can be sustained by foraging resources. Studies focused on energy efficiency or automatic-charging have robots with limited energy sources or an energy source that can be sustained by foraging energy resources \cite{liu2006strategies}.
+\item \textbf{Power}: Robots can have an infinite power source, a limited power source, or an energy source which can be sustained by foraging resources. Studies focused on energy efficiency or automatic-charging have robots with limited energy sources or an energy source that can be sustained by foraging energy resources \cite{liu2006strategies}.
 
 \end{itemize}
 
@@ -205,29 +223,13 @@ The strategy axis characterizes algorithms by the techniques that a foraging alg
 
 \item Once an item is found, it must be picked up. The techniques used by a robot for grabbing an item can be used to classify the algorithm. An item can be grabbed by a single robot or a group of robots can attempt to co-operatively grab an item. Closely related to grabbing an item is the techniqe for transorting an item to the sink. Transport of an item back to the sink can be performed by a single robot or by a a group of co-operating robots. A review of co-operative transport and grabbing techniques is presented in \cite{kube2000cooperative}.
 
-\item In order for a robot to move from its current location to the sink, the robot can employ one of many homing techniques. Examples of homing techniques include beacon homing (where the robot first changes inhibits direction to face a beacon at the sink, and then move towards the beacon), following a trail or odometry \cite{winfield2009towards}.
+\item In order for a robot to move from its current location to the sink, the robot can employ one of many homing techniques. Examples of homing techniques include beacon homing (where the robot first changes its direction to face a beacon at the sink, and then move towards the beacon), following a trail or odometry \cite{winfield2009towards}.
 
-\item Recruitment has been defined as activities that bring individuals to a location where work is required \cite{holldobler1990ants}. Robots can recruit other robots to forage certain areas. Direct recruitment is where a robot explicitly communicates to another robot to forage an item source \cite{krieger2000ant,labella2006division}. Indirect recruitment occurs when a robot is recruited to forage by inexplicit markers, such as an increase in the number of foragers waiting by the sink, or an increase in the density of other foragers moving towards a particular source of the environment \cite{arkin1992cooperation}. 
+\item Recruitment has been defined as activities that bring individuals to a location where work is required \cite{holldobler1990ants}. Robots can recruit other robots to forage certain areas. Direct recruitment is where a robot explicitly communicates to another robot to forage an item source \cite{krieger2000ant,labella2006division}. Indirect recruitment occurs when a robot is recruited to forage by implicit markers, such as an increase in the number of foragers waiting by the sink, or an increase in the density of other foragers moving towards a particular source of the environment \cite{arkin1992cooperation}. 
 
-\item There exist various techniques for coordination of tasks between the robots in a swarm. A centralized control mechanism can be used for controlling all robots. Centralized control is not considered to be swarm robotics, and thus foraging algorithms that use centralized control are not addressed in this thesis. Master-slave configurations, where one robot leads the others, is another option for coordination of robots. A master-slave configuration with the ability to select a new master in the case that a master is destroyed, is considered as swarm robotics, since the swarm is then robust to individual failures \cite{karpov2015leader, hoeing2007auction}. A swarm with a master-slave configuration that does not have the ability to select a new master is not swarm robotics. Swarms can have self-organized coordination, which means that each robot is in control of its own activities, and the self-organised coordination is an emergent property of the swarm. %TODO citation
+\item There exist various techniques for coordination of tasks between the robots in a swarm. A centralized control mechanism can be used for controlling all robots. Centralized control is not considered to be swarm robotics, and thus foraging algorithms that use centralized control are not addressed in this thesis. Master-slave configurations, where one robot leads the others, is another option for coordination of robots. A master--slave configuration with the ability to select a new master in the case that a master is destroyed, is considered as swarm robotics, since the swarm is then robust to individual failures \cite{karpov2015leader, hoeing2007auction}. A swarm with a master--slave configuration that does not have the ability to select a new master is not swarm robotics. Swarms can have self-organized coordination, which means that each robot is in control of its own activities, and the self-organised coordination is an emergent property of the swarm. %TODO citation
 \end{itemize}
 
-\subsubsection{Environment Axis}
-\label{environmentaxis}
-The environment axis is divided into minor axes as follows:
-\begin{itemize}
-\item \textbf{The type of search space}: The type of search space can be either unbounded or constrained by a boundary wall. Goldberg and Mataric \cite{Goldberg01designand} implement a foraging method for an unbounded environment. Schneider \cite{schneider1998territorial} develops a foraging algorithm where a known constrained environment is split into bounded areas. Each robot is assigned an area to forage.
-
-\item \textbf{Item sources}: Item sources can be of different types and quantities. A single limited source is a source where all items come from the same source and the source has a limited capacity for items \cite{sugawara2002swarming}. A foraging environment with a single unlimited source has one source that an unlimited number of items can be foraged from. A foraging environment can also have multiple sources, such as in \cite{Goldberg01designand}. 
-
-\item \textbf{The number of sinks}: The environment can have a single or multiple sinks. 
-
-\item \textbf{Item distribution}: Item distributions in the environment can vary. Items can be placed  in the environment, in known locations, uniformly distributed, or in clusters.
-
-\item \textbf{Item types}: Items can be classified into types in terms of their activity (active or static), homogeniety (homogenous or heterogenous), and quantity (single or multiple) \cite{Balch99rewardand,
- campo2007efficient, jones2003adaptive}.
-
-\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -327,9 +329,7 @@ Foraging for work has two main principles:
 
 %This forms the basic model of foraging and also is used in MY honey bee algorithm.
 
-Foraging for work also assumes that tasks are radially spatially localized within the nest. Thus, tasks further away from the nest are performed by older individuals and the younger individuals perform the tasks that are closer to the nest \cite{tofts1993algorithms}.
-
-Foraging for work shows that temporal polyethism does not require age-related differences in the mechanism of task choice and can simply stem from an individual's proximity to the nest. Foraging for work is controversial since it shows that task organization might occur within a social group in absence of selection efforts or an intrinsic mechanism of task performance \cite{franks1994foraging}. 
+Foraging for work also assumes that tasks are radially spatially localized within the nest \cite{tofts1993algorithms}. Foraging for work shows that temporal polyethism does not require age-related differences in the mechanism of task choice and can simply stem from an individual's proximity to the nest. Foraging for work is controversial since it shows that task organization might occur within a social group in absence of selection efforts or an intrinsic mechanism of task performance \cite{franks1994foraging}. 
 
 Foraging for work can be seen as a special case of the threshold model where all individuals have identical thresholds. In foraging for work, temporal polyethism is generated by spatial organisation, where as the response threshold model generates temporal polyethism by differences in internal thresholds. Unlike threshold models, foraging for work does not suffer from inactive individuals as all workers are either performing or seeking tasks \cite{beshers2001models}.
 
@@ -382,7 +382,7 @@ The experiments discovered that the use of the mechanisms improved performance s
 
 The majority of research in division of labour for swarm robotics was concerned with regulating the number of active robots in a swarm. The ability of a swarm to adjust the number of individuals actively participating in a task with the number of robots at rest enabled robot swarms to adapt to changes in the environment. Existing research also concluded that division of labour improved swarm robustness, by replenishing the number of active robots when active robots are destroyed. 
 
-Existing research did not test scalability of the division of labour techniques, since the maximum swarm size was usually ten or less individuals. This thesis will evaluate the scalability of the division of labour techniques used. There exists scope for investigating other types of division of labour in swarm robotics, such as network models, but this is not the scope of this thesis. 
+Existing research did not test scalability of the division of labour techniques, since the maximum swarm size was usually ten or less individuals. This thesis will evaluate the scalability of the division of labour techniques used. There exists scope for investigating other types of division of labour in swarm robotics, such as network models, but this is not within the scope of this thesis. 
 
 
 \section{Summary}
