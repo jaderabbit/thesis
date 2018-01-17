@@ -1,0 +1,5 @@
+Algorithm  Uniform   Clustered   Gaussian  Vein
+Na\\"ive    0.41631  0.41649    0.42077  0.42128
+"Desert Ant"  0.50038  0.504665    0.5064  0.50852
+"Honey Bee"   0.50051  0.50714    0.50723  0.5243
+

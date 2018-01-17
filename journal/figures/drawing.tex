@@ -1,0 +1,49 @@
+% \usepackage[usenames,dvipsnames]{pstricks}
+% \usepackage{epsfig}
+% \usepackage{pst-grad} % For gradients
+% \usepackage{pst-plot} % For axes
+% \usepackage[space]{grffile} % For spaces in paths
+% \usepackage{etoolbox} % For spaces in paths
+% \makeatletter % For spaces in paths
+% \patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
+% \makeatother
+% % User Packages:
+% 
+% 
+\psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+{
+\begin{pspicture}(0,-9.970207)(16.77,9.970207)
+\psline[linecolor=black, linewidth=0.04, arrowsize=0.213cm 2.0,arrowlength=1.4,arrowinset=0.18]{->}(6.0,-9.629792)(11.6,-8.029793)(11.6,-4.8297925)(13.6,-4.8297925)(12.8,0.7702075)(14.0,1.1702075)(14.0,2.7702074)(14.0,3.1702075)
+\psline[linecolor=blue, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.213cm 2.0,arrowlength=1.4,arrowinset=0.18]{->}(14.0,3.1702075)(6.0,-9.629792)
+\psdots[linecolor=black, dotsize=0.4](6.0,-9.629792)
+\psdots[linecolor=black, dotsize=0.4](14.0,3.1702075)
+\rput[bl](4.4,-9.629792){sink}
+\rput[bl](14.4,3.1702075){site}
+\rput[bl](12.0,-6.0297923){random walk performed by ant}
+\pscustom[linecolor=black, linewidth=0.04]
+{
+\newpath
+\moveto(10.0,-8.429792)
+}
+\pscustom[linecolor=black, linewidth=0.04]
+{
+\newpath
+\moveto(9.6,-8.829792)
+}
+\pscustom[linecolor=black, linewidth=0.04]
+{
+\newpath
+\moveto(9.2,-8.829792)
+}
+
+\psline[linecolor=blue, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.213cm 2.0,arrowlength=1.4,arrowinset=0.18]{->}(11.6,-8.429792)(6.0,-10.029793)
+\psline[linecolor=blue, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.213cm 2.0,arrowlength=1.4,arrowinset=0.18]{->}(11.6,-4.8297925)(6.0,-9.629792)
+\psline[linecolor=blue, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.213cm 2.0,arrowlength=1.4,arrowinset=0.18]{->}(12.8,0.7702075)(6.0,-9.629792)
+\psline[linecolor=blue, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.213cm 2.0,arrowlength=1.4,arrowinset=0.18]{->}(14.0,1.1702075)(6.0,-9.629792)
+\psline[linecolor=blue, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.213cm 2.0,arrowlength=1.4,arrowinset=0.18]{->}(4.8,0.37020752)(5.6,0.37020752)(5.6,0.37020752)
+\psline[linecolor=black, linewidth=0.04, arrowsize=0.213cm 2.0,arrowlength=1.4,arrowinset=0.18]{->}(4.8,-0.8297925)(5.6,-0.8297925)(5.6,-0.8297925)
+\rput[bl](1.2,0.37020752){calculated home vector}
+\rput[bl](1.2,-0.8297925){outbound path of ant}
+\end{pspicture}
+}
+
