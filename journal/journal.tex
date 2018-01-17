@@ -142,8 +142,6 @@
 \section{Introduction}
 \label{introduction}
 
-\subsection{Motivation}
-\label{motivation}
 
 Consider a search and rescue mission after a natural disaster or mining accident. These search and rescue missions are usually extremely dangerous for the human rescuers who are deployed to search for survivors. The use of swarm robotics to perform such search and rescue mission has been proposed and explored as an alternative to using human rescuers \cite{murphy2008search,naghsh2008analysis}.
 
@@ -159,11 +157,15 @@ In nature, in times of stress, the collection of one resource may be prioritized
 
 This study defines the prioritized foraging problem, and proposes three swarm robotics foraging algorithms to be evaluated on the prioritized foraging problem. The study proposes metrics to evaluate each algorithm's performance on the prioritized foraging problem in terms of foraging efficiency, flexibility, scalability and robustness. The algorithms are developed in a simulated environment. Each algorithm's performance is evaluated on environments of a variety of complexities, with various swarm configurations.
 
-
+\section{Background}
+\label{background}
+% 2 major subsections
+%% Foraging in nature. Organised
+%% Foraging in robotics
 
 \subsection{Foraging in Nature}
 \label{foraginginnature}
-As with many swarm robotics problems, the inspiration for foraging comes from nature, in particular, social insects such as ants and honey bees. This section describes the biological inspiration for foraging. Section~\ref{biological:ants} describes foraging in ants, while foraging activities of bees are discussed in Section~\ref{bees:biologicalinspiration}. Section~\ref{foraging:other} discusses other types of foraging techniques seen in nature.
+As with many swarm robotics problems, the inspiration for foraging comes from nature, in particular, social insects such as ants and honey bees.
 
 
 \subsubsection{Ant Foraging Behaviour}
@@ -196,8 +198,6 @@ Honey bees have efficient division of labour between different functions in the 
 Unemployed foragers wait on the dance floor, and evaluate the dances of the scout bees. An unemployed bee selects a location described by the scout bees, and become an employed forager. Employed forager bees use the information about the resource, attempt to locate the source, load themselves with food, and return to the hive where unemployed foragers are ready to offload the food. Jansen \cite{janson2007searching} suggests that unemployed bees become exploring scouts when they do not detect any dancing scout bees. 
 
 
-
-%TODO Literature Review 
 \subsection{Prioritized Foraging}
 \label{Prioritized Foraging}
 
@@ -224,7 +224,7 @@ The prioritized foraging problem has the following characteristics: The environm
 \label{algorithms}
 
 
-\section{Na\"ive foraging algorithm}
+\subsection{Na\"ive foraging algorithm}
 \label{naiveforaging}
 
 Na\"ive foraging consists of the following tasks: searching for an item, grabbing an item, returning home with the item, and storing the item at the sink. The steps performed by the algorithm are illustrated in Figure~\ref{naiveforagingstatediagram}, and described below:  
@@ -257,7 +257,7 @@ Na\"\i ve foraging includes only the most minimal set of foraging actions and is
 The following random walk is used: A robot chooses a random direction, $\sigma$, and a random distance, $m\in(0,M)$, where $M$ is a chosen maximum path length. The robot walks in direction $\sigma$ for distance $m$, or until the robot reaches a boundary. The robot then chooses new values for $\sigma$ and $m$.
 
 
-\section{Desert ant foraging}
+\subsection{Desert ant foraging}
 \label{desertantforaging}
 
 
@@ -297,7 +297,7 @@ All robots begin at random positions adjacent to the sink in the exploration sta
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Honey bee foraging}
+\subsection{Honey bee foraging}
 \label{honeybeeforaging}
 %TODO Describe the 3 states referring back to where they were discussed in the previous section.
 
@@ -309,7 +309,7 @@ To more succinctly define the honey bee prioritized foraging algorithm, the algo
 
 \begin{figure}[h]
 	\centering
-	\begin{tikzpicture}[node distance=10cm]
+	\begin{tikzpicture}[node distance=8cm]
 	\node (wait) [process] {unemployed forager};
 	\node (forage) [process, right of=wait] {employed forager};
 	\node (dance) [process, below of=forage,yshift=5cm] {dance};
@@ -334,7 +334,7 @@ To more succinctly define the honey bee prioritized foraging algorithm, the algo
 
 Section~\ref{scoutrobots} presents the behaviour of scout robots, while the behaviour of forager robots is described in Section~\ref{foragerrobots}. The initial state of the swarm is described in Section~\ref{initialstates}, while Section~\ref{natureinspired:divisionoflabour} describes the division of labour mechanism used by the honey bee algorithm.
 
-\subsection{Scout Robots}
+\subsubsection{Scout Robots}
 \label{scoutrobots}
 Scout robots mimic the scouting behaviour of the scout honeys bees as discussed in Section~\ref{bees:biologicalinspiration}. The purpose of the scout honey bees is to locate high quality sites of resources. If the discovered site is of a high enough quality, then the scout will broadcast the location of the site to the unemployed forager robots at the sink. 
 
@@ -450,7 +450,7 @@ In the dance state, the scout robot communicates the location, $\omega$, and qua
 
 After the scout robot has completed broadcasting site details to the unemployed foragers, the scout robot must decide to either stay a scout robot and switch back to the explore state, or to become an employed forager robot and begin foraging the previous site. The scout robot becomes an employed forager robot with probability of $\rho$. If a random number $\varrho\in[0,1]$ is selected such that $\varrho$ is less than $\rho$, then the scout robot remains a scout and begins to explore the environment. If $\varrho$ is greater than or equal to $\rho$ then the scout becomes an employed forager. Increasing the site quality threshold, $\rho$, will make the scout robots more selective about the sites they broadcast. Decreasing $\rho$ will result in scout robots being less selective about the sites they broadcast.
 
-\subsection{Forager Robots}
+\subsubsection{Forager Robots}
 \label{foragerrobots}
 
 There are two types of forager robots: The unemployed foragers and employed foragers. The unemployed forager robots take on the role of unemployed foragers from foraging honey bees discussed in Section~\ref{bees:biologicalinspiration}. Unemployed forager robots remain at the sink and await dance behaviour from a scout robot. This wait state is described in Algorithm~\ref{algorithm:unemployedforager:locating}.
@@ -574,12 +574,12 @@ The unemployed forager robot role allows the number of active robots in the envi
 
 Unemployed forager robots become scout robots if no scout robot broadcasts are detected for $t_{wait}$ time steps. The control parameter $t_{wait}$ is the maximum waiting time an unemployed forager can spend in the waiting state before switching to a scout robot, and $i_{wait}$ is the time spent by a robot in the waiting state. Decreasing $t_{wait}$ results in more scout robots exploring the environment and less unemployed foragers that a scout robot, who may have found quality sites, can recruit. Increasing $t_{wait}$ results in a greater number of unemployed forager robots waiting to be recruited. The greater number of unemployed foragers can form a large work force for a recruiting scout. However, too many unemployed foragers result in a smaller work force in the foraging environment.
 
-\subsection{Initial States}
+\subsubsection{Initial States}
 \label{initialstates}
 
 A portion of the robots are initialized as scout robots in the explore state and the rest as unemployed forager robots. All robots are initialized adjacent to the sink. The percentage of robots initialized as scout robots is $X\in(0,100)$. Unemployed forager robots require a scout robot to recruit them to become employed forager robots. At initialization, the scout robots do not have site location details available, and therefore robots can not be initialized as employed forager robots. 
 
-\subsection{Division of Labour}
+\subsubsection{Division of Labour}
 \label{natureinspired:divisionoflabour}
 The honey bee algorithm has two levels of division of labour. The first level is the division of labour between the scout, employed forager, and unemployed forager roles.
 
@@ -643,7 +643,7 @@ The environment type ratio, $r$, is defined as the ratio of prioritized to non-p
 \label{environmentdistributions}
 The environment distribution, $\epsilon$, is defined as the distribution of prioritized and non-prioritized items in an environment, such that $\epsilon\in\{uniform, clustered, gaussian, vein\}$. Each environment distribution was chosen in order to examine different characteristics of the algorithms. The item distributions are illustrated in Figure~\ref{fig:environments}, where each lighter shaded square is a prioritized item and a non-prioritized item is shown by a darker shaded square. The four environment distributions were generated as follows:
 
-\begin{figure} [h]
+\begin{figure} [htb]
         \centering
         \begin{subfigure}[b]{0.21\textwidth}
                 \includegraphics[width=\textwidth]{figures/uniformenv.pdf}
@@ -1102,7 +1102,7 @@ The honey bee algorithm is the most flexible in terms of prioritized item ratio.
 To provide evidence for the above hypothesis the average swarm specialization ratio over time, $\tau(t)$, for the honey bee algorithm on a uniformly distributed environment with a high ratio of prioritized items (i.e. $r = 0.75$) is examined. The initial swarm specialization ratio, $\tau(0)$, was set to 0, which means that all robots are set to forage non-prioritized items. The swarm specialization ratio over time, $\tau(t)$, was averaged over 30 independant runs. The purpose behind examining the described scenario is to determine if the honey bee algorithm is able to adapt the swarm's specialization ratio (which initially can only forage non-prioritized items), to more efficiently forage the high ratio of prioritized items. The above scenario is illustrated in Figure~\ref{fig:specializationratioovertime}. 
 
 
-\begin{figure}[!htb]
+\begin{figure}[htb]
 \centering
 \resizebox{\textwidth}{!}{\input{graphs/robustness/specializationratioovertime.tex}}
 \caption{Specialization ratio over time, $\tau(t)$, of the honey bee algorithm, on a uniform environment, with environment item type ratio, $r=0.75$, and initial swarm specialization ratio, $\tau(0)=0$}
@@ -1127,7 +1127,7 @@ The honey bee algorithm's superior flexibility suggests the following hypothesis
 
 To provide evidence for this hypothesis, an in-depth examination of the honey bee algorithm is performed on a Gaussian environment with a high density of items. The environment has a low ratio of prioritized items and a swarm which has a high initial swarm specialization ratio (i.e. most robots are initially set to forage prioritized items). Since the non-prioritized items surround the prioritized items, the swarm should first forage the non-prioritized items in order to get access to the prioritized items. Once the swarm can reach the prioritized items, the swarm should switch to foraging the prioritized items. The example Gaussian environment is illustrated in Figure~\ref{fig:gaussianhighdensityenv}. The white cells represent an empty cell, the dark cells represent the cells containing a non-prioritized item and the shaded cells represent the cells containing a prioritized item. 
 
-\begin{figure}[htbp!]
+\begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{figures/flexibility-gaussian-obj90-ratio.PNG}
     \caption{Gaussian environment with environment item type ratio, $r=0.2$, environment item density of $p=0.9$, and environment size $\Lambda=100$}
@@ -1151,7 +1151,7 @@ Also, consider a swarm with the initial specialization ratio set to mostly forag
 Figure~\ref{fig:gaussianhighdensityperformancehoneybee} shows the efficiency of foraging prioritized items, $E_P$, the efficiency of foraging non-prioritized items, $E_{NP}$, and specialization ratio over time, $\tau(t)$, for the honey bee algorithm on the environment described above. The performance measures were averaged over 30 independant runs.
 
 
-\begin{figure}[!htbp]
+\begin{figure}[htb]
 \centering
 \small
 \resizebox{\textwidth}{!}{\input{graphs/flexibility/flexibility-ED-gaussian-honeybee.tex}}
@@ -1166,7 +1166,7 @@ In constrast, the na\"ive algorithm's performance suffered because it lacks the 
 Because the na\"ive algorithm does not enable robots to switch their item specialization, the swarm specialization ratio, $\tau$, remains constant. Because so few robots could clear non-prioritized items, due to the large initial swarm specialization ratio, $E_{NP}$ increased slowly throughout the experiment. Because the swarm was slow to clear the non-prioritized items, $E_P$ also remained small throughout the experiment, since the swarm struggled to make the prioritized items easily accessible. This suggests that prioritized foraging robots experienced environmental interference while attempting to navigate around the unforaged non-prioritized items. The rate of increase in $E_P$ increased over the duration of the experiment, as the swarm cleared more of the non-prioritized items. The behaviour for the desert ant algorithm was similar to that of the na\"ive algorithm, except that the final efficiency was greater for the desert ant algorithm.
 
 
-\begin{figure}[!htbp]
+\begin{figure}[htb]
 \centering
 \small
 \resizebox{\textwidth}{!}{\input{graphs/flexibility/flexibility-ED-gaussian-naive.tex}}
@@ -1174,7 +1174,7 @@ Because the na\"ive algorithm does not enable robots to switch their item specia
 \label{fig:gaussianhighdensityperformancenaive}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[htb]
 \centering
 \small
 \resizebox{\textwidth}{!}{\input{graphs/flexibility/flexibility-ED-uniform-honeybee.tex}}
@@ -1217,7 +1217,7 @@ Table~\ref{table:swarmscalability} presents the swarm density scalability result
 \end{tabular}
 \end{table}
 
-\begin{figure}[!htbp]
+\begin{figure}[htb]
 \centering
 \small
 \resizebox{\textwidth}{!}{\input{graphs/scalability/swarmscalability.tex}}
@@ -1237,7 +1237,7 @@ To explain the honey bee algorithm's ability to outperform the desert ant algori
 
 In order to determine whether the slight improvement in scalability of the honey bee algorithm over the desert ant algorithm can be attributed to the discussed division of labour mechanism, the average time spent by robots in the waiting state is plotted for different values of $c$ in Figure~\ref{fig:swarmscalabilitywaitingtime}. Figure~\ref{fig:swarmscalabilitywaitingtime} illustrates that the robots spend a significant portion of time in the waiting state for $c < 0.5$, which provides evidence that the honey bee algorithm's swarm scalability is greater than the desert ant algorithm's swarm scalability for low values of $c$.
 
-\begin{figure}[!htbp]
+\begin{figure}[htb]
 \centering
 \small
 \resizebox{\textwidth}{!}{\input{graphs/scalability/swarm-scalability-waitingtime.tex}}
@@ -1270,7 +1270,7 @@ Figure~\ref{fig:problemscalability} plots the problem scalability performance me
 According to Figure~\ref{fig:problemscalability}, the honey bee algorithm is the most scalable in terms of problem scalability, followed by the na\"ive algorithm, with the desert ant algorithm exhibiting the worst scalability.
 
 
-\begin{figure}[!htbp]
+\begin{figure}[htb]
     \centering
     \resizebox{\textwidth}{!}{\input{graphs/scalability/problemscalability.tex}}
     \caption{Problem Scalability, $S_p$, for each environment density $p_i$, for each algorithm}
@@ -1280,7 +1280,7 @@ According to Figure~\ref{fig:problemscalability}, the honey bee algorithm is the
 
 In order to explain the reason for this, consider the following rational argument: The desert ant algorithm differs from the na\"ive algorithm in only one aspect: The desert ant algorithm employs site fidelity and the na\"ive algorithm does not. The site fidelity (discussed in Section~\ref{desertantforaging}) enables a robot to return to a previously foraged site. The desert ant algorithm's use of site fidelity must, directly or indirectly, be the reason that the na\"ive algorithm is more scalable than the desert ant algorithm. To understand why the site fidelity mechanism is negatively influencing scalability, consider the following scenario: A desert ant robot employs a random walk through a complex environment, as shown by the dashed line in Figure~\ref{fig:desertantsitefidelity}. The random walk leads the desert ant robot to a hard-to-reach source of prioritized items. The desert ant robot stores the PI vector, shown by the solid line on the figure, which is needed to return back to the site after offloading the loaded item at the sink. The next time the desert ant wants to return to the previous site, the robot will still need to perform the same obstacle avoidance in order to navigate around the obstacles to return to the previously foraged site, since the PI vector only consists of an overall heading and distance to the site. As is evident in Figure~\ref{fig:desertantsitefidelity}, there may exist an easier to reach site for prioritized items, but the desert ant robot will waste time by continuing to forage the hard to locate source of items. The na\"ive algorithm will not try to return to the hard to find site and is more likely to randomly find the prioritized resource site that is nearer to the sink (indicated by the dotted line), and thus the time taken to forage a single item will be faster, and so foraging efficiency will be increased. The time spent on relocating hard to access sites in more complex environments can slow the desert ant algorithm down. The na\"ive algorithm benefits from a more complex environment, because there will be lots of items to find nearer to the sink that do not require any complex search to relocate. 
 
-\begin{figure}[!htbp]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.75\textwidth]{figures/problem-scalability-desertant2.png}
     \caption{Illustration of the inefficiencies of the desert ant algorithm's site fidelity in dense environments. Solid areas are non-prioritized items, white areas are free cells, and shaded areas are prioritized items. The dashed path is a hypothetical random walk performed by a robot, the solid path is the PI vector for the dashed random walk, and the dotted path is an alternative random walk.}
@@ -1343,7 +1343,7 @@ $r$            & \textbf{Clustered} & \textbf{Gaussian} & \textbf{Uniform} & \te
 \end{table}
 
 
-\begin{figure}[!htbp]
+\begin{figure}[htb]
 \centering
 \resizebox{\textwidth}{!}{\input{graphs/robustness/robustness-recruitment-type-honeybee.tex}}
 \caption{Average time steps spent performing recruitment activities by robots of the swarm for each item foraged, $t_{recruitment}$, for the honey bee algorithm, per item distribution, for each environment item type ratio, $r$.}
