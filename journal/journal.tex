@@ -68,7 +68,7 @@
 \usepackage{tikz}
 
 \usetikzlibrary{shapes.geometric, arrows, decorations.text, fit}
-\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{process} = [rectangle, minimum width=2cm, minimum height=1cm, text centered, draw=black]
 \tikzstyle{arrow} = [thick,->,>=stealth]
 \tikzstyle{initial}=[circle,draw=black,text=black,text centered,minimum width=1cm,minimum height=1cm]
 
@@ -165,11 +165,7 @@ This study defines the prioritized foraging problem, and proposes three swarm ro
 
 \subsection{Foraging in Nature}
 \label{foraginginnature}
-As with many swarm robotics problems, the inspiration for foraging comes from nature, in particular, social insects such as ants and honey bees.
 
-
-\subsubsection{Ant Foraging Behaviour}
-\label{biological:ants}
 % Intro 
 As with many swarm robotics problems, the inspiration for foraging comes from nature, in particular, social insects such as ants and honey bees. This section describes the biological models that are used in the algorithms derived by this thesis. 
 
@@ -189,13 +185,81 @@ The desert seed-harvester ant (\textit{Pogonomyrmex ant}) does not make use of s
 
 Due to the lack of pheromone, the desert seed-harvester ant was simpler to model for real-robot interaction. Desert seed-harvester ant foraging has been modelled in \cite{moller1998modeling,hecker2012formica}. Hecker \textit{et al} \cite{hecker2012formica} performed experiments to compare the performance of two foraging algorithms: The one algorithm was based on desert ant foraging which has no pheromone-like communication and the other algorithm included pheromone-like communication. It was shown that communication improved performance; however, the desert ant based algorithm still performed comparatively well. 
 
-\subsubsection{Bee Foraging Behaviour}
-\label{bees:biologicalinspiration}
 Bees have an impressive set of abilities considering the simplicity of a single individual. They have the ability to remember the colour and shape of flowers \cite{zhang2006honeybee}, and in terms of navigation, they are able to learn local features and routes due to well-developed learning and memorizing capacities \cite{menzel2001cognitive}. Honey-bees are even time aware \cite{moore1989influence}. 
 
 Honey bees have efficient division of labour between different functions in the hive, such as foraging and brood-care. Within the foraging activity itself, honey bees perform foraging-specific division of labours. Honey bee foraging is made up of three different roles namely employed foraging, unemployed foraging and scouting \cite{seeley2009wisdom}. Scouts explore the environment to locate new food sources. Once a source has been found, scouts return to the hive to communicate information about the located food source. To communicate the foraging information, scout bees perform a waggle-dance at the hive. The waggle-dance communicates information about the distance and bearing of the resource. Recruitment \cite{seeley2009wisdom} refers to the process of communicating high quality foraging sites to the swarm.
 
 Unemployed foragers wait on the dance floor, and evaluate the dances of the scout bees. An unemployed bee selects a location described by the scout bees, and become an employed forager. Employed forager bees use the information about the resource, attempt to locate the source, load themselves with food, and return to the hive where unemployed foragers are ready to offload the food. Jansen \cite{janson2007searching} suggests that unemployed bees become exploring scouts when they do not detect any dancing scout bees. 
+
+
+\subsection{Nature Inspired Swarm Robotics Foraging Algorithms}
+\label{sec:second:natureinspiredalgs}
+Foraging is an animal activity performed in order to retrieve food. Social insects, in particular, have found very efficient means of foraging despite their individual simplicity. This section discusses the swarm robotics algorithms that have specifically been inspired by social insects, in particular, those models inspired by ant foraging and bee foraging. 
+
+
+\subsubsection{Ant Inspired Foraging Algorithms}
+\label{sec:second:natureinspired:ant}
+
+Vaughan developed a swarm robotic algorithm allowing for robust transportation of items from a single source to a single sink in an environment with spatial constraints \cite{vaughan2000blazing}. The algorithm presented makes use of both ant-like and bee-like foraging techniques. The ants broadcast the landmarks in the area for odometric localization as well as uses a form of the  honey bee ``waggle dance" that communicates the direction of the food source from the robot that has found the food source to other robots. The robots use path integration, utilized by both ants and bees in order to maintain position and heading estimates. Using these techniques, the robots can communicate multi-segment paths to item sources. The dance communication occurs globally so that every robot knows the multi-segment path to the item source. The path integration technique suffers from accumulation of localization errors over time, which is worsened by global communication, since localization errors experienced by an individual robot get communicated to every single other robot.
+
+
+Hoff \cite{hoff2010two} classified different types of ant-inspired pheromone-based foraging algorithms by how the pheromones are represented. Pheromones can be represented as physical marks on the environment \cite{fujisawa2008communication} or by sharing data that represents pheromones over wireless networks.
+
+Labella \textit{et al} \cite{labella2006division} proposed a foraging model inspired by the foraging behaviour of ants, where individual robots adapt to the environment using only locally available information, in an attempt to preserve energy. The probability, $p_1$, that a robot will change from rest to searching is increased by a constant when the robot returns to the sink and deposits an item. If a robot fails to forage any item after searching for a specified maximum time, then the foraging attempt is considered a failure, $p_1$ is decremented by a constant, and the robot returns and rests. The study showed an improvement in energy efficiency and the algorithm was able to regulate the number of active foragers. An advantage of this algorithm is its simplicity, since communication is required to regulate the number of robots. The study also showed that there was a global negative effect on overall foraging efficiency at large swarm sizes, despite an increase in energy efficiency.
+
+Hoff \cite{hoff2010two} proposed two ant-based foraging algorithms which do not require marking of the physical environment. Instead, robots themselves become pheromone beacons. The purpose of pheromone beacon robots is to act as pheromone. When many pheromone beacon robots line up, the robots form a pheromone trail that other robots can follow to reach a destination. The algorithm enabled the creation of pheromone trails from the sink to the item source and back.
+
+\subsubsection{Honey Bee Inspired Foraging Algorithms}
+Bee swarms have been used in swarm robotics for problems such as path planning \cite{lin2009chaotic}, aggregation \cite{kernbach2009re}, and collective perception \cite{schmickl2007collective}. 
+
+A foraging algorithm was developed in \cite{alers2014biologically} that simulated simplified honey bee recruitment strategies. The algorithm consisted of two phases: an exploratory phase followed by an exploitive phase. Initially, all robots are located around the sink. In the exploratory phase, all robots performed a random search using a L\'evy distribution until an item source was found by a robot. The exploitation phase began when the robot that located the item returned to the sink and communicated the location to other members of the robot swarm using wi-fi. The other robots were recruited and began to commute between the hive and the item source, transporting items back to the sink. This algorithm exhibited three behaviours of bees: waiting around the sink, exploring the environment, and foraging. Unlike bees, the algorithm did not consider the division of labour between foragers, explorers, and waiting robots. The robots used path integration in order to remember the location of the sink source, and used beacon homing in order to locate the sink. The path integration vector was communicated to the other robots using wi-fi, which is used to guide them to the sink source. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Challenges in Swarm Robotic Foraging}
+\label{challengesinforaging}
+%TODO: Citations
+
+Foraging for humans is a near trivial problem. Most children can walk around and retrieve blocks and return them to a single source. The seemingly simple sub-activities required by foraging such as identification and grasping are often relatively complex for robots to perform. Unlike other simpler swarm robotics problems, such as aggregation, foraging is made up of a group of non-trivial sub-tasks. Some of the aspects which are problematic for robots in foraging are discussed below:
+
+\begin{itemize}
+\item \textbf{Mechanically challenging interactions}: Despite how far robotics has come as a field, there are still tasks that are trivial for humans, but still very complex for most robots. For instance, the challenge of picking up items \cite{saxena2008robotic} and moving them to another location requires high quality sensors, sensitive actuators, and time-consuming calibration \cite{mondada2005cooperation}. 
+
+\item \textbf{Complex noisy environments}: Although research can be performed in a controlled environment, for robust foraging to be efficiently applied in real-life, environmental factors have to be taken into consideration. Environmental factors, such as light \cite{browning2005real,jungel2003real} and quality of the surface the robots forage on \cite{trianni2006cooperative}, often make a robotic solution complex, non-viable, non-robust, or expensive. To cope with real-life environments, the robots require adaptive algorithms and more complex hardware for their sensors and actuators for basic navigation and object detection in unknown terrains with unknown lighting and weather conditions. 
+
+\item \textbf{Localization, navigation and obstacle avoidance}: Localization is the ability for a robot to depict its position in the environment. In swarm robotics, global knowledge about location (such as GPS) can not be used by a robot to determine its position and where it is going. Non-trivial algorithms must be designed in order for a robot to position itself in the environment as in \cite{zhou2012motion,rothermich2004distributed,arkin1992cooperation}. 
+
+\end{itemize}
+
+Swarm robotics researchers often choose to use simulated robot platforms, such as Stage \cite{vaughan2008massively} or Argos \cite{pinciroli2011argos}, instead of real robots in order to remove or regulate the amount of environmental noise. If a swarm robotics experiment uses real-life robots, the environments are usually simplified by creating an environment where temperature, lighting, and moisture are regulated \cite{labella2006division,nouyan2006group}. Due to the discussed complexities of foraging, existing swarm robotic research often simplifies some of the complexities such as environmental changes, sensor noise, and the use of physical robots in order to focus on a single aspect of foraging. 
+
+
+
+\subsection{Division of Labour in Robot Swarms}
+\label{background:divisionoflabour:robotswarm}
+Division of labour has been used extensively in swarm robotics. This section provides an overview of the use of division of labour in swarm robotics.
+
+Agassounon \textit{et al} \cite{agassounon2002efficiency} designed and demonstrated three response threshold-based methods for division of labour. The robots had to perform a clustering task with multiple object sites. Division of labour techniques were employed to avoid inter-robot interference that occur more often when too many robots attempt to cluster the same site. 
+
+The experiment determined that the robot swarm benefited from threshold division of labour since the robot swarms that employed division of labour performed similarly or better than robot swarms that set a fixed task group size per site. The experiment also determined that local communication improved swarm performance.
+
+Labella \textit{et al} \cite{labella2006division} developed a division of labour strategy for prey retrieval based on Deneubourg's ant self-reinforcement model, discussed in Section~\ref{selfreinforcement}. Experimentation was performed on simulated and real robots. The robots switched from search behaviour to rest behaviour with probability $z$. This probability was incremented by a fixed value when a robot successfully returned to the nest with an item and decremented by the same fixed value when a robot returns to the nest without an item. Labella \textit{et al} classified the foragers into different types, namely, loafers, foragers, or undecided, based on the final value of $z$. Experiments showed that the values of $z$ tended towards extreme values, showing that robots tended to become either loafers or foragers, while only a few became undecided. It was shown that a simple self-reinforcement division of labour model can improve the performance of a swarm of robots at a task, without the need for communication. However, scalability was still a concern, since the swarm experienced negative performance as swarm size increased. 
+
+Liu \textit{et al} \cite{liu2007towards} introduced three mechanisms for adapting the number of resting robots to foraging robots in a simple foraging problem. The mechanisms consisted of variations on how a robot perceives the worker demand. The mechanisms were used to adjust time specific thresholds related to the length of time to wait before returning to work and how long work should be performed for. The mechanisms were as follows:
+
+\begin{itemize}
+	\item The internal success of an individual at a specific task.
+	\item The collective success of the swarm at a specific task. 
+	\item The amount of environmental interference experienced by an individual while performing a task, most importantly the number of collisions with other robots. This technique is a social inhibition model.
+\end{itemize}
+
+Four combinations of these mechanism were evaluated as well as compared to a nai\"ve foraging approach. The performance of the swarm was measured as the total energy spent by the robot swarm. The efficiency was evaluated over different robot quantities and food densities.
+
+The experiments discovered that the use of the mechanisms improved performance significantly compared to swarms without such mechanisms. It was also shown that the mechanisms resulted in emergent division of labour, regulating the number of foraging and resting robots. The experiments resulted in robustness in environmental changes related to the density of items. The experiments using collective success of the swarm achieved the highest net energy income to the swarm and also had the fastest adaptation of the ratio of foragers to resting robots when food density changes. Liu \textit{et al} \cite{liu2007towards} noted that scalability was not tested in the experiments.
+
+The majority of research in division of labour for swarm robotics was concerned with regulating the number of active robots in a swarm. The ability of a swarm to adjust the number of individuals actively participating in a task with the number of robots at rest enabled robot swarms to adapt to changes in the environment. Existing research also concluded that division of labour improved swarm robustness, by replenishing the number of active robots when active robots are destroyed. 
+
+Existing research did not test scalability of the division of labour techniques, since the maximum swarm size was usually ten or less individuals. This thesis will evaluate the scalability of the division of labour techniques used. There exists scope for investigating other types of division of labour in swarm robotics, such as network models, but this is not within the scope of this thesis. 
+
 
 
 \subsection{Prioritized Foraging}
@@ -242,7 +306,7 @@ Na\"ive foraging consists of the following tasks: searching for an item, grabbin
 	\node (loaditem) [process, right of=randomwalk] {load item};
 	\node (homing) [process, right of=offload] {homing};
 	\draw [arrow] (randomwalk) -- node[anchor=south] {locates item} (loaditem);
-	\draw [arrow] (loaditem) -- node[anchor=west] {successful load} (homing);
+	\draw [arrow] (loaditem) -- node[anchor=east] {successful load} (homing);
 	\draw [arrow] (homing) -- node[anchor=north] {at sink} (offload);
 	\draw [arrow] (offload) -- node[anchor=west] {successful offload} (randomwalk);
 
@@ -282,7 +346,7 @@ All robots begin at random positions adjacent to the sink in the exploration sta
 	\node (offload) [process, left of=homing] {offload};
 	\node (locating) [process, left of=explorationstate] {locating};
 	\draw [arrow] (explorationstate) -- node[anchor=south] {locates item} (loadstate);
-	\draw [arrow] (loadstate) -- node[anchor=west] {successful load} (homing);
+	\draw [arrow] (loadstate) -- node[anchor=east] {successful load} (homing);
 	\draw [arrow] (homing) -- node[anchor=south] {at sink} (offload);
 	\draw [arrow] (offload) -- node[anchor=east] {offload complete} (locating);
 	\draw [arrow] (locating) -- node[anchor=south] {item not found} (explorationstate);
@@ -551,7 +615,7 @@ The states and transitions of the employed forager are shown in more detail in F
 
 \begin{figure} [h]
 	\centering
-	\begin{tikzpicture}[node distance=6cm]
+	\begin{tikzpicture}[node distance=5.5cm]
 	\node (locate) [process] {locate};
 	\node[initial, left of=locate,xshift=3cm] (start) {start};
 	\node (load) [process, right of=locate] {load};
