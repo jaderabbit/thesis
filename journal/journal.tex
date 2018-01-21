@@ -157,13 +157,22 @@ In nature, in times of stress, the collection of one resource may be prioritized
 
 This study defines the prioritized foraging problem, and proposes three swarm robotics foraging algorithms to be evaluated on the prioritized foraging problem. The study proposes metrics to evaluate each algorithm's performance on the prioritized foraging problem in terms of foraging efficiency, flexibility, scalability and robustness. The algorithms are developed in a simulated environment. Each algorithm's performance is evaluated on environments of a variety of complexities, with various swarm configurations.
 
+The remainder of this paper is structured as follows: Section~\ref{background} gives background about foraging in nature and swarm robotics. Section~\ref{PrioritizedForaging} describes the problem of prioritized foraging. Section~\ref{algorithms} describes the swarm robotics foraging algorithms that are selected for the evaluation on the prioritized foraging problem in detail. Section~\ref{methodology} discusses the nature of the robots, as well as the environments that are used in the experiments. Section~\ref{thri:third:performancemeasures} presents the performance measures used to evaluate the algorithms on the prioritized foraging problem. Section~\ref{results} presents and discusses the results of the experiments. Finally conclusions and future research are presented in Section~\ref{Conclusions}.
+
 \section{Background}
 \label{background}
 % 2 major subsections
 %% Foraging in nature. Organised
 %% Foraging in robotics
 
-This section provides background on foraging in swarm robotics.  Section~\ref{foraginginnature} describes foraging behaviour of ants and bees in nature, while existing research for foraging in swarm robotics is outlined in Section~\ref{foragerrobots}. Finally, division of labour in swarm robotics is discussed in  Section~\ref{background:divisionoflabour:robotswarm}.
+This section provides background on foraging in swarm robotics.  Section~\ref{swarmrobotics} defines swarm robotics and its inspirations. Section~\ref{foraginginnature} describes foraging behaviour of ants and bees in nature, while existing research for foraging in swarm robotics is outlined in Section~\ref{foragerrobots}. Finally, division of labour in swarm robotics is discussed in  Section~\ref{background:divisionoflabour:robotswarm}.
+
+\subsection{Swarm Robotics}
+\label{swarmrobotics}
+
+Swarm robotics is the study of the co-coordination of large numbers of relatively simple robots in order to perform a single function, without the existence of central control. Swarm robotics focuses on how to create robotic algorithms that result in the emergence of a desired complex behaviour \cite{csahin2005swarm}.
+
+Swarm robotics typically draws inspiration from the observation of social insects, for example, ants \cite{hoff2010two}, cockroaches \cite{garnier2005aggregation}, and bees \cite{lee2012foraging} that exhibit collective behaviour in the growth and maintenance of their societies \cite{wilson1971insect}. Social insect societies exhibit desired qualities of a robot swarm, namely robustness, scalability and flexibility. Swarm robotics also draws on concepts from other societies such as the amoeba's aggregation into slime \cite{schmickl2007navigation}, communication, and propulsion and sensing in bacteria \cite{dhariwal2004bacterium,martel2010using}. 
 
 
 \subsection{Foraging in Nature}
@@ -247,7 +256,7 @@ Existing research did not test scalability of the division of labour techniques,
 
 
 \section{Prioritized Foraging}
-\label{Prioritized Foraging}
+\label{PrioritizedForaging}
 
 %TODO: insert citation
 The prioritized foraging problem, illustrated in Fig.\ref{prioritizedforaging}, is a modified version of the multi-foraging problem. In prioritized foraging, an environment has two types of items: prioritized items and non-prioritized items. The goal is to forage all the items of the prioritized type. The possibility exists that prioritized items become trapped among non-prioritized items and thus the non-prioritized items need to be removed from the environment to clear an access route to the prioritized items. 
@@ -486,7 +495,7 @@ Before returning to the sink with the item, the scout memorizes the PI vector $v
 \Function{forage}{$role, state, v, \varsigma, i, \omega, \mu_\varsigma$}
 	\State \text{get direction $\sigma$ using path integration vector $\omega$}
 	\State \text{robot moves a step in direction $\sigma$}
-	\If {\text{(robot has finished path integration) OR (robot can see item of type $\varsigma$)}}
+	\If {\text{(path integration complete) or (robot sees item of type $\varsigma$)}}
 		\State $state \gets load$
 	\EndIf
 	\State $i =i + 1$
@@ -645,7 +654,7 @@ For the purposes of this study, each robot of each algorithm is assigned an init
 
 \section{Methodology}
 \label{methodology}
-This section describes the experimental setup for the simulations that were performed for the purposes of this study. Section~\ref{chap:robots} describes the robots used in the study, while the simulation environment is described in Section~\ref{simulator}. The environments used in the experiment are discussed in Section~\ref{experimentenvironments}, and Section~\ref{swarmparameters} defines the parameters for the robot swarm. Section~\ref{experimentation} defines how experiments were performed and performance measures used to evaluate the performance of the algorithms on the prioritized foraging problem are proposed in Section~\ref{thri:third:performancemeasures}.
+This section describes the experimental setup for the simulations that were performed for the purposes of this study. Section~\ref{chap:robots} describes the robots used in the study, while the simulation environment is described in Section~\ref{simulator}. The environments used in the experiment are discussed in Section~\ref{experimentenvironments}, and Section~\ref{swarmparameters} defines the parameters for the robot swarm. Finally, Section~\ref{experimentation} defines how experiments were performed.
 
 \subsection{Robots}
 \label{chap:robots}
@@ -935,10 +944,10 @@ The honey bee algorithm specific parameters were selected based on \cite{seeley2
 The initial position of each robot was randomly selected, adjacent to the sink. For the na\"ive algorithm and desert ant algorithm, all robots began in the exploration state. For the honey bee algorithm, all unemployed foraging robots were initialized in the waiting state, and the scout robots were initialized in the explore state. 
 An experiment is defined as the 30 independant runs for each algorithm, with a specific set of swarm parameters, and on an environment which has a specific set of environmental parameters. An experiment is run for every possible combination of swarm and environmental parameters.
 
-\section{Performance measures}
+\section{Performance Measures}
 \label{thri:third:performancemeasures}
 
-The performance of swarm robotics algorithms can be measured by examining the algorithm's ability to perform a task in terms of efficiency, scalability, flexibility, and robustness.
+The performance of swarm robotics algorithms can be measured by examining the algorithm's ability to perform a task in terms of efficiency, scalability, flexibility, and robustness. Section~\ref{setup:foragingefficiency} presents how efficiency is measured, while a measures for determining flexibility are defined in Section~\ref{setup:flexibility}. The measures for evaluating scalability on an algorithm is described in Section~\ref{setup:scalability}, and Section~\ref{behaviouralperformancemeasures} discusses behavioural performance measures specific to the honey bee algorithm.
 
 \subsection{Foraging Efficiency}
 \label{setup:foragingefficiency}
@@ -1008,7 +1017,7 @@ $F_\epsilon$ is interpreted in a similar manner to $F_r$, where the smaller the 
 \subsection{Scalability}
 \label{setup:scalability}
 
-Scalability is described in Section~\ref{sr:scalabilty}. The scalability performance measures used in this study are based on the measures used in \cite{hecker2015beyond}. This study analyses the scalability of each of the algorithms with respect to two performance measures, namely, swarm density scalability and problem complexity scalability. Swarm density scalability and problem complexity scalability are defined in the following sections. Both swarm density scalability and problem complexity scalability are evaluated on the largest environment size (i.e. $\Lambda=500$) in order to prevent the possibility that an environment runs out of items to forage.
+The scalability performance measures used in this study are based on the measures used in \cite{hecker2015beyond}. This study analyses the scalability of each of the algorithms with respect to two performance measures, namely, swarm density scalability and problem complexity scalability. Swarm density scalability and problem complexity scalability are defined in the following sections. Both swarm density scalability and problem complexity scalability are evaluated on the largest environment size (i.e. $\Lambda=500$) in order to prevent the possibility that an environment runs out of items to forage.
 
 To simplify the explanation of the scalability performance measures, the following notation is defined:
 
