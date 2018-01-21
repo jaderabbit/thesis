@@ -957,7 +957,7 @@ The foraging efficiency, $E_P$, of an algorithm is defined as the ratio of the n
 \subsection{Flexibility}
 \label{setup:flexibility}
 
-As stated in Section~\ref{flexibility}, flexibility refers to the effect of variations in the environment and tasks on the co-ordination mechanisms of swarm robotics algorithms. An algorithm that is highly flexible is one that has been optimized for a specific environment, but is equally efficient on a different environment \cite{hecker2015beyond}.
+Flexibility refers to the effect of variations in the environment and tasks on the co-ordination mechanisms of swarm robotics algorithms. An algorithm that is highly flexible is one that has been optimized for a specific environment, but is equally efficient on a different environment \cite{hecker2015beyond}.
 
 The flexibility performance measures used in this study are based on the flexibility performance measures used in \cite{hecker2015beyond}, which have been adapted for the prioritized foraging problem by only taking into account the prioritized item. The flexibility study addresses two aspects: Flexibility with respect to different prioritized item ratios, $r$, and flexibility with respect to different environment distributions.
 
@@ -1168,7 +1168,7 @@ The desert ant algorithm is the least flexible, which indicates that the algorit
 
 
 \subsubsection{Flexibility in terms of environment distributions}
-\label{setup:flexibility:environmentdistributions}
+\label{results:flexibility:environmentdistribution}
 
 Similar to $F_r$, the performance measure, $F_\epsilon$ (defined in Section~\ref{flexibility:environmentdistributions}), measures how well the swarm parameters yielding the best efficiency for environments with a specific environment distribution generalize across environments with different environment distributions, for a specific algorithm. Similar to $F_r$, the smaller $F_\epsilon$ is, the more flexible an algorithm is considered to be, and $F_\epsilon$ is also calculated based on the results of all experiments. The results summarized in Table~\ref{table:flexibility} indicate that the honey bee algorithm was the most flexible in terms of environment distribution, followed by the desert ant algorithm. The na\"ive algorithm was the least flexible.
 
@@ -1345,13 +1345,13 @@ The honey bee algorithm uses site fidelity, and also communicates those sites to
 
 \subsection{Robustness}
 \label{results:robustness}
-% describe fault tolerance, and provide rational arguments as to why it would be more or less 
-As discussed in Section~\ref{robustness}, robot swarms achieve robustness by exhibiting the properties of redundancy, multiplicity of sensing, and decentralized coordination. This study does not perform an empirical robustness study to specifically address how fault tolerant each algorithm is. Instead, this section provides rational arguments supported by empirical evidence to discuss each algorithm's robustness. Section~\ref{results:redundancy} discusses robustness in terms of the resulting redundancy of each of the algorithms, and Section~\ref{results:decentralizedcoordination} discusses robustness in terms of decentralized coordination.
+In swarm robotics, robustness is defined as the ability of a swarm to continue to perform its function, despite failures or abnormalities of the respective individuals and environments. Three aspects of insect swarm algorithms have been identified as enabling robustness: redundancy, decentralized coordination, and multiplicity of sensing \cite{csahin2005swarm}. 
+This study does not perform an empirical robustness study to specifically address how fault tolerant each algorithm is. Instead, this section provides rational arguments supported by empirical evidence to discuss each algorithm's robustness. Section~\ref{results:redundancy} discusses robustness in terms of the resulting redundancy of each of the algorithms, and Section~\ref{results:decentralizedcoordination} discusses robustness in terms of decentralized coordination.
 
 \subsubsection{Redundancy}
 \label{results:redundancy}
 
-As discussed in Section~\ref{robustness}, redundancy in a swarm is achieved by giving all, or a portion of the robots in the swarm the same capabilities. In this way, if a percentage of the swarm malfunctions, the other robots have the capability to take the malfunctioning robots' place. A swarm demonstrates the highest level of redundancy when any robot can take on the role of any other robot that malfunctions in a swarm. 
+Redundancy in a swarm is achieved by giving all, or a portion of the robots in the swarm the same capabilities. In this way, if a percentage of the swarm malfunctions, the other robots have the capability to take the malfunctioning robots' place. A swarm demonstrates the highest level of redundancy when any robot can take on the role of any other robot that malfunctions in a swarm. 
 
 For each of our experiments, each swarm is configured with an initial swarm specialization ratio to enable a portion of robots to forage prioritized items and the another portion to forage non-prioritized items. 
 
