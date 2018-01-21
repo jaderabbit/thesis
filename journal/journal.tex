@@ -226,7 +226,7 @@ Agassounon \textit{et al} \cite{agassounon2002efficiency} designed and demonstra
 
 The experiment determined that the robot swarm benefited from threshold division of labour since the robot swarms that employed division of labour performed similarly or better than robot swarms that set a fixed task group size per site. The experiment also determined that local communication improved swarm performance.
 
-Labella \textit{et al} \cite{labella2006division} developed a division of labour strategy for prey retrieval based on Deneubourg's ant self-reinforcement model, discussed in Section~\ref{selfreinforcement}. Experimentation was performed on simulated and real robots. The robots switched from search behaviour to rest behaviour with probability $z$. This probability was incremented by a fixed value when a robot successfully returned to the nest with an item and decremented by the same fixed value when a robot returns to the nest without an item. Labella \textit{et al} classified the foragers into different types, namely, loafers, foragers, or undecided, based on the final value of $z$. Experiments showed that the values of $z$ tended towards extreme values, showing that robots tended to become either loafers or foragers, while only a few became undecided. It was shown that a simple self-reinforcement division of labour model can improve the performance of a swarm of robots at a task, without the need for communication. However, scalability was still a concern, since the swarm experienced negative performance as swarm size increased. 
+Labella \textit{et al} \cite{labella2006division} developed a division of labour strategy for prey retrieval based on Deneubourg's ant self-reinforcement model. Experimentation was performed on simulated and real robots. The robots switched from search behaviour to rest behaviour with probability $z$. This probability was incremented by a fixed value when a robot successfully returned to the nest with an item and decremented by the same fixed value when a robot returns to the nest without an item. Labella \textit{et al} classified the foragers into different types, namely, loafers, foragers, or undecided, based on the final value of $z$. Experiments showed that the values of $z$ tended towards extreme values, showing that robots tended to become either loafers or foragers, while only a few became undecided. It was shown that a simple self-reinforcement division of labour model can improve the performance of a swarm of robots at a task, without the need for communication. However, scalability was still a concern, since the swarm experienced negative performance as swarm size increased. 
 
 Liu \textit{et al} \cite{liu2007towards} introduced three mechanisms for adapting the number of resting robots to foraging robots in a simple foraging problem. The mechanisms consisted of variations on how a robot perceives the worker demand. The mechanisms were used to adjust time specific thresholds related to the length of time to wait before returning to work and how long work should be performed for. The mechanisms were as follows:
 
@@ -349,7 +349,7 @@ All robots begin at random positions adjacent to the sink in the exploration sta
 \label{honeybeeforaging}
 %TODO Describe the 3 states referring back to where they were discussed in the previous section.
 
-The honey bee foraging algorithm presented in this section is based on the foraging behaviour of honey bees as described in Section~\ref{bees:biologicalinspiration}. The algorithm described requires robots to take on one of three roles, namely, scout robots, unemployed forager robots, or employed forager robots. The roles of the robots and the transitions to and from these roles are described in this section. 
+The honey bee foraging algorithm presented in this section is based on the foraging behaviour of honey bees as described in Section~\ref{foraginginnature}. The algorithm described requires robots to take on one of three roles, namely, scout robots, unemployed forager robots, or employed forager robots. The roles of the robots and the transitions to and from these roles are described in this section. 
 
 Figure~\ref{honeybeestate} provides a simplified diagram for the honey bee prioritized foraging algorithm, illustrating the roles and the transitions between each role and the states within these roles. The dance and explore states of the scout robots are shown separately for clarity and the employed forager states are outlined separately in Figure~\ref{employedforagerstatediagram}.
 
@@ -650,12 +650,7 @@ This section describes the experimental setup for the simulations that were perf
 \subsection{Robots}
 \label{chap:robots}
 
-Foraging robots occur in all shapes, sizes and capabilities. Some robots have powerful GPS capabilities and advanced long distance sensors, while others are much simpler. This section defines the capabilities of the simulated robots to be used in this study. The robots are described in Section~\ref{robotdescription}, while Section~\ref{navigationandobstacleavoidance} outlines the navigational capabilities of the robots. 
-
-\subsubsection{Robot Description}
-\label{robotdescription}
-
-The artificial robots modelled in this study are based on e-puck robots \cite{mondada2009puck}, with additional grippers. Each simulated robot is equipped with a 360 degree camera to identify objects around the robot, as well as eight local distance sensors equally spaced around the circular perimeter of the robot. Both camera and distance sensors have a depth of view of five times the robot's size. Robots use local communication which can occur in a radius of five times the robot's size. The sensor and communication range is sufficiently localized with respect to the size of the environment. Each simulated robot can forage a single item at a time. The robots do not have a global positioning system (GPS) capability to locate items to position themselves in the environment. A robot can not see occluded items. As a result, the simulated robots have to explore the environment to find the prioritized items.
+Foraging robots occur in all shapes, sizes and capabilities. Some robots have powerful GPS capabilities and advanced long distance sensors, while others are much simpler. The artificial robots modelled in this study are based on e-puck robots \cite{mondada2009puck}, with additional grippers. Each simulated robot is equipped with a 360 degree camera to identify objects around the robot, as well as eight local distance sensors equally spaced around the circular perimeter of the robot. Both camera and distance sensors have a depth of view of five times the robot's size. Robots use local communication which can occur in a radius of five times the robot's size. The sensor and communication range is sufficiently localized with respect to the size of the environment. Each simulated robot can forage a single item at a time. The robots do not have a global positioning system (GPS) capability to locate items to position themselves in the environment. A robot can not see occluded items. As a result, the simulated robots have to explore the environment to find the prioritized items.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -943,7 +938,7 @@ The honey bee algorithm specific parameters were selected based on \cite{seeley2
 The initial position of each robot was randomly selected, adjacent to the sink. For the na\"ive algorithm and desert ant algorithm, all robots began in the exploration state. For the honey bee algorithm, all unemployed foraging robots were initialized in the waiting state, and the scout robots were initialized in the explore state. 
 An experiment is defined as the 30 independant runs for each algorithm, with a specific set of swarm parameters, and on an environment which has a specific set of environmental parameters. An experiment is run for every possible combination of swarm and environmental parameters.
 
-\subsection{Performance measures}
+\section{Performance measures}
 \label{thri:third:performancemeasures}
 
 The performance of swarm robotics algorithms can be measured by examining the algorithm's ability to perform a task in terms of efficiency, scalability, flexibility, and robustness.
@@ -953,7 +948,7 @@ The performance of swarm robotics algorithms can be measured by examining the al
 The foraging efficiency, $E_P$, of an algorithm is defined as the ratio of the number of prioritized items collected by all robots in a fixed time period on a specific environment to the total number of prioritized items that exist in the environment. The foraging efficiency metric is similar to the efficiency metric used by Hecker \textit{et al} \cite{hecker2015beyond}. The metrics used in experiments performed by Hecker \textit{et al} evaluate the performance of foraging algorithms and are thus appropriate for use in the experiments of this study. The foraging efficiency measure, $E_P$, only considers the prioritized items for the prioritized foraging problem.
 
 
-\subsubsection{Flexibility}
+\subsection{Flexibility}
 \label{setup:flexibility}
 
 As stated in Section~\ref{flexibility}, flexibility refers to the effect of variations in the environment and tasks on the co-ordination mechanisms of swarm robotics algorithms. An algorithm that is highly flexible is one that has been optimized for a specific environment, but is equally efficient on a different environment \cite{hecker2015beyond}.
@@ -969,8 +964,8 @@ Let $Z$ be a matrix of dimensions $n_t \times n_r$. Define each entry of the mat
 Similarly, define matrix $D$ with dimensions $n_t \times n_\epsilon$, such that each entry of the matrix $D_{ij}$ is the average foraging efficiency, over all experiments with environment distribution, $\epsilon_j$, and with the initial swarm initialization ratio, $\tau_i(0)$.
 
 
-%\subsubsection{Flexibility with respect to different prioritized item ratios}
-%\label{setup:flexibility:prioritizeditemratio}
+\subsubsection{Flexibility with respect to different prioritized item ratios}
+\label{setup:flexibility:prioritizeditemratio}
 
 The goal of examining flexibility over different prioritized item ratios is to determine how well the optimum value for initial swarm specialization ratio, $\tau(0)$, for a specific environment item ratio, $r_u$, generalizes across all other environment item ratios, $r_v$, where $u,v = 1,...,n_r$ and $u \neq v$. The optimum value for $\tau(0)$ for environments of a specific environment item ratio is the value that yields the greatest average efficiency for those environments.
 
@@ -995,8 +990,8 @@ F_r = \dfrac{1}{n_r}\sum_{u=1}^{n_r} F_{r_u}
 The performance measure, $F_r$, measures how well swarm parameters, which are optimized to yield the best efficiency for environments with a specific prioritized item ratio generalize across environments with different prioritized item ratios. The less the foraging efficiency varies when an algorithm that is configured with swarm parameters optimized for a specific environment ratio, is run on all other environment ratios, the smaller $F_r$ will be. Therefore, the smaller $F_r$ is, the more flexible an algorithm is considered to be. $F_r$ is a macro performance indicator which is run on the results of all experiments. 
 
 
-%\subsubsection{Flexibility with respect to different environment distributions}
-%\label{setup:flexibility:environmentdistributions}
+\subsubsection{Flexibility with respect to different environment distributions}
+\label{setup:flexibility:environmentdistributions}
 
 
 This performance measure evaluates flexibility by analysing how well swarm parameters, which are optimized to yield the best efficiency for environments with a specific environment distribution generalize across environments with different environment distributions. The performance measure, $F_{\epsilon}$, is defined similar to $F_r$, except over environment distributions, rather than environmental item ratios. A list $Y$ of size $n_\epsilon$ is defined as follows:
@@ -1013,7 +1008,7 @@ F_\epsilon = \dfrac{1}{n_\epsilon}\sum_{u=1}^{n_\epsilon} \sum_{v=1}^{n_\epsilon
 
 $F_\epsilon$ is interpreted in a similar manner to $F_r$, where the smaller the value for $F_\epsilon$ is, the more flexible an algorithm is considered to be over environment distributions.
 
-\subsubsection{Scalability}
+\subsection{Scalability}
 \label{setup:scalability}
 
 Scalability is described in Section~\ref{sr:scalabilty}. The scalability performance measures used in this study are based on the measures used in \cite{hecker2015beyond}. This study analyses the scalability of each of the algorithms with respect to two performance measures, namely, swarm density scalability and problem complexity scalability. Swarm density scalability and problem complexity scalability are defined in the following sections. Both swarm density scalability and problem complexity scalability are evaluated on the largest environment size (i.e. $\Lambda=500$) in order to prevent the possibility that an environment runs out of items to forage.
@@ -1025,8 +1020,8 @@ Let $\overline{c}$ be the list of all considered values for swarm density, $c$, 
 Similarly, define the list of all considered values for problem complexity, $p$, as $\overline{p}$ with length $n_p$. The smallest problem complexity is $p_{min}$ and $E_{p_i}$ is the average foraging efficiency over all experiments, with problem complexity $p_i$.
 
 
-%\subsubsection{Swarm density scalability}
-%\label{swarmsizescalability}
+\subsubsection{Swarm density scalability}
+\label{swarmsizescalability}
 
 The efficiency of a robot swarm should be relatively undisturbed by changes in group sizes. This property is known as swarm density scalability. Ideally, foraging efficiency should increase linearly as swarm density increases, which is known as linear scalability. However, due to increased inter-robot interference in larger swarm densities, scalability is often sub-linear (i.e. logarithmic) \cite{lerman2002mathematical}. Many swarm robotics algorithms focus on the use of division of labour, navigation or communication in order to decrease inter-robot interference \cite{lerman2002mathematical, schneider1998territorial}.
 
@@ -1049,8 +1044,8 @@ The total swarm scalability, $S_c$, provides a single value per algorithm, which
 The larger the value of $S_c$, the better foraging efficiency scales with respect to swarm density. 
 
 
-%\subsubsection{Problem complexity scalability}
-%\label{setup:problemscalability}
+\subsubsection{Problem complexity scalability}
+\label{setup:problemscalability}
 
 Ideally, foraging efficiency should be indirectly proportional to problem complexity. As the problem complexity increases, the foraging efficiency should decrease linearly. An algorithm is scalable when performance decreases linearly or sublinearly as efficiency increases. Similar to swarm density scalability (described in Section~\ref{swarmsizescalability}) problem complexity scalability is often sub-linear, due to increased environmental interference. 
 
@@ -1064,7 +1059,7 @@ In order to evaluate the problem scalability of each of the algorithms presented
 	S_p = \sum_{i=1}^{n_p} S_{p_i}
 \end{equation}
 
-\subsubsection{Behavioural Performance Measures}
+\subsection{Behavioural Performance Measures}
 \label{behaviouralperformancemeasures}
 
 Despite not being one of the more typical performance measures for swarm robotics, a number of measures are included to enable further understanding of the obtained quantitive performance measures.
@@ -1411,7 +1406,7 @@ The first contribution of this research was the introduction of a novel variatio
 
 Existing na\"ive and desert ant algorithms were reviewed and selected for evaluation on the prioritized foraging problem. Furthermore, a novel honey bee inspired foraging algorithm was developed, which specifically modelled the recruitment mechanism and division of labour mechanism of honey bee swarms.
 
-Emperical experiments were defined in Section~\ref{chap:experiment}, and an emperical analysis was performed in Section~\ref{chap:results}. The purpose of the emperical analysis was to investigate each algorithm's performance on the prioritized foraging problem in terms of the major swarm robotics characteristics of efficiency, scalability, flexibility, and robustness as well as the behaviours that enabled those characteristics. 
+Emperical experiments were defined in Section~\ref{methodology}, and an emperical analysis was performed in Section~\ref{results}. The purpose of the emperical analysis was to investigate each algorithm's performance on the prioritized foraging problem in terms of the major swarm robotics characteristics of efficiency, scalability, flexibility, and robustness as well as the behaviours that enabled those characteristics. 
 
 Each algorithm's efficiency was compared to each other algorithm's efficency using a wins and losses approach. Results showed that the honey bee algorithm was the most efficient over all environments and swarm configurations, while the desert ant was the next most efficient and the na\"ive algorithm was the least efficient.
 
