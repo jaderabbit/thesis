@@ -163,6 +163,9 @@ This study defines the prioritized foraging problem, and proposes three swarm ro
 %% Foraging in nature. Organised
 %% Foraging in robotics
 
+This section provides background on foraging in swarm robotics.  Section~\ref{foraginginnature} describes foraging behaviour of ants and bees in nature, while existing research for foraging in swarm robotics is outlined in Section~\ref{foragerrobots}. Finally, division of labour in swarm robotics is discussed in  Section~\ref{background:divisionoflabour:robotswarm}.
+
+
 \subsection{Foraging in Nature}
 \label{foraginginnature}
 
@@ -215,25 +218,6 @@ Bee swarms have been used in swarm robotics for problems such as path planning \
 A foraging algorithm was developed in \cite{alers2014biologically} that simulated simplified honey bee recruitment strategies. The algorithm consisted of two phases: an exploratory phase followed by an exploitive phase. Initially, all robots are located around the sink. In the exploratory phase, all robots performed a random search using a L\'evy distribution until an item source was found by a robot. The exploitation phase began when the robot that located the item returned to the sink and communicated the location to other members of the robot swarm using wi-fi. The other robots were recruited and began to commute between the hive and the item source, transporting items back to the sink. This algorithm exhibited three behaviours of bees: waiting around the sink, exploring the environment, and foraging. Unlike bees, the algorithm did not consider the division of labour between foragers, explorers, and waiting robots. The robots used path integration in order to remember the location of the sink source, and used beacon homing in order to locate the sink. The path integration vector was communicated to the other robots using wi-fi, which is used to guide them to the sink source. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Challenges in Swarm Robotic Foraging}
-\label{challengesinforaging}
-%TODO: Citations
-
-Foraging for humans is a near trivial problem. Most children can walk around and retrieve blocks and return them to a single source. The seemingly simple sub-activities required by foraging such as identification and grasping are often relatively complex for robots to perform. Unlike other simpler swarm robotics problems, such as aggregation, foraging is made up of a group of non-trivial sub-tasks. Some of the aspects which are problematic for robots in foraging are discussed below:
-
-\begin{itemize}
-\item \textbf{Mechanically challenging interactions}: Despite how far robotics has come as a field, there are still tasks that are trivial for humans, but still very complex for most robots. For instance, the challenge of picking up items \cite{saxena2008robotic} and moving them to another location requires high quality sensors, sensitive actuators, and time-consuming calibration \cite{mondada2005cooperation}. 
-
-\item \textbf{Complex noisy environments}: Although research can be performed in a controlled environment, for robust foraging to be efficiently applied in real-life, environmental factors have to be taken into consideration. Environmental factors, such as light \cite{browning2005real,jungel2003real} and quality of the surface the robots forage on \cite{trianni2006cooperative}, often make a robotic solution complex, non-viable, non-robust, or expensive. To cope with real-life environments, the robots require adaptive algorithms and more complex hardware for their sensors and actuators for basic navigation and object detection in unknown terrains with unknown lighting and weather conditions. 
-
-\item \textbf{Localization, navigation and obstacle avoidance}: Localization is the ability for a robot to depict its position in the environment. In swarm robotics, global knowledge about location (such as GPS) can not be used by a robot to determine its position and where it is going. Non-trivial algorithms must be designed in order for a robot to position itself in the environment as in \cite{zhou2012motion,rothermich2004distributed,arkin1992cooperation}. 
-
-\end{itemize}
-
-Swarm robotics researchers often choose to use simulated robot platforms, such as Stage \cite{vaughan2008massively} or Argos \cite{pinciroli2011argos}, instead of real robots in order to remove or regulate the amount of environmental noise. If a swarm robotics experiment uses real-life robots, the environments are usually simplified by creating an environment where temperature, lighting, and moisture are regulated \cite{labella2006division,nouyan2006group}. Due to the discussed complexities of foraging, existing swarm robotic research often simplifies some of the complexities such as environmental changes, sensor noise, and the use of physical robots in order to focus on a single aspect of foraging. 
-
-
-
 \subsection{Division of Labour in Robot Swarms}
 \label{background:divisionoflabour:robotswarm}
 Division of labour has been used extensively in swarm robotics. This section provides an overview of the use of division of labour in swarm robotics.
@@ -258,11 +242,11 @@ The experiments discovered that the use of the mechanisms improved performance s
 
 The majority of research in division of labour for swarm robotics was concerned with regulating the number of active robots in a swarm. The ability of a swarm to adjust the number of individuals actively participating in a task with the number of robots at rest enabled robot swarms to adapt to changes in the environment. Existing research also concluded that division of labour improved swarm robustness, by replenishing the number of active robots when active robots are destroyed. 
 
-Existing research did not test scalability of the division of labour techniques, since the maximum swarm size was usually ten or less individuals. This thesis will evaluate the scalability of the division of labour techniques used. There exists scope for investigating other types of division of labour in swarm robotics, such as network models, but this is not within the scope of this thesis. 
+Existing research did not test scalability of the division of labour techniques, since the maximum swarm size was usually ten or less individuals. This study will evaluate the scalability of the division of labour techniques used. There exists scope for investigating other types of division of labour in swarm robotics, such as network models, but this is not within the scope of this study. 
 
 
 
-\subsection{Prioritized Foraging}
+\section{Prioritized Foraging}
 \label{Prioritized Foraging}
 
 %TODO: insert citation
@@ -647,7 +631,7 @@ A portion of the robots are initialized as scout robots in the explore state and
 \label{natureinspired:divisionoflabour}
 The honey bee algorithm has two levels of division of labour. The first level is the division of labour between the scout, employed forager, and unemployed forager roles.
 
-Another level of division of labour exists to deal with division of labour between foraging items with different priorities. Item-type division of labour is defined in this thesis as the division of labour between foraging prioritized item types and non-prioritized item types.
+Another level of division of labour exists to deal with division of labour between foraging items with different priorities. Item-type division of labour is defined in this study as the division of labour between foraging prioritized item types and non-prioritized item types.
 
 In nature, in times of drought, bees prioritize water over nectar or pollen. Honey bees would be sent out to forage for water but may encounter pollen while searching for water. If the foraging honey bee happens to encounter pollen, it will forage the pollen but will not communicate the discovery of the pollen site to the unemployed foragers \cite{seeley2009wisdom}. Using the bee's prioritization of resources as inspiration, the following rules for item-type division of labour are defined:
 
@@ -677,7 +661,7 @@ The artificial robots modelled in this study are based on e-puck robots \cite{mo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Simulator}
 \label{simulator}
-A spatially discrete 2-dimensional grid world simulator has been developed and used in this thesis in order to accelerate computation. Discrete 2-dimensional grid world simulators are also used in \cite{sugawara2002swarming, hecker2015beyond}. In real robot experiments, algorithm performance is sensitive to the amount of time taken to load items and manoeuvre the robots \cite{ostergaard2001emergent}. The 2-dimensional grid world simulator allows for movement and loading time to be standardized across all algorithms for effective comparison.
+A spatially discrete 2-dimensional grid world simulator has been developed and used in this study in order to accelerate computation. Discrete 2-dimensional grid world simulators are also used in \cite{sugawara2002swarming, hecker2015beyond}. In real robot experiments, algorithm performance is sensitive to the amount of time taken to load items and manoeuvre the robots \cite{ostergaard2001emergent}. The 2-dimensional grid world simulator allows for movement and loading time to be standardized across all algorithms for effective comparison.
 
 The simulated robots function as follows:
 \begin{itemize}
@@ -940,7 +924,7 @@ To summarize, the challenges introduced by the more complex distributions (the G
 \subsubsection{Accessible Environment}
 \label{accessibleenvironment}
 
-To aid discussions about the algorithms' performance on different types of environments, the concept of an \textbf{accessible environment} should be introduced. For the purposes of this thesis, an accessible environment is the parts of the environment that can be foraged by the swarm and are not blocked by other items. Items that are hidden behind other items are not accessible to the robot swarm and are thus not part of the accessible environment. The accessible environment is much larger in a less densely populated environment. This also introduces the concept of the environment ratio of a given accessible environment. For example, an environment may have a high ratio of prioritized items overall, but if the prioritized items are surrounded completely by non-prioritized items, then the accessible environment consists only of non-prioritized items and has an environmental item type ratio of 0. The environment ratio of the accessible environment changes differently per environment disitribution type. In high density Gaussian environments, the accessible environment will initially consist of mostly non-prioritized items, but as robots forage towards the centre, the accessible environment will consist largely of prioritized items. For uniform environments, all accessible environments would have a similar or same environment item ratio as the entire environment. In clustered environments, depending on the configuration of the clusters, the environment ratio of the accessible environments would vary. For vein environments, at the beginning of foraging, the accessible environment ratio would be low in high density environments if the vein is perpendicular to the sink since only the ``entrance" of the prioritized vein would be exposed to the robots and the rest of the prioritized items would be stacked behind those items. 
+To aid discussions about the algorithms' performance on different types of environments, the concept of an \textbf{accessible environment} should be introduced. For the purposes of this study, an accessible environment is the parts of the environment that can be foraged by the swarm and are not blocked by other items. Items that are hidden behind other items are not accessible to the robot swarm and are thus not part of the accessible environment. The accessible environment is much larger in a less densely populated environment. This also introduces the concept of the environment ratio of a given accessible environment. For example, an environment may have a high ratio of prioritized items overall, but if the prioritized items are surrounded completely by non-prioritized items, then the accessible environment consists only of non-prioritized items and has an environmental item type ratio of 0. The environment ratio of the accessible environment changes differently per environment disitribution type. In high density Gaussian environments, the accessible environment will initially consist of mostly non-prioritized items, but as robots forage towards the centre, the accessible environment will consist largely of prioritized items. For uniform environments, all accessible environments would have a similar or same environment item ratio as the entire environment. In clustered environments, depending on the configuration of the clusters, the environment ratio of the accessible environments would vary. For vein environments, at the beginning of foraging, the accessible environment ratio would be low in high density environments if the vein is perpendicular to the sink since only the ``entrance" of the prioritized vein would be exposed to the robots and the rest of the prioritized items would be stacked behind those items. 
 
 \subsection{Swarm parameters}
 \label{swarmparameters}
@@ -951,7 +935,7 @@ The ability of an algorithm to adapt the value of $\tau$ appropriately for a giv
 
 The swarm density, $c$, is defined as the number of cells occupied by a robot, as a percentage of the grid size $\Lambda$ (the length of the side of an environment), where values of $c\in\left\{0.1, 0.3, 0.5, 0.7, 1\right\}$ were evaluated. The swarm density is varied in order to test the scalability of the algorithm. The swarm density is also varied to test each algorithms' ability to adjust the number of actively foraging robots to the density of the items in the environment, $c$, as well as to adjust the number of robots actively foraging an item type, $\tau$, to the item type density, $r$.
 
-The honey bee algorithm specific parameters were selected based on \cite{seeley2009wisdom}, where $t_{wait}=200$ time steps, $f_{max}=100$ time steps, $\Phi=0.8$ and $\rho=0.1$. Testing the effect of each of the parameters specific to the honey bee algorithm was not in the scope of this thesis.
+The honey bee algorithm specific parameters were selected based on \cite{seeley2009wisdom}, where $t_{wait}=200$ time steps, $f_{max}=100$ time steps, $\Phi=0.8$ and $\rho=0.1$. Testing the effect of each of the parameters specific to the honey bee algorithm was not in the scope of this study.
 
 \subsection{Experimentation}
 \label{experimentation}
@@ -1032,7 +1016,7 @@ $F_\epsilon$ is interpreted in a similar manner to $F_r$, where the smaller the 
 \subsubsection{Scalability}
 \label{setup:scalability}
 
-Scalability is described in Section~\ref{sr:scalabilty}. The scalability performance measures used in this thesis are based on the measures used in \cite{hecker2015beyond}. This study analyses the scalability of each of the algorithms with respect to two performance measures, namely, swarm density scalability and problem complexity scalability. Swarm density scalability and problem complexity scalability are defined in the following sections. Both swarm density scalability and problem complexity scalability are evaluated on the largest environment size (i.e. $\Lambda=500$) in order to prevent the possibility that an environment runs out of items to forage.
+Scalability is described in Section~\ref{sr:scalabilty}. The scalability performance measures used in this study are based on the measures used in \cite{hecker2015beyond}. This study analyses the scalability of each of the algorithms with respect to two performance measures, namely, swarm density scalability and problem complexity scalability. Swarm density scalability and problem complexity scalability are defined in the following sections. Both swarm density scalability and problem complexity scalability are evaluated on the largest environment size (i.e. $\Lambda=500$) in order to prevent the possibility that an environment runs out of items to forage.
 
 To simplify the explanation of the scalability performance measures, the following notation is defined:
 
