@@ -113,7 +113,7 @@
     %% \address[label1]{}
     %% \address[label2]{}
     
-    \author{Jade Zo\"e Abbott and Andries P. Engelbrecht}
+    \author{Jade Zo\"e Abbott}
     
     \address{}
     
@@ -684,7 +684,7 @@ The environment type ratio, $r$, is defined as the ratio of prioritized to non-p
 
 \subsubsection{Environment Distributions}
 \label{environmentdistributions}
-The environment distribution, $\epsilon$, is defined as the distribution of prioritized and non-prioritized items in an environment, such that $\epsilon\in\{uniform, clustered, gaussian, vein\}$. Each environment distribution was chosen in order to examine different characteristics of the algorithms. The item distributions are illustrated in Figure~\ref{fig:environments}, where each lighter shaded square is a prioritized item and a non-prioritized item is shown by a darker shaded square. The four environment distributions were generated as follows:
+The environment distribution, $\epsilon$, is defined as the distribution of prioritized and non-prioritized items in an environment, such that $\epsilon\in\{uniform,\allowbreak clustered,\allowbreak gaussian,\allowbreak vein\}$. Each environment distribution was chosen in order to examine different characteristics of the algorithms. The item distributions are illustrated in Figure~\ref{fig:environments}, where each lighter shaded square is a prioritized item and a non-prioritized item is shown by a darker shaded square. The four environment distributions were generated as follows:
 
 \begin{figure} [htb]
         \centering
@@ -720,7 +720,7 @@ The environment distribution, $\epsilon$, is defined as the distribution of prio
 \begin{algorithmic}[1]
 \Function{uniform}{$numberItems, r, S$}
 	\State \text{nonPrioritizedItemsLeft = floor((1-$r$)*numberItems)}
-	\State \text{prioritizedItemsLeft = floor( $r$*numberItems)}
+	\State \text{prioritizedItemsLeft = ceil($r$*numberItems)}
 	\While{\text{$prioritizedItemsLeft > 0$}}
 		\State \text{x $\gets$ uniform(0, S)}
 		\State \text{y $\gets$ uniform(0, S)}
@@ -780,11 +780,11 @@ To summarize, the challenges introduced by the more complex distributions (the G
 \begin{algorithmic}[1]
 \Function{gaussian}{$numberItems, r, S$}
 	\State \text{Calculate environment centre point $(x_c, y_c)$}
-	\State \text{prioritizedItemsLeft = floor($r$*numberItems)}
+	\State \text{prioritizedItemsLeft = ceil($r$*numberItems)}
 	\State \text{nonPrioritizedItemsLeft = floor((1-$r$)*numberItems)}
 	\State \text{deviation = S*$r$/2}
 	\While{\text{$prioritizedItemsLeft > 0$}}
-		\State \text{$x \gets floor(gaussian(x_c, deviation))$}
+		\State \text{$x \gets ceil(gaussian(x_c, deviation))$}
 		\State \text{$y \gets floor(gaussian(y_c, deviation))$}
 		\If{\text{gridCell (x,y) is empty and is valid}}
 			\State \text{Place prioritized item at (x,y)}
@@ -816,7 +816,7 @@ To summarize, the challenges introduced by the more complex distributions (the G
 	\State \text{Calculate $c$ of equation for line vein, $c = (y_0 - m*x_0)$
 }
 
-	\State \text{prioritizedItemsLeft = floor($r$*numberItems)}
+	\State \text{prioritizedItemsLeft = ceil($r$*numberItems)}
 	\State \text{nonPrioritizedItemsLeft = floor((1-$r$)*numberItems)}
 
 	\While{\text{$prioritizedItemsLeft > 0$}}
@@ -849,10 +849,10 @@ To summarize, the challenges introduced by the more complex distributions (the G
 \begin{algorithmic}[1]
 \Function{clustered}{$numitems, r, S$}
   \State \text{Generate number of clusters, $total = uniform(3,15)$}
-  \State \text{Calculate number of prioritized clusters, $clusters_p = floor(r*total)$}    
+  \State \text{Calculate number of prioritized clusters, $clusters_p = ceil(r*total)$}    
   \State \text{Calculate number of non-prioritized clusters, $clusters_{np} = floor((1-r)*total)$}
   
-  \State \text{Calculate number of prioritized items, $total_p = floor(r*numitems)$}
+  \State \text{Calculate number of prioritized items, $total_p = ceil(r*numitems)$}
   
   \State \text{Calculate number of non-prioritized items, $total_{np} = floor((1-r)*numitems)$}
   
