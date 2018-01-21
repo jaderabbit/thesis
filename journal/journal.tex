@@ -849,12 +849,12 @@ To summarize, the challenges introduced by the more complex distributions (the G
 \begin{algorithmic}[1]
 \Function{clustered}{$numitems, r, S$}
   \State \text{Generate number of clusters, $total = uniform(3,15)$}
-  \State \text{Calculate number of prioritized clusters, $clusters_p = ceil(r*total)$}    
-  \State \text{Calculate number of non-prioritized clusters, $clusters_{np} = floor((1-r)*total)$}
+  \State \text{$clusters_p = ceil(r*total)$}    
+  \State \text{$clusters_{np} = floor((1-r)*total)$}
   
-  \State \text{Calculate number of prioritized items, $total_p = ceil(r*numitems)$}
+  \State \text{$total_p = ceil(r*numitems)$}
   
-  \State \text{Calculate number of non-prioritized items, $total_{np} = floor((1-r)*numitems)$}
+  \State \text{$total_{np} = floor((1-r)*numitems)$}
   
   \State \text{$ave_p = total_p/clusters_{p}$}
   \State \text{$ave_np = total_{np}/clusters_{np}$}
