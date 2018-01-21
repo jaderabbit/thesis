@@ -167,7 +167,7 @@ This study defines the prioritized foraging problem, and proposes three swarm ro
 \label{foraginginnature}
 
 % Intro 
-As with many swarm robotics problems, the inspiration for foraging comes from nature, in particular, social insects such as ants and honey bees. This section describes the biological models that are used in the algorithms derived by this thesis. 
+As with many swarm robotics problems, the inspiration for foraging comes from nature, in particular, social insects such as ants and honey bees. This section describes the biological models that are used in the algorithms derived by this study. 
 
 %Ants
 The study of ants has revealed that impressive emergent activities can be achieved with simple interacting agents with only a few simple rules. Many ant species use a form of communication known as stigmergy \cite{dorigo2000ant}. Ants perform indirect communication between ants by depositing a substance known as pheromone. In foraging, pheromone is deposited on the paths between the nest and the food source. Other ants detect the deposited pheromone and will prefer to follow paths which have a greater amount of pheromone deposit. Ant pheromones have been modelled in numerous swarm intelligence algorithms such as ant systems \cite{dorigo2006ant, dorigo2010ant}. 
@@ -325,7 +325,7 @@ The following random walk is used: A robot chooses a random direction, $\sigma$,
 \label{desertantforaging}
 
 
-As discussed in Section~\ref{biological:ants}, desert ant foraging behaviour is a very suitable model for robot foraging, since no pheromone depositors or pheromone mimickry is required. Pheromone depositors or pheromone mimickry are quite complex to perform in robot environments. Instead of pheromone, desert ants use path integration (PI) to memorize the location of an existing food source and later to return to the memorized source to find more food, as discussed in Section~\ref{biological:ants}. The notion of returning to a previously explored site is known as site fidelity \cite{switzer1993site}. The desert ant algorithm does not require communication between robots or the dispersal of beacons, and is thus simpler than many other swarm robotic foraging algorithms. The desert ant algorithm was defined by Hecker \textit{et al} \cite{hecker2012formica}. The desert ant foraging robots can be in the following states:
+As discussed in Section~\ref{foraginginnature}, desert ant foraging behaviour is a very suitable model for robot foraging, since no pheromone depositors or pheromone mimickry is required. Pheromone depositors or pheromone mimickry are quite complex to perform in robot environments. Instead of pheromone, desert ants use path integration (PI) to memorize the location of an existing food source and later to return to the memorized source to find more food, as discussed in Section~\ref{foraginginnature}. The notion of returning to a previously explored site is known as site fidelity \cite{switzer1993site}. The desert ant algorithm does not require communication between robots or the dispersal of beacons, and is thus simpler than many other swarm robotic foraging algorithms. The desert ant algorithm was defined by Hecker \textit{et al} \cite{hecker2012formica}. The desert ant foraging robots can be in the following states:
 
 \begin{enumerate}
 	\item\textbf{Exploration State}: A robot in the exploration state performs a random walk with PI. The random walk used is the same random walk as discussed in Section~\ref{naiveforaging}. The purpose of the exploration state is to explore the environment to locate items. 
@@ -400,9 +400,9 @@ Section~\ref{scoutrobots} presents the behaviour of scout robots, while the beha
 
 \subsubsection{Scout Robots}
 \label{scoutrobots}
-Scout robots mimic the scouting behaviour of the scout honeys bees as discussed in Section~\ref{bees:biologicalinspiration}. The purpose of the scout honey bees is to locate high quality sites of resources. If the discovered site is of a high enough quality, then the scout will broadcast the location of the site to the unemployed forager robots at the sink. 
+Scout robots mimic the scouting behaviour of the scout honeys bees as discussed in Section~\ref{foraginginnature}. The purpose of the scout honey bees is to locate high quality sites of resources. If the discovered site is of a high enough quality, then the scout will broadcast the location of the site to the unemployed forager robots at the sink. 
 
-Each scout robot begins in the explore state where the scout robot performs a random walk. Algorithm~\ref{algorithm:explore} provides a step-by-step explanation of the explore state of the scout robot. Variable $\varsigma$ saves the robot's item specialization as prioritized or non-prioritized. The random walk performed is the same random walk as discussed in Section~\ref{naiveforaging}. As the scout robot moves, the robot maintains a PI vector $v$ as explained in Section~\ref{biological:ants}. Upon finding an item $\vartheta$ of type $\varsigma$ at site $\xi$, the robot loads the item and then performs an evaluation of the quality, $\mu_\varsigma$, of the site $\xi$ for the item type $\varsigma$. 
+Each scout robot begins in the explore state where the scout robot performs a random walk. Algorithm~\ref{algorithm:explore} provides a step-by-step explanation of the explore state of the scout robot. Variable $\varsigma$ saves the robot's item specialization as prioritized or non-prioritized. The random walk performed is the same random walk as discussed in Section~\ref{naiveforaging}. As the scout robot moves, the robot maintains a PI vector $v$ as explained in Section~\ref{foraginginnature}. Upon finding an item $\vartheta$ of type $\varsigma$ at site $\xi$, the robot loads the item and then performs an evaluation of the quality, $\mu_\varsigma$, of the site $\xi$ for the item type $\varsigma$. 
 
 
 % Scout algorithms
@@ -510,14 +510,14 @@ Before returning to the sink with the item, the scout memorizes the PI vector $v
 \end{algorithmic}
 \end{algorithm}
 
-In the dance state, the scout robot communicates the location, $\omega$, and quality, $\mu_\varsigma$, of the previous site, $\xi$, to the unemployed workers at the sink. The communication is akin to the waggle dance performed by honey bees in nature, as discussed in Section~\ref{bees:biologicalinspiration}. A scout robot's ``dance" takes the form of a localized broadcast communication between the scout and the unemployed forager robots near the sinks. The scout robot communicates the site quality and location for the unemployed foragers for $t_{dance}$ time steps.
+In the dance state, the scout robot communicates the location, $\omega$, and quality, $\mu_\varsigma$, of the previous site, $\xi$, to the unemployed workers at the sink. The communication is akin to the waggle dance performed by honey bees in nature, as discussed in Section~\ref{foraginginnature}. A scout robot's ``dance" takes the form of a localized broadcast communication between the scout and the unemployed forager robots near the sinks. The scout robot communicates the site quality and location for the unemployed foragers for $t_{dance}$ time steps.
 
 After the scout robot has completed broadcasting site details to the unemployed foragers, the scout robot must decide to either stay a scout robot and switch back to the explore state, or to become an employed forager robot and begin foraging the previous site. The scout robot becomes an employed forager robot with probability of $\rho$. If a random number $\varrho\in[0,1]$ is selected such that $\varrho$ is less than $\rho$, then the scout robot remains a scout and begins to explore the environment. If $\varrho$ is greater than or equal to $\rho$ then the scout becomes an employed forager. Increasing the site quality threshold, $\rho$, will make the scout robots more selective about the sites they broadcast. Decreasing $\rho$ will result in scout robots being less selective about the sites they broadcast.
 
 \subsubsection{Forager Robots}
 \label{foragerrobots}
 
-There are two types of forager robots: The unemployed foragers and employed foragers. The unemployed forager robots take on the role of unemployed foragers from foraging honey bees discussed in Section~\ref{bees:biologicalinspiration}. Unemployed forager robots remain at the sink and await dance behaviour from a scout robot. This wait state is described in Algorithm~\ref{algorithm:unemployedforager:locating}.
+There are two types of forager robots: The unemployed foragers and employed foragers. The unemployed forager robots take on the role of unemployed foragers from foraging honey bees discussed in Section~\ref{foraginginnature}. Unemployed forager robots remain at the sink and await dance behaviour from a scout robot. This wait state is described in Algorithm~\ref{algorithm:unemployedforager:locating}.
 
 \begin{algorithm}
 \caption{Wait State of Unemployed Forager}
@@ -540,7 +540,7 @@ There are two types of forager robots: The unemployed foragers and employed fora
 
 A scout robot dances at the sink after locating an item $\vartheta$ at some site $\xi$. Each unemployed forager decides whether to listen to the scout robot with a probability of $\alpha$. If an unemployed forager robot chooses to accept the details communicated by the scout, then the unemployed foraged robot has been recruited and becomes an employed forager robot. The unemployed forager takes on the same item specialization, $\varsigma$, as the dancing scout robot. The unemployed forager will thus only search for items of type $\varsigma$. 
 
-The employed forager robots are modelled based on the employed forager bees as discussed in Section~\ref{bees:biologicalinspiration}. The purpose of the employed forager robot is to forage the sites communicated by scout robots. When an unemployed forager robot takes on the role of an employed forager robot after recruitment by a scout robot, the employed forager starts in the locate state, described in Algorithm~\ref{algorithm:employedforager:locating}. In the locate state, the employed forager robot uses the PI vector $\omega$ to relocate the site $\xi$. Once the site $\xi$ has been relocated, the employed forager robot switches into the load state, as described in Algorithm~\ref{algorithm:loading}. If an item $\vartheta$ of type $\varsigma$ is detected in the vicinity of the located site, then the item is loaded. After successfully loading the item, the robot switches to the homing state. If the employed forager robot does not detect an object in the vicinity of the site $\xi$, then the employed robot switches to the local search state in order to perform a brief local search for items nearby. 
+The employed forager robots are modelled based on the employed forager bees as discussed in Section~\ref{foraginginnature}. The purpose of the employed forager robot is to forage the sites communicated by scout robots. When an unemployed forager robot takes on the role of an employed forager robot after recruitment by a scout robot, the employed forager starts in the locate state, described in Algorithm~\ref{algorithm:employedforager:locating}. In the locate state, the employed forager robot uses the PI vector $\omega$ to relocate the site $\xi$. Once the site $\xi$ has been relocated, the employed forager robot switches into the load state, as described in Algorithm~\ref{algorithm:loading}. If an item $\vartheta$ of type $\varsigma$ is detected in the vicinity of the located site, then the item is loaded. After successfully loading the item, the robot switches to the homing state. If the employed forager robot does not detect an object in the vicinity of the site $\xi$, then the employed robot switches to the local search state in order to perform a brief local search for items nearby. 
 
 \begin{algorithm}
 \caption{Load State of Employed Forager}
@@ -661,12 +661,12 @@ For the purposes of this study, each robot of each algorithm is assigned an init
 
 \section{Methodology}
 \label{methodology}
-
+This section describes the experimental setup for the simulations that were performed for the purposes of this study. Section~\ref{chap:robots} describes the robots used in the study, while the simulation environment is described in Section~\ref{simulator}. The environments used in the experiment are discussed in Section~\ref{experimentenvironments}, and Section~\ref{swarmparameters} defines the parameters for the robot swarm. Section~\ref{experimentation} defines how experiments were performed and performance measures used to evaluate the performance of the algorithms on the prioritized foraging problem are proposed in Section~\ref{thri:third:performancemeasures}.
 
 \subsection{Robots}
 \label{chap:robots}
 
-Foraging robots occur in all shapes, sizes and capabilities. Some robots have powerful GPS capabilities and advanced long distance sensors, while others are much simpler. This chapter defines the capabilities of the simulated robots to be used in this study. The robots are described in Section~\ref{robotdescription}, while Section~\ref{navigationandobstacleavoidance} outlines the navigational capabilities of the robots. 
+Foraging robots occur in all shapes, sizes and capabilities. Some robots have powerful GPS capabilities and advanced long distance sensors, while others are much simpler. This section defines the capabilities of the simulated robots to be used in this study. The robots are described in Section~\ref{robotdescription}, while Section~\ref{navigationandobstacleavoidance} outlines the navigational capabilities of the robots. 
 
 \subsubsection{Robot Description}
 \label{robotdescription}
@@ -1108,7 +1108,7 @@ Unlike the desert ant algorithm and the na\"ive algorithm, the honey bee algorit
 \section{Results}
 \label{results}
 
-The analysis of the results of the experiments is organised with respect to four major characteristics of swarm robotics algorithms, namely efficiency, flexibility, robustness, and scalability. Section~\ref{results:efficiency} addresses foraging, while the flexibility of the algorithms over different environment distributions and item type ratios is analysed in Section~\ref{results:flexibility}. Section~\ref{results:scalability} evaluates the scalability of each algorithm, and robustness is analysed in Section~\ref{results:robustness}. Section~\ref{results:summary} summarizes the findings of the analysis.
+The analysis of the results of the experiments is organised with respect to four major characteristics of swarm robotics algorithms, namely efficiency, flexibility, robustness, and scalability. Section~\ref{results:efficiency} addresses foraging, while the flexibility of the algorithms over different environment distributions and item type ratios is analysed in Section~\ref{results:flexibility}. Section~\ref{results:scalability} evaluates the scalability of each algorithm, and robustness is analysed in Section~\ref{results:robustness}.
 
 \subsection{Foraging efficiency}
 \label{results:efficiency}
@@ -1368,7 +1368,7 @@ As discussed in Section~\ref{robustness}, robot swarms achieve robustness by exh
 
 As discussed in Section~\ref{robustness}, redundancy in a swarm is achieved by giving all, or a portion of the robots in the swarm the same capabilities. In this way, if a percentage of the swarm malfunctions, the other robots have the capability to take the malfunctioning robots' place. A swarm demonstrates the highest level of redundancy when any robot can take on the role of any other robot that malfunctions in a swarm. 
 
-For each of our experiments, each swarm is configured with an initial swarm specialization ratio (as discussed in Chapter~\ref{chap:experiment}) to enable a portion of robots to forage prioritized items and the another portion to forage non-prioritized items. 
+For each of our experiments, each swarm is configured with an initial swarm specialization ratio to enable a portion of robots to forage prioritized items and the another portion to forage non-prioritized items. 
 
 If a portion of robots in a swarm malfunctions or are destroyed, then the swarm specialization ratio will be affected. As shown in Section~\ref{results:flexibility}, the foraging efficiency of the na\"ive and desert ant algorithms were effected by the initial swarm specialization ratio $\tau$. It follows that, if the swarm specialization ratio is unexpectedly changed during the swarm experiment, a change in the foraging efficiency of the swarm would persist for the experiment. In particular, consider the following extreme scenarios: Suppose that all the robots which were foraging for prioritized items (for some $\tau > 0$) are destroyed or malfunction (thus $\tau=0$). Foraging efficiency would drop to 0, because no robots exist to forage prioritized items. Similarly, consider an environment where all prioritized items are blocked by non-prioritized items and that $\tau < 1$. If all non-prioritized robots suffer a malfunction or are destroyed, then $\tau=1$ and no robots will be available to forage non-prioritized items. Foraging efficiency, $E_P$, will then drop to 0. 
 
@@ -1427,7 +1427,7 @@ The first contribution of this research was the introduction of a novel variatio
 
 Existing na\"ive and desert ant algorithms were reviewed and selected for evaluation on the prioritized foraging problem. Furthermore, a novel honey bee inspired foraging algorithm was developed, which specifically modelled the recruitment mechanism and division of labour mechanism of honey bee swarms.
 
-Emperical experiments were defined in Chapter~\ref{chap:experiment}, and an emperical analysis was performed in Chapter~\ref{chap:results}. The purpose of the emperical analysis was to investigate each algorithm's performance on the prioritized foraging problem in terms of the major swarm robotics characteristics of efficiency, scalability, flexibility, and robustness as well as the behaviours that enabled those characteristics. 
+Emperical experiments were defined in Section~\ref{chap:experiment}, and an emperical analysis was performed in Section~\ref{chap:results}. The purpose of the emperical analysis was to investigate each algorithm's performance on the prioritized foraging problem in terms of the major swarm robotics characteristics of efficiency, scalability, flexibility, and robustness as well as the behaviours that enabled those characteristics. 
 
 Each algorithm's efficiency was compared to each other algorithm's efficency using a wins and losses approach. Results showed that the honey bee algorithm was the most efficient over all environments and swarm configurations, while the desert ant was the next most efficient and the na\"ive algorithm was the least efficient.
 
